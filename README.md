@@ -95,6 +95,10 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/system-architecture.svg" alt="System Architecture & Data Flow" width="100%" />
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/sequence-interview.svg" alt="Automated Interview Scheduling Sequence Flow" width="100%" />
+</p>
+
 ### 🛠️ Core Technologies Used:
 * **Frontend**: **React 19**, **Vite 8**, **Lucide React** icons, custom cyber-glassmorphism CSS design system, and **Oxlint** (Rust-based sub-millisecond linter).
 * **Backend**: **Python 3.12**, **Flask 3.0**, **Flask-SQLAlchemy** (ORM), **Werkzeug** (security & password hashing), and **Flask-CORS**.
