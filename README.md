@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="./frontend/public/banner.svg" alt="Job Sphere Studio Banner" width="100%" />
+  <img src="frontend/public/banner.svg" alt="Job Sphere Studio Banner" width="100%" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/Nivedreddy6/Flask"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&duration=3000&pause=1000&color=6366F1&center=true&vCenter=true&multiline=true&width=700&height=70&lines=⚡+Job+Sphere+Studio+Recruitment+Ecosystem;🚀+Flask+REST+API+%2B+React+19+Vite+SPA;💼+Next-Gen+Applicant+Tracking+System" alt="Typing SVG" /></a>
 </p>
 
 <p align="center">
@@ -8,106 +12,92 @@
   <a href="https://vite.dev/"><img src="https://img.shields.io/badge/Bundler-Vite%208-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" /></a>
   <a href="https://www.sqlite.org/"><img src="https://img.shields.io/badge/Database-SQLite%203-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" /></a>
   <a href="https://oxc.rs/"><img src="https://img.shields.io/badge/Linter-Oxlint-F27244?style=for-the-badge&logo=rust&logoColor=white" alt="Oxlint" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/Design-Glassmorphism%20Dark-9333EA?style=for-the-badge" alt="Design" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/UI%20Theme-Cyber%20Glassmorphic-8A2BE2?style=for-the-badge" alt="Design" /></a>
 </p>
 
 ---
 
-<div align="center">
+<p align="center">
+  <img src="frontend/public/headers/header-overview.svg" alt="Project Overview Header" width="100%" />
+</p>
 
-# 🌐 Job Sphere Studio — Full-Stack Recruitment & Career Ecosystem
+> [!IMPORTANT]
+> **Job Sphere Studio** is an enterprise-ready, full-stack recruitment platform and automated Applicant Tracking System (ATS). It bridges top tech talent with innovative employers through automated screening pipelines, real-time candidate metrics, and instant email interview dispatching.
 
-### 🚀 *Bridging High-Caliber Tech Talent with Visionary Companies through Automated Pipelines and Fluid Glassmorphic Design.*
-
-[📖 Project Overview](#-project-overview) • [✨ Core Modules & Capabilities](#-core-modules--capabilities) • [👥 User Journeys](#-user-journeys--personas) • [🏛 Architecture](#-system-architecture) • [📊 Data Model](#-database-schema--models) • [🔌 API Reference](#-rest-api-reference) • [⚡ Quickstart](#-step-by-step-setup--installation)
-
-</div>
+<table>
+  <tr>
+    <td width="33%" align="center" bgcolor="#0f172a">
+      <h3 style="color:#818cf8;">🎯 Job Discovery</h3>
+      <p style="color:#cbd5e1;">Instant role matching, compensation filters, and 1-click resume uploads.</p>
+    </td>
+    <td width="33%" align="center" bgcolor="#1e1b4b">
+      <h3 style="color:#c084fc;">⚡ Recruiter ATS</h3>
+      <p style="color:#cbd5e1;">Multi-stage candidate pipelines, status tracking, and notes management.</p>
+    </td>
+    <td width="33%" align="center" bgcolor="#083344">
+      <h3 style="color:#22d3ee;">📧 Interview Mailer</h3>
+      <p style="color:#cbd5e1;">Automated branded HTML invitation dispatch with meeting links.</p>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 📖 Project Overview
-
-**Job Sphere Studio** is an enterprise-grade, full-stack recruitment portal and Applicant Tracking System (ATS). It connects **Job Seekers** and **Recruiters** in a unified, automated hiring workflow:
-
-* 🎯 **For Job Seekers**: An intuitive discovery engine allowing candidates to browse curated openings, filter by compensation and experience, submit 1-click applications with resume uploads, and track real-time hiring progress.
-* 🏢 **For Recruiters**: A streamlined ATS dashboard offering multi-stage candidate management, status progression triggers, instant automated interview scheduling via email, and pipeline conversion analytics.
-* ⚡ **Hybrid Architecture**: Combines a robust **Flask REST API & Session Engine** with a lightning-fast **React 19 + Vite SPA** client adorned in a bespoke dark glassmorphic design language.
-
----
-
-## 🎨 Visual Showcase & UI Previews
+<p align="center">
+  <img src="frontend/public/headers/header-features.svg" alt="Features Header" width="100%" />
+</p>
 
 <div align="center">
   <table>
     <tr>
       <td width="50%" align="center">
-        <b>🏠 Job Discovery & Candidate Portal</b><br/><br/>
-        <img src="./home_screenshot.png" alt="Home Portal Screenshot" width="100%" />
+        <b>🏠 Candidate Portal & Discovery Feed</b><br/><br/>
+        <img src="home_screenshot.png" alt="Candidate Home" width="100%" />
       </td>
       <td width="50%" align="center">
-        <b>🔐 Secure Role-Based Authentication</b><br/><br/>
-        <img src="./login_screenshot.png" alt="Login Screenshot" width="100%" />
+        <b>🔐 Dual-Role Authentication & Access Control</b><br/><br/>
+        <img src="login_screenshot.png" alt="Login Portal" width="100%" />
       </td>
     </tr>
   </table>
 </div>
 
----
-
-## ✨ Core Modules & Capabilities
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                           🌟 JOB SPHERE STUDIO PLATFORM                         │
-├───────────────────────────────┬─────────────────────────────────────────────────┤
-│  🏢 RECRUITER ATS SUITE       │  🎯 CANDIDATE JOB SUITE                         │
-│  • Job Posting & Management   │  • Smart Search & Dynamic Filtering             │
-│  • Candidate Pipeline Board   │  • 1-Click Multi-Format Resume Upload           │
-│  • Interactive Interview Flow │  • Real-Time Stage Progress Bar                 │
-│  • SMTP Email Notifications   │  • In-App Action Alerts & Notifications         │
-│  • Visual Recruitment Funnel  │  • Integrated Learning Hub & Peer Network       │
-└───────────────────────────────┴─────────────────────────────────────────────────┘
-```
+> [!TIP]
+> **Comprehensive Feature Highlights:**
+> * 📈 **Interactive Hiring Funnel**: Real-time conversion heatmaps (Applied ➔ Reviewing ➔ Shortlisted ➔ Interview Scheduled ➔ Hired).
+> * 📑 **Resume Management**: Automated file-type verification (PDF, DOCX, TXT) and secure authenticated streaming.
+> * 🔔 **Live In-App Notification Center**: Instant triggers on application reviews, interview invitations, and status shifts.
 
 ---
 
-## 👥 User Journeys & Personas
+<p align="center">
+  <img src="frontend/public/headers/header-personas.svg" alt="User Personas Header" width="100%" />
+</p>
 
 <table>
   <thead>
-    <tr style="background-color: #1e1b4b;">
-      <th width="50%"><h3>🏢 Recruiter Persona</h3></th>
-      <th width="50%"><h3>🎯 Candidate Persona</h3></th>
+    <tr bgcolor="#1e1b4b">
+      <th width="50%" style="color:#c7d2fe;"><h3>🏢 Recruiter ATS Operations</h3></th>
+      <th width="50%" style="color:#67e8f9;"><h3>🎯 Candidate Career Journey</h3></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td valign="top">
-        <h4>1. Post & Broadcast Roles</h4>
-        <p>Define job requirements, department tags, salary ranges (e.g. <code>$120k - $160k</code>), remote/on-site preferences, and experience criteria.</p>
-        
-        <h4>2. Candidate Screening & Pipeline</h4>
-        <p>Review candidate profiles, download submitted resumes (PDF/DOCX), and advance candidates across stages:</p>
-        <p><code>Applied</code> ➔ <code>Reviewing</code> ➔ <code>Shortlisted</code> ➔ <code>Interview Scheduled</code> ➔ <code>Accepted / Rejected</code></p>
-        
-        <h4>3. Automated Interview Dispatch</h4>
-        <p>Schedule dates, times, and meeting links (Google Meet, Zoom, Teams) directly from the dashboard. Generates and sends branded HTML email invitations.</p>
-
-        <h4>4. Hiring Intelligence & Metrics</h4>
-        <p>Live metrics on active listings, total applicants, shortlist ratios, and hiring velocity.</p>
+        <ol>
+          <li><b>Post Opportunities</b>: Create listings with department tags, salary ranges (<code>$120k - $160k</code>), and experience requirements.</li>
+          <li><b>Review Pipeline</b>: Inspect candidate resumes, portfolio links, and transition applicants across hiring stages.</li>
+          <li><b>Schedule Interviews</b>: Trigger calendar invites, date/time pickers, and video meeting URLs with one click.</li>
+          <li><b>Analyze Metrics</b>: Monitor active posts, applicant counts, and shortlist velocity.</li>
+        </ol>
       </td>
       <td valign="top">
-        <h4>1. Explore & Filter Opportunities</h4>
-        <p>Filter thousands of positions by keyword, role type (Full-time, Contract, Remote), location, and competitive pay scales.</p>
-
-        <h4>2. Streamlined Resume Application</h4>
-        <p>Upload resumes with automated format verification and attach custom cover letters or portfolios.</p>
-
-        <h4>3. Live Status Tracking</h4>
-        <p>Stay informed with clear visual stage trackers showing exactly where your application stands in the review cycle.</p>
-
-        <h4>4. Notifications & Upskilling</h4>
-        <p>Receive real-time alerts when recruiters review your application, schedule interviews, or release updates, plus access curated career development courses.</p>
+        <ol>
+          <li><b>Explore Openings</b>: Search roles by title, category, salary tier, and remote/on-site status.</li>
+          <li><b>1-Click Apply</b>: Upload resumes and submit applications seamlessly.</li>
+          <li><b>Live Tracker</b>: Track hiring progress through a dynamic multi-stage visual stepper.</li>
+          <li><b>Learn & Upskill</b>: Access curated engineering career resources and tech community networks.</li>
+        </ol>
       </td>
     </tr>
   </tbody>
@@ -115,27 +105,50 @@
 
 ---
 
-## 🏛 System Architecture
-
 <p align="center">
-  <img src="./frontend/public/workflow.svg" alt="Workflow Pipeline Architecture" width="100%" />
+  <img src="frontend/public/headers/header-architecture.svg" alt="System Architecture Header" width="100%" />
 </p>
 
-### 🔧 Technological Foundation
+<p align="center">
+  <img src="frontend/public/workflow.svg" alt="Workflow Pipeline Architecture" width="100%" />
+</p>
 
-| Layer | Technology | Key Responsibility |
-| :--- | :--- | :--- |
-| **Frontend Framework** | **React 19** + **Vite 8** | High-performance Single Page Application with instantaneous Hot Module Replacement (HMR). |
-| **Design System** | **Vanilla CSS + Glassmorphism** | Dark aesthetic featuring backdrop blurs, luminous gradient borders, responsive layouts, and micro-interactions. |
-| **Icons & Visuals** | **Lucide React** + **Custom SVGs** | Crisp vector iconography and animated graphic banners. |
-| **Backend API Server** | **Flask 3.0 (Python)** | REST endpoints, session-based auth, secure file management, and CORS middleware. |
-| **Database & ORM** | **SQLite 3** + **SQLAlchemy** | Relational data layer managing users, profiles, postings, applications, and logs. |
-| **Email Service** | **Python `smtplib` / `email`** | Dynamic HTML interview template rendering and SMTP delivery. |
-| **Code Quality** | **Oxlint (Rust-Powered)** | Sub-millisecond static code analysis and linting. |
+> [!NOTE]
+> **Decoupled Architecture**: The React 19 SPA (`port 5173`) communicates with the Flask REST Backend (`port 5000`) via Vite's automated reverse proxy, allowing independent scaling and seamless development workflows.
+
+```mermaid
+flowchart TD
+    subgraph Frontend [⚛️ React 19 Frontend SPA :5173]
+        UI[🎨 Glassmorphism UI]
+        Router[🛣️ React Router SPA]
+        Components[🧩 Candidate & ATS Tables]
+    end
+
+    subgraph Backend [⚡ Flask 3.0 Backend :5000]
+        API[🔌 REST Controllers]
+        Auth[🔒 Session & Werkzeug Security]
+        Mailer[📧 SMTP Email Service]
+    end
+
+    subgraph Storage [💾 Data & Assets Layer]
+        DB[(🗄️ SQLite Database)]
+        Uploads[📁 Secure Resume Vault]
+    end
+
+    UI --> Router
+    Router --> Components
+    Components -->|Proxy /api| API
+    API --> Auth
+    API --> Mailer
+    API --> DB
+    API --> Uploads
+```
 
 ---
 
-## 📊 Database Schema & Models
+<p align="center">
+  <img src="frontend/public/headers/header-datamodel.svg" alt="Data Model Header" width="100%" />
+</p>
 
 ```mermaid
 erDiagram
@@ -151,32 +164,12 @@ erDiagram
         string email
         string password_hash
         string role "seeker | recruiter"
-        datetime created_at
-    }
-
-    USER_PROFILE {
-        int id PK
-        int user_id FK
-        string full_name
-        string headline
-        string skills
-        string resume_path
-    }
-
-    COMPANY_PROFILE {
-        int id PK
-        int user_id FK
-        string company_name
-        string industry
-        string website
-        string logo_url
     }
 
     JOB_POSTING {
         int id PK
         int recruiter_id FK
         string title
-        string department
         string salary_range
         string status "Active | Closed"
     }
@@ -185,98 +178,58 @@ erDiagram
         int id PK
         int job_id FK
         int seeker_id FK
-        string status "Applied | Reviewing | Shortlisted | Interview Scheduled | Accepted | Rejected"
+        string status "Applied | Shortlisted | Scheduled | Hired"
         string resume_filename
-        datetime applied_at
-    }
-
-    NOTIFICATION {
-        int id PK
-        int user_id FK
-        string title
-        string message
-        boolean is_read
-        datetime created_at
     }
 ```
-
----
-
-## 🔌 REST API Reference
-
-The backend exposes authenticated REST endpoints consumable by both the React SPA and third-party integrations:
-
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :---: |
-| `POST` | `/api/auth/login` | Authenticates user and initiates secure session | No |
-| `POST` | `/api/auth/register` | Registers a new candidate or recruiter account | No |
-| `GET` | `/api/auth/me` | Retrieves profile and role of authenticated user | **Yes** |
-| `GET` | `/api/jobs` | Fetches filtered active job postings list | No |
-| `POST` | `/api/jobs` | Creates a new job posting (Recruiters only) | **Yes** (Recruiter) |
-| `GET` | `/api/applications` | Fetches applicant pipeline / user's applications | **Yes** |
-| `POST` | `/api/applications/<id>/status` | Updates stage (Shortlist, Schedule, Reject, etc.) | **Yes** (Recruiter) |
-| `POST` | `/api/applications/<id>/interview` | Dispatches interview invitation email & updates status | **Yes** (Recruiter) |
-| `GET` | `/uploads/resumes/<filename>` | Securely streams candidate resume files | **Yes** |
-
----
-
-## ⚡ Step-by-Step Setup & Installation
-
-### Prerequisites
-* **Python 3.10+**
-* **Node.js 18+** & **npm**
-
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/Nivedreddy6/Flask.git
-cd Flask
-```
-
-### 2️⃣ Configure & Start Backend
-```powershell
-# Activate Python Virtual Environment
-.\Scripts\Activate.ps1
-
-# Install backend dependencies (if needed)
-pip install -r backend/requirements.txt
-
-# Launch Flask Server on http://127.0.0.1:5000
-python backend/app.py
-```
-
-### 3️⃣ Configure & Start React Frontend
-```powershell
-# Open a new terminal and navigate to frontend
-cd frontend
-
-# Install Node dependencies
-npm install
-
-# Start Vite Development Server on http://localhost:5173
-npm run dev
-```
-
----
-
-## 🌐 Live Access URLs
-
-| Application Component | URL | Default Port |
-| :--- | :--- | :---: |
-| ⚛️ **React 19 Modern SPA** | [http://localhost:5173](http://localhost:5173) | `5173` |
-| ⚡ **Flask REST API & Web App** | [http://127.0.0.1:5000](http://127.0.0.1:5000) | `5000` |
-
----
-
-## 🤝 Contributing & License
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'feat: add amazing new capability'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ---
 
 <p align="center">
-  <b>Job Sphere Studio</b> • Built with modern engineering and designed to elevate careers.
+  <img src="frontend/public/headers/header-api.svg" alt="API Specification Header" width="100%" />
 </p>
+
+| HTTP Method | Route Endpoint | Purpose | Authorization |
+| :--- | :--- | :--- | :---: |
+| `POST` | `/api/auth/login` | Session login & cookie issue | Public |
+| `POST` | `/api/auth/register` | User / Recruiter registration | Public |
+| `GET` | `/api/auth/me` | Current authenticated session info | **User Session** |
+| `GET` | `/api/jobs` | Retrieve filtered job postings list | Public |
+| `POST` | `/api/jobs` | Post new vacancy | **Recruiter** |
+| `GET` | `/api/applications` | Fetch candidate applications pipeline | **Authenticated** |
+| `POST` | `/api/applications/<id>/status` | Update applicant hiring stage | **Recruiter** |
+| `POST` | `/api/applications/<id>/interview` | Dispatch interview invite email | **Recruiter** |
+| `GET` | `/uploads/resumes/<filename>` | Authenticated resume streaming | **Authenticated** |
+
+---
+
+<p align="center">
+  <img src="frontend/public/headers/header-quickstart.svg" alt="Quickstart Header" width="100%" />
+</p>
+
+### 1️⃣ Launch Flask Backend (`Port 5000`)
+```powershell
+# Activate Python Virtual Environment
+.\Scripts\Activate.ps1
+
+# Run Flask backend server
+python backend/app.py
+```
+> 🌐 Backend URL: **http://127.0.0.1:5000**
+
+### 2️⃣ Launch React 19 Frontend (`Port 5173`)
+```powershell
+# Open a new terminal tab and enter frontend
+cd frontend
+
+# Install packages & start Vite HMR
+npm install
+npm run dev
+```
+> 🌐 Frontend URL: **http://localhost:5173**
+
+---
+
+<div align="center">
+  <h3>✨ Job Sphere Studio — Engineering Tomorrow's Hiring Infrastructure ✨</h3>
+</div>

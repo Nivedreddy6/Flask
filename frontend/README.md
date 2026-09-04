@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/banner.svg" alt="Job Sphere Studio Banner" width="100%" />
+  <img src="public/banner.svg" alt="Job Sphere Studio Banner" width="100%" />
 </p>
 
 <p align="center">
@@ -13,49 +13,29 @@
 
 ---
 
-<div align="center">
+<p align="center">
+  <img src="public/headers/header-overview.svg" alt="Overview Header" width="100%" />
+</p>
 
-# ⚛️ Job Sphere Studio — React 19 Frontend SPA
-
-### 🌟 *An Ultra-Modern, Glassmorphic Recruitment UI Built with React 19, Vite 8, and Real-Time Backend Proxy.*
-
-[📖 What is This Project?](#-what-is-this-project) • [✨ Core UI Capabilities](#-core-ui-capabilities) • [🏛 Architecture & Workflow](#-system-architecture--workflow) • [📂 Component Architecture](#-component-architecture) • [⚡ Quickstart](#-quick-start) • [📜 Scripts](#-available-scripts) • [⚙️ Proxy Config](#%EF%B8%8F-proxy--network-configuration)
-
-</div>
-
----
-
-## 📖 What is This Project?
-
-The **Job Sphere Studio Frontend** is a Single Page Application (SPA) providing an interactive recruitment interface. It connects to the Flask API backend to deliver a recruitment experience with:
-
-* 📊 **Recruiter Command Center**: Instant metric tracking for active jobs, candidate submissions, shortlist rates, and interview pipelines.
-* 📋 **Interactive ATS Candidate Table**: Filterable and searchable applicant management table with instantaneous status updates and resume inspection.
-* 📅 **Smart Interview Modal**: Integrated modal for setting interview dates, times, video conferencing links, and custom candidate notes with automated email triggers.
-* 🎨 **Bespoke Glassmorphism Design**: Tailored CSS design system featuring backdrop blur filters, glowing gradient borders, responsive layouts, and fluid micro-animations.
-
----
-
-## ✨ Core UI Capabilities
+> [!IMPORTANT]
+> The **Job Sphere Studio Frontend** is an ultra-modern Single Page Application (SPA) designed to deliver a high-velocity recruitment experience with instant applicant status transitions, dynamic filtering, interactive interview modals, and real-time backend sync.
 
 <table>
   <tr>
-    <td width="50%" valign="top">
-      <h3>💼 Recruiter Pipeline Suite</h3>
-      <ul>
-        <li>📊 <b>Real-time Metrics Dashboard:</b> Monitor active job counts, pending candidate reviews, shortlisted talent, and confirmed interviews.</li>
-        <li>📑 <b>Applicant Tracking Board:</b> Fast multi-stage candidate management with one-click status transitions.</li>
-        <li>📅 <b>Interview Scheduling:</b> Automated scheduling modal with instant calendar & email alerts.</li>
-        <li>📈 <b>Interactive Analytics:</b> Visual status breakdowns, conversion rates, and hiring pipeline heatmaps.</li>
+    <td width="50%" bgcolor="#0f172a">
+      <h3 style="color:#818cf8;">💼 Recruiter Command Center</h3>
+      <ul style="color:#cbd5e1;">
+        <li>📊 <b>Real-time Metrics Dashboard</b>: Active job counts, review queues, shortlist rates.</li>
+        <li>📑 <b>ATS Candidate Board</b>: Multi-stage applicant management with 1-click status transitions.</li>
+        <li>📅 <b>Automated Interview Scheduling</b>: Meeting links and date/time selector with email triggers.</li>
       </ul>
     </td>
-    <td width="50%" valign="top">
-      <h3>🚀 Candidate Experience Portal</h3>
-      <ul>
-        <li>🔍 <b>Smart Discovery:</b> Search and filter opportunities by title, compensation tier, and tech stack.</li>
-        <li>⚡ <b>1-Click Application:</b> Submit resumes (PDF/DOCX) with immediate validation.</li>
-        <li>📬 <b>Live Status Tracking:</b> Visual multi-step progress bar showing real-time application updates.</li>
-        <li>🔔 <b>In-App Notifications:</b> Instant alerts when recruiters review, shortlist, or schedule interviews.</li>
+    <td width="50%" bgcolor="#1e1b4b">
+      <h3 style="color:#c084fc;">🚀 Candidate Career Experience</h3>
+      <ul style="color:#cbd5e1;">
+        <li>🔍 <b>Smart Discovery</b>: Filter opportunities by title, salary bracket, and tech stack.</li>
+        <li>⚡ <b>1-Click Apply</b>: Upload resumes with instant file validation.</li>
+        <li>📬 <b>Live Status Stepper</b>: Visual multi-step progress tracking.</li>
       </ul>
     </td>
   </tr>
@@ -63,10 +43,12 @@ The **Job Sphere Studio Frontend** is a Single Page Application (SPA) providing 
 
 ---
 
-## 🏛 System Architecture & Workflow
+<p align="center">
+  <img src="public/headers/header-architecture.svg" alt="Architecture Header" width="100%" />
+</p>
 
 <p align="center">
-  <img src="./public/workflow.svg" alt="System Workflow Diagram" width="100%" />
+  <img src="public/workflow.svg" alt="System Workflow Diagram" width="100%" />
 </p>
 
 ```mermaid
@@ -90,26 +72,9 @@ sequenceDiagram
 
 ---
 
-## 📂 Component Architecture
-
-```text
-frontend/src/
-├── components/
-│   ├── AnalyticsDashboard.jsx   # Top metric summary cards & KPIs
-│   ├── ApplicationsTable.jsx    # Interactive ATS candidate management table
-│   ├── Navbar.jsx               # Responsive header navigation & user avatar
-│   └── TopBanner.jsx            # Announcement banner with quick actions
-├── pages/
-│   ├── ApplicationsPage.jsx     # Full-page applicant tracking view
-│   └── DashboardPage.jsx        # Consolidated analytics and overview
-├── App.jsx                      # Client router and layout wrapper
-├── index.css                    # Glassmorphism tokens, gradients, animations
-└── main.jsx                     # React 19 DOM mount root
-```
-
----
-
-## 🚀 Quick Start
+<p align="center">
+  <img src="public/headers/header-quickstart.svg" alt="Quickstart Header" width="100%" />
+</p>
 
 ### 1️⃣ Install Dependencies
 ```bash
@@ -117,46 +82,12 @@ cd frontend
 npm install
 ```
 
-### 2️⃣ Start Development Server
+### 2️⃣ Run Development Server
 ```bash
 npm run dev
 ```
 
-Your React client will be available at:
-👉 **[http://localhost:5173](http://localhost:5173)**
-
----
-
-## 📜 Available Scripts
-
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Spawns the local Vite HMR server on port `5173` |
-| `npm run build` | Compiles and optimizes assets into production `/dist` bundle |
-| `npm run preview` | Runs a local web server to preview the production build |
-| `npm run lint` | Blazing-fast linting powered by [Oxlint](https://oxc.rs) |
-
----
-
-## ⚙️ Proxy & Network Configuration
-
-The frontend communicates with the Flask backend running on port `5000` via Vite's automated reverse proxy configured in `vite.config.ts`:
-
-```typescript
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 5173,
-    proxy: {
-      '/api': {
-        target: 'http://127.0.0.1:5000',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
-  },
-})
-```
+> 🌐 Frontend SPA: **http://localhost:5173** (Proxies `/api` to `http://127.0.0.1:5000`)
 
 ---
 
