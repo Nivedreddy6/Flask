@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="520">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="tblCardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Animated Border Gradient -->
+    <linearGradient id="tblBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#06b6d4;#6366f1;#ec4899;#10b981" dur="7s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#6366f1;#ec4899;#10b981;#06b6d4" dur="7s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#6366f1">
+        <animate attributeName="stop-color" values="#6366f1;#ec4899;#10b981;#06b6d4;#6366f1" dur="7s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Header Gradient -->
+    <linearGradient id="thGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Fira+Code:wght@600;700&amp;display=swap');
+
+    .th-text { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800; fill: #ffffff; letter-spacing: 0.5px; }
+    .file-badge { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 700; fill: #38bdf8; }
+    .resp-title { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; fill: #f1f5f9; }
+    .resp-sub { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500; fill: #94a3b8; }
+    .bullet-txt { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500; fill: #cbd5e1; }
+    .pill-kw { font-family: 'Fira Code', monospace; font-size: 9.5px; font-weight: 700; fill: #a7f3d0; }
+
+    .row-bg {
+      transition: all 0.3s ease;
+    }
+    
+    .pulse-dot {
+      animation: dotBlink 2s infinite ease-in-out;
+    }
+
+    @keyframes dotBlink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+  </style>
+
+  <!-- Container -->
+  <rect width="1000" height="520" rx="18" fill="url(#tblCardBg)" stroke="url(#tblBorder)" stroke-width="2" />
+
+  <!-- Top Title Banner -->
+  <g transform="translate(30, 20)">
+    <rect width="360" height="26" rx="13" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#34d399" class="pulse-dot" />
+    <text x="28" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="700" fill="#6ee7b7">BACKEND SERVICE SPECIFICATION MATRIX</text>
+  </g>
+
+  <!-- ================= TABLE HEADER ================= -->
+  <g transform="translate(30, 60)">
+    <rect width="940" height="34" rx="8" fill="url(#thGrad)" stroke="#334155" stroke-width="1" />
+    <text x="20" y="22" class="th-text">MODULE</text>
+    <text x="230" y="22" class="th-text">PRIMARY RESPONSIBILITY</text>
+    <text x="510" y="22" class="th-text">KEY IMPLEMENTATION DETAILS</text>
+  </g>
+
+  <!-- ================= ROW 1: app.py ================= -->
+  <g transform="translate(30, 102)">
+    <rect width="940" height="96" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" class="row-bg" />
+    
+    <!-- Col 1: File -->
+    <rect x="15" y="32" width="180" height="32" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <circle cx="28" cy="48" r="4" fill="#818cf8" />
+    <text x="40" y="52" class="file-badge">backend/app.py</text>
+
+    <!-- Col 2: Responsibility -->
+    <text x="230" y="38" class="resp-title">⚡ REST API Dispatcher &amp; Auth</text>
+    <text x="230" y="56" class="resp-sub">Core Flask app factory, request router,</text>
+    <text x="230" y="72" class="resp-sub">and security controller</text>
+
+    <!-- Col 3: Details -->
+    <text x="510" y="28" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">JSON REST API</tspan> endpoints for auth, jobs, applications &amp; profile</text>
+    <text x="510" y="48" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Role-Based Access</tspan> (<tspan class="pill-kw">seeker</tspan> vs <tspan class="pill-kw">recruiter</tspan>) session enforcement</text>
+    <text x="510" y="68" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Werkzeug PBKDF2</tspan> password hashing &amp; Flask-CORS middleware</text>
+    <text x="510" y="86" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Resume Uploads</tspan> with secure filenames to <tspan fill="#38bdf8" font-family="'Fira Code'">/static/uploads/</tspan></text>
+  </g>
+
+  <!-- ================= ROW 2: models.py ================= -->
+  <g transform="translate(30, 206)">
+    <rect width="940" height="96" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" class="row-bg" />
+    
+    <!-- Col 1: File -->
+    <rect x="15" y="32" width="180" height="32" rx="6" fill="#082f49" stroke="#0284c7" stroke-width="1" />
+    <circle cx="28" cy="48" r="4" fill="#38bdf8" />
+    <text x="40" y="52" class="file-badge">backend/models.py</text>
+
+    <!-- Col 2: Responsibility -->
+    <text x="230" y="38" class="resp-title">🏛️ SQLAlchemy Relational ORM</text>
+    <text x="230" y="56" class="resp-sub">6 Normalized relational entities</text>
+    <text x="230" y="72" class="resp-sub">with foreign-key constraints</text>
+
+    <!-- Col 3: Details -->
+    <text x="510" y="28" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">User &amp; UserProfile</tspan> 1-to-1 candidate profile mapping</text>
+    <text x="510" y="48" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">CompanyProfile</tspan> recruiter organization &amp; logo binding</text>
+    <text x="510" y="68" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">JobPosting &amp; Application</tspan> ATS pipeline state management</text>
+    <text x="510" y="86" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Notification Entity</tspan> live alert badges &amp; read state tracking</text>
+  </g>
+
+  <!-- ================= ROW 3: email_service.py ================= -->
+  <g transform="translate(30, 310)">
+    <rect width="940" height="96" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" class="row-bg" />
+    
+    <!-- Col 1: File -->
+    <rect x="15" y="32" width="180" height="32" rx="6" fill="#4c0519" stroke="#e11d48" stroke-width="1" />
+    <circle cx="28" cy="48" r="4" fill="#f43f5e" />
+    <text x="32" y="52" class="file-badge">backend/email_service.py</text>
+
+    <!-- Col 2: Responsibility -->
+    <text x="230" y="38" class="resp-title">📧 Automated Interview Mailer</text>
+    <text x="230" y="56" class="resp-sub">Python smtplib + email.mime HTML</text>
+    <text x="230" y="72" class="resp-sub">calendar invitation dispatcher</text>
+
+    <!-- Col 3: Details -->
+    <text x="510" y="28" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Structured Calendar Invites</tspan> with Date, Time &amp; Video Link</text>
+    <text x="510" y="48" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Branded Responsive HTML</tspan> templates with inline CSS styling</text>
+    <text x="510" y="68" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Stage Transition Triggers</tspan> on Shortlisted &amp; Interview Scheduled</text>
+    <text x="510" y="86" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Non-Blocking Fallback</tspan> logging if SMTP host is disconnected</text>
+  </g>
+
+  <!-- ================= ROW 4: database.py ================= -->
+  <g transform="translate(30, 414)">
+    <rect width="940" height="94" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" class="row-bg" />
+    
+    <!-- Col 1: File -->
+    <rect x="15" y="31" width="180" height="32" rx="6" fill="#431407" stroke="#ea580c" stroke-width="1" />
+    <circle cx="28" cy="47" r="4" fill="#fb923c" />
+    <text x="40" y="51" class="file-badge">backend/database.py</text>
+
+    <!-- Col 2: Responsibility -->
+    <text x="230" y="36" class="resp-title">💾 DB Lifecycle &amp; Auto-Seeder</text>
+    <text x="230" y="54" class="resp-sub">SQLite 3 engine initializer and</text>
+    <text x="230" y="70" class="resp-sub">demo dataset population</text>
+
+    <!-- Col 3: Details -->
+    <text x="510" y="26" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">SQLite 3 Zero-Config</tspan> database (<tspan fill="#fb923c" font-family="'Fira Code'">job_portal.db</tspan>)</text>
+    <text x="510" y="46" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Idempotent Initializer</tspan> runs on boot without data loss</text>
+    <text x="510" y="66" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">Automated Data Seeder</tspan> preloads TechCorp AI, Innovate Labs</text>
+    <text x="510" y="84" class="bullet-txt">• <tspan fill="#f8fafc" font-weight="600">40+ Demo Applications</tspan> pre-seeded across all pipeline stages</text>
+  </g>
+
+</svg>
