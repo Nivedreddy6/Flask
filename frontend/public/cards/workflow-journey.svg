@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" width="100%" height="380">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="flowBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Animated Border Gradient -->
+    <linearGradient id="flowBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1">
+        <animate attributeName="stop-color" values="#6366f1;#a855f7;#ec4899;#06b6d4;#6366f1" dur="7s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#ec4899">
+        <animate attributeName="stop-color" values="#ec4899;#06b6d4;#6366f1;#a855f7;#ec4899" dur="7s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#6366f1;#a855f7;#ec4899;#06b6d4" dur="7s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Step Node Gradients -->
+    <linearGradient id="s1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e1b4b"/><stop offset="100%" stop-color="#312e81"/></linearGradient>
+    <linearGradient id="s2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f766e"/></linearGradient>
+    <linearGradient id="s3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3b0764"/><stop offset="100%" stop-color="#701a75"/></linearGradient>
+    <linearGradient id="s4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4c0519"/><stop offset="100%" stop-color="#831843"/></linearGradient>
+    <linearGradient id="s5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#451a03"/><stop offset="100%" stop-color="#78350f"/></linearGradient>
+    <linearGradient id="s6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#022c22"/><stop offset="100%" stop-color="#065f46"/></linearGradient>
+    <linearGradient id="s7" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#064e3b"/><stop offset="100%" stop-color="#047857"/></linearGradient>
+
+    <!-- Glowing Filters -->
+    <filter id="glowLine">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Fira+Code:wght@600;700&amp;display=swap');
+
+    .header-pill { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 700; fill: #c7d2fe; letter-spacing: 1px; }
+    .node-num { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 800; fill: #ffffff; }
+    .node-title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12.5px; font-weight: 800; fill: #ffffff; letter-spacing: -0.2px; }
+    .node-desc { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; font-weight: 500; fill: #cbd5e1; }
+    
+    .streamline {
+      stroke: #818cf8;
+      stroke-width: 2.5;
+      stroke-dasharray: 6,4;
+      animation: flowStream 1.2s linear infinite;
+    }
+    .streamline-pink {
+      stroke: #f472b6;
+      stroke-width: 2.5;
+      stroke-dasharray: 6,4;
+      animation: flowStream 1.2s linear infinite;
+    }
+    .streamline-green {
+      stroke: #34d399;
+      stroke-width: 2.5;
+      stroke-dasharray: 6,4;
+      animation: flowStreamRev 1.2s linear infinite;
+    }
+
+    @keyframes flowStream {
+      from { stroke-dashoffset: 20; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes flowStreamRev {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: 20; }
+    }
+
+    .pulse-hired {
+      animation: pulseHired 2s ease-in-out infinite;
+    }
+    @keyframes pulseHired {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.03); opacity: 0.9; }
+    }
+  </style>
+
+  <!-- Container Box -->
+  <rect width="1000" height="380" rx="18" fill="url(#flowBg)" stroke="url(#flowBorder)" stroke-width="2" />
+
+  <!-- Top Title Header Bar -->
+  <g transform="translate(30, 20)">
+    <rect width="320" height="26" rx="13" fill="rgba(99, 102, 241, 0.2)" stroke="#818cf8" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#38bdf8">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <text x="28" y="17" class="header-pill">END-TO-END RECRUITMENT LIFECYCLE</text>
+  </g>
+
+  <!-- ================= TOP ROW: STEPS 1 TO 4 ================= -->
+  
+  <!-- Connector 1 -> 2 -->
+  <path d="M 215 110 L 265 110" class="streamline" />
+  <!-- Connector 2 -> 3 -->
+  <path d="M 455 110 L 505 110" class="streamline" />
+  <!-- Connector 3 -> 4 -->
+  <path d="M 695 110 L 745 110" class="streamline-pink" />
+
+  <!-- Curve Down: 4 -> 5 -->
+  <path d="M 865 160 C 865 210 865 210 865 260 L 745 260" class="streamline-pink" fill="none" />
+
+  <!-- ================= BOTTOM ROW: STEPS 5 TO 7 ================= -->
+  <!-- Connector 5 -> 6 -->
+  <path d="M 505 260 L 555 260" class="streamline-green" />
+  <!-- Connector 6 -> 7 -->
+  <path d="M 265 260 L 315 260" class="streamline-green" />
+
+  <!-- STEP 1: Registration -->
+  <g transform="translate(25, 65)">
+    <rect width="190" height="90" rx="14" fill="url(#s1)" stroke="#818cf8" stroke-width="1.5" />
+    <circle cx="30" cy="30" r="14" fill="#4338ca" />
+    <text x="30" y="34" class="node-num" text-anchor="middle">01</text>
+    <text x="52" y="32" class="node-title">Dual Registration</text>
+    <text x="52" y="46" font-size="10" font-weight="700" fill="#a5b4fc">Candidate / Recruiter</text>
+    <text x="16" y="74" class="node-desc">Role-based auth &amp; secure profiles.</text>
+  </g>
+
+  <!-- STEP 2: Job Search & Filtering -->
+  <g transform="translate(265, 65)">
+    <rect width="190" height="90" rx="14" fill="url(#s2)" stroke="#2dd4bf" stroke-width="1.5" />
+    <circle cx="30" cy="30" r="14" fill="#0d9488" />
+    <text x="30" y="34" class="node-num" text-anchor="middle">02</text>
+    <text x="52" y="32" class="node-title">Smart Job Search</text>
+    <text x="52" y="46" font-size="10" font-weight="700" fill="#5eead4">Salary &amp; Stack Match</text>
+    <text x="16" y="74" class="node-desc">Filter by compensation &amp; remote.</text>
+  </g>
+
+  <!-- STEP 3: 1-Click Resume Apply -->
+  <g transform="translate(505, 65)">
+    <rect width="190" height="90" rx="14" fill="url(#s3)" stroke="#c084fc" stroke-width="1.5" />
+    <circle cx="30" cy="30" r="14" fill="#9333ea" />
+    <text x="30" y="34" class="node-num" text-anchor="middle">03</text>
+    <text x="52" y="32" class="node-title">1-Click Apply</text>
+    <text x="52" y="46" font-size="10" font-weight="700" fill="#e879f9">Resume Upload</text>
+    <text x="16" y="74" class="node-desc">PDF/DOCX auto-file validation.</text>
+  </g>
+
+  <!-- STEP 4: Recruiter Pipeline ATS -->
+  <g transform="translate(745, 65)">
+    <rect width="230" height="90" rx="14" fill="url(#s4)" stroke="#f43f5e" stroke-width="1.5" />
+    <circle cx="30" cy="30" r="14" fill="#be123c" />
+    <text x="30" y="34" class="node-num" text-anchor="middle">04</text>
+    <text x="52" y="32" class="node-title">ATS Pipeline Screening</text>
+    <text x="52" y="46" font-size="10" font-weight="700" fill="#fda4af">Review &amp; Shortlist</text>
+    <text x="16" y="74" class="node-desc">Inspect resumes &amp; transition stage.</text>
+  </g>
+
+  <!-- STEP 5: Automated Interview Scheduling -->
+  <g transform="translate(555, 215)">
+    <rect width="230" height="90" rx="14" fill="url(#s5)" stroke="#f59e0b" stroke-width="1.5" />
+    <circle cx="30" cy="30" r="14" fill="#b45309" />
+    <text x="30" y="34" class="node-num" text-anchor="middle">05</text>
+    <text x="52" y="32" class="node-title">Automated Interview</text>
+    <text x="52" y="46" font-size="10" font-weight="700" fill="#fde68a">SMTP Email Dispatch</text>
+    <text x="16" y="74" class="node-desc">Set date, time, Meet link &amp; mail.</text>
+  </g>
+
+  <!-- STEP 6: Real-Time Live Status Tracking -->
+  <g transform="translate(315, 215)">
+    <rect width="190" height="90" rx="14" fill="url(#s6)" stroke="#10b981" stroke-width="1.5" />
+    <circle cx="30" cy="30" r="14" fill="#047857" />
+    <text x="30" y="34" class="node-num" text-anchor="middle">06</text>
+    <text x="52" y="32" class="node-title">Live Status Sync</text>
+    <text x="52" y="46" font-size="10" font-weight="700" fill="#6ee7b7">In-App &amp; Mail Alerts</text>
+    <text x="16" y="74" class="node-desc">Candidate tracks active stage.</text>
+  </g>
+
+  <!-- STEP 7: Job Offer & Onboarding (Hired!) -->
+  <g transform="translate(25, 215)" class="pulse-hired">
+    <rect width="240" height="90" rx="14" fill="url(#s7)" stroke="#34d399" stroke-width="2" />
+    <circle cx="30" cy="30" r="14" fill="#059669" />
+    <text x="30" y="34" class="node-num" text-anchor="middle">07</text>
+    <text x="52" y="32" class="node-title" fill="#a7f3d0">🎉 Job Offer &amp; Hired!</text>
+    <text x="52" y="46" font-size="10" font-weight="700" fill="#6ee7b7">Talent Onboarding</text>
+    <text x="16" y="74" class="node-desc">Status marked Hired. Mission Success!</text>
+  </g>
+
+  <!-- Bottom Footnote -->
+  <text x="500" y="355" text-anchor="middle" font-family="'Fira Code', monospace" font-size="11" font-weight="600" fill="#64748b">
+    ✨ Automated 7-Step Hiring Engine • Fast • Transparent • Effortless ✨
+  </text>
+</svg>

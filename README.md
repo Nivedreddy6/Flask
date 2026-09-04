@@ -45,19 +45,9 @@ Traditional hiring is fragmented. Job seekers apply into black holes with no sta
 
 Here is the exact step-by-step user journey from account creation to getting hired:
 
-```
-┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│ 1. Registration │ ───► │ 2. Job Search   │ ───► │ 3. 1-Click      │ ───► │ 4. Recruiter    │
-│    (Candidate / │      │    & Filtering  │      │    Resume Apply │      │    Pipeline ATS │
-│     Recruiter)  │      │ (Salary/Skills) │      │  (PDF/DOCX Upload│     │  (Shortlist/Rev)│
-└─────────────────┘      └─────────────────┘      └─────────────────┘      └────────┬────────┘
-                                                                                    │
-┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐               │
-│ 7. Job Offer    │ ◄─── │ 6. Live Status  │ ◄─── │ 5. Automated    │ ◄─────────────┘
-│    & Onboarding │      │    Notification │      │    Interview    │
-│    (Hired!)     │      │    (In-App Sync)│      │    Email Dispatch
-└─────────────────┘      └─────────────────┘      └─────────────────┘
-```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/workflow-journey.svg" alt="End-to-End Recruitment Journey" width="100%" />
+</p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/pipeline-stepper.svg" alt="Hiring Pipeline Stages" width="100%" />
