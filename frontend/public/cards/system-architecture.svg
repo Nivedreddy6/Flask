@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="100%" height="480">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Outer Animated Border -->
+    <linearGradient id="archBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8">
+        <animate attributeName="stop-color" values="#38bdf8;#a855f7;#ec4899;#10b981;#38bdf8" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#ec4899">
+        <animate attributeName="stop-color" values="#ec4899;#10b981;#38bdf8;#a855f7;#ec4899" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#38bdf8;#a855f7;#ec4899;#10b981" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Block Gradients -->
+    <linearGradient id="frontGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#042f2e"/><stop offset="100%" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="backGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e1b4b"/><stop offset="100%" stop-color="#0f172a"/></linearGradient>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#064e3b"/><stop offset="100%" stop-color="#0f172a"/></linearGradient>
+
+    <!-- Glowing Filters -->
+    <filter id="neonGlow">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Fira+Code:wght@600;700&amp;display=swap');
+
+    .block-title { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: -0.3px; }
+    .node-box-title { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 700; fill: #ffffff; }
+    .node-box-sub { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500; fill: #94a3b8; }
+    .pill-text { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 700; text-anchor: middle; }
+    
+    .stream-line {
+      stroke-width: 2.5;
+      stroke-dasharray: 6,4;
+      animation: flowStream 1.2s linear infinite;
+    }
+    .stream-blue { stroke: #38bdf8; }
+    .stream-purple { stroke: #c084fc; }
+    .stream-green { stroke: #34d399; }
+
+    @keyframes flowStream {
+      from { stroke-dashoffset: 20; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    .pulse-dot {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.9); }
+    }
+  </style>
+
+  <!-- Container Box -->
+  <rect width="1000" height="480" rx="18" fill="url(#archBg)" stroke="url(#archBorder)" stroke-width="2" />
+
+  <!-- Top Title Header Pill -->
+  <g transform="translate(30, 20)">
+    <rect width="360" height="26" rx="13" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#38bdf8" class="pulse-dot" />
+    <text x="28" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="700" fill="#7dd3fc">HYBRID FULL-STACK ARCHITECTURE &amp; FLOW</text>
+  </g>
+
+  <!-- ================= 1. FRONTEND SPA BLOCK (LEFT) ================= -->
+  <g transform="translate(25, 65)">
+    <rect width="280" height="385" rx="14" fill="url(#frontGrad)" stroke="#06b6d4" stroke-width="1.5" />
+    
+    <!-- Titlebar -->
+    <circle cx="28" cy="28" r="14" fill="rgba(6, 182, 212, 0.2)" />
+    <text x="28" y="34" text-anchor="middle" font-size="14">⚛️</text>
+    <text x="52" y="34" class="block-title" fill="#22d3ee">React 19 SPA</text>
+    <rect x="180" y="16" width="85" height="22" rx="11" fill="rgba(6, 182, 212, 0.2)" stroke="#22d3ee" stroke-width="1" />
+    <text x="222" y="31" class="pill-text" fill="#67e8f9">PORT 5173</text>
+    <line x1="15" y1="52" x2="265" y2="52" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+
+    <!-- Sub-node 1: UI Engine -->
+    <g transform="translate(15, 65)">
+      <rect width="250" height="65" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(6, 182, 212, 0.25)" stroke-width="1" />
+      <text x="14" y="26" class="node-box-title">🎨 Cyber Glassmorphism UI</text>
+      <text x="14" y="46" class="node-box-sub">Custom CSS design tokens &amp; blurs</text>
+    </g>
+
+    <!-- Sub-node 2: SPA Router -->
+    <g transform="translate(15, 145)">
+      <rect width="250" height="65" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(6, 182, 212, 0.25)" stroke-width="1" />
+      <text x="14" y="26" class="node-box-title">🛣️ React Router SPA Client</text>
+      <text x="14" y="46" class="node-box-sub">Seamless instant page transitions</text>
+    </g>
+
+    <!-- Sub-node 3: ATS Tables & Modals -->
+    <g transform="translate(15, 225)">
+      <rect width="250" height="85" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(6, 182, 212, 0.25)" stroke-width="1" />
+      <text x="14" y="26" class="node-box-title">📊 ATS Pipeline &amp; Modals</text>
+      <text x="14" y="46" class="node-box-sub">Candidate Kanban, live progress bar,</text>
+      <text x="14" y="62" class="node-box-sub">&amp; interactive interview scheduler</text>
+    </g>
+
+    <!-- Footer Tag -->
+    <text x="140" y="355" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10.5" font-weight="700" fill="#38bdf8">Vite 8 Fast HMR Engine</text>
+  </g>
+
+  <!-- ================= CONNECTING STREAMLINES: FRONTEND -> BACKEND ================= -->
+  <g transform="translate(305, 0)">
+    <!-- Stream 1 -->
+    <path d="M 0 160 L 50 160" class="stream-line stream-blue" />
+    <path d="M 50 160 L 50 200 L 55 200" class="stream-line stream-blue" />
+    
+    <!-- Stream 2 -->
+    <path d="M 0 260 L 55 260" class="stream-line stream-purple" />
+    
+    <!-- Proxy Label Badge -->
+    <rect x="5" y="195" width="45" height="30" rx="6" fill="#0f172a" stroke="#818cf8" stroke-width="1.5" />
+    <text x="27" y="210" text-anchor="middle" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#c7d2fe">VITE</text>
+    <text x="27" y="221" text-anchor="middle" font-family="'Fira Code', monospace" font-size="8.5" font-weight="700" fill="#38bdf8">/api</text>
+  </g>
+
+  <!-- ================= 2. FLASK REST BACKEND (MIDDLE) ================= -->
+  <g transform="translate(360, 65)">
+    <rect width="280" height="385" rx="14" fill="url(#backGrad)" stroke="#8b5cf6" stroke-width="1.5" />
+    
+    <!-- Titlebar -->
+    <circle cx="28" cy="28" r="14" fill="rgba(139, 92, 246, 0.2)" />
+    <text x="28" y="34" text-anchor="middle" font-size="14">⚡</text>
+    <text x="52" y="34" class="block-title" fill="#a78bfa">Flask 3.0 API</text>
+    <rect x="180" y="16" width="85" height="22" rx="11" fill="rgba(139, 92, 246, 0.2)" stroke="#a78bfa" stroke-width="1" />
+    <text x="222" y="31" class="pill-text" fill="#c4b5fd">PORT 5000</text>
+    <line x1="15" y1="52" x2="265" y2="52" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+
+    <!-- Sub-node 1: REST Controllers -->
+    <g transform="translate(15, 65)">
+      <rect width="250" height="65" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(139, 92, 246, 0.25)" stroke-width="1" />
+      <text x="14" y="26" class="node-box-title">🔌 REST API Endpoints</text>
+      <text x="14" y="46" class="node-box-sub">Jobs, Applications, Status &amp; Auth</text>
+    </g>
+
+    <!-- Sub-node 2: Auth & Security -->
+    <g transform="translate(15, 145)">
+      <rect width="250" height="65" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(139, 92, 246, 0.25)" stroke-width="1" />
+      <text x="14" y="26" class="node-box-title">🔒 Session &amp; Werkzeug Auth</text>
+      <text x="14" y="46" class="node-box-sub">Role guards (Seeker / Recruiter)</text>
+    </g>
+
+    <!-- Sub-node 3: SMTP Email Dispatcher -->
+    <g transform="translate(15, 225)">
+      <rect width="250" height="85" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(139, 92, 246, 0.25)" stroke-width="1" />
+      <text x="14" y="26" class="node-box-title">📧 Python SMTP Mail Engine</text>
+      <text x="14" y="46" class="node-box-sub">Automated interview invitations</text>
+      <text x="14" y="62" class="node-box-sub">with custom HTML templates</text>
+    </g>
+
+    <!-- Footer Tag -->
+    <text x="140" y="355" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10.5" font-weight="700" fill="#c084fc">Python 3.12 Core</text>
+  </g>
+
+  <!-- ================= CONNECTING STREAMLINES: BACKEND -> STORAGE ================= -->
+  <g transform="translate(640, 0)">
+    <path d="M 0 160 L 55 160" class="stream-line stream-purple" />
+    <path d="M 0 260 L 55 260" class="stream-line stream-green" />
+    
+    <!-- ORM Label Badge -->
+    <rect x="5" y="195" width="45" height="30" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+    <text x="27" y="210" text-anchor="middle" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#6ee7b7">SQL</text>
+    <text x="27" y="221" text-anchor="middle" font-family="'Fira Code', monospace" font-size="8.5" font-weight="700" fill="#34d399">ORM</text>
+  </g>
+
+  <!-- ================= 3. DATA & ASSET LAYER (RIGHT) ================= -->
+  <g transform="translate(695, 65)">
+    <rect width="280" height="385" rx="14" fill="url(#dataGrad)" stroke="#10b981" stroke-width="1.5" />
+    
+    <!-- Titlebar -->
+    <circle cx="28" cy="28" r="14" fill="rgba(16, 185, 129, 0.2)" />
+    <text x="28" y="34" text-anchor="middle" font-size="14">💾</text>
+    <text x="52" y="34" class="block-title" fill="#34d399">Data &amp; Storage</text>
+    <rect x="175" y="16" width="90" height="22" rx="11" fill="rgba(16, 185, 129, 0.2)" stroke="#34d399" stroke-width="1" />
+    <text x="220" y="31" class="pill-text" fill="#6ee7b7">SQLITE 3</text>
+    <line x1="15" y1="52" x2="265" y2="52" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+
+    <!-- Sub-node 1: SQLite ORM Models -->
+    <g transform="translate(15, 65)">
+      <rect width="250" height="65" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1" />
+      <text x="14" y="26" class="node-box-title">🗄️ Relational Entities</text>
+      <text x="14" y="46" class="node-box-sub">Users, Postings, Applications, Alerts</text>
+    </g>
+
+    <!-- Sub-node 2: Resume Vault -->
+    <g transform="translate(15, 145)">
+      <rect width="250" height="65" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1" />
+      <text x="14" y="26" class="node-box-title">📁 Secure Resume Vault</text>
+      <text x="14" y="46" class="node-box-sub">Authenticated PDF/DOCX streaming</text>
+    </g>
+
+    <!-- Sub-node 3: Automatic Seeding & Integrity -->
+    <g transform="translate(15, 225)">
+      <rect width="250" height="85" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1" />
+      <text x="14" y="26" class="node-box-title">⚡ Auto-Seeding &amp; Integrity</text>
+      <text x="14" y="46" class="node-box-sub">Foreign key cascades &amp; demo data</text>
+      <text x="14" y="62" class="node-box-sub">with automated database creation</text>
+    </g>
+
+    <!-- Footer Tag -->
+    <text x="140" y="355" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10.5" font-weight="700" fill="#34d399">SQLAlchemy ORM</text>
+  </g>
+</svg>

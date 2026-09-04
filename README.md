@@ -91,33 +91,9 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/workflow.svg" alt="Workflow Pipeline Architecture" width="100%" />
 </p>
 
-```mermaid
-flowchart TD
-    subgraph Frontend [⚛️ React 19 Frontend SPA :5173]
-        UI[🎨 Glassmorphism UI & Layout]
-        Router[🛣️ Client-Side SPA Router]
-        ATS_Table[📊 Interactive Candidate Tables & Analytics]
-    end
-
-    subgraph Backend [⚡ Flask 3.0 REST Backend :5000]
-        API[🔌 RESTful Controllers]
-        Auth[🔒 Session Auth & Password Hashing]
-        Mailer[📧 Python SMTP Email Dispatcher]
-    end
-
-    subgraph Storage [💾 Relational Data Layer]
-        DB[(🗄️ SQLite 3 + SQLAlchemy ORM)]
-        Uploads[📁 Secure Resume Vault]
-    end
-
-    UI --> Router
-    Router --> ATS_Table
-    ATS_Table -->|Vite Proxy /api| API
-    API --> Auth
-    API --> Mailer
-    API --> DB
-    API --> Uploads
-```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/system-architecture.svg" alt="System Architecture & Data Flow" width="100%" />
+</p>
 
 ### 🛠️ Core Technologies Used:
 * **Frontend**: **React 19**, **Vite 8**, **Lucide React** icons, custom cyber-glassmorphism CSS design system, and **Oxlint** (Rust-based sub-millisecond linter).
