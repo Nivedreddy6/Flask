@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="100%" height="420">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Glowing Border Animations -->
+    <linearGradient id="borderFlask" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6">
+        <animate attributeName="stop-color" values="#3b82f6;#8b5cf6;#06b6d4;#3b82f6" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#3b82f6;#8b5cf6;#06b6d4" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <linearGradient id="borderReact" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#61dafb">
+        <animate attributeName="stop-color" values="#61dafb;#ec4899;#a855f7;#61dafb" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#a855f7">
+        <animate attributeName="stop-color" values="#a855f7;#61dafb;#ec4899;#a855f7" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <filter id="termGlow">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap');
+
+    .term-title { font-family: 'Fira Code', monospace, Consolas; font-size: 13px; font-weight: 700; fill: #e2e8f0; }
+    .cmd-comment { font-family: 'Fira Code', monospace, Consolas; font-size: 12px; font-weight: 500; fill: #64748b; }
+    .cmd-prompt { font-family: 'Fira Code', monospace, Consolas; font-size: 13px; font-weight: 700; fill: #38bdf8; }
+    .cmd-text { font-family: 'Fira Code', monospace, Consolas; font-size: 13px; font-weight: 600; fill: #f8fafc; }
+    .cmd-keyword { font-family: 'Fira Code', monospace, Consolas; font-size: 13px; font-weight: 600; fill: #f43f5e; }
+    .cmd-flag { font-family: 'Fira Code', monospace, Consolas; font-size: 13px; font-weight: 600; fill: #fbbf24; }
+    .cmd-success { font-family: 'Fira Code', monospace, Consolas; font-size: 12.5px; font-weight: 700; fill: #34d399; }
+    .cmd-url { font-family: 'Fira Code', monospace, Consolas; font-size: 12.5px; font-weight: 700; fill: #38bdf8; text-decoration: underline; }
+
+    .cursor {
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .pulse-live {
+      animation: pulseLive 2s ease-in-out infinite;
+    }
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+    }
+  </style>
+
+  <!-- ================= TERMINAL 1: FLASK BACKEND ================= -->
+  <g transform="translate(10, 10)">
+    <!-- Window Body -->
+    <rect width="480" height="400" rx="16" fill="url(#termBg)" stroke="url(#borderFlask)" stroke-width="2" />
+    
+    <!-- Titlebar -->
+    <path d="M 0 16 C 0 7 7 0 16 0 L 464 0 C 473 0 480 7 480 16 L 480 44 L 0 44 Z" fill="rgba(255,255,255,0.04)" />
+    <line x1="0" y1="44" x2="480" y2="44" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+    
+    <!-- Window Controls -->
+    <circle cx="24" cy="22" r="6" fill="#ef4444" />
+    <circle cx="42" cy="22" r="6" fill="#f59e0b" />
+    <circle cx="60" cy="22" r="6" fill="#10b981" />
+
+    <!-- Title & Status -->
+    <text x="240" y="27" text-anchor="middle" class="term-title">⚡ 1. Flask Backend Server</text>
+    <rect x="385" y="11" width="80" height="22" rx="11" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+    <circle cx="397" cy="22" r="3.5" fill="#34d399" class="pulse-live" />
+    <text x="432" y="26" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="700" fill="#34d399">PORT 5000</text>
+
+    <!-- Code Content -->
+    <!-- Line 1: Comment -->
+    <text x="25" y="80" class="cmd-comment"># 1. Activate Python Environment</text>
+    <!-- Line 2: Activate -->
+    <text x="25" y="108" class="cmd-prompt">PS &gt;</text>
+    <text x="65" y="108" class="cmd-text">.\Scripts\<tspan fill="#38bdf8">Activate.ps1</tspan></text>
+
+    <!-- Line 3: Comment -->
+    <text x="25" y="152" class="cmd-comment"># 2. Launch Flask API Service</text>
+    <!-- Line 4: Python app.py -->
+    <text x="25" y="180" class="cmd-prompt">PS &gt;</text>
+    <text x="65" y="180" class="cmd-keyword">python</text>
+    <text x="125" y="180" class="cmd-text">backend/app.py</text>
+
+    <!-- Output Box -->
+    <rect x="25" y="215" width="430" height="155" rx="10" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+    
+    <text x="40" y="245" font-family="'Fira Code', monospace" font-size="11.5" fill="#94a3b8">* Serving Flask app 'app'</text>
+    <text x="40" y="270" font-family="'Fira Code', monospace" font-size="11.5" fill="#94a3b8">* Debug mode: on</text>
+    <text x="40" y="295" font-family="'Fira Code', monospace" font-size="11.5" fill="#34d399">✔ Running on <tspan fill="#38bdf8" font-weight="bold">http://127.0.0.1:5000</tspan></text>
+    
+    <text x="40" y="340" class="cmd-prompt">&gt;&gt;&gt;</text>
+    <text x="75" y="340" class="cmd-success">Flask REST API Ready</text>
+    <rect x="255" y="327" width="8" height="15" fill="#38bdf8" class="cursor" />
+  </g>
+
+  <!-- ================= TERMINAL 2: REACT 19 FRONTEND ================= -->
+  <g transform="translate(510, 10)">
+    <!-- Window Body -->
+    <rect width="480" height="400" rx="16" fill="url(#termBg)" stroke="url(#borderReact)" stroke-width="2" />
+    
+    <!-- Titlebar -->
+    <path d="M 0 16 C 0 7 7 0 16 0 L 464 0 C 473 0 480 7 480 16 L 480 44 L 0 44 Z" fill="rgba(255,255,255,0.04)" />
+    <line x1="0" y1="44" x2="480" y2="44" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+    
+    <!-- Window Controls -->
+    <circle cx="24" cy="22" r="6" fill="#ef4444" />
+    <circle cx="42" cy="22" r="6" fill="#f59e0b" />
+    <circle cx="60" cy="22" r="6" fill="#10b981" />
+
+    <!-- Title & Status -->
+    <text x="240" y="27" text-anchor="middle" class="term-title">⚛️ 2. React 19 Frontend SPA</text>
+    <rect x="385" y="11" width="80" height="22" rx="11" fill="rgba(97, 218, 251, 0.15)" stroke="#61dafb" stroke-width="1" />
+    <circle cx="397" cy="22" r="3.5" fill="#61dafb" class="pulse-live" />
+    <text x="432" y="26" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="700" fill="#61dafb">PORT 5173</text>
+
+    <!-- Code Content -->
+    <!-- Line 1: Comment -->
+    <text x="25" y="80" class="cmd-comment"># 1. Enter Directory &amp; Install</text>
+    <!-- Line 2: cd frontend -->
+    <text x="25" y="108" class="cmd-prompt">PS &gt;</text>
+    <text x="65" y="108" class="cmd-keyword">cd</text>
+    <text x="90" y="108" class="cmd-text">frontend ; <tspan fill="#f43f5e">npm</tspan> install</text>
+
+    <!-- Line 3: Comment -->
+    <text x="25" y="152" class="cmd-comment"># 2. Launch Vite Fast Dev HMR</text>
+    <!-- Line 4: npm run dev -->
+    <text x="25" y="180" class="cmd-prompt">PS &gt;</text>
+    <text x="65" y="180" class="cmd-keyword">npm</text>
+    <text x="95" y="180" class="cmd-text">run <tspan fill="#f59e0b">dev</tspan></text>
+
+    <!-- Output Box -->
+    <rect x="25" y="215" width="430" height="155" rx="10" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+    
+    <text x="40" y="245" font-family="'Fira Code', monospace" font-size="11.5" fill="#61dafb">VITE v8.2.1 <tspan fill="#94a3b8">ready in 150ms</tspan></text>
+    <text x="40" y="270" font-family="'Fira Code', monospace" font-size="11.5" fill="#34d399">➜ Local:   <tspan fill="#61dafb" font-weight="bold">http://localhost:5173/</tspan></text>
+    <text x="40" y="295" font-family="'Fira Code', monospace" font-size="11.5" fill="#94a3b8">➜ Proxy:   /api ➔ <tspan fill="#818cf8">http://127.0.0.1:5000</tspan></text>
+    
+    <text x="40" y="340" class="cmd-prompt">➜</text>
+    <text x="60" y="340" class="cmd-success">React 19 SPA Live &amp; Hot-Reloading</text>
+    <rect x="360" y="327" width="8" height="15" fill="#61dafb" class="cursor" />
+  </g>
+</svg>

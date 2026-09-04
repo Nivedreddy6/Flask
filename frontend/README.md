@@ -69,18 +69,9 @@ sequenceDiagram
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-quickstart.svg" alt="Quickstart Header" width="100%" />
 </p>
 
-### 1️⃣ Install Dependencies
-```bash
-cd frontend
-npm install
-```
-
-### 2️⃣ Run Development Server
-```bash
-npm run dev
-```
-
-> 🌐 Frontend SPA: **http://localhost:5173** (Proxies `/api` to `http://127.0.0.1:5000`)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/terminal-quickstart.svg" alt="Animated Terminal Quickstart" width="100%" />
+</p>
 
 ---
 

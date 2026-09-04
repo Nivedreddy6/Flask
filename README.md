@@ -156,26 +156,9 @@ erDiagram
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-quickstart.svg" alt="Quickstart Header" width="100%" />
 </p>
 
-### 1️⃣ Launch Flask Backend (`Port 5000`)
-```powershell
-# Activate Python Virtual Environment
-.\Scripts\Activate.ps1
-
-# Run Flask backend server
-python backend/app.py
-```
-> 🌐 Backend URL: **http://127.0.0.1:5000**
-
-### 2️⃣ Launch React 19 Frontend (`Port 5173`)
-```powershell
-# Open a new terminal tab and enter frontend
-cd frontend
-
-# Install packages & start Vite HMR
-npm install
-npm run dev
-```
-> 🌐 Frontend URL: **http://localhost:5173**
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/terminal-quickstart.svg" alt="Animated Terminal Quickstart" width="100%" />
+</p>
 
 ---
 
