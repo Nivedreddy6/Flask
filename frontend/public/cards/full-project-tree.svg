@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="680">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="fullTreeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Animated Multi-Color Border -->
+    <linearGradient id="fullTreeBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8">
+        <animate attributeName="stop-color" values="#38bdf8;#818cf8;#ec4899;#10b981;#38bdf8" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#ec4899">
+        <animate attributeName="stop-color" values="#ec4899;#10b981;#38bdf8;#818cf8;#ec4899" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#38bdf8;#818cf8;#ec4899;#10b981" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Card Headers -->
+    <linearGradient id="gFullBe" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#065f46"/><stop offset="100%" stop-color="#047857"/></linearGradient>
+    <linearGradient id="gFullFe" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#1e40af"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@500;600;700&amp;display=swap');
+
+    .card-hdr-txt { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 800; fill: #ffffff; letter-spacing: 0.5px; }
+    .folder-tag { font-family: 'Fira Code', monospace; font-size: 11.5px; font-weight: 700; fill: #fbbf24; }
+    .file-tag-py { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 600; fill: #34d399; }
+    .file-tag-js { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 600; fill: #60a5fa; }
+    .file-tag-svg { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 600; fill: #f472b6; }
+    .file-tag-html { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 600; fill: #fb923c; }
+    .anno-txt { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; fill: #94a3b8; }
+
+    .pulse-dot {
+      animation: treeDot 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes treeDot {
+      0% { opacity: 0.3; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1.1); }
+    }
+  </style>
+
+  <!-- Container -->
+  <rect width="1000" height="680" rx="18" fill="url(#fullTreeBg)" stroke="url(#fullTreeBorder)" stroke-width="2" />
+
+  <!-- Top Banner Title -->
+  <g transform="translate(30, 20)">
+    <rect width="470" height="26" rx="13" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#38bdf8" class="pulse-dot" />
+    <text x="28" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="700" fill="#bae6fd">FULL PROJECT DIRECTORY &amp; SUBFOLDER ARCHITECTURE</text>
+  </g>
+
+  <!-- ================= LEFT COLUMN: FULL BACKEND TREE ================= -->
+  <g transform="translate(30, 60)">
+    <rect width="455" height="595" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.2" />
+    <rect width="455" height="34" rx="12" fill="url(#gFullBe)" />
+    <text x="20" y="22" class="card-hdr-txt">📁 backend/ — Python 3.12 Flask REST Engine</text>
+
+    <!-- Tree items -->
+    <g transform="translate(20, 48)">
+      <!-- Root backend files -->
+      <text x="0" y="16" class="file-tag-py">├── app.py</text><text x="145" y="16" class="anno-txt">WSGI app, CORS &amp; REST routing</text>
+      <text x="0" y="38" class="file-tag-py">├── models.py</text><text x="145" y="38" class="anno-txt">SQLAlchemy 6 relational entities</text>
+      <text x="0" y="60" class="file-tag-py">├── database.py</text><text x="145" y="60" class="anno-txt">DB initializer &amp; mock data seeder</text>
+      <text x="0" y="82" class="file-tag-py">├── email_service.py</text><text x="160" y="82" class="anno-txt">SMTP automated interview mailer</text>
+      <text x="0" y="104" class="file-tag-py">├── job_portal.db</text><text x="145" y="104" class="anno-txt">SQLite zero-config local database</text>
+      <text x="0" y="126" class="file-tag-py">├── requirements.txt</text><text x="160" y="126" class="anno-txt">Flask, SQLAlchemy, CORS packages</text>
+
+      <!-- Subfolder: routes/ -->
+      <text x="0" y="152" class="folder-tag">├── 📁 routes/</text><text x="130" y="152" class="anno-txt">Modular REST API Controllers</text>
+      <text x="16" y="172" class="file-tag-py">│   ├── auth_api.py</text><text x="175" y="172" class="anno-txt">Login, register &amp; session auth</text>
+      <text x="16" y="192" class="file-tag-py">│   ├── jobs_api.py</text><text x="175" y="192" class="anno-txt">Search, filter &amp; job vacancy CRUD</text>
+      <text x="16" y="212" class="file-tag-py">│   ├── applications_api.py</text><text x="195" y="212" class="anno-txt">ATS pipeline &amp; submissions</text>
+      <text x="16" y="232" class="file-tag-py">│   └── status_api.py</text><text x="175" y="232" class="anno-txt">Candidate status transition hooks</text>
+
+      <!-- Subfolder: static/ -->
+      <text x="0" y="258" class="folder-tag">├── 📁 static/</text><text x="130" y="258" class="anno-txt">Public Assets &amp; User Storage</text>
+      <text x="16" y="278" class="folder-tag">│   ├── 📁 uploads/resumes/</text><text x="195" y="278" class="anno-txt">Uploaded candidate PDFs</text>
+      <text x="16" y="298" class="folder-tag">│   ├── 📁 uploads/emails/</text><text x="195" y="298" class="anno-txt">Sent HTML invite logs</text>
+      <text x="16" y="318" class="file-tag-py">│   ├── css/style.css</text><text x="175" y="318" class="anno-txt">Server-rendered stylesheets</text>
+      <text x="16" y="338" class="file-tag-py">│   └── js/main.js</text><text x="175" y="338" class="anno-txt">Server-rendered client scripts</text>
+
+      <!-- Subfolder: templates/ -->
+      <text x="0" y="364" class="folder-tag">└── 📁 templates/</text><text x="145" y="364" class="anno-txt">Jinja2 Fallback View Templates</text>
+      <text x="16" y="384" class="file-tag-html">    ├── auth/</text><text x="175" y="384" class="anno-txt">login.html, register.html</text>
+      <text x="16" y="404" class="file-tag-html">    ├── recruiter/</text><text x="175" y="404" class="anno-txt">dashboard, post_job, schedule</text>
+      <text x="16" y="424" class="file-tag-html">    ├── seeker/</text><text x="175" y="424" class="anno-txt">dashboard, jobs, job_detail</text>
+      <text x="16" y="444" class="file-tag-html">    └── base.html</text><text x="175" y="444" class="anno-txt">Master layout with navbar/footer</text>
+    </g>
+
+    <!-- Bottom summary tag -->
+    <rect x="20" y="540" width="415" height="36" rx="8" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" stroke-width="0.8" />
+    <text x="32" y="562" font-family="'Fira Code', monospace" font-size="10.5" font-weight="600" fill="#6ee7b7">⚡ REST API • Flask 3.0 • SQLite • SMTP Server</text>
+  </g>
+
+  <!-- ================= RIGHT COLUMN: FULL FRONTEND TREE ================= -->
+  <g transform="translate(515, 60)">
+    <rect width="455" height="595" rx="12" fill="#0f172a" stroke="#2563eb" stroke-width="1.2" />
+    <rect width="455" height="34" rx="12" fill="url(#gFullFe)" />
+    <text x="20" y="22" class="card-hdr-txt">📁 frontend/ — React 19 + Vite 8 SPA Client</text>
+
+    <!-- Tree items -->
+    <g transform="translate(20, 48)">
+      <!-- Root frontend files -->
+      <text x="0" y="16" class="file-tag-js">├── package.json</text><text x="145" y="16" class="anno-txt">React 19, Lucide, Vite configs</text>
+      <text x="0" y="38" class="file-tag-js">├── vite.config.ts</text><text x="145" y="38" class="anno-txt">Vite dev server &amp; API reverse proxy</text>
+      <text x="0" y="60" class="file-tag-js">├── index.html</text><text x="145" y="60" class="anno-txt">HTML5 entry point &amp; Google Fonts</text>
+      <text x="0" y="82" class="file-tag-js">├── .oxlintrc.json</text><text x="145" y="82" class="anno-txt">Sub-millisecond Rust Oxlint linter</text>
+
+      <!-- Subfolder: src/ -->
+      <text x="0" y="108" class="folder-tag">├── 📁 src/</text><text x="130" y="108" class="anno-txt">Core React 19 Component Tree</text>
+      <text x="16" y="128" class="file-tag-js">│   ├── App.jsx</text><text x="165" y="128" class="anno-txt">Discovery feed &amp; ATS dashboard</text>
+      <text x="16" y="148" class="file-tag-js">│   ├── index.css</text><text x="165" y="148" class="anno-txt">Glassmorphism tokens &amp; neon FX</text>
+      <text x="16" y="168" class="file-tag-js">│   ├── main.jsx</text><text x="165" y="168" class="anno-txt">ReactDOM root concurrent render</text>
+      <text x="16" y="188" class="folder-tag">│   ├── 📁 components/</text><text x="175" y="188" class="anno-txt">Modular UI Components</text>
+      <text x="32" y="208" class="file-tag-js">│   │   ├── Navbar.jsx</text><text x="205" y="208" class="anno-txt">Dual-role navigation bar</text>
+      <text x="32" y="228" class="file-tag-js">│   │   ├── ApplicationsTable.jsx</text><text x="245" y="228" class="anno-txt">ATS pipeline</text>
+      <text x="32" y="248" class="file-tag-js">│   │   ├── AnalyticsDashboard.jsx</text><text x="250" y="248" class="anno-txt">Metrics</text>
+      <text x="32" y="268" class="file-tag-js">│   │   └── TopBanner.jsx</text><text x="205" y="268" class="anno-txt">Live announcement banner</text>
+      <text x="16" y="288" class="folder-tag">│   └── 📁 pages/</text><text x="175" y="288" class="anno-txt">DashboardPage, ApplicationsPage</text>
+
+      <!-- Subfolder: public/ -->
+      <text x="0" y="318" class="folder-tag">└── 📁 public/</text><text x="130" y="318" class="anno-txt">Static Assets &amp; Documentation SVGs</text>
+      <text x="16" y="338" class="file-tag-svg">    ├── banner.svg</text><text x="175" y="338" class="anno-txt">Hero banner with gradient mesh</text>
+      <text x="16" y="358" class="file-tag-svg">    ├── workflow.svg</text><text x="175" y="358" class="anno-txt">Full-stack dataflow pipeline</text>
+      <text x="16" y="378" class="folder-tag">    ├── 📁 cards/</text><text x="175" y="378" class="anno-txt">16 Animated Documentation Cards</text>
+      <text x="32" y="398" class="file-tag-svg">    │   ├── system-architecture.svg, sequence-interview.svg</text>
+      <text x="32" y="418" class="file-tag-svg">    │   ├── database-schema.svg, backend-services.svg</text>
+      <text x="32" y="438" class="file-tag-svg">    │   └── overview-cards.svg, terminal-quickstart.svg</text>
+      <text x="16" y="458" class="folder-tag">    └── 📁 headers/</text><text x="175" y="458" class="anno-txt">8 Vibrant Section Header SVGs</text>
+    </g>
+
+    <!-- Bottom summary tag -->
+    <rect x="20" y="540" width="415" height="36" rx="8" fill="rgba(56, 189, 248, 0.12)" stroke="#38bdf8" stroke-width="0.8" />
+    <text x="32" y="562" font-family="'Fira Code', monospace" font-size="10.5" font-weight="600" fill="#7dd3fc">⚛️ React 19 • Vite 8 • Glassmorphism • Oxlint</text>
+  </g>
+</svg>

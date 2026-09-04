@@ -96,7 +96,7 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/project-structure.svg" alt="Project Directory & File Architecture" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/full-project-tree.svg" alt="Comprehensive Repository Directory & Subfolder Architecture" width="100%" />
 </p>
 
 <p align="center">
