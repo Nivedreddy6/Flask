@@ -53,6 +53,35 @@ Here is the exact step-by-step user journey from account creation to getting hir
 ---
 
 <p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-ats.svg" alt="Recruiter ATS Pipeline & Resume Matcher Header" width="100%" />
+</p>
+
+## 📊 Recruiter Applicant Tracking System (ATS) & Automated Matcher
+
+Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing candidates from application to hire:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/ats-pipeline-board.svg" alt="Automated Recruiter ATS Kanban Pipeline" width="100%" />
+</p>
+
+### 🌟 Core ATS Capabilities:
+* **📊 6-Stage Visual Kanban Pipeline**: Move candidates seamlessly across `Applied` ➔ `Reviewing` ➔ `Shortlisted` ➔ `Interview Scheduled` ➔ `Hired` *(or `Rejected`)* with 1-click stage advancement.
+* **🎯 Automated ATS Resume Keyword Matcher**: Calculates candidate-to-job match percentages (0–100%) in real time, highlighting matched skills in emerald green and recommended/missing keywords in amber.
+* **📂 Candidate ATS Review Drawer (`createPortal`)**: Instant drawer modal with applicant profile details, resume download links, private recruiter scorecard notes, and interview scheduling.
+* **📧 Automated Calendar Invitation Emailer**: Built with Python `smtplib` + `email.mime`, dispatching branded HTML calendar invites with Google Meet/Zoom links directly upon scheduling.
+* **⚡ 1-Click Candidate Application**: Candidates browsing jobs can preview their live ATS match score before submitting.
+
+### 🔐 Pre-Seeded Demo Test Credentials *(Password: `password123`)*
+
+| Role | Username / Email | Password | Access & Features |
+| :--- | :--- | :--- | :--- |
+| **🏢 Recruiter** | `recruiter@techcorp.io`<br/>*(or `jobs@innovatelabs.com`)* | `password123` | **Full ATS Pipeline**, Candidate Review, Interview Scheduler & Vacancy Management |
+| **👤 Job Seeker** | `john.doe@gmail.com`<br/>*(or `nivedreddy6@gmail.com`)* | `password123` | **Job Discovery Feed**, 1-Click ATS Resume Applications & Status Tracking |
+
+---
+
+
+<p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-personas.svg" alt="User Personas Header" width="100%" />
 </p>
 

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 65" width="100%" height="65">
+  <defs>
+    <linearGradient id="gradAtsHdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+  </defs>
+  <style>
+    .icon { font-size: 26px; }
+    .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 24px; font-weight: 800; fill: url(#gradAtsHdr); letter-spacing: -0.5px; }
+    .sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; font-weight: 600; fill: #64748b; letter-spacing: 1px; }
+  </style>
+  <rect x="0" y="58" width="800" height="3" rx="1.5" fill="url(#gradAtsHdr)" />
+  <circle cx="20" cy="28" r="16" fill="rgba(56, 189, 248, 0.15)" />
+  <text x="12" y="36" class="icon">📊</text>
+  <text x="48" y="36" class="title">RECRUITER ATS PIPELINE &amp; RESUME MATCHER</text>
+  <text x="790" y="35" text-anchor="end" class="sub">KANBAN • SCORING • EMAIL</text>
+</svg>
