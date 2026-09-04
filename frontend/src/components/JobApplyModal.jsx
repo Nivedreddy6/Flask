@@ -187,7 +187,11 @@ export function JobApplyModal({ job, onClose, onApplicationSuccess }) {
               rows={3}
               value={coverLetter}
               onChange={(e) => setCoverLetter(e.target.value)}
-              style={{ width: '100%', padding: '10px 12px', borderRadius: 8, background: '#1e293b', border: '1px solid #334155', color: '#fff', fontSize: 13, resize: 'vertical' }}
+              style={{ 
+                width: '100%', padding: '10px 12px', borderRadius: 8, 
+                background: '#1e293b', border: '1px solid #334155', color: '#fff', 
+                fontSize: 13, resize: 'vertical', fontFamily: 'inherit', lineHeight: 1.5
+              }}
             />
           </div>
 
