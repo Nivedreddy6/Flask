@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" width="100%" height="360">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="capBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0b1120" />
+    </linearGradient>
+
+    <!-- Animated Multi-Color Border -->
+    <linearGradient id="capBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899">
+        <animate attributeName="stop-color" values="#ec4899;#8b5cf6;#38bdf8;#10b981;#ec4899" dur="7s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#8b5cf6">
+        <animate attributeName="stop-color" values="#8b5cf6;#38bdf8;#10b981;#ec4899;#8b5cf6" dur="7s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#ec4899;#8b5cf6;#38bdf8;#10b981" dur="7s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Glow filters -->
+    <filter id="pinkGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Fira+Code:wght@600;700&amp;display=swap');
+
+    .f-title { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 800; fill: #ffffff; letter-spacing: 0.2px; }
+    .f-desc { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; fill: #94a3b8; line-height: 1.4; }
+    .f-tag { font-family: 'Fira Code', monospace; font-size: 9.5px; font-weight: 700; }
+    .pulse-dot { animation: pulseAnim 1.8s ease-in-out infinite; }
+    
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+    }
+  </style>
+
+  <!-- Container -->
+  <rect width="1000" height="360" rx="18" fill="url(#capBg)" stroke="url(#capBorder)" stroke-width="2" />
+
+  <!-- Header Badge -->
+  <g transform="translate(30, 20)">
+    <rect width="420" height="28" rx="14" fill="rgba(236, 72, 153, 0.15)" stroke="#ec4899" stroke-width="1" />
+    <circle cx="16" cy="14" r="5" fill="#f472b6" class="pulse-dot" />
+    <text x="32" y="19" font-family="'Fira Code', monospace" font-size="11.5" font-weight="700" fill="#fbcfe8">🌟 CORE ATS CAPABILITIES &amp; INNOVATIONS</text>
+  </g>
+
+  <!-- Right Pill -->
+  <g transform="translate(730, 20)">
+    <rect width="240" height="28" rx="14" fill="rgba(139, 92, 246, 0.15)" stroke="#8b5cf6" stroke-width="1" />
+    <circle cx="16" cy="14" r="5" fill="#a78bfa" />
+    <text x="30" y="19" font-family="'Fira Code', monospace" font-size="10.5" font-weight="700" fill="#ddd6fe">RECRUITER &amp; CANDIDATE ENGINE</text>
+  </g>
+
+  <!-- ================= GRID OF 4 FEATURE CARDS ================= -->
+
+  <!-- CARD 1: 6-Stage Visual Kanban Pipeline -->
+  <g transform="translate(30, 68)">
+    <rect width="455" height="128" rx="12" fill="rgba(56, 189, 248, 0.05)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1.2" />
+    <rect width="455" height="4" rx="2" fill="#38bdf8" />
+    
+    <g transform="translate(18, 18)">
+      <rect width="36" height="36" rx="8" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
+      <text x="18" y="24" text-anchor="middle" font-size="18">📊</text>
+      
+      <text x="48" y="16" class="f-title" fill="#ffffff">6-Stage Visual ATS Kanban Board</text>
+      <text x="48" y="32" class="f-desc" fill="#94a3b8">Move applicants seamlessly across 6 customizable stages with 1-click stage advancement:</text>
+      
+      <!-- Stepper Badges -->
+      <g transform="translate(0, 48)">
+        <rect width="70" height="20" rx="6" fill="#0284c7" />
+        <text x="35" y="14" text-anchor="middle" class="f-tag" fill="#fff">Applied</text>
+        <text x="76" y="14" fill="#64748b" font-weight="900">→</text>
+        
+        <rect x="90" width="76" height="20" rx="6" fill="#9333ea" />
+        <text x="128" y="14" text-anchor="middle" class="f-tag" fill="#fff">Reviewing</text>
+        <text x="172" y="14" fill="#64748b" font-weight="900">→</text>
+        
+        <rect x="186" width="76" height="20" rx="6" fill="#d97706" />
+        <text x="224" y="14" text-anchor="middle" class="f-tag" fill="#fff">Shortlist</text>
+        <text x="268" y="14" fill="#64748b" font-weight="900">→</text>
+        
+        <rect x="282" width="76" height="20" rx="6" fill="#059669" />
+        <text x="320" y="14" text-anchor="middle" class="f-tag" fill="#fff">Interview</text>
+        <text x="364" y="14" fill="#64748b" font-weight="900">→</text>
+        
+        <rect x="378" width="46" height="20" rx="6" fill="#0891b2" />
+        <text x="401" y="14" text-anchor="middle" class="f-tag" fill="#fff">Hired</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- CARD 2: Automated ATS Keyword Matcher -->
+  <g transform="translate(515, 68)">
+    <rect width="455" height="128" rx="12" fill="rgba(16, 185, 129, 0.05)" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1.2" />
+    <rect width="455" height="4" rx="2" fill="#10b981" />
+    
+    <g transform="translate(18, 18)">
+      <rect width="36" height="36" rx="8" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+      <text x="18" y="24" text-anchor="middle" font-size="18">🎯</text>
+      
+      <text x="48" y="16" class="f-title" fill="#ffffff">Automated Resume Keyword Matcher</text>
+      <text x="48" y="32" class="f-desc" fill="#94a3b8">Computes real-time 0–100% ATS match scores via TF-IDF &amp; skill token intersections.</text>
+
+      <!-- Pill breakdown -->
+      <g transform="translate(0, 48)">
+        <rect width="135" height="22" rx="6" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="0.8" />
+        <text x="67" y="15" text-anchor="middle" class="f-tag" fill="#6ee7b7">✓ Matched (Emerald)</text>
+
+        <rect x="145" width="135" height="22" rx="6" fill="rgba(245, 158, 11, 0.2)" stroke="#f59e0b" stroke-width="0.8" />
+        <text x="212" y="15" text-anchor="middle" class="f-tag" fill="#fde68a">⚡ Missing (Amber)</text>
+
+        <rect x="290" width="130" height="22" rx="6" fill="rgba(99, 102, 241, 0.2)" stroke="#6366f1" stroke-width="0.8" />
+        <text x="355" y="15" text-anchor="middle" class="f-tag" fill="#c7d2fe">98% Match Score</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- CARD 3: Candidate Review Drawer (createPortal) -->
+  <g transform="translate(30, 212)">
+    <rect width="455" height="128" rx="12" fill="rgba(168, 85, 247, 0.05)" stroke="rgba(168, 85, 247, 0.3)" stroke-width="1.2" />
+    <rect width="455" height="4" rx="2" fill="#a855f7" />
+    
+    <g transform="translate(18, 18)">
+      <rect width="36" height="36" rx="8" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1" />
+      <text x="18" y="24" text-anchor="middle" font-size="18">📂</text>
+      
+      <text x="48" y="16" class="f-title" fill="#ffffff">Candidate Review Drawer (`createPortal`)</text>
+      <text x="48" y="32" class="f-desc" fill="#94a3b8">Instant slide-in viewport modal with full background scroll-lock, scorecard &amp; notes.</text>
+
+      <g transform="translate(0, 48)">
+        <rect width="130" height="22" rx="6" fill="rgba(168, 85, 247, 0.18)" stroke="#a855f7" stroke-width="0.8" />
+        <text x="65" y="15" text-anchor="middle" class="f-tag" fill="#e9d5ff">📄 PDF Resume View</text>
+
+        <rect x="140" width="135" height="22" rx="6" fill="rgba(236, 72, 153, 0.18)" stroke="#ec4899" stroke-width="0.8" />
+        <text x="207" y="15" text-anchor="middle" class="f-tag" fill="#fbcfe8">🔒 Private Notes</text>
+
+        <rect x="285" width="135" height="22" rx="6" fill="rgba(56, 189, 248, 0.18)" stroke="#38bdf8" stroke-width="0.8" />
+        <text x="352" y="15" text-anchor="middle" class="f-tag" fill="#bae6fd">⚡ Viewport Centered</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- CARD 4: Automated Calendar Invites -->
+  <g transform="translate(515, 212)">
+    <rect width="455" height="128" rx="12" fill="rgba(245, 158, 11, 0.05)" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1.2" />
+    <rect width="455" height="4" rx="2" fill="#f59e0b" />
+    
+    <g transform="translate(18, 18)">
+      <rect width="36" height="36" rx="8" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="1" />
+      <text x="18" y="24" text-anchor="middle" font-size="18">📧</text>
+      
+      <text x="48" y="16" class="f-title" fill="#ffffff">Automated Calendar Invitation Emailer</text>
+      <text x="48" y="32" class="f-desc" fill="#94a3b8">Python `smtplib` + `email.mime` engine dispatches responsive HTML invites with Meet links.</text>
+
+      <g transform="translate(0, 48)">
+        <rect width="130" height="22" rx="6" fill="rgba(245, 158, 11, 0.2)" stroke="#f59e0b" stroke-width="0.8" />
+        <text x="65" y="15" text-anchor="middle" class="f-tag" fill="#fde68a">📅 Google Meet / Zoom</text>
+
+        <rect x="140" width="135" height="22" rx="6" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="0.8" />
+        <text x="207" y="15" text-anchor="middle" class="f-tag" fill="#6ee7b7">🕒 Timezone Sync</text>
+
+        <rect x="285" width="135" height="22" rx="6" fill="rgba(99, 102, 241, 0.2)" stroke="#6366f1" stroke-width="0.8" />
+        <text x="352" y="15" text-anchor="middle" class="f-tag" fill="#c7d2fe">📨 Instant Delivery</text>
+      </g>
+    </g>
+  </g>
+
+</svg>

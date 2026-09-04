@@ -64,18 +64,13 @@ Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing can
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/ats-pipeline-board.svg?v=2" alt="Automated Recruiter ATS Kanban Pipeline" width="100%" />
 </p>
 
-### 🌟 Core ATS Capabilities
-* **📊 6-Stage Kanban Pipeline**: `Applied` ➔ `Reviewing` ➔ `Shortlisted` ➔ `Interview Scheduled` ➔ `Hired` / `Rejected` with 1-click stage advancement.
-* **🎯 Real-Time ATS Matcher**: Instant candidate-to-job match scoring (0–100%) with emerald matched skills and amber missing keywords.
-* **📂 Candidate ATS Review Drawer**: Drawer modal with applicant profiles, resume preview, private recruiter scorecard notes, and meet scheduling.
-* **📧 Automated Calendar Invites**: Python `smtplib` + `email.mime` dispatching HTML calendar invites with Google Meet/Zoom links upon scheduling.
-* **⚡ 1-Click ATS Application**: Instant application flow with live keyword match preview.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/ats-capabilities.svg?v=2" alt="Core ATS Capabilities and Innovations" width="100%" />
+</p>
 
-### 🔐 Demo Test Credentials `(Password: password123)`
-| Role | Email | Password | Access & Features |
-| :--- | :--- | :--- | :--- |
-| **🏢 Recruiter** | `recruiter@techcorp.io` | `password123` | **Full ATS Kanban Pipeline**, Review Drawer, Interview Scheduler |
-| **👤 Job Seeker** | `john.doe@gmail.com` | `password123` | **Job Discovery Feed**, 1-Click ATS Resume Apply, Status Tracking |
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/demo-credentials.svg?v=2" alt="Pre-Seeded Demo Test Credentials" width="100%" />
+</p>
 
 ---
 
