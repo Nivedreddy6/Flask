@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 230" width="100%" height="230">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="footerBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Glowing Border Animation -->
+    <linearGradient id="footerBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1">
+        <animate attributeName="stop-color" values="#6366f1;#ec4899;#06b6d4;#6366f1" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#ec4899">
+        <animate attributeName="stop-color" values="#ec4899;#06b6d4;#6366f1;#ec4899" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#6366f1;#ec4899;#06b6d4" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Avatar Glow -->
+    <filter id="avatarGlow">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Fira+Code:wght@600;700&amp;display=swap');
+
+    .author-name { font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 900; fill: #ffffff; letter-spacing: -0.5px; }
+    .author-role { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 600; fill: #a5b4fc; }
+    .author-bio { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 400; fill: #94a3b8; }
+    .badge-label { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 700; fill: #ffffff; }
+    
+    .pulse-heart {
+      animation: heartBeat 1.5s ease-in-out infinite;
+    }
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+  </style>
+
+  <!-- Container Box -->
+  <rect width="1000" height="230" rx="18" fill="url(#footerBg)" stroke="url(#footerBorder)" stroke-width="2" />
+
+  <!-- Avatar Section (Left) -->
+  <g transform="translate(45, 45)">
+    <!-- Glowing Ring -->
+    <circle cx="70" cy="70" r="62" fill="none" stroke="url(#footerBorder)" stroke-width="3" filter="url(#avatarGlow)" />
+    <circle cx="70" cy="70" r="56" fill="#1e1b4b" />
+    <!-- GitHub/Dev Icon -->
+    <text x="70" y="82" text-anchor="middle" font-size="42">👨‍💻</text>
+    
+    <!-- Online Indicator -->
+    <circle cx="115" cy="115" r="9" fill="#10b981" stroke="#0b0f19" stroke-width="2.5" />
+  </g>
+
+  <!-- Profile Details Section (Center) -->
+  <g transform="translate(210, 50)">
+    <!-- Badge Pill -->
+    <rect x="0" y="0" width="160" height="24" rx="12" fill="rgba(99, 102, 241, 0.2)" stroke="#818cf8" stroke-width="1" />
+    <text x="80" y="16" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10.5" font-weight="700" fill="#c7d2fe">PROJECT CREATOR</text>
+
+    <!-- Name & Handle -->
+    <text x="0" y="55" class="author-name">
+      Nived Reddy <tspan font-family="'Fira Code', monospace" font-size="16" font-weight="600" fill="#38bdf8">(@Nivedreddy6)</tspan>
+    </text>
+
+    <!-- Title / Bio -->
+    <text x="0" y="80" class="author-role">Full-Stack Software Engineer • Python / Flask &amp; React Architect</text>
+    <text x="0" y="104" class="author-bio">Passionate about building scalable recruitment engines, intuitive cloud tools, and modern reactive interfaces.</text>
+
+    <!-- Badges Row -->
+    <g transform="translate(0, 120)">
+      <!-- Badge 1: GitHub Profile -->
+      <g transform="translate(0, 0)">
+        <rect width="180" height="28" rx="14" fill="#24292e" stroke="#4b5563" stroke-width="1" />
+        <circle cx="16" cy="14" r="7" fill="#ffffff" />
+        <text x="16" y="17" text-anchor="middle" font-size="9">🐙</text>
+        <text x="32" y="18" class="badge-label">github.com/Nivedreddy6</text>
+      </g>
+
+      <!-- Badge 2: Repo Star -->
+      <g transform="translate(190, 0)">
+        <rect width="140" height="28" rx="14" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="1" />
+        <text x="18" y="19" font-size="12">⭐</text>
+        <text x="35" y="18" class="badge-label" fill="#fbbf24">Star on GitHub</text>
+      </g>
+
+      <!-- Badge 3: License -->
+      <g transform="translate(340, 0)">
+        <rect width="115" height="28" rx="14" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+        <text x="18" y="19" font-size="12">📜</text>
+        <text x="35" y="18" class="badge-label" fill="#34d399">MIT License</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right Heart Message -->
+  <g transform="translate(850, 115)">
+    <text x="0" y="0" text-anchor="middle" font-size="32" class="pulse-heart">❤️</text>
+    <text x="0" y="24" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#94a3b8">CRAFTED WITH</text>
+    <text x="0" y="38" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5" font-weight="800" fill="#ec4899">PASSION</text>
+  </g>
+</svg>

@@ -228,7 +228,10 @@ erDiagram
 
 ---
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/author-footer.svg" alt="Created by Nived Reddy" width="100%" />
+</p>
+
 <div align="center">
-  <h3>✨ Job Sphere Studio — Engineering Tomorrow's Hiring Infrastructure ✨</h3>
-  <p>Built with precision, automated workflows, and a modern developer experience.</p>
+  <b>Job Sphere Studio</b> • Developed with ❤️ by <a href="https://github.com/Nivedreddy6"><b>Nived Reddy (@Nivedreddy6)</b></a>
 </div>
