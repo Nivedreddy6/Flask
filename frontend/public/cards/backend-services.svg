@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="100%" height="480">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="beCardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Animated Border Gradient -->
+    <linearGradient id="beBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#06b6d4;#6366f1;#ec4899;#10b981" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#6366f1;#ec4899;#10b981;#06b6d4" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#6366f1">
+        <animate attributeName="stop-color" values="#6366f1;#ec4899;#10b981;#06b6d4;#6366f1" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Module Header Gradients -->
+    <linearGradient id="modCore" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#0d9488"/></linearGradient>
+    <linearGradient id="modOrm" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#4f46e5"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient>
+    <linearGradient id="modMail" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#db2777"/><stop offset="100%" stop-color="#e11d48"/></linearGradient>
+    <linearGradient id="modDb" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#ea580c"/></linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@500;600;700&amp;display=swap');
+
+    .be-mod-title { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800; fill: #ffffff; }
+    .be-file-tag { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 700; fill: #38bdf8; }
+    .be-desc { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; fill: #cbd5e1; }
+    .be-bullet { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; fill: #94a3b8; }
+    .be-pill-txt { font-family: 'Fira Code', monospace; font-size: 9.5px; font-weight: 700; }
+
+    .glow-dot {
+      animation: pulseGlow 1.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      from { opacity: 0.4; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1.1); }
+    }
+  </style>
+
+  <!-- Container -->
+  <rect width="1000" height="480" rx="18" fill="url(#beCardBg)" stroke="url(#beBorder)" stroke-width="2" />
+
+  <!-- Top Title Banner -->
+  <g transform="translate(30, 20)">
+    <rect width="420" height="26" rx="13" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#34d399">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <text x="28" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="700" fill="#6ee7b7">PYTHON 3.12 + FLASK 3.0 BACKEND SERVICE ARCHITECTURE</text>
+  </g>
+
+  <!-- Top Right Live Status Pill -->
+  <g transform="translate(800, 20)">
+    <rect width="170" height="26" rx="13" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#38bdf8" />
+    <text x="26" y="17" font-family="'Fira Code', monospace" font-size="10.5" font-weight="700" fill="#bae6fd">REST API • PORT 5000</text>
+  </g>
+
+  <!-- ================= 4 BACKEND MODULES (2x2 GRID) ================= -->
+
+  <!-- MODULE 1: Flask Core & REST API (Top Left) -->
+  <g transform="translate(30, 65)">
+    <rect width="455" height="185" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="1.2" />
+    <rect width="455" height="34" rx="12" fill="url(#modCore)" />
+    <circle cx="20" cy="17" r="5" fill="#a7f3d0" class="glow-dot" />
+    <text x="35" y="22" class="be-mod-title">Flask Application Core &amp; REST Dispatcher</text>
+    <rect x="365" y="8" width="78" height="18" rx="4" fill="rgba(0,0,0,0.3)" />
+    <text x="404" y="20" text-anchor="middle" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#ffffff">app.py</text>
+
+    <!-- Details -->
+    <text x="16" y="60" class="be-desc">Core WSGI entry point, CORS configuration, request routing, and auth.</text>
+    <text x="16" y="85" class="be-bullet">⚡ <tspan fill="#f1f5f9">Flask 3.0 App Factory</tspan> with Blueprint-like JSON REST routing</text>
+    <text x="16" y="105" class="be-bullet">🔐 <tspan fill="#f1f5f9">Werkzeug PBKDF2-SHA256</tspan> password hashing &amp; Session Store</text>
+    <text x="16" y="125" class="be-bullet">🌐 <tspan fill="#f1f5f9">Flask-CORS</tspan> cross-origin middleware for React 19 Client (:5173)</text>
+    <text x="16" y="145" class="be-bullet">📁 <tspan fill="#f1f5f9">Secure File Uploads</tspan> for candidate PDF / Word resume assets</text>
+
+    <!-- Badges -->
+    <rect x="16" y="158" width="90" height="16" rx="4" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="0.8" />
+    <text x="61" y="170" text-anchor="middle" class="be-pill-txt" fill="#6ee7b7">REST API</text>
+    <rect x="114" y="158" width="105" height="16" rx="4" fill="rgba(56, 189, 248, 0.2)" stroke="#38bdf8" stroke-width="0.8" />
+    <text x="166" y="170" text-anchor="middle" class="be-pill-txt" fill="#7dd3fc">CORS ENABLED</text>
+    <rect x="227" y="158" width="125" height="16" rx="4" fill="rgba(244, 114, 182, 0.2)" stroke="#f472b6" stroke-width="0.8" />
+    <text x="289" y="170" text-anchor="middle" class="be-pill-txt" fill="#fbcfe8">SECURITY WRAPPER</text>
+  </g>
+
+  <!-- MODULE 2: SQLAlchemy ORM Models (Top Right) -->
+  <g transform="translate(515, 65)">
+    <rect width="455" height="185" rx="12" fill="#0f172a" stroke="#6366f1" stroke-width="1.2" />
+    <rect width="455" height="34" rx="12" fill="url(#modOrm)" />
+    <circle cx="20" cy="17" r="5" fill="#c7d2fe" class="glow-dot" />
+    <text x="35" y="22" class="be-mod-title">SQLAlchemy Relational ORM Data Layer</text>
+    <rect x="350" y="8" width="93" height="18" rx="4" fill="rgba(0,0,0,0.3)" />
+    <text x="396" y="20" text-anchor="middle" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#ffffff">models.py</text>
+
+    <!-- Details -->
+    <text x="16" y="60" class="be-desc">Object-relational mapping models with explicit cascading and constraints.</text>
+    <text x="16" y="85" class="be-bullet">👥 <tspan fill="#f1f5f9">User / UserProfile</tspan> 1-to-1 candidate profile mapping</text>
+    <text x="16" y="105" class="be-bullet">🏢 <tspan fill="#f1f5f9">CompanyProfile</tspan> recruiter organization &amp; logo binding</text>
+    <text x="16" y="125" class="be-bullet">💼 <tspan fill="#f1f5f9">JobPosting &amp; Application</tspan> relational hiring progression states</text>
+    <text x="16" y="145" class="be-bullet">🔔 <tspan fill="#f1f5f9">Notification Entity</tspan> automated user alerts &amp; read states</text>
+
+    <!-- Badges -->
+    <rect x="16" y="158" width="115" height="16" rx="4" fill="rgba(99, 102, 241, 0.2)" stroke="#6366f1" stroke-width="0.8" />
+    <text x="73" y="170" text-anchor="middle" class="be-pill-txt" fill="#a5b4fc">SQLAlchemy 3.0</text>
+    <rect x="139" y="158" width="105" height="16" rx="4" fill="rgba(168, 85, 247, 0.2)" stroke="#a855f7" stroke-width="0.8" />
+    <text x="191" y="170" text-anchor="middle" class="be-pill-txt" fill="#d8b4fe">RELATIONAL ORM</text>
+    <rect x="252" y="158" width="100" height="16" rx="4" fill="rgba(52, 211, 153, 0.2)" stroke="#34d399" stroke-width="0.8" />
+    <text x="302" y="170" text-anchor="middle" class="be-pill-txt" fill="#a7f3d0">AUTO-CASCADE</text>
+  </g>
+
+  <!-- MODULE 3: Automated SMTP Mailer (Bottom Left) -->
+  <g transform="translate(30, 265)">
+    <rect width="455" height="185" rx="12" fill="#0f172a" stroke="#e11d48" stroke-width="1.2" />
+    <rect width="455" height="34" rx="12" fill="url(#modMail)" />
+    <circle cx="20" cy="17" r="5" fill="#fecdd3" class="glow-dot" />
+    <text x="35" y="22" class="be-mod-title">Automated Interview &amp; Alert Mailer</text>
+    <rect x="325" y="8" width="118" height="18" rx="4" fill="rgba(0,0,0,0.3)" />
+    <text x="384" y="20" text-anchor="middle" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#ffffff">email_service.py</text>
+
+    <!-- Details -->
+    <text x="16" y="60" class="be-desc">HTML email dispatching engine powered by Python smtplib and MIME standard.</text>
+    <text x="16" y="85" class="be-bullet">📅 <tspan fill="#f1f5f9">Calendar-Ready Invites</tspan> with structured date, time &amp; Google Meet / Zoom link</text>
+    <text x="16" y="105" class="be-bullet">🎨 <tspan fill="#f1f5f9">Branded HTML Templates</tspan> with inline styling and responsive table cards</text>
+    <text x="16" y="125" class="be-bullet">🔄 <tspan fill="#f1f5f9">Automated Stage Notifications</tspan> triggered when candidate moves to Shortlisted</text>
+    <text x="16" y="145" class="be-bullet">🛡️ <tspan fill="#f1f5f9">Non-Blocking Fallback</tspan> gracefully logs if SMTP server is unavailable</text>
+
+    <!-- Badges -->
+    <rect x="16" y="158" width="85" height="16" rx="4" fill="rgba(225, 29, 72, 0.2)" stroke="#e11d48" stroke-width="0.8" />
+    <text x="58" y="170" text-anchor="middle" class="be-pill-txt" fill="#fda4af">SMTP / MIME</text>
+    <rect x="109" y="158" width="125" height="16" rx="4" fill="rgba(251, 146, 60, 0.2)" stroke="#fb923c" stroke-width="0.8" />
+    <text x="171" y="170" text-anchor="middle" class="be-pill-txt" fill="#fed7aa">CALENDAR INVITE</text>
+    <rect x="242" y="158" width="105" height="16" rx="4" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="0.8" />
+    <text x="294" y="170" text-anchor="middle" class="be-pill-txt" fill="#6ee7b7">FAIL-SAFE LOGS</text>
+  </g>
+
+  <!-- MODULE 4: Database Manager & Seeder (Bottom Right) -->
+  <g transform="translate(515, 265)">
+    <rect width="455" height="185" rx="12" fill="#0f172a" stroke="#ea580c" stroke-width="1.2" />
+    <rect width="455" height="34" rx="12" fill="url(#modDb)" />
+    <circle cx="20" cy="17" r="5" fill="#ffedd5" class="glow-dot" />
+    <text x="35" y="22" class="be-mod-title">Database Seeder &amp; Lifecycle Management</text>
+    <rect x="340" y="8" width="103" height="18" rx="4" fill="rgba(0,0,0,0.3)" />
+    <text x="391" y="20" text-anchor="middle" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#ffffff">database.py</text>
+
+    <!-- Details -->
+    <text x="16" y="60" class="be-desc">SQLite engine lifecycle, table initialization, and high-fidelity mock data.</text>
+    <text x="16" y="85" class="be-bullet">💾 <tspan fill="#f1f5f9">SQLite 3 Zero-Config DB</tspan> (`job_portal.db`) with relational integrity</text>
+    <text x="16" y="105" class="be-bullet">🌱 <tspan fill="#f1f5f9">Auto-Seed Mechanism</tspan> populates test accounts, recruiters, and jobs</text>
+    <text x="16" y="125" class="be-bullet">📊 <tspan fill="#f1f5f9">Preloaded Demo Data</tspan> (TechCorp AI, Innovate Labs, 40+ Applications)</text>
+    <text x="16" y="145" class="be-bullet">🔄 <tspan fill="#f1f5f9">Idempotent Initializer</tspan> creates tables only when not yet existing</text>
+
+    <!-- Badges -->
+    <rect x="16" y="158" width="80" height="16" rx="4" fill="rgba(234, 88, 12, 0.2)" stroke="#ea580c" stroke-width="0.8" />
+    <text x="56" y="170" text-anchor="middle" class="be-pill-txt" fill="#fdba74">SQLITE 3</text>
+    <rect x="104" y="158" width="115" height="16" rx="4" fill="rgba(234, 179, 8, 0.2)" stroke="#eab308" stroke-width="0.8" />
+    <text x="161" y="170" text-anchor="middle" class="be-pill-txt" fill="#fef08a">DATA SEEDER</text>
+    <rect x="227" y="158" width="115" height="16" rx="4" fill="rgba(56, 189, 248, 0.2)" stroke="#38bdf8" stroke-width="0.8" />
+    <text x="284" y="170" text-anchor="middle" class="be-pill-txt" fill="#bae6fd">ZERO CONFIG</text>
+  </g>
+</svg>

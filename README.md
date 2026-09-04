@@ -108,6 +108,30 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
 ---
 
 <p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-backend.svg" alt="Flask Backend Engine Header" width="100%" />
+</p>
+
+## ⚡ Flask Backend Engine & Internal Services
+
+The backend is built as a modular, lightweight, high-performance Python 3.12 + Flask 3.0 REST API:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/backend-services.svg" alt="Flask Backend Architecture & Internal Services" width="100%" />
+</p>
+
+### 🧩 Backend Module Breakdown
+
+| Module | Primary Responsibility | Key Features & Implementation |
+| :--- | :--- | :--- |
+| **[`backend/app.py`](file:///c:/Users/nived/OneDrive/Documents/flask/backend/app.py)** | **REST API Dispatcher & Auth** | • JSON REST endpoint routing<br/>• Role-Based Access Control (`seeker` vs `recruiter`)<br/>• `Werkzeug` PBKDF2 password hashing & session management<br/>• `Flask-CORS` middleware for Vite React client<br/>• Secure resume upload handler (`/static/uploads/`) |
+| **[`backend/models.py`](file:///c:/Users/nived/OneDrive/Documents/flask/backend/models.py)** | **SQLAlchemy Relational ORM** | • 6 Normalized database entities with foreign keys<br/>• `User` & `UserProfile` 1-to-1 candidate relationship<br/>• `CompanyProfile` recruiter company branding<br/>• `JobPosting` & `Application` ATS stage management<br/>• `Notification` live user alert models |
+| **[`backend/email_service.py`](file:///c:/Users/nived/OneDrive/Documents/flask/backend/email_service.py)** | **Automated Interview Mailer** | • Python `smtplib` & `email.mime` HTML dispatcher<br/>• Structured calendar invites with date, time & video conference links<br/>• Branded responsive HTML email templates<br/>• Non-blocking fallback logging if SMTP is unreachable |
+| **[`backend/database.py`](file:///c:/Users/nived/OneDrive/Documents/flask/backend/database.py)** | **DB Lifecycle & Auto-Seeder** | • SQLite 3 zero-configuration database (`job_portal.db`)<br/>• Idempotent schema initialization on startup<br/>• Realistic demo seed generator (Companies, Jobs, Candidates, Applications) |
+
+
+---
+
+<p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-datamodel.svg" alt="Data Model Header" width="100%" />
 </p>
 
