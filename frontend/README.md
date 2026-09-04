@@ -20,26 +20,19 @@
 > [!IMPORTANT]
 > The **Job Sphere Studio Frontend** is an ultra-modern Single Page Application (SPA) designed to deliver a high-velocity recruitment experience with instant applicant status transitions, dynamic filtering, interactive interview modals, and real-time backend sync.
 
-<table>
-  <tr>
-    <td width="50%" bgcolor="#0f172a">
-      <h3 style="color:#818cf8;">💼 Recruiter Command Center</h3>
-      <ul style="color:#cbd5e1;">
-        <li>📊 <b>Real-time Metrics Dashboard</b>: Active job counts, review queues, shortlist rates.</li>
-        <li>📑 <b>ATS Candidate Board</b>: Multi-stage applicant management with 1-click status transitions.</li>
-        <li>📅 <b>Automated Interview Scheduling</b>: Meeting links and date/time selector with email triggers.</li>
-      </ul>
-    </td>
-    <td width="50%" bgcolor="#1e1b4b">
-      <h3 style="color:#c084fc;">🚀 Candidate Career Experience</h3>
-      <ul style="color:#cbd5e1;">
-        <li>🔍 <b>Smart Discovery</b>: Filter opportunities by title, salary bracket, and tech stack.</li>
-        <li>⚡ <b>1-Click Apply</b>: Upload resumes with instant file validation.</li>
-        <li>📬 <b>Live Status Stepper</b>: Visual multi-step progress tracking.</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <img src="public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />
+</p>
+
+---
+
+<p align="center">
+  <img src="public/headers/header-personas.svg" alt="User Personas Header" width="100%" />
+</p>
+
+<p align="center">
+  <img src="public/cards/personas-cards.svg" alt="Recruiter & Candidate Personas" width="100%" />
+</p>
 
 ---
 

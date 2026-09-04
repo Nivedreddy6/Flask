@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 120" width="100%" height="120">
+  <defs>
+    <linearGradient id="p1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#6366f1"/></linearGradient>
+    <linearGradient id="p2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#a855f7"/></linearGradient>
+    <linearGradient id="p3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#ec4899"/></linearGradient>
+    <linearGradient id="p4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#f59e0b"/></linearGradient>
+    <linearGradient id="p5" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+  </defs>
+
+  <style>
+    .step-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; font-weight: 800; fill: #ffffff; }
+    .step-sub { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 600; fill: #cbd5e1; }
+  </style>
+
+  <rect width="1000" height="120" rx="14" fill="#0b0f19" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+
+  <!-- Stage 1 -->
+  <g transform="translate(20, 20)">
+    <rect width="170" height="80" rx="12" fill="url(#p1)" />
+    <text x="85" y="32" text-anchor="middle" font-size="16">📝</text>
+    <text x="85" y="52" text-anchor="middle" class="step-title">1. APPLIED</text>
+    <text x="85" y="68" text-anchor="middle" class="step-sub">Resume Ingestion</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <text x="202" y="66" font-size="20" fill="#818cf8">→</text>
+
+  <!-- Stage 2 -->
+  <g transform="translate(220, 20)">
+    <rect width="170" height="80" rx="12" fill="url(#p2)" />
+    <text x="85" y="32" text-anchor="middle" font-size="16">🔍</text>
+    <text x="85" y="52" text-anchor="middle" class="step-title">2. REVIEWING</text>
+    <text x="85" y="68" text-anchor="middle" class="step-sub">Profile Screening</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <text x="402" y="66" font-size="20" fill="#c084fc">→</text>
+
+  <!-- Stage 3 -->
+  <g transform="translate(420, 20)">
+    <rect width="170" height="80" rx="12" fill="url(#p3)" />
+    <text x="85" y="32" text-anchor="middle" font-size="16">⭐</text>
+    <text x="85" y="52" text-anchor="middle" class="step-title">3. SHORTLISTED</text>
+    <text x="85" y="68" text-anchor="middle" class="step-sub">Priority Talent</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <text x="602" y="66" font-size="20" fill="#f472b6">→</text>
+
+  <!-- Stage 4 -->
+  <g transform="translate(620, 20)">
+    <rect width="170" height="80" rx="12" fill="url(#p4)" />
+    <text x="85" y="32" text-anchor="middle" font-size="16">📅</text>
+    <text x="85" y="52" text-anchor="middle" class="step-title">4. INTERVIEW</text>
+    <text x="85" y="68" text-anchor="middle" class="step-sub">Invite &amp; Calendar</text>
+  </g>
+
+  <!-- Arrow 4 -->
+  <text x="802" y="66" font-size="20" fill="#fbbf24">→</text>
+
+  <!-- Stage 5 -->
+  <g transform="translate(820, 20)">
+    <rect width="160" height="80" rx="12" fill="url(#p5)" />
+    <text x="80" y="32" text-anchor="middle" font-size="16">🎉</text>
+    <text x="80" y="52" text-anchor="middle" class="step-title">5. HIRED</text>
+    <text x="80" y="68" text-anchor="middle" class="step-sub">Offer Accepted</text>
+  </g>
+</svg>

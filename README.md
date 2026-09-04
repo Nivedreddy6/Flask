@@ -24,22 +24,9 @@
 > [!IMPORTANT]
 > **Job Sphere Studio** is an enterprise-ready, full-stack recruitment platform and automated Applicant Tracking System (ATS). It bridges top tech talent with innovative employers through automated screening pipelines, real-time candidate metrics, and instant email interview dispatching.
 
-<table>
-  <tr>
-    <td width="33%" align="center" bgcolor="#0f172a">
-      <h3 style="color:#818cf8;">🎯 Job Discovery</h3>
-      <p style="color:#cbd5e1;">Instant role matching, compensation filters, and 1-click resume uploads.</p>
-    </td>
-    <td width="33%" align="center" bgcolor="#1e1b4b">
-      <h3 style="color:#c084fc;">⚡ Recruiter ATS</h3>
-      <p style="color:#cbd5e1;">Multi-stage candidate pipelines, status tracking, and notes management.</p>
-    </td>
-    <td width="33%" align="center" bgcolor="#083344">
-      <h3 style="color:#22d3ee;">📧 Interview Mailer</h3>
-      <p style="color:#cbd5e1;">Automated branded HTML invitation dispatch with meeting links.</p>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <img src="frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />
+</p>
 
 ---
 
@@ -62,11 +49,9 @@
   </table>
 </div>
 
-> [!TIP]
-> **Comprehensive Feature Highlights:**
-> * 📈 **Interactive Hiring Funnel**: Real-time conversion heatmaps (Applied ➔ Reviewing ➔ Shortlisted ➔ Interview Scheduled ➔ Hired).
-> * 📑 **Resume Management**: Automated file-type verification (PDF, DOCX, TXT) and secure authenticated streaming.
-> * 🔔 **Live In-App Notification Center**: Instant triggers on application reviews, interview invitations, and status shifts.
+<p align="center">
+  <img src="frontend/public/cards/pipeline-stepper.svg" alt="Hiring Pipeline Stages" width="100%" />
+</p>
 
 ---
 
@@ -74,34 +59,9 @@
   <img src="frontend/public/headers/header-personas.svg" alt="User Personas Header" width="100%" />
 </p>
 
-<table>
-  <thead>
-    <tr bgcolor="#1e1b4b">
-      <th width="50%" style="color:#c7d2fe;"><h3>🏢 Recruiter ATS Operations</h3></th>
-      <th width="50%" style="color:#67e8f9;"><h3>🎯 Candidate Career Journey</h3></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td valign="top">
-        <ol>
-          <li><b>Post Opportunities</b>: Create listings with department tags, salary ranges (<code>$120k - $160k</code>), and experience requirements.</li>
-          <li><b>Review Pipeline</b>: Inspect candidate resumes, portfolio links, and transition applicants across hiring stages.</li>
-          <li><b>Schedule Interviews</b>: Trigger calendar invites, date/time pickers, and video meeting URLs with one click.</li>
-          <li><b>Analyze Metrics</b>: Monitor active posts, applicant counts, and shortlist velocity.</li>
-        </ol>
-      </td>
-      <td valign="top">
-        <ol>
-          <li><b>Explore Openings</b>: Search roles by title, category, salary tier, and remote/on-site status.</li>
-          <li><b>1-Click Apply</b>: Upload resumes and submit applications seamlessly.</li>
-          <li><b>Live Tracker</b>: Track hiring progress through a dynamic multi-stage visual stepper.</li>
-          <li><b>Learn & Upskill</b>: Access curated engineering career resources and tech community networks.</li>
-        </ol>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<p align="center">
+  <img src="frontend/public/cards/personas-cards.svg" alt="Recruiter & Candidate Personas" width="100%" />
+</p>
 
 ---
 
@@ -112,9 +72,6 @@
 <p align="center">
   <img src="frontend/public/workflow.svg" alt="Workflow Pipeline Architecture" width="100%" />
 </p>
-
-> [!NOTE]
-> **Decoupled Architecture**: The React 19 SPA (`port 5173`) communicates with the Flask REST Backend (`port 5000`) via Vite's automated reverse proxy, allowing independent scaling and seamless development workflows.
 
 ```mermaid
 flowchart TD
