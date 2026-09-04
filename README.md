@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/banner.svg" alt="Job Sphere Studio Banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/banner.svg?v=2" alt="Job Sphere Studio Banner" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/typing-badge-root.svg" alt="Animated Typing Badge" width="700" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/typing-badge-root.svg?v=2" alt="Animated Typing Badge" width="700" />
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-overview.svg" alt="Project Overview Header" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-overview.svg?v=2" alt="Project Overview Header" width="100%" />
 </p>
 
 ## 💡 What is Job Sphere Studio?
@@ -29,13 +29,13 @@
 * ⚡ **For Recruiters**: Post vacancies, review candidate pipelines, advance hiring stages, and schedule interviews with automated calendar-ready emails.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/overview-cards.svg?v=2" alt="Overview Cards" width="100%" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-features.svg" alt="Features Header" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-features.svg?v=2" alt="Features Header" width="100%" />
 </p>
 
 ## 🔄 End-to-End Website Walkthrough (How It Works)
@@ -43,17 +43,17 @@
 Here is the exact step-by-step user journey from account creation to getting hired:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/workflow-journey.svg" alt="End-to-End Recruitment Journey" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/workflow-journey.svg?v=2" alt="End-to-End Recruitment Journey" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/pipeline-stepper.svg" alt="Hiring Pipeline Stages" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/pipeline-stepper.svg?v=2" alt="Hiring Pipeline Stages" width="100%" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-ats.svg" alt="Recruiter ATS Pipeline & Resume Matcher Header" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-ats.svg?v=2" alt="Recruiter ATS Pipeline & Resume Matcher Header" width="100%" />
 </p>
 
 ## 📊 Recruiter Applicant Tracking System (ATS) & Automated Matcher
@@ -61,7 +61,7 @@ Here is the exact step-by-step user journey from account creation to getting hir
 Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing candidates from application to hire:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/ats-pipeline-board.svg" alt="Automated Recruiter ATS Kanban Pipeline" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/ats-pipeline-board.svg?v=2" alt="Automated Recruiter ATS Kanban Pipeline" width="100%" />
 </p>
 
 ### 🌟 Core ATS Capabilities:
@@ -80,9 +80,8 @@ Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing can
 
 ---
 
-
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-personas.svg" alt="User Personas Header" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-personas.svg?v=2" alt="User Personas Header" width="100%" />
 </p>
 
 ## 🧭 Page-by-Page Feature Tour
@@ -103,13 +102,13 @@ Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing can
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/features-deepdive.svg" alt="Comprehensive Feature Tour" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/features-deepdive.svg?v=2" alt="Comprehensive Feature Tour" width="100%" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-architecture.svg" alt="System Architecture Header" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-architecture.svg?v=2" alt="System Architecture Header" width="100%" />
 </p>
 
 ## 🏛 Technical Architecture & Technology Stack
@@ -117,21 +116,20 @@ Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing can
 The platform is designed with a **decoupled hybrid architecture** for optimal performance, responsiveness, and developer experience:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/workflow.svg" alt="Workflow Pipeline Architecture" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/workflow.svg?v=2" alt="Workflow Pipeline Architecture" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/system-architecture.svg" alt="System Architecture & Data Flow" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/system-architecture.svg?v=2" alt="System Architecture & Data Flow" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/full-project-tree.svg" alt="Comprehensive Repository Directory & Subfolder Architecture" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/full-project-tree.svg?v=2" alt="Comprehensive Repository Directory & Subfolder Architecture" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/sequence-interview.svg" alt="Automated Interview Scheduling Sequence Flow" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/sequence-interview.svg?v=2" alt="Automated Interview Scheduling Sequence Flow" width="100%" />
 </p>
-
 
 ### 🛠️ Core Technologies Used:
 * **Frontend**: **React 19**, **Vite 8**, **Lucide React** icons, custom cyber-glassmorphism CSS design system, and **Oxlint** (Rust-based sub-millisecond linter).
@@ -142,7 +140,7 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-backend.svg" alt="Flask Backend Engine Header" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-backend.svg?v=2" alt="Flask Backend Engine Header" width="100%" />
 </p>
 
 ## ⚡ Flask Backend Engine & Internal Services
@@ -150,19 +148,17 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
 The backend is built as a modular, lightweight, high-performance Python 3.12 + Flask 3.0 REST API:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/backend-services.svg" alt="Flask Backend Architecture & Internal Services" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/backend-services.svg?v=2" alt="Flask Backend Architecture & Internal Services" width="100%" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/backend-table-card.svg" alt="Backend Module Breakdown Matrix" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/backend-table-card.svg?v=2" alt="Backend Module Breakdown Matrix" width="100%" />
 </p>
-
-
 
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-datamodel.svg" alt="Data Model Header" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-datamodel.svg?v=2" alt="Data Model Header" width="100%" />
 </p>
 
 ## 📊 Relational Database Schema
@@ -170,39 +166,38 @@ The backend is built as a modular, lightweight, high-performance Python 3.12 + F
 The database model is built with SQLAlchemy with clean relational entities:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/database-schema.svg" alt="Relational Database Schema (SQLAlchemy ORM)" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/database-schema.svg?v=2" alt="Relational Database Schema (SQLAlchemy ORM)" width="100%" />
 </p>
-
 
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-api.svg" alt="API Specification Header" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-api.svg?v=2" alt="API Specification Header" width="100%" />
 </p>
 
 ## 🔌 RESTful API Endpoints Specification
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/api-endpoints.svg" alt="REST API Endpoints Specification" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/api-endpoints.svg?v=2" alt="REST API Endpoints Specification" width="100%" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-quickstart.svg" alt="Quickstart Header" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-quickstart.svg?v=2" alt="Quickstart Header" width="100%" />
 </p>
 
 ## ⚡ How to Run Locally
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/terminal-quickstart.svg" alt="Animated Terminal Quickstart" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/terminal-quickstart.svg?v=2" alt="Animated Terminal Quickstart" width="100%" />
 </p>
 
 ---
 
 <p align="center">
   <a href="https://github.com/Nivedreddy6" target="_blank">
-    <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/author-footer.svg" alt="Created by Nived Reddy" width="100%" />
+    <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/author-footer.svg?v=2" alt="Created by Nived Reddy" width="100%" />
   </a>
 </p>
 
