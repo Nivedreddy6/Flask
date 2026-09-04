@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="520">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 248" width="100%" height="248">
   <defs>
     <!-- Background Gradient -->
     <linearGradient id="atsBg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -26,28 +26,18 @@
 
     .ats-title { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800; fill: #ffffff; letter-spacing: 0.5px; }
     .ats-col-hdr { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; }
-    .cand-name { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800; fill: #ffffff; }
-    .cand-role { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; fill: #94a3b8; }
-    .cand-job { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; fill: #cbd5e1; }
-    .score-badge { font-family: 'Fira Code', monospace; font-size: 9.5px; font-weight: 800; }
-    .kw-tag { font-family: 'Fira Code', monospace; font-size: 8.5px; font-weight: 600; }
-
-    .stream-dash {
-      stroke-dasharray: 4,4;
-      animation: atsDash 1.2s linear infinite;
-    }
-
-    @keyframes atsDash {
-      from { stroke-dashoffset: 16; }
-      to { stroke-dashoffset: 0; }
-    }
+    .cand-name { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800; fill: #ffffff; }
+    .cand-role { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 500; fill: #94a3b8; }
+    .cand-job { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 600; fill: #cbd5e1; }
+    .score-badge { font-family: 'Fira Code', monospace; font-size: 9px; font-weight: 800; }
+    .kw-tag { font-family: 'Fira Code', monospace; font-size: 8px; font-weight: 600; }
   </style>
 
   <!-- Container -->
-  <rect width="1000" height="520" rx="18" fill="url(#atsBg)" stroke="url(#atsBorder)" stroke-width="2" />
+  <rect width="1000" height="248" rx="16" fill="url(#atsBg)" stroke="url(#atsBorder)" stroke-width="2" />
 
   <!-- Top Banner Title -->
-  <g transform="translate(30, 20)">
+  <g transform="translate(25, 14)">
     <rect width="440" height="26" rx="13" fill="rgba(99, 102, 241, 0.15)" stroke="#6366f1" stroke-width="1" />
     <circle cx="14" cy="13" r="4" fill="#818cf8">
       <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
@@ -56,7 +46,7 @@
   </g>
 
   <!-- Right Pill: Matcher Engine -->
-  <g transform="translate(740, 20)">
+  <g transform="translate(745, 14)">
     <rect width="230" height="26" rx="13" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
     <circle cx="14" cy="13" r="4" fill="#34d399" />
     <text x="26" y="17" font-family="'Fira Code', monospace" font-size="10" font-weight="700" fill="#6ee7b7">REAL-TIME ATS KEYWORD MATCHER</text>
@@ -64,132 +54,130 @@
 
   <!-- ================= 5 PIPELINE COLUMNS ================= -->
 
-  <!-- COL 1: Applied (X=30) -->
-  <g transform="translate(30, 65)">
-    <rect width="175" height="425" rx="10" fill="rgba(56, 189, 248, 0.04)" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" />
-    <rect width="175" height="28" rx="10" fill="rgba(56, 189, 248, 0.15)" />
-    <text x="12" y="18" class="ats-col-hdr" fill="#38bdf8">📥 Applied</text>
-    <rect x="142" y="6" width="22" height="16" rx="6" fill="#38bdf8" />
-    <text x="153" y="18" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#0f172a">1</text>
+  <!-- COL 1: Applied (X=25) -->
+  <g transform="translate(25, 48)">
+    <rect width="180" height="184" rx="10" fill="rgba(56, 189, 248, 0.04)" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" />
+    <rect width="180" height="26" rx="10" fill="rgba(56, 189, 248, 0.15)" />
+    <text x="10" y="17" class="ats-col-hdr" fill="#38bdf8">📥 Applied</text>
+    <rect x="150" y="5" width="20" height="16" rx="5" fill="#38bdf8" />
+    <text x="160" y="17" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#0f172a">1</text>
 
     <!-- Card 1: Alex Miller -->
-    <g transform="translate(10, 38)">
-      <rect width="155" height="115" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" />
-      <text x="10" y="20" class="cand-name">Alex Miller</text>
-      <text x="10" y="34" class="cand-role">Data Analyst</text>
-      <rect x="95" y="8" width="52" height="15" rx="4" fill="rgba(251, 191, 36, 0.15)" stroke="#f59e0b" stroke-width="0.8" />
-      <text x="121" y="19" text-anchor="middle" class="score-badge" fill="#fef08a">88% ATS</text>
+    <g transform="translate(8, 34)">
+      <rect width="164" height="140" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <text x="10" y="18" class="cand-name">Alex Miller</text>
+      <text x="10" y="32" class="cand-role">Data Analyst</text>
+      <rect x="102" y="7" width="52" height="15" rx="4" fill="rgba(251, 191, 36, 0.15)" stroke="#f59e0b" stroke-width="0.8" />
+      <text x="128" y="18" text-anchor="middle" class="score-badge" fill="#fef08a">88% ATS</text>
       
-      <rect x="10" y="44" width="135" height="22" rx="4" fill="rgba(255, 255, 255, 0.03)" />
-      <text x="16" y="58" class="cand-job">Innovate Labs • $95k</text>
+      <rect x="10" y="42" width="144" height="20" rx="4" fill="rgba(255, 255, 255, 0.03)" />
+      <text x="16" y="56" class="cand-job">Innovate Labs • $95k</text>
 
-      <text x="10" y="82" class="kw-tag" fill="#34d399">SQL • Python • Pandas</text>
-      <rect x="10" y="92" width="135" height="16" rx="4" fill="rgba(99, 102, 241, 0.15)" stroke="#6366f1" stroke-width="0.6" />
-      <text x="77" y="103" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#c7d2fe">Advance ➔</text>
+      <text x="10" y="78" class="kw-tag" fill="#34d399">SQL • Python • Pandas</text>
+      <rect x="10" y="90" width="144" height="22" rx="5" fill="rgba(99, 102, 241, 0.18)" stroke="#6366f1" stroke-width="0.8" />
+      <text x="82" y="105" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#c7d2fe">Advance ➔</text>
     </g>
   </g>
 
-  <!-- COL 2: Reviewing (X=220) -->
-  <g transform="translate(220, 65)">
-    <rect width="175" height="425" rx="10" fill="rgba(168, 85, 247, 0.04)" stroke="rgba(168, 85, 247, 0.2)" stroke-width="1" />
-    <rect width="175" height="28" rx="10" fill="rgba(168, 85, 247, 0.15)" />
-    <text x="12" y="18" class="ats-col-hdr" fill="#c084fc">🔍 Reviewing</text>
-    <rect x="142" y="6" width="22" height="16" rx="6" fill="#a855f7" />
-    <text x="153" y="18" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#fff">1</text>
+  <!-- COL 2: Reviewing (X=217) -->
+  <g transform="translate(217, 48)">
+    <rect width="180" height="184" rx="10" fill="rgba(168, 85, 247, 0.04)" stroke="rgba(168, 85, 247, 0.2)" stroke-width="1" />
+    <rect width="180" height="26" rx="10" fill="rgba(168, 85, 247, 0.15)" />
+    <text x="10" y="17" class="ats-col-hdr" fill="#c084fc">🔍 Reviewing</text>
+    <rect x="150" y="5" width="20" height="16" rx="5" fill="#a855f7" />
+    <text x="160" y="17" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#fff">1</text>
 
     <!-- Card: Sarah Smith -->
-    <g transform="translate(10, 38)">
-      <rect width="155" height="115" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2" />
-      <text x="10" y="20" class="cand-name">Sarah Smith</text>
-      <text x="10" y="34" class="cand-role">Lead UI/UX Designer</text>
-      <rect x="95" y="8" width="52" height="15" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="0.8" />
-      <text x="121" y="19" text-anchor="middle" class="score-badge" fill="#6ee7b7">94% ATS</text>
+    <g transform="translate(8, 34)">
+      <rect width="164" height="140" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.2" />
+      <text x="10" y="18" class="cand-name">Sarah Smith</text>
+      <text x="10" y="32" class="cand-role">Lead UI/UX Designer</text>
+      <rect x="102" y="7" width="52" height="15" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="0.8" />
+      <text x="128" y="18" text-anchor="middle" class="score-badge" fill="#6ee7b7">94% ATS</text>
       
-      <rect x="10" y="44" width="135" height="22" rx="4" fill="rgba(255, 255, 255, 0.03)" />
-      <text x="16" y="58" class="cand-job">Innovate Labs • $110k</text>
+      <rect x="10" y="42" width="144" height="20" rx="4" fill="rgba(255, 255, 255, 0.03)" />
+      <text x="16" y="56" class="cand-job">Innovate Labs • $110k</text>
 
-      <text x="10" y="82" class="kw-tag" fill="#34d399">Figma • UI/UX • Design</text>
-      <rect x="10" y="92" width="135" height="16" rx="4" fill="rgba(168, 85, 247, 0.2)" stroke="#a855f7" stroke-width="0.6" />
-      <text x="77" y="103" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#e9d5ff">Shortlist ➔</text>
+      <text x="10" y="78" class="kw-tag" fill="#34d399">Figma • UI/UX • Design</text>
+      <rect x="10" y="90" width="144" height="22" rx="5" fill="rgba(168, 85, 247, 0.2)" stroke="#a855f7" stroke-width="0.8" />
+      <text x="82" y="105" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#e9d5ff">Shortlist ➔</text>
     </g>
   </g>
 
-  <!-- COL 3: Shortlisted (X=410) -->
-  <g transform="translate(410, 65)">
-    <rect width="175" height="425" rx="10" fill="rgba(251, 191, 36, 0.04)" stroke="rgba(251, 191, 36, 0.2)" stroke-width="1" />
-    <rect width="175" height="28" rx="10" fill="rgba(251, 191, 36, 0.15)" />
-    <text x="12" y="18" class="ats-col-hdr" fill="#fbbf24">⭐ Shortlisted</text>
-    <rect x="142" y="6" width="22" height="16" rx="6" fill="#f59e0b" />
-    <text x="153" y="18" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#0f172a">1</text>
+  <!-- COL 3: Shortlisted (X=409) -->
+  <g transform="translate(409, 48)">
+    <rect width="180" height="184" rx="10" fill="rgba(251, 191, 36, 0.04)" stroke="rgba(251, 191, 36, 0.2)" stroke-width="1" />
+    <rect width="180" height="26" rx="10" fill="rgba(251, 191, 36, 0.15)" />
+    <text x="10" y="17" class="ats-col-hdr" fill="#fbbf24">⭐ Shortlisted</text>
+    <rect x="150" y="5" width="20" height="16" rx="5" fill="#f59e0b" />
+    <text x="160" y="17" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#0f172a">1</text>
 
-    <!-- Card: Candidate Ready for Interview -->
-    <g transform="translate(10, 38)">
-      <rect width="155" height="115" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2" />
-      <text x="10" y="20" class="cand-name">Emily Watson</text>
-      <text x="10" y="34" class="cand-role">Cloud Architect</text>
-      <rect x="95" y="8" width="52" height="15" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="0.8" />
-      <text x="121" y="19" text-anchor="middle" class="score-badge" fill="#6ee7b7">96% ATS</text>
+    <!-- Card: Emily Watson -->
+    <g transform="translate(8, 34)">
+      <rect width="164" height="140" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2" />
+      <text x="10" y="18" class="cand-name">Emily Watson</text>
+      <text x="10" y="32" class="cand-role">Cloud Architect</text>
+      <rect x="102" y="7" width="52" height="15" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="0.8" />
+      <text x="128" y="18" text-anchor="middle" class="score-badge" fill="#6ee7b7">96% ATS</text>
       
-      <rect x="10" y="44" width="135" height="22" rx="4" fill="rgba(255, 255, 255, 0.03)" />
-      <text x="16" y="58" class="cand-job">CyberSecure • $140k</text>
+      <rect x="10" y="42" width="144" height="20" rx="4" fill="rgba(255, 255, 255, 0.03)" />
+      <text x="16" y="56" class="cand-job">CyberSecure • $140k</text>
 
-      <text x="10" y="82" class="kw-tag" fill="#34d399">AWS • Docker • K8s</text>
-      <rect x="10" y="92" width="135" height="16" rx="4" fill="linear-gradient(135deg, #10b981, #059669)" />
-      <text x="77" y="103" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#fff">📅 Schedule Meet</text>
+      <text x="10" y="78" class="kw-tag" fill="#34d399">AWS • Docker • K8s</text>
+      <rect x="10" y="90" width="144" height="22" rx="5" fill="rgba(245, 158, 11, 0.2)" stroke="#f59e0b" stroke-width="0.8" />
+      <text x="82" y="105" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9.5" font-weight="800" fill="#fef08a">📅 Schedule Meet</text>
     </g>
   </g>
 
-  <!-- COL 4: Interview Scheduled (X=600) -->
-  <g transform="translate(600, 65)">
-    <rect width="185" height="425" rx="10" fill="rgba(16, 185, 129, 0.04)" stroke="rgba(16, 185, 129, 0.2)" stroke-width="1" />
-    <rect width="185" height="28" rx="10" fill="rgba(16, 185, 129, 0.15)" />
-    <text x="12" y="18" class="ats-col-hdr" fill="#34d399">📅 Interview Scheduled</text>
-    <rect x="152" y="6" width="22" height="16" rx="6" fill="#10b981" />
-    <text x="163" y="18" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#fff">2</text>
+  <!-- COL 4: Interview Scheduled (X=601) -->
+  <g transform="translate(601, 48)">
+    <rect width="188" height="184" rx="10" fill="rgba(16, 185, 129, 0.04)" stroke="rgba(16, 185, 129, 0.2)" stroke-width="1" />
+    <rect width="188" height="26" rx="10" fill="rgba(16, 185, 129, 0.15)" />
+    <text x="10" y="17" class="ats-col-hdr" fill="#34d399">📅 Interview Scheduled</text>
+    <rect x="158" y="5" width="20" height="16" rx="5" fill="#10b981" />
+    <text x="168" y="17" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#fff">2</text>
 
     <!-- Card: John Doe -->
-    <g transform="translate(10, 38)">
-      <rect width="165" height="130" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
-      <text x="10" y="20" class="cand-name">John Doe</text>
-      <text x="10" y="34" class="cand-role">Senior Backend Engineer</text>
-      <rect x="105" y="8" width="52" height="15" rx="4" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="0.8" />
-      <text x="131" y="19" text-anchor="middle" class="score-badge" fill="#6ee7b7">98% ATS</text>
+    <g transform="translate(8, 34)">
+      <rect width="172" height="140" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.3" />
+      <text x="10" y="18" class="cand-name">John Doe</text>
+      <text x="10" y="32" class="cand-role">Senior Backend Engineer</text>
+      <rect x="110" y="7" width="52" height="15" rx="4" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="0.8" />
+      <text x="136" y="18" text-anchor="middle" class="score-badge" fill="#6ee7b7">98% ATS</text>
       
-      <rect x="10" y="44" width="145" height="22" rx="4" fill="rgba(255, 255, 255, 0.03)" />
-      <text x="16" y="58" class="cand-job">TechCorp AI • $145k</text>
+      <rect x="10" y="42" width="152" height="20" rx="4" fill="rgba(255, 255, 255, 0.03)" />
+      <text x="16" y="56" class="cand-job">TechCorp AI • $145k</text>
 
-      <!-- Interview Pill -->
-      <rect x="10" y="72" width="145" height="20" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="0.8" />
-      <text x="82" y="86" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#a7f3d0">📧 Calendar Invite Sent</text>
-      <text x="10" y="106" class="kw-tag" fill="#94a3b8">Aug 28 at 03:00 PM PST</text>
+      <rect x="10" y="68" width="152" height="18" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="0.6" />
+      <text x="86" y="81" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#a7f3d0">📧 Aug 28 at 03:00 PM</text>
       
-      <rect x="10" y="112" width="145" height="12" rx="3" fill="#0284c7" />
-      <text x="82" y="121" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8" font-weight="800" fill="#fff">Make Offer / Hire ➔</text>
+      <rect x="10" y="90" width="152" height="22" rx="5" fill="rgba(2, 132, 199, 0.25)" stroke="#0284c7" stroke-width="0.8" />
+      <text x="86" y="105" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9.5" font-weight="800" fill="#7dd3fc">Make Offer / Hire ➔</text>
     </g>
   </g>
 
-  <!-- COL 5: Hired (X=795) -->
-  <g transform="translate(795, 65)">
-    <rect width="175" height="425" rx="10" fill="rgba(6, 182, 212, 0.04)" stroke="rgba(6, 182, 212, 0.2)" stroke-width="1" />
-    <rect width="175" height="28" rx="10" fill="rgba(6, 182, 212, 0.15)" />
-    <text x="12" y="18" class="ats-col-hdr" fill="#06b6d4">🎯 Hired / Offer</text>
-    <rect x="142" y="6" width="22" height="16" rx="6" fill="#06b6d4" />
-    <text x="153" y="18" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#0f172a">1</text>
+  <!-- COL 5: Hired (X=801) -->
+  <g transform="translate(801, 48)">
+    <rect width="174" height="184" rx="10" fill="rgba(6, 182, 212, 0.04)" stroke="rgba(6, 182, 212, 0.2)" stroke-width="1" />
+    <rect width="174" height="26" rx="10" fill="rgba(6, 182, 212, 0.15)" />
+    <text x="10" y="17" class="ats-col-hdr" fill="#06b6d4">🎯 Hired / Offer</text>
+    <rect x="144" y="5" width="20" height="16" rx="5" fill="#06b6d4" />
+    <text x="154" y="17" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="800" fill="#0f172a">1</text>
 
     <!-- Card: Nived Reddy (Hired) -->
-    <g transform="translate(10, 38)">
-      <rect width="155" height="115" rx="8" fill="#0f172a" stroke="#06b6d4" stroke-width="1.2" />
-      <text x="10" y="20" class="cand-name">Nived Reddy</text>
-      <text x="10" y="34" class="cand-role">Full-Stack Architect</text>
-      <rect x="95" y="8" width="52" height="15" rx="4" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" stroke-width="0.8" />
-      <text x="121" y="19" text-anchor="middle" class="score-badge" fill="#7dd3fc">99% ATS</text>
+    <g transform="translate(8, 34)">
+      <rect width="158" height="140" rx="8" fill="#0f172a" stroke="#06b6d4" stroke-width="1.2" />
+      <text x="10" y="18" class="cand-name">Nived Reddy</text>
+      <text x="10" y="32" class="cand-role">Full-Stack Architect</text>
+      <rect x="96" y="7" width="52" height="15" rx="4" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4" stroke-width="0.8" />
+      <text x="122" y="18" text-anchor="middle" class="score-badge" fill="#7dd3fc">99% ATS</text>
       
-      <rect x="10" y="44" width="135" height="22" rx="4" fill="rgba(255, 255, 255, 0.03)" />
-      <text x="16" y="58" class="cand-job">TechCorp AI • $160k</text>
+      <rect x="10" y="42" width="138" height="20" rx="4" fill="rgba(255, 255, 255, 0.03)" />
+      <text x="16" y="56" class="cand-job">TechCorp AI • $160k</text>
 
-      <text x="10" y="82" class="kw-tag" fill="#38bdf8">Flask • React • SQL</text>
-      <rect x="10" y="92" width="135" height="16" rx="4" fill="rgba(6, 182, 212, 0.2)" stroke="#06b6d4" stroke-width="0.6" />
-      <text x="77" y="103" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#a5f3fc">🎉 Offer Accepted</text>
+      <text x="10" y="78" class="kw-tag" fill="#38bdf8">Flask • React • SQL</text>
+      <rect x="10" y="90" width="138" height="22" rx="5" fill="rgba(6, 182, 212, 0.2)" stroke="#06b6d4" stroke-width="0.8" />
+      <text x="79" y="105" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9.5" font-weight="800" fill="#a5f3fc">🎉 Offer Accepted</text>
     </g>
   </g>
 
