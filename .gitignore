@@ -1,0 +1,18 @@
+# Python Virtual Environment
+.venv/
+Lib/
+Scripts/
+include/
+pyvenv.cfg
+.lock
+CACHEDIR.TAG
+__pycache__/
+*.pyc
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+
+# SQLite Database & Uploads
+backend/*.db
+backend/static/uploads/

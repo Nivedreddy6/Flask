@@ -1,0 +1,428 @@
+{% extends 'base.html' %}
+
+{% block title %}People & Professional Directory - HirePulse{% endblock %}
+
+{% block content %}
+<div class="people-hub-container" style="max-width: 1180px; margin: 0 auto; padding-bottom: 60px;">
+
+    <!-- Hero Header -->
+    <section class="hub-hero" style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.35) 0%, rgba(15, 23, 42, 0.9) 100%); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 24px; padding: 48px 40px; margin-bottom: 36px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);">
+        <div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: 20px; padding: 6px 16px; margin-bottom: 18px;">
+                <span style="color: #C084FC;">👥</span>
+                <span style="color: #E9D5FF; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;">HirePulse Member Network</span>
+            </div>
+            <h1 style="font-size: 2.7rem; font-weight: 800; color: #FFFFFF; line-height: 1.25; margin-bottom: 16px; letter-spacing: -0.02em;">
+                Connect with Mentors, Engineers & Hiring Leaders
+            </h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 24px; max-width: 560px;">
+                Grow your tech network, find engineering mentors, message verified recruiters, and discover alumni from leading tech companies worldwide.
+            </p>
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <a href="#people-grid" class="btn btn-primary" style="background: #9333EA; border-color: #9333EA; padding: 12px 24px; border-radius: 24px; font-weight: 700;">
+                    <i class="fa-solid fa-users"></i> Explore Directory
+                </a>
+                <a href="{{ url_for('jobs') }}" class="btn btn-secondary" style="padding: 12px 24px; border-radius: 24px; font-weight: 700;">
+                    <i class="fa-solid fa-magnifying-glass"></i> Explore Jobs
+                </a>
+            </div>
+        </div>
+        
+        <!-- Network Stats Card -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 28px; backdrop-filter: blur(12px);">
+            <div style="font-size: 0.85rem; text-transform: uppercase; color: #C084FC; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.06em;">Network Highlights</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px;">
+                <div style="background: rgba(255, 255, 255, 0.03); padding: 14px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);">
+                    <div style="font-size: 1.7rem; font-weight: 800; color: #FFFFFF;">18,500+</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Verified Engineers</div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.03); padding: 14px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);">
+                    <div style="font-size: 1.7rem; font-weight: 800; color: #34D399;">2,400+</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Active Tech Recruiters</div>
+                </div>
+            </div>
+            <div style="font-size: 0.84rem; color: var(--text-dim); display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-shield-halved" style="color: #38BDF8;"></i> 100% verified profiles with verified workplace emails
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <div class="form-card" style="max-width: 100%; margin-bottom: 30px; padding: 20px 24px;">
+        <div style="display: grid; grid-template-columns: 2fr 1fr auto; gap: 14px; align-items: center;">
+            <div class="form-group" style="margin: 0;">
+                <input type="text" id="people-search-input" onkeyup="filterPeopleCards()" class="form-control" placeholder="🔍 Search people by name, role (e.g. Frontend, Python), or company (e.g. Google, Meta)...">
+            </div>
+            <div class="form-group" style="margin: 0;">
+                <select id="people-role-select" onchange="filterPeopleCards()" class="form-control">
+                    <option value="all">All Roles & Specialties</option>
+                    <option value="engineer">Software Engineers</option>
+                    <option value="recruiter">Recruiters & Talent Leads</option>
+                    <option value="design">Product & UI/UX Designers</option>
+                    <option value="data">Data Scientists & ML Engineers</option>
+                    <option value="mentor">Mentors Open for 1-on-1</option>
+                </select>
+            </div>
+            <button type="button" onclick="clearPeopleFilters()" class="btn btn-secondary">Reset</button>
+        </div>
+    </div>
+
+    <!-- People Grid -->
+    <div id="people-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 24px;">
+
+        <!-- Person 1: Recruiter -->
+        <div class="person-card" data-role="recruiter" data-name="sarah jenkins techcorp recruiter" data-company="techcorp">
+            <div class="person-card-header" style="background: linear-gradient(135deg, #1E3A8A, #3B82F6);"></div>
+            <div class="person-avatar-wrapper">
+                <div class="person-avatar" style="background: #2563EB;">SJ</div>
+            </div>
+            <div class="person-body">
+                <h3 class="person-name">Sarah Jenkins <i class="fa-solid fa-circle-check" style="color: #38BDF8; font-size: 0.85rem;" title="Verified Recruiter"></i></h3>
+                <div class="person-title">Lead Technical Recruiter</div>
+                <div class="person-company"><i class="fa-solid fa-building"></i> TechCorp Solutions</div>
+                <div class="person-location"><i class="fa-solid fa-location-dot"></i> San Francisco, CA</div>
+                
+                <div class="person-tags">
+                    <span class="tag" style="background: rgba(16, 185, 129, 0.15); color: #34D399;"><i class="fa-solid fa-bolt"></i> Hiring Now</span>
+                    <span class="tag">Backend</span>
+                    <span class="tag">AI/ML</span>
+                </div>
+
+                <div class="person-action-row">
+                    <button onclick="handleConnect(this, 'Sarah Jenkins')" class="btn btn-primary btn-sm btn-connect">
+                        <i class="fa-solid fa-user-plus"></i> Connect
+                    </button>
+                    <button onclick="openMessageModal('Sarah Jenkins')" class="btn btn-outline btn-sm">
+                        <i class="fa-regular fa-message"></i> Message
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Person 2: Senior Engineer & Mentor -->
+        <div class="person-card" data-role="engineer mentor" data-name="alexander vargas staff software engineer cloudscale mentor" data-company="cloudscale">
+            <div class="person-card-header" style="background: linear-gradient(135deg, #065F46, #10B981);"></div>
+            <div class="person-avatar-wrapper">
+                <div class="person-avatar" style="background: #059669;">AV</div>
+            </div>
+            <div class="person-body">
+                <h3 class="person-name">Alexander Vargas <i class="fa-solid fa-circle-check" style="color: #38BDF8; font-size: 0.85rem;" title="Verified Pro"></i></h3>
+                <div class="person-title">Staff Software Engineer</div>
+                <div class="person-company"><i class="fa-solid fa-building"></i> CloudScale Systems</div>
+                <div class="person-location"><i class="fa-solid fa-location-dot"></i> Seattle, WA (Remote)</div>
+                
+                <div class="person-tags">
+                    <span class="tag" style="background: rgba(168, 85, 247, 0.15); color: #C084FC;"><i class="fa-solid fa-graduation-cap"></i> Mentor</span>
+                    <span class="tag">Distributed Systems</span>
+                    <span class="tag">Python</span>
+                </div>
+
+                <div class="person-action-row">
+                    <button onclick="handleConnect(this, 'Alexander Vargas')" class="btn btn-primary btn-sm btn-connect">
+                        <i class="fa-solid fa-user-plus"></i> Connect
+                    </button>
+                    <button onclick="openMessageModal('Alexander Vargas')" class="btn btn-outline btn-sm">
+                        <i class="fa-regular fa-message"></i> Message
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Person 3: Data Scientist -->
+        <div class="person-card" data-role="data mentor" data-name="priya sharma principal ai researcher data scientist nexustech" data-company="nexustech">
+            <div class="person-card-header" style="background: linear-gradient(135deg, #7C2D12, #F97316);"></div>
+            <div class="person-avatar-wrapper">
+                <div class="person-avatar" style="background: #EA580C;">PS</div>
+            </div>
+            <div class="person-body">
+                <h3 class="person-name">Dr. Priya Sharma <i class="fa-solid fa-circle-check" style="color: #38BDF8; font-size: 0.85rem;" title="Verified Scientist"></i></h3>
+                <div class="person-title">Principal AI Researcher</div>
+                <div class="person-company"><i class="fa-solid fa-building"></i> NexusTech AI</div>
+                <div class="person-location"><i class="fa-solid fa-location-dot"></i> Boston, MA</div>
+                
+                <div class="person-tags">
+                    <span class="tag">LLMs</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">Computer Vision</span>
+                </div>
+
+                <div class="person-action-row">
+                    <button onclick="handleConnect(this, 'Dr. Priya Sharma')" class="btn btn-primary btn-sm btn-connect">
+                        <i class="fa-solid fa-user-plus"></i> Connect
+                    </button>
+                    <button onclick="openMessageModal('Dr. Priya Sharma')" class="btn btn-outline btn-sm">
+                        <i class="fa-regular fa-message"></i> Message
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Person 4: Product Designer -->
+        <div class="person-card" data-role="design" data-name="elena morozova senior product designer stripe" data-company="stripe">
+            <div class="person-card-header" style="background: linear-gradient(135deg, #831843, #EC4899);"></div>
+            <div class="person-avatar-wrapper">
+                <div class="person-avatar" style="background: #DB2777;">EM</div>
+            </div>
+            <div class="person-body">
+                <h3 class="person-name">Elena Morozova</h3>
+                <div class="person-title">Senior Product Designer</div>
+                <div class="person-company"><i class="fa-solid fa-building"></i> DesignCraft Labs</div>
+                <div class="person-location"><i class="fa-solid fa-location-dot"></i> New York, NY</div>
+                
+                <div class="person-tags">
+                    <span class="tag">Figma</span>
+                    <span class="tag">Design Systems</span>
+                    <span class="tag">UX Strategy</span>
+                </div>
+
+                <div class="person-action-row">
+                    <button onclick="handleConnect(this, 'Elena Morozova')" class="btn btn-primary btn-sm btn-connect">
+                        <i class="fa-solid fa-user-plus"></i> Connect
+                    </button>
+                    <button onclick="openMessageModal('Elena Morozova')" class="btn btn-outline btn-sm">
+                        <i class="fa-regular fa-message"></i> Message
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Person 5: Full Stack Engineer -->
+        <div class="person-card" data-role="engineer" data-name="david o'connor full-stack software engineer react python" data-company="innovatelabs">
+            <div class="person-card-header" style="background: linear-gradient(135deg, #312E81, #6366F1);"></div>
+            <div class="person-avatar-wrapper">
+                <div class="person-avatar" style="background: #4F46E5;">DO</div>
+            </div>
+            <div class="person-body">
+                <h3 class="person-name">David O'Connor</h3>
+                <div class="person-title">Full-Stack Engineer</div>
+                <div class="person-company"><i class="fa-solid fa-building"></i> InnovateLabs</div>
+                <div class="person-location"><i class="fa-solid fa-location-dot"></i> Austin, TX</div>
+                
+                <div class="person-tags">
+                    <span class="tag" style="background: rgba(59, 130, 246, 0.15); color: #60A5FA;">#OpenToWork</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Node.js</span>
+                </div>
+
+                <div class="person-action-row">
+                    <button onclick="handleConnect(this, 'David O\'Connor')" class="btn btn-primary btn-sm btn-connect">
+                        <i class="fa-solid fa-user-plus"></i> Connect
+                    </button>
+                    <button onclick="openMessageModal('David O\'Connor')" class="btn btn-outline btn-sm">
+                        <i class="fa-regular fa-message"></i> Message
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Person 6: Hiring Manager / CyberSec -->
+        <div class="person-card" data-role="recruiter" data-name="michael zhou security engineering director cybersecure" data-company="cybersecure">
+            <div class="person-card-header" style="background: linear-gradient(135deg, #14532D, #22C55E);"></div>
+            <div class="person-avatar-wrapper">
+                <div class="person-avatar" style="background: #16A34A;">MZ</div>
+            </div>
+            <div class="person-body">
+                <h3 class="person-name">Michael Zhou <i class="fa-solid fa-circle-check" style="color: #38BDF8; font-size: 0.85rem;" title="Verified Leader"></i></h3>
+                <div class="person-title">Director of Security Eng</div>
+                <div class="person-company"><i class="fa-solid fa-building"></i> CyberSecure Corp</div>
+                <div class="person-location"><i class="fa-solid fa-location-dot"></i> Chicago, IL</div>
+                
+                <div class="person-tags">
+                    <span class="tag" style="background: rgba(16, 185, 129, 0.15); color: #34D399;"><i class="fa-solid fa-bolt"></i> Hiring</span>
+                    <span class="tag">AppSec</span>
+                    <span class="tag">Cloud Sec</span>
+                </div>
+
+                <div class="person-action-row">
+                    <button onclick="handleConnect(this, 'Michael Zhou')" class="btn btn-primary btn-sm btn-connect">
+                        <i class="fa-solid fa-user-plus"></i> Connect
+                    </button>
+                    <button onclick="openMessageModal('Michael Zhou')" class="btn btn-outline btn-sm">
+                        <i class="fa-regular fa-message"></i> Message
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Message Modal -->
+<div id="message-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+    <div class="form-card" style="max-width: 500px; width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3 style="color: #FFF; font-size: 1.25rem;">Direct Message to <span id="modal-recipient" style="color: #60A5FA;">Candidate</span></h3>
+            <span style="font-size: 1.6rem; cursor: pointer; color: var(--text-muted);" onclick="closeModal('message-modal')">&times;</span>
+        </div>
+        {% if session.get('user_id') %}
+            <form onsubmit="sendMessage(event)">
+                <div class="form-group">
+                    <label class="form-label">Your Message Note</label>
+                    <textarea class="form-control" rows="4" placeholder="Hi there! I came across your profile on HirePulse and wanted to connect regarding..." required></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('message-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Send Direct Note</button>
+                </div>
+            </form>
+        {% else %}
+            <div style="text-align: center; padding: 20px 0;">
+                <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 20px;">
+                    Join or sign in to HirePulse to start direct conversations with verified recruiters and engineers.
+                </p>
+                <div style="display: flex; gap: 12px; justify-content: center;">
+                    <a href="{{ url_for('login') }}" class="btn btn-outline" style="border-radius: 20px; padding: 8px 22px;">Sign in</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-primary" style="border-radius: 20px; padding: 8px 22px;">Join now</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+.person-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+}
+.person-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+.person-card-header {
+    height: 60px;
+    width: 100%;
+}
+.person-avatar-wrapper {
+    margin-top: -30px;
+    padding-left: 20px;
+}
+.person-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #0F172A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.person-body {
+    padding: 16px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.person-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.person-title {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.person-company {
+    font-size: 0.85rem;
+    color: #60A5FA;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.person-location {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+}
+.person-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+.person-action-row {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+.person-action-row .btn {
+    flex: 1;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.btn-connect.connected {
+    background: rgba(16, 185, 129, 0.2) !important;
+    border-color: #10B981 !important;
+    color: #34D399 !important;
+}
+</style>
+
+<script>
+function filterPeopleCards() {
+    const q = document.getElementById('people-search-input').value.toLowerCase().trim();
+    const role = document.getElementById('people-role-select').value;
+    const cards = document.querySelectorAll('.person-card');
+    
+    cards.forEach(card => {
+        const text = card.getAttribute('data-name');
+        const cardRole = card.getAttribute('data-role');
+        const matchesQuery = !q || text.includes(q);
+        const matchesRole = (role === 'all') || cardRole.includes(role);
+        
+        if (matchesQuery && matchesRole) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+function clearPeopleFilters() {
+    document.getElementById('people-search-input').value = '';
+    document.getElementById('people-role-select').value = 'all';
+    filterPeopleCards();
+}
+
+function handleConnect(btn, name) {
+    if (btn.classList.contains('connected')) {
+        btn.classList.remove('connected');
+        btn.innerHTML = '<i class="fa-solid fa-user-plus"></i> Connect';
+    } else {
+        btn.classList.add('connected');
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Pending';
+        alert('🤝 Connection invitation sent to ' + name + '!');
+    }
+}
+
+function openMessageModal(name) {
+    document.getElementById('modal-recipient').innerText = name;
+    document.getElementById('message-modal').style.display = 'flex';
+}
+
+function sendMessage(e) {
+    e.preventDefault();
+    closeModal('message-modal');
+    alert('✉️ Your note has been delivered successfully!');
+}
+</script>
+
+{% endblock %}

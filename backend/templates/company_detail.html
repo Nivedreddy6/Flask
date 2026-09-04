@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ company.company_name }} - Company Profile & Job Openings{% endblock %}
+
+{% block content %}
+<div style="max-width: 950px; margin: 0 auto;">
+    <a href="{{ url_for('jobs') }}" style="display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px; color: var(--text-muted); font-weight: 600;">
+        &larr; Back to All Jobs
+    </a>
+
+    <!-- Company Header Card -->
+    <div class="form-card" style="max-width: 100%; margin-bottom: 36px; border-color: var(--border-highlight);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <span class="tag" style="background: rgba(139, 92, 246, 0.2); color: #C084FC; font-weight: 700; margin-bottom: 8px;">
+                    Hiring Company Profile
+                </span>
+                <h1 style="font-size: 2.2rem; font-weight: 800; color: #FFF; margin: 8px 0;">{{ company.company_name }}</h1>
+                
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted); font-size: 0.95rem; margin-top: 8px;">
+                    {% if company.location %}<span><i class="fa-solid fa-location-dot" style="color: #94A3B8;"></i> {{ company.location }}</span>{% endif %}
+                    {% if company.website %}<a href="{{ company.website }}" target="_blank" style="color: var(--accent-primary);"><i class="fa-solid fa-globe"></i> Website</a>{% endif %}
+                </div>
+            </div>
+
+            <div class="tag" style="padding: 10px 20px; font-size: 1rem; background: rgba(16, 185, 129, 0.15); color: #34D399; font-weight: 700;">
+                {{ company_jobs|length }} Active Job Opening(s)
+            </div>
+        </div>
+
+        {% if company.description %}
+            <hr style="border-color: var(--border-color); margin: 24px 0;">
+            <h4 style="color: #FFF; margin-bottom: 8px;">About {{ company.company_name }}</h4>
+            <p style="color: var(--text-main); line-height: 1.7; font-size: 0.98rem; white-space: pre-line;">{{ company.description }}</p>
+        {% endif %}
+    </div>
+
+    <!-- Active Jobs Posted by this Company -->
+    <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; color: #FFF;">Job Openings at {{ company.company_name }}</h2>
+
+    <div class="job-grid">
+        {% for job in company_jobs %}
+            <div class="job-card">
+                <div>
+                    <div class="job-company">{{ job.company_name }}</div>
+                    <h3 class="job-title">{{ job.title }}</h3>
+                    
+                    <div class="job-meta">
+                        <span class="tag"><i class="fa-solid fa-location-dot" style="color: #94A3B8;"></i> {{ job.location }}</span>
+                        <span class="tag"><i class="fa-solid fa-briefcase" style="color: #818CF8;"></i> {{ job.job_type }}</span>
+                        <span class="tag"><i class="fa-solid fa-tag" style="color: #C084FC;"></i> {{ job.category }}</span>
+                    </div>
+
+                    <p class="job-description">{{ job.description }}</p>
+                </div>
+
+                <div class="job-card-footer">
+                    <span class="salary">{{ job.salary_range or 'Competitive Salary' }}</span>
+                    <a href="{{ url_for('job_detail', job_id=job.id) }}" class="btn btn-primary btn-sm">View & Apply</a>
+                </div>
+            </div>
+        {% else %}
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);" class="form-card">
+                <p>This company currently has no active job listings.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Notifications - JobSphere{% endblock %}
+
+{% block content %}
+<div style="max-width: 760px; margin: 20px auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <div>
+            <h1 style="font-size: 2rem; font-weight: 800;">Your Notifications</h1>
+            <p style="color: var(--text-muted);">Updates on your job applications and recruitment activity.</p>
+        </div>
+    </div>
+
+    <div class="table-card" style="padding: 10px;">
+        {% for n in notifications %}
+            <div style="padding: 18px 20px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; gap: 16px; {% if not n.is_read %}background: rgba(99, 102, 241, 0.08);{% endif %} border-radius: var(--radius-sm); margin-bottom: 4px;">
+                <div>
+                    <div style="font-size: 0.98rem; color: #FFF; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-bell" style="color: #FBBF24;"></i> {{ n.message }}
+                    </div>
+                    <div style="font-size: 0.82rem; color: var(--text-dim);">
+                        {{ n.created_at.strftime('%b %d, %Y at %I:%M %p') }}
+                    </div>
+                </div>
+
+                {% if n.link %}
+                    <a href="{{ n.link }}" class="btn btn-secondary btn-sm" style="white-space: nowrap;">View &rarr;</a>
+                {% endif %}
+            </div>
+        {% else %}
+            <div style="text-align: center; padding: 50px 20px; color: var(--text-muted);">
+                <h3>No notifications yet.</h3>
+                <p style="margin-top: 6px;">You will receive alerts here when recruiters or applicants update activity.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

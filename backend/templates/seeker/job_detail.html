@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ job.title }} at {{ job.company_name }} - LinkSphere{% endblock %}
+
+{% block content %}
+<div style="max-width: 920px; margin: 0 auto;">
+    
+    <!-- Back Link -->
+    <a href="{{ url_for('jobs') }}" style="display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px; color: var(--text-muted); font-weight: 600;">
+        &larr; Back to Job Search
+    </a>
+
+    <!-- Application Status Banner if already applied -->
+    {% if has_applied and application %}
+        <div class="alert alert-info" style="margin-bottom: 24px; flex-direction: column; align-items: flex-start; gap: 8px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                <strong style="font-size: 1.05rem;">Application Status:</strong>
+                <span class="status-badge status-{{ application.status.lower().replace(' ', '-') }}">
+                    {{ application.status }}
+                </span>
+            </div>
+            <p style="font-size: 0.9rem;">Submitted on {{ application.applied_at.strftime('%b %d, %Y') }}.</p>
+            {% if application.recruiter_notes %}
+                <div style="background: rgba(0, 0, 0, 0.25); padding: 10px 14px; border-radius: 6px; margin-top: 4px; width: 100%; font-size: 0.9rem;">
+                    <strong>Recruiter Note:</strong> {{ application.recruiter_notes }}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <!-- Job Header Card -->
+    <div class="form-card" style="max-width: 100%; margin-bottom: 24px; border-color: var(--border-highlight);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; gap: 16px; align-items: center;">
+                <div class="company-logo-avatar" style="width: 64px; height: 64px; font-size: 1.5rem;">
+                    {{ job.company_name[:2].upper() }}
+                </div>
+                <div>
+                    <h1 style="font-size: 2.2rem; font-weight: 800; color: #FFF; margin: 4px 0;">{{ job.title }}</h1>
+                    <div style="font-size: 1.05rem; font-weight: 600; color: var(--accent-primary);">
+                        {{ job.company_name }}
+                    </div>
+                </div>
+            </div>
+
+            {% if current_user and current_user.is_seeker() %}
+                {% if not has_applied %}
+                    <button onclick="openModal('apply-modal')" class="btn btn-easy-apply btn-lg"><i class="fa-solid fa-bolt"></i> Easy Apply</button>
+                {% else %}
+                    <button class="btn btn-secondary btn-lg" disabled><i class="fa-solid fa-check"></i> Applied</button>
+                {% endif %}
+            {% elif not current_user %}
+                <a href="{{ url_for('login', next=request.url) }}" class="btn btn-primary btn-lg"><i class="fa-solid fa-right-to-bracket"></i> Log In to Apply</a>
+            {% endif %}
+        </div>
+
+        <div class="job-meta" style="margin-top: 20px;">
+            <span class="tag"><i class="fa-solid fa-location-dot" style="color: #94A3B8;"></i> {{ job.location }}</span>
+            <span class="tag"><i class="fa-solid fa-briefcase" style="color: #818CF8;"></i> {{ job.job_type }}</span>
+            <span class="tag"><i class="fa-solid fa-tag" style="color: #C084FC;"></i> {{ job.category }}</span>
+            {% if job.salary_range %}
+                <span class="tag" style="background: rgba(16, 185, 129, 0.15); color: #34D399;"><i class="fa-solid fa-money-bill-wave" style="color: #34D399;"></i> {{ job.salary_range }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- LinkedIn Candidate Skill Match Card -->
+    {% if skill_match %}
+        <div class="skill-match-card" style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="color: #FFF; font-size: 1rem;">Candidate Skill Match</strong>
+                <span style="font-weight: 800; color: #34D399; font-size: 1.2rem;">{{ skill_match.score }}%</span>
+            </div>
+            
+            <div class="skill-match-bar-bg">
+                <div class="skill-match-bar-fill" style="width: {{ skill_match.score }}%;"></div>
+            </div>
+
+            <div style="margin-top: 10px; font-size: 0.88rem;">
+                {% if skill_match.matching %}
+                    <span style="color: var(--text-muted);">Matching Profile Skills:</span>
+                    <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+                        {% for m_skill in skill_match.matching %}
+                            <span class="tag" style="background: rgba(16, 185, 129, 0.2); color: #34D399;"><i class="fa-solid fa-check"></i> {{ m_skill }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if skill_match.missing %}
+                    <div style="margin-top: 8px;">
+                        <span style="color: var(--text-dim);">Missing Required Skills:</span>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+                            {% for mis_skill in skill_match.missing %}
+                                <span class="tag" style="background: rgba(100, 116, 139, 0.2); color: #94A3B8;">{{ mis_skill }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Job Body & Requirements -->
+    <div class="form-card" style="max-width: 100%; margin-bottom: 24px;">
+        <h3 style="color: #FFF; margin-bottom: 16px; font-size: 1.25rem;">About the job</h3>
+        <div style="color: var(--text-main); white-space: pre-line; line-height: 1.7;">
+            {{ job.description }}
+        </div>
+
+        {% if job.requirements %}
+            <hr style="border-color: var(--border-color); margin: 24px 0;">
+            <h3 style="color: #FFF; margin-bottom: 16px; font-size: 1.25rem;">Qualifications & Requirements</h3>
+            <div style="color: var(--text-main); white-space: pre-line; line-height: 1.7;">
+                {{ job.requirements }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Easy Apply Modal -->
+<div id="apply-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+    <div class="form-card" style="max-width: 540px; width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="color: #FFF; font-size: 1.3rem; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-bolt" style="color: #FBBF24;"></i> Easy Apply to {{ job.company_name }}</h3>
+            <span style="font-size: 1.5rem; cursor: pointer; color: var(--text-muted);" onclick="closeModal('apply-modal')">&times;</span>
+        </div>
+
+        <form action="{{ url_for('apply_job', job_id=job.id) }}" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-group">
+                <label class="form-label">Resume / CV Document</label>
+                {% if seeker_profile and seeker_profile.resume_filename %}
+                    <p style="font-size: 0.85rem; color: #34D399; margin-bottom: 8px;">
+                        <i class="fa-solid fa-circle-check"></i> Pre-filled from profile: <code>{{ seeker_profile.resume_filename }}</code>
+                    </p>
+                {% endif %}
+                <input type="file" name="resume_file" class="form-control" accept=".pdf,.doc,.docx,.txt" {% if not seeker_profile or not seeker_profile.resume_filename %}required{% endif %}>
+                <span style="font-size: 0.8rem; color: var(--text-dim); display: block; margin-top: 4px;">Accepted formats: PDF, DOC, DOCX, TXT</span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="cover_letter">Cover Note / Pitch (Optional)</label>
+                <textarea id="cover_letter" name="cover_letter" class="form-control" placeholder="Share why you are a great fit for {{ job.title }}..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('apply-modal')">Cancel</button>
+                <button type="submit" class="btn btn-easy-apply">Submit Application <i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

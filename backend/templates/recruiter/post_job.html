@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if job %}Edit Job Posting{% else %}Post New Job Opening{% endif %} - JobSphere{% endblock %}
+
+{% block content %}
+<div style="max-width: 780px; margin: 20px auto;">
+    <div class="form-card">
+        <h2 style="margin-bottom: 6px; font-weight: 800; text-align: center;">
+            {% if job %}Edit Job Posting{% else %}Create New Job Opening{% endif %}
+        </h2>
+        <p style="color: var(--text-muted); text-align: center; margin-bottom: 28px; font-size: 0.95rem;">
+            Reach qualified job seekers across tech, design, product, and data roles.
+        </p>
+
+        <form action="{% if job %}{{ url_for('edit_job', job_id=job.id) }}{% else %}{{ url_for('post_job') }}{% endif %}" method="POST">
+            
+            <div class="form-group">
+                <label class="form-label" for="title">Job Position Title *</label>
+                <input type="text" id="title" name="title" value="{{ job.title if job else '' }}" class="form-control" placeholder="e.g. Senior Backend Engineer (Python/Flask)" required autofocus>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                    <label class="form-label" for="category">Category *</label>
+                    <select id="category" name="category" class="form-control">
+                        {% for cat in categories %}
+                            <option value="{{ cat }}" {% if job and job.category == cat %}selected{% endif %}>{{ cat }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="job_type">Job Type *</label>
+                    <select id="job_type" name="job_type" class="form-control">
+                        {% for jt in job_types %}
+                            <option value="{{ jt }}" {% if job and job.job_type == jt %}selected{% endif %}>{{ jt }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                    <label class="form-label" for="location">Location *</label>
+                    <input type="text" id="location" name="location" value="{{ job.location if job else '' }}" class="form-control" placeholder="e.g. San Francisco, CA or Remote" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="salary_range">Salary Range (Optional)</label>
+                    <input type="text" id="salary_range" name="salary_range" value="{{ job.salary_range if job else '' }}" class="form-control" placeholder="e.g. $120,000 - $150,000 / year">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="skills_required">Required Skills (Comma-separated)</label>
+                <input type="text" id="skills_required" name="skills_required" value="{{ job.skills_required if job else '' }}" class="form-control" placeholder="e.g. Python, Flask, SQL, Docker, REST API">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="description">Job Summary & Description *</label>
+                <textarea id="description" name="description" class="form-control" placeholder="Describe the role, team, and high-level responsibilities..." required>{{ job.description if job else '' }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="requirements">Detailed Requirements & Qualification Criteria</label>
+                <textarea id="requirements" name="requirements" class="form-control" placeholder="List experience requirements, technical prerequisites, and qualifications..." style="min-height: 140px;">{{ job.requirements if job else '' }}</textarea>
+            </div>
+
+            {% if job %}
+                <div class="form-group">
+                    <label class="form-label" for="status">Posting Status</label>
+                    <select id="status" name="status" class="form-control">
+                        <option value="Active" {% if job.status == 'Active' %}selected{% endif %}>Active (Accepting Applications)</option>
+                        <option value="Closed" {% if job.status == 'Closed' %}selected{% endif %}>Closed (Hidden from Job Seekers)</option>
+                    </select>
+                </div>
+            {% endif %}
+
+            <div style="display: flex; gap: 12px; margin-top: 28px;">
+                <button type="submit" class="btn btn-primary" style="flex: 1;">
+                    {% if job %}Save Job Changes{% else %}Publish Job Opening 🚀{% endif %}
+                </button>
+                <a href="{{ url_for('recruiter_dashboard') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

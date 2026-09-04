@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %}My Job Applications & Interviews - LinkSphere{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
+    <div>
+        <h1 style="font-size: 2rem; font-weight: 800;">My Job Applications Tracker</h1>
+        <p style="color: var(--text-muted);">Monitor the status of your submitted job applications and interview schedules.</p>
+    </div>
+    <div style="display: flex; gap: 12px;">
+        <a href="{{ url_for('jobs') }}" class="btn btn-primary">+ Apply for More Jobs</a>
+        <a href="{{ url_for('seeker_profile') }}" class="btn btn-secondary">Update Resume & Profile</a>
+    </div>
+</div>
+
+<!-- Upcoming Scheduled Interviews Section -->
+{% set scheduled_interviews = applications | selectattr('status', 'equalto', 'Interview Scheduled') | list %}
+{% if scheduled_interviews %}
+    <div style="margin-bottom: 32px;">
+        <h2 style="font-size: 1.35rem; font-weight: 800; color: #FFF; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-calendar-check" style="color: #A78BFA;"></i> Upcoming Scheduled Interviews ({{ scheduled_interviews|length }})
+        </h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px;">
+            {% for app in scheduled_interviews %}
+                <div class="form-card" style="max-width: 100%; margin: 0; border: 2px solid #8B5CF6; background: rgba(139, 92, 246, 0.08);">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <span class="status-badge status-interview-scheduled">Interview Scheduled</span>
+                            <h3 style="color: #FFF; font-size: 1.2rem; margin-top: 6px;">{{ app.job.title }}</h3>
+                            <div style="color: var(--accent-primary); font-weight: 600;">{{ app.job.company_name }}</div>
+                        </div>
+                    </div>
+
+                    <hr style="border-color: var(--border-color); margin: 12px 0;">
+
+                    <!-- WHEN & HOW DETAILS -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.92rem;">
+                        <div>
+                            <strong style="color: #C084FC;"><i class="fa-solid fa-clock"></i> WHEN:</strong> 
+                            <span style="color: #FFF; font-weight: 700;">{{ app.interview_date or 'Date & Time confirmed by recruiter' }}</span>
+                        </div>
+
+                        <div>
+                            <strong style="color: #C084FC;"><i class="fa-solid fa-video"></i> HOW:</strong> 
+                            {% if app.interview_link %}
+                                {% if app.interview_link.startswith('http') %}
+                                    <a href="{{ app.interview_link }}" target="_blank" class="btn btn-primary btn-sm" style="margin-left: 6px; padding: 4px 14px;">
+                                        Join Video Call <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </a>
+                                {% else %}
+                                    <span style="color: #FFF; font-weight: 600;"><i class="fa-solid fa-location-dot"></i> {{ app.interview_link }}</span>
+                                {% endif %}
+                            {% else %}
+                                <span style="color: var(--text-muted);">Meeting details will be shared prior to interview</span>
+                            {% endif %}
+                        </div>
+
+                        {% if app.recruiter_notes %}
+                            <div style="background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 6px; margin-top: 6px;">
+                                <strong style="color: var(--text-muted); font-size: 0.82rem; display: block; margin-bottom: 2px;">RECRUITER INSTRUCTIONS / AGENDA:</strong>
+                                <span style="color: var(--text-main); font-size: 0.88rem;">{{ app.recruiter_notes }}</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+<!-- All Applications Table -->
+<h2 style="font-size: 1.35rem; font-weight: 800; color: #FFF; margin-bottom: 16px;">All Applications</h2>
+
+<div class="table-card">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Company & Position</th>
+                <th>Applied Date</th>
+                <th>Status</th>
+                <th>Interview / Recruiter Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in applications %}
+                <tr>
+                    <td>
+                        <strong style="color: #FFF; font-size: 1.05rem;">{{ app.job.title }}</strong>
+                        <div style="font-size: 0.85rem; color: var(--accent-primary);">{{ app.job.company_name }} • {{ app.job.location }}</div>
+                    </td>
+                    <td>{{ app.applied_at.strftime('%b %d, %Y') }}</td>
+                    <td>
+                        <span class="status-badge status-{{ app.status.lower().replace(' ', '-') }}">
+                            {{ app.status }}
+                        </span>
+                    </td>
+                    <td style="max-width: 280px;">
+                        {% if app.status == 'Interview Scheduled' and app.interview_date %}
+                            <div style="font-size: 0.85rem; color: #C084FC; font-weight: 700;">🗓️ {{ app.interview_date }}</div>
+                            {% if app.interview_link and app.interview_link.startswith('http') %}
+                                <a href="{{ app.interview_link }}" target="_blank" style="font-size: 0.82rem; color: #34D399; text-decoration: underline;">🔗 Join Meeting</a>
+                            {% endif %}
+                        {% elif app.recruiter_notes %}
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">{{ app.recruiter_notes }}</span>
+                        {% else %}
+                            <span style="color: var(--text-dim); font-style: italic;">No feedback yet</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div style="display: flex; gap: 8px;">
+                            <a href="{{ url_for('job_detail', job_id=app.job.id) }}" class="btn btn-secondary btn-sm">View Job</a>
+                            {% if app.resume_filename %}
+                                <a href="{{ url_for('download_resume', filename=app.resume_filename) }}" class="btn btn-secondary btn-sm" target="_blank">📄 Resume</a>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                        No job applications submitted yet. <a href="{{ url_for('jobs') }}">Browse active jobs</a> to get started!
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

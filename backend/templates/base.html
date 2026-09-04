@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}HirePulse - Next-Gen Career & Hiring Network{% endblock %}</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Reload Detection: Navigate to Main Portal on Refresh -->
+    <script>
+        (function() {
+            try {
+                var perf = window.performance;
+                if (perf) {
+                    var entries = perf.getEntriesByType && perf.getEntriesByType('navigation');
+                    var isReload = (entries && entries.length > 0 && entries[0].type === 'reload') || 
+                                   (perf.navigation && perf.navigation.type === 1);
+                    if (isReload && window.location.pathname !== '/' && window.location.pathname !== '') {
+                        window.location.replace('/');
+                    }
+                }
+            } catch(e) {
+                console.error(e);
+            }
+        })();
+    </script>
+    <!-- Custom Glassmorphism Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Ultra-Premium Frosted Glass Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a href="{{ url_for('index') }}" class="brand-logo">
+                <div class="brand-logo-badge">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="brand-text">HirePulse</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    {% if current_user %}
+                        {% if current_user.is_seeker() %}
+                            <li>
+                                <a href="{{ url_for('top_content') }}" class="nav-item {% if request.endpoint == 'top_content' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <span>Top Content</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('people') }}" class="nav-item {% if request.endpoint == 'people' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    <span>People</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('learning') }}" class="nav-item {% if request.endpoint == 'learning' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                    <span>Learning</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('jobs') }}" class="nav-item {% if request.endpoint in ['jobs', 'job_detail'] %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                                    <span>Jobs</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('seeker_dashboard') }}" class="nav-item {% if request.endpoint == 'seeker_dashboard' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    <span>My Jobs</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('seeker_profile') }}" class="nav-item {% if request.endpoint == 'seeker_profile' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                        {% elif current_user.is_recruiter() %}
+                            <li>
+                                <a href="{{ url_for('recruiter_dashboard') }}" class="nav-item {% if request.endpoint == 'recruiter_dashboard' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                                    <span>Recruiter</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('post_job') }}" class="nav-item {% if request.endpoint == 'post_job' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                                    <span>Post a Job</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('people') }}" class="nav-item {% if request.endpoint == 'people' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    <span>Candidates</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('company_profile') }}" class="nav-item {% if request.endpoint == 'company_profile' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><line x1="8" y1="6" x2="8.01" y2="6"></line><line x1="12" y1="6" x2="12.01" y2="6"></line><line x1="16" y1="6" x2="16.01" y2="6"></line><line x1="8" y1="10" x2="8.01" y2="10"></line><line x1="12" y1="10" x2="12.01" y2="10"></line><line x1="16" y1="10" x2="16.01" y2="10"></line></svg>
+                                    <span>Company Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('email_settings') }}" class="nav-item {% if request.endpoint == 'email_settings' %}active{% endif %}">
+                                    <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                                    <span>Email Settings</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        
+                        <!-- Notification Alert Badge -->
+                        <li>
+                            <a href="{{ url_for('notifications') }}" class="nav-item {% if request.endpoint == 'notifications' %}active{% endif %}" style="position: relative;">
+                                <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                                <span>Alerts</span>
+                                {% if unread_notifications_count > 0 %}
+                                    <span class="nav-alert-badge">
+                                        {{ unread_notifications_count }}
+                                    </span>
+                                {% endif %}
+                            </a>
+                        </li>
+
+                        <li>
+                            <span class="user-badge {% if current_user.is_seeker() %}badge-seeker{% else %}badge-recruiter{% endif %}">
+                                {{ current_user.role }}
+                            </span>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('logout') }}" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 6px; border-radius: 18px;">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ url_for('top_content') }}" class="nav-item {% if request.endpoint == 'top_content' %}active{% endif %}">
+                                <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <span>Top Content</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('people') }}" class="nav-item {% if request.endpoint == 'people' %}active{% endif %}">
+                                <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                <span>People</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('learning') }}" class="nav-item {% if request.endpoint == 'learning' %}active{% endif %}">
+                                <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                <span>Learning</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('jobs') }}" class="nav-item {% if request.endpoint in ['jobs', 'job_detail'] %}active{% endif %}">
+                                <svg class="nav-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                                <span>Jobs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('login') }}" class="btn btn-outline" style="border: 1.5px solid #0A66C2; color: #60A5FA; border-radius: 24px; padding: 7px 20px; font-weight: 700; text-decoration: none;">
+                                Sign in
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('register') }}" class="btn btn-primary" style="background: #0A66C2; color: #FFFFFF; border-radius: 24px; padding: 8px 22px; font-weight: 700; text-decoration: none;">
+                                Join now
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Flash Notification Banner -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                <span>{{ message }}</span>
+                                <span style="cursor:pointer; font-weight: 800;" onclick="this.parentElement.remove();">&times;</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 <strong>HirePulse</strong> Career Platform. Connecting Top Talent & World-Class Engineering Teams.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

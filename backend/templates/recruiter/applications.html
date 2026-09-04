@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block title %}Applicants for {{ job.title }} - JobSphere{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 24px;">
+    <a href="{{ url_for('recruiter_dashboard') }}" style="display: inline-flex; align-items: center; gap: 6px; margin-bottom: 12px; color: var(--text-muted); font-weight: 600;">
+        &larr; Back to Recruiter Dashboard
+    </a>
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <div>
+            <h1 style="font-size: 2rem; font-weight: 800;">Candidate Applications</h1>
+            <p style="color: var(--accent-primary); font-weight: 600; font-size: 1.05rem;">Position: {{ job.title }} ({{ job.location }})</p>
+        </div>
+        <span class="tag" style="padding: 8px 16px; font-size: 0.95rem; background: rgba(99, 102, 241, 0.2); color: #818CF8;">
+            Total Applicants: {{ applications|length }}
+        </span>
+    </div>
+</div>
+
+<!-- Status Filter Pills -->
+<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;">
+    <a href="{{ url_for('view_job_applications', job_id=job.id) }}" class="tag" style="padding: 8px 16px; {% if not status_filter %}background: var(--accent-primary); color:#FFF;{% endif %}">All Candidates</a>
+    <a href="{{ url_for('view_job_applications', job_id=job.id, status='Pending') }}" class="tag" style="padding: 8px 16px; {% if status_filter == 'Pending' %}background: var(--status-pending); color:#000;{% endif %}">Pending</a>
+    <a href="{{ url_for('view_job_applications', job_id=job.id, status='Under Review') }}" class="tag" style="padding: 8px 16px; {% if status_filter == 'Under Review' %}background: var(--status-review); color:#FFF;{% endif %}">Under Review</a>
+    <a href="{{ url_for('view_job_applications', job_id=job.id, status='Interview Scheduled') }}" class="tag" style="padding: 8px 16px; {% if status_filter == 'Interview Scheduled' %}background: var(--status-interview); color:#FFF;{% endif %}">Interview Scheduled</a>
+    <a href="{{ url_for('view_job_applications', job_id=job.id, status='Accepted') }}" class="tag" style="padding: 8px 16px; {% if status_filter == 'Accepted' %}background: var(--status-accepted); color:#FFF;{% endif %}">Accepted</a>
+    <a href="{{ url_for('view_job_applications', job_id=job.id, status='Rejected') }}" class="tag" style="padding: 8px 16px; {% if status_filter == 'Rejected' %}background: var(--status-rejected); color:#FFF;{% endif %}">Rejected</a>
+</div>
+
+<!-- Applications Table -->
+<div class="table-card">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Applicant Info</th>
+                <th>Applied Date</th>
+                <th>Status</th>
+                <th>Resume</th>
+                <th>Notes / Feedback</th>
+                <th>Update Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in applications %}
+                {% set profile = app.seeker.seeker_profile %}
+                <tr>
+                    <td>
+                        <strong style="color: #FFF; font-size: 1.05rem;">
+                            {{ profile.full_name if profile and profile.full_name else app.seeker.username }}
+                        </strong>
+                        <div style="font-size: 0.85rem; color: var(--accent-primary);">{{ profile.headline if profile and profile.headline else 'Job Seeker' }}</div>
+                        <div style="font-size: 0.82rem; color: var(--text-dim);"><i class="fa-solid fa-envelope"></i> {{ app.seeker.email }} {% if profile and profile.phone %}• <i class="fa-solid fa-phone"></i> {{ profile.phone }}{% endif %}</div>
+                        
+                        {% if app.cover_letter %}
+                            <button onclick="openModal('cover-modal-{{ app.id }}')" class="btn btn-secondary btn-sm" style="margin-top: 6px; padding: 2px 8px; font-size: 0.78rem;">
+                                <i class="fa-solid fa-comment-dots"></i> View Cover Note
+                            </button>
+                        {% endif %}
+                    </td>
+                    <td>{{ app.applied_at.strftime('%b %d, %Y') }}</td>
+                    <td>
+                        <span class="status-badge status-{{ app.status.lower().replace(' ', '-') }}">
+                            {{ app.status }}
+                        </span>
+                    </td>
+                    <td>
+                        {% if app.resume_filename %}
+                            <a href="{{ url_for('download_resume', filename=app.resume_filename) }}" target="_blank" class="btn btn-primary btn-sm">
+                                <i class="fa-solid fa-file-pdf"></i> View Resume
+                            </a>
+                        {% else %}
+                            <span style="color: var(--text-dim);">No file</span>
+                        {% endif %}
+                    </td>
+                    <td style="max-width: 200px;">
+                        {% if app.recruiter_notes %}
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">{{ app.recruiter_notes }}</span>
+                        {% else %}
+                            <span style="color: var(--text-dim); font-style: italic;">None</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                            <button onclick="openModal('status-modal-{{ app.id }}')" class="btn btn-secondary btn-sm">
+                                <i class="fa-solid fa-gear"></i> Status
+                            </button>
+                            <a href="{{ url_for('schedule_interview', app_id=app.id) }}" class="btn btn-primary btn-sm" style="background: #8B5CF6; border: none;">
+                                <i class="fa-solid fa-calendar-check"></i> Schedule Interview
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Status Update Modal for App {{ app.id }} -->
+                <div id="status-modal-{{ app.id }}" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+                    <div class="form-card" style="max-width: 500px; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="color: #FFF;">Update Candidate Application Status</h3>
+                            <span style="font-size: 1.5rem; cursor: pointer; color: var(--text-muted);" onclick="closeModal('status-modal-{{ app.id }}')">&times;</span>
+                        </div>
+
+                        <form action="{{ url_for('update_application_status', app_id=app.id) }}" method="POST">
+                            <div class="form-group">
+                                <label class="form-label">Application Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="Pending" {% if app.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                    <option value="Under Review" {% if app.status == 'Under Review' %}selected{% endif %}>Under Review</option>
+                                    <option value="Accepted" {% if app.status == 'Accepted' %}selected{% endif %}>Accepted</option>
+                                    <option value="Rejected" {% if app.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Recruiter Feedback / Internal Notes</label>
+                                <textarea name="recruiter_notes" class="form-control" placeholder="Add candidate feedback, evaluation notes, or hiring status...">{{ app.recruiter_notes or '' }}</textarea>
+                            </div>
+
+                            <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
+                                <button type="button" class="btn btn-secondary" onclick="closeModal('status-modal-{{ app.id }}')">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Status</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Cover Letter Modal for App {{ app.id }} -->
+                {% if app.cover_letter %}
+                <div id="cover-modal-{{ app.id }}" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+                    <div class="form-card" style="max-width: 550px; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                            <h3 style="color: #FFF;">Cover Note from {{ profile.full_name if profile and profile.full_name else app.seeker.username }}</h3>
+                            <span style="font-size: 1.5rem; cursor: pointer; color: var(--text-muted);" onclick="closeModal('cover-modal-{{ app.id }}')">&times;</span>
+                        </div>
+                        <div style="color: var(--text-main); white-space: pre-line; background: rgba(15, 23, 42, 0.7); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 0.95rem; max-height: 300px; overflow-y: auto;">
+                            {{ app.cover_letter }}
+                        </div>
+                        <div style="text-align: right; margin-top: 20px;">
+                            <button type="button" class="btn btn-secondary" onclick="closeModal('cover-modal-{{ app.id }}')">Close</button>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            {% else %}
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                        No candidates have applied for this position under the selected filter.
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

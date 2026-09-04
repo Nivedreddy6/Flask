@@ -1,0 +1,405 @@
+{% extends 'base.html' %}
+
+{% block title %}Learning & Tech Career Tracks - HirePulse{% endblock %}
+
+{% block content %}
+<div class="learning-hub-container" style="max-width: 1180px; margin: 0 auto; padding-bottom: 60px;">
+
+    <!-- Hero Header -->
+    <section class="hub-hero" style="background: linear-gradient(135deg, rgba(14, 116, 144, 0.35) 0%, rgba(15, 23, 42, 0.9) 100%); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 24px; padding: 48px 40px; margin-bottom: 36px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);">
+        <div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(103, 232, 249, 0.3); border-radius: 20px; padding: 6px 16px; margin-bottom: 18px;">
+                <span style="color: #67E8F9;">🖥️</span>
+                <span style="color: #A5F3FC; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;">HirePulse Learning Academy</span>
+            </div>
+            <h1 style="font-size: 2.7rem; font-weight: 800; color: #FFFFFF; line-height: 1.25; margin-bottom: 16px; letter-spacing: -0.02em;">
+                Master High-Impact Tech Skills & Get Hired
+            </h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 24px; max-width: 560px;">
+                Interactive learning roadmaps, system design blueprints, and production project tracks curated by engineers at Google, Stripe, and Meta.
+            </p>
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <a href="#courses-grid" class="btn btn-primary" style="background: #0891B2; border-color: #0891B2; padding: 12px 24px; border-radius: 24px; font-weight: 700;">
+                    <i class="fa-solid fa-graduation-cap"></i> Browse Free Tracks
+                </a>
+                <a href="{{ url_for('jobs') }}" class="btn btn-secondary" style="padding: 12px 24px; border-radius: 24px; font-weight: 700;">
+                    <i class="fa-solid fa-briefcase"></i> Explore Jobs by Skill
+                </a>
+            </div>
+        </div>
+        
+        <!-- Learning Stats Card -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 28px; backdrop-filter: blur(12px);">
+            <div style="font-size: 0.85rem; text-transform: uppercase; color: #22D3EE; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.06em;">Track Highlights</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px;">
+                <div style="background: rgba(255, 255, 255, 0.03); padding: 14px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);">
+                    <div style="font-size: 1.7rem; font-weight: 800; color: #FFFFFF;">140+</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Guided Hands-On Projects</div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.03); padding: 14px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);">
+                    <div style="font-size: 1.7rem; font-weight: 800; color: #34D399;">4.95 ★</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Avg Course Rating</div>
+                </div>
+            </div>
+            <div style="font-size: 0.84rem; color: var(--text-dim); display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-certificate" style="color: #FBBF24;"></i> Verified Certificates automatically added to your profile
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Filter Buttons -->
+    <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 32px; scrollbar-width: none;">
+        <button onclick="filterCourses('all', this)" class="track-filter-btn active">All Learning Tracks</button>
+        <button onclick="filterCourses('ai', this)" class="track-filter-btn">🤖 AI & LLM Engineering</button>
+        <button onclick="filterCourses('system', this)" class="track-filter-btn">🏗️ System Design & Cloud</button>
+        <button onclick="filterCourses('fullstack', this)" class="track-filter-btn">⚡ Full-Stack & Python</button>
+        <button onclick="filterCourses('interview', this)" class="track-filter-btn">🎯 Interview Algorithms</button>
+        <button onclick="filterCourses('devops', this)" class="track-filter-btn">🐳 DevOps & Docker</button>
+    </div>
+
+    <!-- Courses Grid -->
+    <div id="courses-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 28px;">
+
+        <!-- Course 1 -->
+        <div class="course-card" data-track="ai">
+            <div class="course-banner" style="background: linear-gradient(135deg, #1E1B4B, #4338CA);">
+                <div style="font-size: 2.2rem;">🤖</div>
+                <span class="tag" style="background: rgba(255,255,255,0.2); color: #FFF; font-weight: 700;">TOP RATED</span>
+            </div>
+            <div class="course-body">
+                <div class="course-meta">
+                    <span style="color: #FBBF24;"><i class="fa-solid fa-star"></i> 4.95 (3.8k reviews)</span>
+                    <span style="color: var(--text-dim);">• 24 Hours</span>
+                </div>
+                <h3 class="course-title">Generative AI & Autonomous Agent Architecture</h3>
+                <p class="course-desc">
+                    Master multi-agent orchestration, tool calling APIs, RAG semantic search pipelines, and latency optimizations for production LLMs.
+                </p>
+                <div class="course-skills">
+                    <span class="tag">LLM Tools</span>
+                    <span class="tag">Vector DBs</span>
+                    <span class="tag">Python</span>
+                </div>
+                <div class="course-footer">
+                    <div style="font-size: 0.85rem; color: #34D399; font-weight: 700;">
+                        <i class="fa-solid fa-unlock"></i> Free Enrollment
+                    </div>
+                    <button onclick="openCourseModal('Generative AI & Autonomous Agent Architecture')" class="btn btn-primary btn-sm" style="border-radius: 20px;">
+                        Start Track <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="course-card" data-track="system">
+            <div class="course-banner" style="background: linear-gradient(135deg, #0F766E, #0D9488);">
+                <div style="font-size: 2.2rem;">🏗️</div>
+                <span class="tag" style="background: rgba(255,255,255,0.2); color: #FFF; font-weight: 700;">STAFF LEVEL</span>
+            </div>
+            <div class="course-body">
+                <div class="course-meta">
+                    <span style="color: #FBBF24;"><i class="fa-solid fa-star"></i> 4.98 (5.2k reviews)</span>
+                    <span style="color: var(--text-dim);">• 18 Hours</span>
+                </div>
+                <h3 class="course-title">System Design at Hyper-Scale (10M+ RPS)</h3>
+                <p class="course-desc">
+                    Architect resilient distributed databases, write-heavy caching layers, rate-limiting gateways, and eventual consistency models.
+                </p>
+                <div class="course-skills">
+                    <span class="tag">Distributed Systems</span>
+                    <span class="tag">Kafka</span>
+                    <span class="tag">Redis</span>
+                </div>
+                <div class="course-footer">
+                    <div style="font-size: 0.85rem; color: #34D399; font-weight: 700;">
+                        <i class="fa-solid fa-unlock"></i> Free Enrollment
+                    </div>
+                    <button onclick="openCourseModal('System Design at Hyper-Scale')" class="btn btn-primary btn-sm" style="border-radius: 20px;">
+                        Start Track <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="course-card" data-track="fullstack">
+            <div class="course-banner" style="background: linear-gradient(135deg, #1E3A8A, #2563EB);">
+                <div style="font-size: 2.2rem;">⚡</div>
+                <span class="tag" style="background: rgba(255,255,255,0.2); color: #FFF; font-weight: 700;">FOUNDATION</span>
+            </div>
+            <div class="course-body">
+                <div class="course-meta">
+                    <span style="color: #FBBF24;"><i class="fa-solid fa-star"></i> 4.92 (4.1k reviews)</span>
+                    <span style="color: var(--text-dim);">• 20 Hours</span>
+                </div>
+                <h3 class="course-title">Modern Full-Stack Mastery: Python, Flask & React</h3>
+                <p class="course-desc">
+                    Build complete full-stack web applications with authentication, relational databases, REST APIs, and production deployment best practices.
+                </p>
+                <div class="course-skills">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">PostgreSQL</span>
+                </div>
+                <div class="course-footer">
+                    <div style="font-size: 0.85rem; color: #34D399; font-weight: 700;">
+                        <i class="fa-solid fa-unlock"></i> Free Enrollment
+                    </div>
+                    <button onclick="openCourseModal('Modern Full-Stack Mastery')" class="btn btn-primary btn-sm" style="border-radius: 20px;">
+                        Start Track <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 4 -->
+        <div class="course-card" data-track="interview">
+            <div class="course-banner" style="background: linear-gradient(135deg, #78350F, #D97706);">
+                <div style="font-size: 2.2rem;">🎯</div>
+                <span class="tag" style="background: rgba(255,255,255,0.2); color: #FFF; font-weight: 700;">INTERVIEW PREP</span>
+            </div>
+            <div class="course-body">
+                <div class="course-meta">
+                    <span style="color: #FBBF24;"><i class="fa-solid fa-star"></i> 4.96 (6.9k reviews)</span>
+                    <span style="color: var(--text-dim);">• 16 Hours</span>
+                </div>
+                <h3 class="course-title">FAANG Technical Coding: DSA Patterns Masterclass</h3>
+                <p class="course-desc">
+                    The top 14 algorithmic patterns needed to pass technical coding screens: Sliding Window, Two Pointers, Graph BFS/DFS, and Dynamic Programming.
+                </p>
+                <div class="course-skills">
+                    <span class="tag">Algorithms</span>
+                    <span class="tag">Data Structures</span>
+                    <span class="tag">FAANG</span>
+                </div>
+                <div class="course-footer">
+                    <div style="font-size: 0.85rem; color: #34D399; font-weight: 700;">
+                        <i class="fa-solid fa-unlock"></i> Free Enrollment
+                    </div>
+                    <button onclick="openCourseModal('FAANG Technical Coding Patterns')" class="btn btn-primary btn-sm" style="border-radius: 20px;">
+                        Start Track <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 5 -->
+        <div class="course-card" data-track="devops">
+            <div class="course-banner" style="background: linear-gradient(135deg, #134E4A, #059669);">
+                <div style="font-size: 2.2rem;">🐳</div>
+                <span class="tag" style="background: rgba(255,255,255,0.2); color: #FFF; font-weight: 700;">CLOUD NATIVE</span>
+            </div>
+            <div class="course-body">
+                <div class="course-meta">
+                    <span style="color: #FBBF24;"><i class="fa-solid fa-star"></i> 4.90 (2.4k reviews)</span>
+                    <span style="color: var(--text-dim);">• 14 Hours</span>
+                </div>
+                <h3 class="course-title">Docker, Kubernetes & Production CI/CD Pipelines</h3>
+                <p class="course-desc">
+                    Containerize applications, manage Kubernetes pods and ingress controllers, and automate zero-downtime rolling deployments via GitHub Actions.
+                </p>
+                <div class="course-skills">
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">CI/CD</span>
+                </div>
+                <div class="course-footer">
+                    <div style="font-size: 0.85rem; color: #34D399; font-weight: 700;">
+                        <i class="fa-solid fa-unlock"></i> Free Enrollment
+                    </div>
+                    <button onclick="openCourseModal('Docker, Kubernetes & Production CI/CD Pipelines')" class="btn btn-primary btn-sm" style="border-radius: 20px;">
+                        Start Track <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 6 -->
+        <div class="course-card" data-track="ai">
+            <div class="course-banner" style="background: linear-gradient(135deg, #701A75, #C026D3);">
+                <div style="font-size: 2.2rem;">🧠</div>
+                <span class="tag" style="background: rgba(255,255,255,0.2); color: #FFF; font-weight: 700;">ADVANCED AI</span>
+            </div>
+            <div class="course-body">
+                <div class="course-meta">
+                    <span style="color: #FBBF24;"><i class="fa-solid fa-star"></i> 4.94 (3.1k reviews)</span>
+                    <span style="color: var(--text-dim);">• 22 Hours</span>
+                </div>
+                <h3 class="course-title">Fine-Tuning Open Source LLMs: LoRA & Quantization</h3>
+                <p class="course-desc">
+                    Hands-on parameter-efficient fine-tuning (PEFT), QLoRA, dataset formatting, and deploying lightweight models onto consumer GPUs.
+                </p>
+                <div class="course-skills">
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">LoRA</span>
+                    <span class="tag">HuggingFace</span>
+                </div>
+                <div class="course-footer">
+                    <div style="font-size: 0.85rem; color: #34D399; font-weight: 700;">
+                        <i class="fa-solid fa-unlock"></i> Free Enrollment
+                    </div>
+                    <button onclick="openCourseModal('Fine-Tuning Open Source LLMs')" class="btn btn-primary btn-sm" style="border-radius: 20px;">
+                        Start Track <i class="fa-solid fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Learning Assessment Banner -->
+    <section style="margin-top: 60px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 24px; padding: 40px; text-align: center;">
+        <h2 style="font-size: 2rem; font-weight: 800; color: #FFFFFF; margin-bottom: 12px;">
+            Test Your Tech Skills & Benchmark Against Peers
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto 24px auto;">
+            Take our 15-minute interactive skill assessments in Python, System Design, or React to display verified skill badges on your HirePulse profile.
+        </p>
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('register') }}" class="btn btn-primary" style="border-radius: 24px; padding: 12px 28px; font-weight: 700;">
+                Take Free Skill Assessment <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="{{ url_for('jobs') }}" class="btn btn-secondary" style="border-radius: 24px; padding: 12px 28px; font-weight: 700;">
+                View Jobs Requiring These Skills
+            </a>
+        </div>
+    </section>
+
+</div>
+
+<!-- Course Syllabus Modal -->
+<div id="course-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+    <div class="form-card" style="max-width: 600px; width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <span class="tag" style="background: rgba(6, 182, 212, 0.2); color: #22D3EE; font-weight: 700;">COURSE SYLLABUS</span>
+            <span style="font-size: 1.6rem; cursor: pointer; color: var(--text-muted);" onclick="closeModal('course-modal')">&times;</span>
+        </div>
+        <h2 id="modal-course-title" style="font-size: 1.5rem; font-weight: 800; color: #FFF; margin-bottom: 16px;">Course Title</h2>
+        <div style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+            <div style="margin-bottom: 10px;"><strong>Module 1:</strong> Architecture Fundamentals & Real-World Case Studies</div>
+            <div style="margin-bottom: 10px;"><strong>Module 2:</strong> Hands-on Lab: Building & Deploying the Core Service</div>
+            <div style="margin-bottom: 10px;"><strong>Module 3:</strong> Performance Profiling, Caching & Scaling</div>
+            <div style="margin-bottom: 10px;"><strong>Module 4:</strong> Capstone Project & Certificate Verification</div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 12px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+            <button onclick="closeModal('course-modal')" class="btn btn-secondary" style="border-radius: 20px;">Close</button>
+            <button onclick="startTrackAction()" class="btn btn-primary" style="border-radius: 20px;">Enroll & Start Module 1</button>
+        </div>
+    </div>
+</div>
+
+<style>
+.track-filter-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+.track-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.track-filter-btn.active {
+    background: #0891B2;
+    color: #FFFFFF;
+    border-color: #0891B2;
+    box-shadow: 0 4px 14px rgba(8, 145, 178, 0.4);
+}
+.course-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+}
+.course-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+.course-banner {
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.course-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.course-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+.course-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.35;
+    margin-bottom: 10px;
+}
+.course-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+.course-skills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 14px;
+}
+</style>
+
+<script>
+function filterCourses(track, btn) {
+    document.querySelectorAll('.track-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const cards = document.querySelectorAll('.course-card');
+    cards.forEach(card => {
+        if (track === 'all' || card.getAttribute('data-track') === track) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+function openCourseModal(title) {
+    document.getElementById('modal-course-title').innerText = title;
+    document.getElementById('course-modal').style.display = 'flex';
+}
+
+function startTrackAction() {
+    closeModal('course-modal');
+    alert('🚀 Welcome to the track! Module 1 video & interactive exercises have been unlocked in your dashboard.');
+}
+</script>
+
+{% endblock %}

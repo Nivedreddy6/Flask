@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}Schedule Interview for {{ application.seeker.username }} - LinkSphere{% endblock %}
+
+{% block extra_css %}
+<!-- Flatpickr Interactive Calendar & Time Picker CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+{% endblock %}
+
+{% block content %}
+<div style="max-width: 680px; margin: 20px auto;">
+    
+    <a href="{{ url_for('view_job_applications', job_id=job.id) }}" style="display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px; color: var(--text-muted); font-weight: 600;">
+        &larr; Back to Candidate Applications
+    </a>
+
+    <div class="form-card" style="max-width: 100%;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+            <div>
+                <span class="tag" style="background: rgba(10, 102, 194, 0.2); color: #70B5F9; font-weight: 700; margin-bottom: 6px;">
+                    Professional Interview Scheduler
+                </span>
+                <h1 style="font-size: 1.8rem; font-weight: 800; color: #FFF; margin-top: 4px;">Schedule Candidate Interview</h1>
+            </div>
+            <span class="status-badge status-interview-scheduled" style="font-size: 0.85rem; padding: 6px 14px;">
+                Status: Interview Scheduled
+            </span>
+        </div>
+
+        <!-- Candidate Overview Box -->
+        <div style="background: #0F172A; padding: 18px 22px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+                <div>
+                    <h3 style="color: #FFF; font-size: 1.15rem; margin-bottom: 2px;">
+                        {{ profile.full_name if profile and profile.full_name else application.seeker.username }}
+                    </h3>
+                    <div style="font-size: 0.92rem; color: var(--accent-primary); font-weight: 600;">
+                        Position: {{ job.title }}
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
+                        ✉️ Email Invitation Target: <strong style="color: #34D399;">{{ application.seeker.email }}</strong>
+                        {% if profile and profile.phone %} • 📞 {{ profile.phone }}{% endif %}
+                    </div>
+                </div>
+
+                {% if application.resume_filename %}
+                    <a href="{{ url_for('download_resume', filename=application.resume_filename) }}" target="_blank" class="btn btn-secondary btn-sm">
+                        📄 View Resume
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Interview Scheduling Form -->
+        <form action="{{ url_for('schedule_interview', app_id=application.id) }}" method="POST">
+            
+            <!-- 1. Interactive Visual Calendar & Time Picker -->
+            <div class="form-group">
+                <label class="form-label" for="interview_date">📅 Pick Interview Date & Time (Calendar)</label>
+                <input type="text" id="interview_date" name="interview_date" class="form-control" placeholder="Click to select Date & Time on visual calendar..." required>
+                {% if application.interview_date %}
+                    <span style="font-size: 0.82rem; color: #34D399; margin-top: 6px; display: block;">
+                        ✓ Currently Scheduled: <strong>{{ application.interview_date }}</strong>
+                    </span>
+                {% endif %}
+            </div>
+
+            <!-- 2. Interview Link / Venue -->
+            <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <label class="form-label" style="margin-bottom: 0;" for="interview_link">🌐 Video Meeting Link / Venue Location</label>
+                    <button type="button" onclick="document.getElementById('interview_link').value = 'https://meet.google.com/abc-defg-hij';" class="btn btn-secondary btn-sm" style="padding: 2px 8px; font-size: 0.75rem;">
+                        ⚡ Generate Google Meet Link
+                    </button>
+                </div>
+                <input type="text" id="interview_link" name="interview_link" value="{{ application.interview_link or '' }}" class="form-control" placeholder="e.g. https://meet.google.com/abc-defg-hij or Office Location" required>
+            </div>
+
+            <!-- 3. Agenda / Recruiter Notes -->
+            <div class="form-group">
+                <label class="form-label" for="recruiter_notes"><i class="fa-solid fa-pen-to-square"></i> Recruiter Agenda & Candidate Instructions</label>
+                <textarea id="recruiter_notes" name="recruiter_notes" class="form-control" rows="4" placeholder="Share round details (e.g. Technical Round 1 focused on Python/Flask), interviewers, and preparation notes...">{{ application.recruiter_notes or '' }}</textarea>
+            </div>
+
+            <div style="background: rgba(5, 118, 66, 0.15); border: 1px solid rgba(5, 118, 66, 0.4); padding: 12px 16px; border-radius: var(--radius-sm); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; color: #34D399; font-size: 0.88rem;">
+                <span style="font-size: 1.1rem;"><i class="fa-solid fa-paper-plane"></i></span>
+                <span>Submitting this form will automatically generate and send a <strong>Professional HTML Email Invitation</strong> directly to <code>{{ application.seeker.email }}</code>.</span>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                <a href="{{ url_for('view_job_applications', job_id=job.id) }}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-easy-apply btn-lg" style="font-weight: 800;">
+                    Send Professional Email Invitation <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Flatpickr JS Script -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    flatpickr("#interview_date", {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        altInput: true,
+        altFormat: "F j, Y at h:i K",
+        minDate: "today",
+        theme: "dark"
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,501 @@
+{% extends 'base.html' %}
+
+{% block title %}Explore Jobs & Career Opportunities - HirePulse{% endblock %}
+
+{% block content %}
+<div class="jobs-landing-wrapper" style="max-width: 1180px; margin: 0 auto; padding-bottom: 60px;">
+
+    <!-- 1. HERO JOBS LANDING SECTION -->
+    <section class="jobs-hero-section" style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.45) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1px solid rgba(96, 165, 250, 0.25); border-radius: 24px; padding: 44px 36px; margin-bottom: 36px; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);">
+        <div style="max-width: 760px; margin-bottom: 28px;">
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(59, 130, 246, 0.18); border: 1px solid rgba(96, 165, 250, 0.35); border-radius: 20px; padding: 6px 16px; margin-bottom: 16px;">
+                <span style="color: #60A5FA;">💼</span>
+                <span style="color: #93C5FD; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;">HirePulse Career Board</span>
+            </div>
+            <h1 style="font-size: 2.8rem; font-weight: 800; color: #FFFFFF; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em;">
+                Find Your Next Career Move
+            </h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+                Discover {{ jobs|length }}+ active tech, engineering, and design roles at world-class companies. Apply with 1-click using your verified profile.
+            </p>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="form-card" style="max-width: 100%; padding: 18px 24px; background: rgba(15, 23, 42, 0.85); border-color: rgba(255, 255, 255, 0.15);">
+            <form action="{{ url_for('jobs') }}#explorer-section" method="GET" style="display: grid; grid-template-columns: 2fr 1.4fr 1.1fr 1.1fr auto; gap: 12px; align-items: center;">
+                
+                <div class="form-group" style="margin: 0;">
+                    <input type="text" name="q" value="{{ query_text }}" class="form-control" placeholder="🔍 Job title, skill (e.g. Python, React), or company...">
+                </div>
+
+                <div class="form-group" style="margin: 0;">
+                    <input type="text" name="location" value="{{ location }}" class="form-control" placeholder="📍 City or Remote">
+                </div>
+
+                <div class="form-group" style="margin: 0;">
+                    <select name="category" class="form-control">
+                        <option value="">All Categories</option>
+                        {% for cat in categories %}
+                            <option value="{{ cat }}" {% if category == cat %}selected{% endif %}>{{ cat }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin: 0;">
+                    <select name="job_type" class="form-control">
+                        <option value="">All Job Types</option>
+                        <option value="Full-time" {% if job_type == 'Full-time' %}selected{% endif %}>Full-time</option>
+                        <option value="Part-time" {% if job_type == 'Part-time' %}selected{% endif %}>Part-time</option>
+                        <option value="Remote" {% if job_type == 'Remote' %}selected{% endif %}>Remote</option>
+                        <option value="Contract" {% if job_type == 'Contract' %}selected{% endif %}>Contract</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="padding: 11px 22px; font-weight: 700; white-space: nowrap;">
+                    <i class="fa-solid fa-magnifying-glass"></i> Search
+                </button>
+            </form>
+        </div>
+
+        <!-- Quick Trending Search Tags -->
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 20px;">
+            <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 600;">Popular Searches:</span>
+            <a href="{{ url_for('jobs', job_type='Remote') }}#explorer-section" class="popular-search-tag"><i class="fa-solid fa-house-laptop"></i> Remote</a>
+            <a href="{{ url_for('jobs', category='Engineering') }}#explorer-section" class="popular-search-tag"><i class="fa-solid fa-code"></i> Engineering</a>
+            <a href="{{ url_for('jobs', q='Python') }}#explorer-section" class="popular-search-tag"><i class="fa-brands fa-python"></i> Python</a>
+            <a href="{{ url_for('jobs', q='React') }}#explorer-section" class="popular-search-tag"><i class="fa-brands fa-react"></i> React</a>
+            <a href="{{ url_for('jobs', category='Data Science') }}#explorer-section" class="popular-search-tag"><i class="fa-solid fa-brain"></i> AI & Data Science</a>
+            <a href="{{ url_for('jobs', category='Security') }}#explorer-section" class="popular-search-tag"><i class="fa-solid fa-shield-halved"></i> Cybersecurity</a>
+        </div>
+    </section>
+
+    <!-- 2. BROWSE BY TOP CATEGORIES (LANDING FEATURE) -->
+    <section style="margin-bottom: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
+            <div>
+                <h2 style="font-size: 1.8rem; font-weight: 800; color: #FFFFFF; margin-bottom: 4px;">Explore by Job Category</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Select a domain to see verified live openings</p>
+            </div>
+            {% if category or job_type or query_text or location %}
+                <a href="{{ url_for('jobs') }}" class="btn btn-secondary btn-sm" style="border-radius: 16px;">
+                    <i class="fa-solid fa-xmark"></i> Clear Filters
+                </a>
+            {% endif %}
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;">
+            
+            <a href="{{ url_for('jobs', category='Engineering') }}#explorer-section" class="category-card {% if category == 'Engineering' %}active{% endif %}">
+                <div class="category-icon" style="background: rgba(59, 130, 246, 0.15); color: #60A5FA;">💻</div>
+                <div class="category-title">Engineering</div>
+                <div class="category-count">{{ category_counts.get('Engineering', 0) }} Openings</div>
+            </a>
+
+            <a href="{{ url_for('jobs', category='Design') }}#explorer-section" class="category-card {% if category == 'Design' %}active{% endif %}">
+                <div class="category-icon" style="background: rgba(236, 72, 153, 0.15); color: #F472B6;">🎨</div>
+                <div class="category-title">Product Design</div>
+                <div class="category-count">{{ category_counts.get('Design', 0) }} Openings</div>
+            </a>
+
+            <a href="{{ url_for('jobs', category='Data Science') }}#explorer-section" class="category-card {% if category == 'Data Science' %}active{% endif %}">
+                <div class="category-icon" style="background: rgba(168, 85, 247, 0.15); color: #C084FC;">🤖</div>
+                <div class="category-title">AI & Data</div>
+                <div class="category-count">{{ category_counts.get('Data Science', 0) }} Openings</div>
+            </a>
+
+            <a href="{{ url_for('jobs', category='Security') }}#explorer-section" class="category-card {% if category == 'Security' %}active{% endif %}">
+                <div class="category-icon" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">🔒</div>
+                <div class="category-title">Cybersecurity</div>
+                <div class="category-count">{{ category_counts.get('Security', 0) }} Openings</div>
+            </a>
+
+            <a href="{{ url_for('jobs', category='Marketing') }}#explorer-section" class="category-card {% if category == 'Marketing' %}active{% endif %}">
+                <div class="category-icon" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24;">📢</div>
+                <div class="category-title">Marketing</div>
+                <div class="category-count">{{ category_counts.get('Marketing', 0) }} Openings</div>
+            </a>
+
+            <a href="{{ url_for('jobs', category='Product') }}#explorer-section" class="category-card {% if category == 'Product' %}active{% endif %}">
+                <div class="category-icon" style="background: rgba(6, 182, 212, 0.15); color: #22D3EE;">🚀</div>
+                <div class="category-title">Product Mgmt</div>
+                <div class="category-count">{{ category_counts.get('Product', 0) }} Openings</div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- 3. FEATURED JOB SPOTLIGHTS -->
+    {% if featured_jobs and not query_text and not category and not job_type and not location %}
+    <section style="margin-bottom: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div>
+                <h2 style="font-size: 1.8rem; font-weight: 800; color: #FFFFFF; margin-bottom: 4px;">Featured High-Priority Openings</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Roles with fast-track recruiter review & direct interview scheduling</p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px;">
+            {% for fj in featured_jobs %}
+                <div class="featured-role-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div class="company-logo-avatar" style="width: 44px; height: 44px; font-size: 1.1rem;">
+                            {{ fj.company_name[:2].upper() }}
+                        </div>
+                        <span class="tag" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24; font-weight: 700; font-size: 0.75rem;">
+                            <i class="fa-solid fa-bolt"></i> FAST TRACK
+                        </span>
+                    </div>
+                    <h4 style="font-size: 1.15rem; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; line-height: 1.3;">{{ fj.title }}</h4>
+                    <div style="font-size: 0.9rem; color: #60A5FA; font-weight: 600; margin-bottom: 8px;">{{ fj.company_name }}</div>
+                    <div style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 14px;">
+                        <i class="fa-solid fa-location-dot"></i> {{ fj.location }} • {{ fj.job_type }}
+                    </div>
+                    {% if fj.salary_range %}
+                        <div style="font-size: 0.85rem; color: #34D399; font-weight: 700; margin-bottom: 14px;">
+                            <i class="fa-solid fa-money-bill-wave"></i> {{ fj.salary_range }}
+                        </div>
+                    {% endif %}
+                    <a href="{{ url_for('jobs', selected=fj.id) }}#explorer-section" class="btn btn-outline btn-sm" style="width: 100%; border-radius: 18px; text-align: center; justify-content: center;">
+                        View Opening <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- 4. INTERACTIVE 2-COLUMN SPLIT PANE EXPLORER -->
+    <div id="explorer-section" style="padding-top: 10px; margin-bottom: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: #FFFFFF;">
+                Active Job Listings
+            </h2>
+            <span style="font-size: 0.95rem; color: var(--text-muted);">
+                Showing <strong>{{ jobs|length }}</strong> available position(s)
+            </span>
+        </div>
+
+        <div class="split-pane-container">
+            
+            <!-- LEFT COLUMN: Scrollable Job Listings -->
+            <div class="job-list-pane">
+                <div style="padding: 12px 16px; border-bottom: 1px solid var(--border-color); background: #0F172A; display: flex; justify-content: space-between; align-items: center;">
+                    <strong style="font-size: 0.9rem; color: var(--text-muted);">{{ jobs|length }} Job Result(s)</strong>
+                    <span style="font-size: 0.8rem; color: var(--text-dim);">Sorted by newest</span>
+                </div>
+
+                {% for j in jobs %}
+                    {% set match = job_matches[j.id] %}
+                    <a href="{{ url_for('jobs', selected=j.id, q=query_text, category=category, job_type=job_type, location=location) }}#explorer-section" 
+                       class="job-item-card {% if selected_job and selected_job.id == j.id %}active{% endif %}">
+                        
+                        <div class="company-logo-avatar">
+                            {{ j.company_name[:2].upper() }}
+                        </div>
+
+                        <div class="job-item-info">
+                            <h4 class="job-item-title">{{ j.title }}</h4>
+                            <div class="job-item-company">{{ j.company_name }}</div>
+                            <div class="job-item-location"><i class="fa-solid fa-location-dot"></i> {{ j.location }} • {{ j.job_type }}</div>
+                            
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
+                                <span class="easy-apply-tag"><i class="fa-solid fa-bolt" style="color: #FBBF24;"></i> Easy Apply</span>
+                                
+                                <!-- Skill match indicator -->
+                                {% if match and match.score > 0 %}
+                                    <span class="tag" style="background: rgba(16, 185, 129, 0.15); color: #34D399; font-weight: 700; font-size: 0.75rem;">
+                                        {{ match.score }}% Skill Match
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                    <div style="padding: 40px; text-align: center; color: var(--text-muted);">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">🔍</div>
+                        <p style="font-size: 1.1rem; color: #FFF; font-weight: 700; margin-bottom: 6px;">No jobs found matching your criteria.</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 16px;">Try adjusting your keyword, category, or location filters.</p>
+                        <a href="{{ url_for('jobs') }}" class="btn btn-secondary btn-sm" style="border-radius: 18px;">Reset All Filters</a>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- RIGHT COLUMN: Sticky Job Detail View & Easy Apply -->
+            {% if selected_job %}
+                {% set sel_match = job_matches[selected_job.id] %}
+                <div class="job-detail-pane">
+                    
+                    <!-- Company & Job Header -->
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+                        <div style="display: flex; gap: 16px; align-items: center;">
+                            <div class="company-logo-avatar" style="width: 56px; height: 56px; font-size: 1.4rem;">
+                                {{ selected_job.company_name[:2].upper() }}
+                            </div>
+                            <div>
+                                <h2 style="font-size: 1.6rem; font-weight: 800; color: #FFF; line-height: 1.2;">{{ selected_job.title }}</h2>
+                                <div style="font-size: 1rem; color: var(--accent-primary); font-weight: 600; margin-top: 4px;">
+                                    {{ selected_job.company_name }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job Meta Pills -->
+                    <div class="job-meta" style="margin-bottom: 20px;">
+                        <span class="tag"><i class="fa-solid fa-location-dot" style="color: #94A3B8;"></i> {{ selected_job.location }}</span>
+                        <span class="tag"><i class="fa-solid fa-briefcase" style="color: #818CF8;"></i> {{ selected_job.job_type }}</span>
+                        <span class="tag"><i class="fa-solid fa-tag" style="color: #C084FC;"></i> {{ selected_job.category }}</span>
+                        {% if selected_job.salary_range %}
+                            <span class="tag" style="background: rgba(16, 185, 129, 0.15); color: #34D399;"><i class="fa-solid fa-money-bill-wave" style="color: #34D399;"></i> {{ selected_job.salary_range }}</span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Easy Apply & Action Buttons -->
+                    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 24px; flex-wrap: wrap;">
+                        {% if not session.get('user_id') %}
+                            <a href="{{ url_for('login', next=url_for('jobs', selected=selected_job.id)) }}" class="btn btn-easy-apply btn-lg">
+                                <i class="fa-solid fa-bolt"></i> Sign in to Apply
+                            </a>
+                        {% elif selected_job.id in applied_job_ids %}
+                            <button class="btn btn-secondary btn-lg" disabled style="opacity: 0.8;"><i class="fa-solid fa-check"></i> Applied</button>
+                        {% elif session.get('user_role') == 'seeker' %}
+                            <button onclick="openModal('apply-modal')" class="btn btn-easy-apply btn-lg"><i class="fa-solid fa-bolt"></i> Easy Apply</button>
+                        {% else %}
+                            <span class="tag" style="background: rgba(255, 255, 255, 0.08); color: var(--text-muted); padding: 10px 18px; font-weight: 600; border-radius: 8px;">
+                                <i class="fa-solid fa-user-tie"></i> Recruiter Mode
+                            </span>
+                        {% endif %}
+                        <a href="{{ url_for('job_detail', job_id=selected_job.id) }}" class="btn btn-secondary btn-lg">Open Full Details <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+
+                    <!-- LinkedIn Candidate Skill Match Card -->
+                    <div class="skill-match-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <strong style="color: #FFF; font-size: 0.95rem;">Candidate Skill Match</strong>
+                            <span style="font-weight: 800; color: #34D399; font-size: 1.1rem;">{{ sel_match.score }}%</span>
+                        </div>
+                        
+                        <div class="skill-match-bar-bg">
+                            <div class="skill-match-bar-fill" style="width: {{ sel_match.score }}%;"></div>
+                        </div>
+
+                        <div style="margin-top: 10px; font-size: 0.85rem;">
+                            {% if sel_match.matching %}
+                                <span style="color: var(--text-muted);">Matching Skills:</span>
+                                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+                                    {% for m_skill in sel_match.matching %}
+                                        <span class="tag" style="background: rgba(16, 185, 129, 0.2); color: #34D399;"><i class="fa-solid fa-check"></i> {{ m_skill }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+                            {% if sel_match.missing %}
+                                <div style="margin-top: 8px;">
+                                    <span style="color: var(--text-dim);">Additional Required Skills:</span>
+                                    <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+                                        {% for mis_skill in sel_match.missing %}
+                                            <span class="tag" style="background: rgba(100, 116, 139, 0.2); color: #94A3B8;">{{ mis_skill }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <hr style="border-color: var(--border-color); margin: 20px 0;">
+
+                    <!-- Description & Requirements -->
+                    <h3 style="color: #FFF; font-size: 1.15rem; margin-bottom: 12px;">About the job</h3>
+                    <div style="color: var(--text-main); white-space: pre-line; line-height: 1.7; font-size: 0.95rem; margin-bottom: 24px;">
+                        {{ selected_job.description }}
+                    </div>
+
+                    {% if selected_job.requirements %}
+                        <h3 style="color: #FFF; font-size: 1.15rem; margin-bottom: 12px;">Qualifications & Criteria</h3>
+                        <div style="color: var(--text-main); white-space: pre-line; line-height: 1.7; font-size: 0.95rem;">
+                            {{ selected_job.requirements }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <!-- Easy Apply Modal -->
+                <div id="apply-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+                    <div class="form-card" style="max-width: 540px; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="color: #FFF; font-size: 1.3rem; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-bolt" style="color: #FBBF24;"></i> Easy Apply to {{ selected_job.company_name }}</h3>
+                            <span style="font-size: 1.5rem; cursor: pointer; color: var(--text-muted);" onclick="closeModal('apply-modal')">&times;</span>
+                        </div>
+
+                        <form action="{{ url_for('apply_job', job_id=selected_job.id) }}" method="POST" enctype="multipart/form-data">
+                            
+                            <div class="form-group">
+                                <label class="form-label">Resume / CV Document</label>
+                                {% if seeker_profile and seeker_profile.resume_filename %}
+                                    <p style="font-size: 0.85rem; color: #34D399; margin-bottom: 8px;">
+                                        <i class="fa-solid fa-circle-check"></i> Pre-filled from profile: <code>{{ seeker_profile.resume_filename }}</code>
+                                    </p>
+                                {% endif %}
+                                <input type="file" name="resume_file" class="form-control" accept=".pdf,.doc,.docx,.txt" {% if not seeker_profile or not seeker_profile.resume_filename %}required{% endif %}>
+                                <span style="font-size: 0.8rem; color: var(--text-dim); display: block; margin-top: 4px;">Accepted formats: PDF, DOC, DOCX, TXT</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="cover_letter">Cover Note / Pitch (Optional)</label>
+                                <textarea id="cover_letter" name="cover_letter" class="form-control" placeholder="Share why you are a great fit for {{ selected_job.title }}..."></textarea>
+                            </div>
+
+                            <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
+                                <button type="button" class="btn btn-secondary" onclick="closeModal('apply-modal')">Cancel</button>
+                                <button type="submit" class="btn btn-easy-apply">Submit Application <i class="fa-solid fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <!-- 5. VALUE PROPOSITION SECTION -->
+    <section style="margin-top: 60px; padding: 44px 36px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px;">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 36px auto;">
+            <h2 style="font-size: 2rem; font-weight: 800; color: #FFFFFF; margin-bottom: 8px;">Why Job Seekers Choose HirePulse</h2>
+            <p style="color: var(--text-muted); font-size: 1rem;">Direct access to engineering teams without black-hole resume filters</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+            <div style="padding: 24px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px;">
+                <div style="font-size: 2rem; margin-bottom: 12px;">⚡</div>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #FFF; margin-bottom: 8px;">1-Click Easy Apply</h3>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">Apply in under 30 seconds with your saved resume and profile credentials.</p>
+            </div>
+
+            <div style="padding: 24px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px;">
+                <div style="font-size: 2rem; margin-bottom: 12px;">🎯</div>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #FFF; margin-bottom: 8px;">AI Skill Match Meter</h3>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">See exactly how your skill stack matches each job's criteria before applying.</p>
+            </div>
+
+            <div style="padding: 24px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px;">
+                <div style="font-size: 2rem; margin-bottom: 12px;">🗓️</div>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #FFF; margin-bottom: 8px;">Direct Interview Scheduling</h3>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">Recruiters send interview invites with Google Meet links straight to your inbox.</p>
+            </div>
+
+            <div style="padding: 24px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px;">
+                <div style="font-size: 2rem; margin-bottom: 12px;">🛡️</div>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #FFF; margin-bottom: 8px;">Verified Employers</h3>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">100% verified corporate recruiters with transparent salary ranges.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. POST A JOB BANNER FOR EMPLOYERS -->
+    <section style="margin-top: 40px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(147, 51, 234, 0.15) 100%); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 24px; padding: 40px; text-align: center;">
+        <h2 style="font-size: 2rem; font-weight: 800; color: #FFFFFF; margin-bottom: 12px;">
+            Are You Hiring Tech Talent?
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto 24px auto;">
+            Post your job opening in 2 minutes, screen qualified candidates, and schedule interviews seamlessly.
+        </p>
+        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+            {% if session.get('user_role') == 'recruiter' %}
+                <a href="{{ url_for('post_job') }}" class="btn btn-primary" style="border-radius: 24px; padding: 12px 28px; font-weight: 700;">
+                    <i class="fa-solid fa-plus"></i> Post a New Job Now
+                </a>
+            {% else %}
+                <a href="{{ url_for('register') }}" class="btn btn-primary" style="border-radius: 24px; padding: 12px 28px; font-weight: 700;">
+                    <i class="fa-solid fa-building"></i> Post a Job as Recruiter
+                </a>
+            {% endif %}
+            <a href="{{ url_for('people') }}" class="btn btn-secondary" style="border-radius: 24px; padding: 12px 28px; font-weight: 700;">
+                <i class="fa-solid fa-users"></i> Search Candidates
+            </a>
+        </div>
+    </section>
+
+</div>
+
+<style>
+.popular-search-tag {
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    color: #E2E8F0;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+.popular-search-tag:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #60A5FA;
+    color: #60A5FA;
+    transform: translateY(-1px);
+}
+.category-card {
+    padding: 20px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.22s ease;
+}
+.category-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(96, 165, 250, 0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.category-card.active {
+    background: rgba(10, 102, 194, 0.18);
+    border-color: #0A66C2;
+    box-shadow: 0 4px 16px rgba(10, 102, 194, 0.3);
+}
+.category-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+.category-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+.category-count {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+.featured-role-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.22s ease;
+}
+.featured-role-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+</style>
+
+{% endblock %}

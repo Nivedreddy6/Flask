@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}SMTP Email Dispatch Settings - HirePulse{% endblock %}
+
+{% block content %}
+<div style="max-width: 680px; margin: 20px auto;">
+    <div class="form-card" style="border-color: var(--border-highlight);">
+        
+        <div style="text-align: center; margin-bottom: 24px;">
+            <div style="font-size: 2.8rem; margin-bottom: 8px;">📧</div>
+            <h1 style="font-size: 1.8rem; font-weight: 800; color: #FFF; margin-bottom: 4px;">
+                Real SMTP Email Settings
+            </h1>
+            <p style="color: var(--text-muted); font-size: 0.94rem;">
+                Configure your Gmail / SMTP server details so interview invitations deliver directly to candidates' real email inboxes!
+            </p>
+        </div>
+
+        <form action="{{ url_for('email_settings') }}" method="POST">
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
+                <div class="form-group">
+                    <label class="form-label" for="smtp_server">SMTP Mail Server</label>
+                    <input type="text" id="smtp_server" name="smtp_server" value="{{ smtp.server or 'smtp.gmail.com' }}" class="form-control" placeholder="smtp.gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="smtp_port">Port</label>
+                    <input type="number" id="smtp_port" name="smtp_port" value="{{ smtp.port or 587 }}" class="form-control" placeholder="587" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="smtp_user">Sender Email Address (e.g. Gmail)</label>
+                <input type="email" id="smtp_user" name="smtp_user" value="{{ smtp.user or '' }}" class="form-control" placeholder="yourcompany@gmail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="smtp_password">Gmail App Password (16-character code)</label>
+                <input type="password" id="smtp_password" name="smtp_password" value="{{ smtp.password or '' }}" class="form-control" placeholder="•••• •••• •••• ••••" required>
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 6px;">
+                    💡 For Gmail: Use a 16-character <strong>App Password</strong> (from Google Account &rarr; Security &rarr; 2-Step Verification &rarr; App Passwords).
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--border-color); margin: 24px 0;">
+
+            <h4 style="color: #FFF; font-weight: 700; margin-bottom: 12px;">🧪 Send Test Email to Verify Delivery</h4>
+            
+            <div class="form-group">
+                <label class="form-label" for="test_target_email">Target Email Address (Where to send test email)</label>
+                <input type="email" id="test_target_email" name="test_target_email" class="form-control" placeholder="Enter your personal email address to receive test email">
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-top: 24px;">
+                <button type="submit" name="action" value="save" class="btn btn-secondary" style="flex: 1;">
+                    💾 Save Credentials
+                </button>
+                <button type="submit" name="action" value="test_email" class="btn btn-primary" style="flex: 1;">
+                    🚀 Save & Send Test Email
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+{% endblock %}
