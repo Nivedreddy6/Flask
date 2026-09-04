@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Sparkles, Briefcase, Users, ArrowRight } from 'lucide-react';
+import { Sparkles, Users, ArrowRight, Briefcase, Zap } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import JobDiscoveryFeed from '../components/JobDiscoveryFeed';
 import JobApplyModal from '../components/JobApplyModal';
@@ -9,38 +9,41 @@ export function DashboardPage({ jobs, status }) {
 
   return (
     <div className="dashboard-page animate-fade-up">
-      {/* Hero Welcome Banner */}
+      {/* Compact Hero Banner */}
       <div style={{
-        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(6, 182, 212, 0.1) 100%)',
-        border: '1px solid rgba(99, 102, 241, 0.35)',
-        borderRadius: 20, padding: '24px 28px', marginBottom: 24,
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16
+        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.16) 0%, rgba(6, 182, 212, 0.08) 100%)',
+        border: '1px solid rgba(99, 102, 241, 0.3)',
+        borderRadius: 14, padding: '16px 20px', marginBottom: 16,
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12
       }}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#38bdf8', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1 }}>
-            <Sparkles size={16} /> Job Sphere Studio • Live Recruitment Platform
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{
+            width: 36, height: 36, borderRadius: 10, background: 'linear-gradient(135deg, #6366f1, #3b82f6)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}>
+            <Zap size={18} color="#FFF" />
           </div>
-          <h1 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#FFF', margin: '6px 0 4px 0' }}>
-            Candidate Job Discovery &amp; Automated ATS
-          </h1>
-          <p style={{ margin: 0, color: '#cbd5e1', fontSize: 13.5 }}>
-            Browse verified tech vacancies with transparent salaries or manage applicant pipelines with automated email scheduling.
-          </p>
+          <div>
+            <h1 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#FFF', margin: 0, lineHeight: 1.2 }}>
+              Candidate Job Discovery Feed
+            </h1>
+            <p style={{ margin: 0, color: '#94a3b8', fontSize: 12 }}>
+              Explore tech vacancies with verified salaries, match your skills, or apply with 1-click ATS resumes.
+            </p>
+          </div>
         </div>
 
-        <div style={{ display: 'flex', gap: 12 }}>
-          <NavLink
-            to="/applications"
-            style={{
-              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-              color: '#FFF', padding: '10px 18px', borderRadius: 10,
-              fontSize: 13, fontWeight: 800, textDecoration: 'none',
-              display: 'flex', alignItems: 'center', gap: 8, boxShadow: '0 4px 12px rgba(16, 185, 129, 0.4)'
-            }}
-          >
-            <Users size={16} /> Open Recruiter ATS Pipeline <ArrowRight size={14} />
-          </NavLink>
-        </div>
+        <NavLink
+          to="/applications"
+          style={{
+            background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+            color: '#FFF', padding: '8px 16px', borderRadius: 8,
+            fontSize: 12, fontWeight: 800, textDecoration: 'none',
+            display: 'flex', alignItems: 'center', gap: 6, boxShadow: '0 4px 12px rgba(16, 185, 129, 0.35)'
+          }}
+        >
+          <Users size={14} /> Open Recruiter ATS Pipeline <ArrowRight size={13} />
+        </NavLink>
       </div>
 
       {/* Main Job Discovery Feed */}

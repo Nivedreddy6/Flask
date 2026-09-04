@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import TopBanner from './components/TopBanner';
 import DashboardPage from './pages/DashboardPage';
 import ApplicationsPage from './pages/ApplicationsPage';
 
@@ -43,15 +42,13 @@ export function App() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Top Navbar */}
-      <Navbar fetchData={fetchData} loading={loading} />
+      <Navbar fetchData={fetchData} loading={loading} status={status} />
 
       {/* Main Content Area */}
       <main className="main-content">
         <div className="container">
-          <TopBanner status={status} />
-
           {error && (
-            <div className="form-card" style={{ background: 'rgba(239, 68, 68, 0.15)', borderColor: 'rgba(239, 68, 68, 0.4)', color: '#FCA5A5', marginBottom: 24 }}>
+            <div className="form-card" style={{ background: 'rgba(239, 68, 68, 0.15)', borderColor: 'rgba(239, 68, 68, 0.4)', color: '#FCA5A5', marginBottom: 16 }}>
               <strong>API Error:</strong> {error}. Ensure your Flask server (`python app.py`) is active on port 5000.
             </div>
           )}
@@ -71,12 +68,12 @@ export function App() {
       </main>
 
       {/* Footer */}
-      <footer className="footer" style={{ marginTop: 'auto', borderTop: '1px solid rgba(255, 255, 255, 0.08)', padding: '24px 0', background: '#0b0f19' }}>
+      <footer className="footer" style={{ marginTop: 'auto', borderTop: '1px solid rgba(255, 255, 255, 0.08)', padding: '16px 0', background: '#0b0f19' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <p style={{ margin: 0, color: '#94a3b8', fontSize: 13 }}>
-            © 2026 <strong>Job Sphere Studio</strong> • Full-Stack Flask 3.0 + React 19 ATS Ecosystem
+          <p style={{ margin: 0, color: '#94a3b8', fontSize: 12.5 }}>
+            © 2026 <strong>Job Sphere Studio</strong> • Python 3.12 Flask + React 19 ATS Ecosystem
           </p>
-          <div style={{ display: 'flex', gap: 16, fontSize: 13 }}>
+          <div style={{ display: 'flex', gap: 16, fontSize: 12 }}>
             <span style={{ color: '#38bdf8' }}>⚡ Real-time ATS Pipeline</span>
             <span style={{ color: '#34d399' }}>📧 Automated Calendar Mailer</span>
           </div>

@@ -100,13 +100,19 @@ a:hover {
     color: #7DD3FC;
 }
 
-/* Base Container */
+/* Base Container & Main Content */
 .container {
-    max-width: 1280px;
+    max-width: 1560px;
+    width: 96%;
     margin: 0 auto;
-    padding: 0 24px;
-    width: 100%;
+    padding: 0 16px;
 }
+
+.main-content {
+    flex: 1;
+    padding: 16px 0 32px 0;
+}
+
 
 /* Glassmorphism Navbar */
 .navbar {
