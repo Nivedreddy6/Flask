@@ -16,7 +16,3 @@ frontend/dist/
 # SQLite Database & Uploads
 backend/*.db
 backend/static/uploads/
-
-# Hidden documentation & screenshots
-README.md
-*.png
