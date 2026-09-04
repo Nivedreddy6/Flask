@@ -229,15 +229,17 @@ erDiagram
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/author-footer.svg" alt="Created by Nived Reddy" width="100%" />
+  <a href="https://github.com/Nivedreddy6" target="_blank">
+    <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/author-footer.svg" alt="Created by Nived Reddy" width="100%" />
+  </a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/Nivedreddy6"><img src="https://img.shields.io/badge/GitHub-Follow%20%40Nivedreddy6-181717?style=for-the-badge&logo=github&logoColor=white" alt="Follow on GitHub" /></a>
-  <a href="https://github.com/Nivedreddy6/Flask"><img src="https://img.shields.io/badge/Star%20Repo-⭐%20GitHub-FFD700?style=for-the-badge&logo=github&logoColor=black" alt="Star on GitHub" /></a>
-  <a href="https://github.com/Nivedreddy6/Flask/fork"><img src="https://img.shields.io/badge/Fork%20Repo-🍴%20Contribute-2ea44f?style=for-the-badge&logo=github&logoColor=white" alt="Fork on GitHub" /></a>
+  <a href="https://github.com/Nivedreddy6" target="_blank"><img src="https://img.shields.io/badge/GitHub-View%20Profile%20%40Nivedreddy6-181717?style=for-the-badge&logo=github&logoColor=white" alt="View GitHub Profile" /></a>
+  <a href="https://github.com/Nivedreddy6/Flask" target="_blank"><img src="https://img.shields.io/badge/Star%20Repo-⭐%20GitHub-FFD700?style=for-the-badge&logo=github&logoColor=black" alt="Star on GitHub" /></a>
+  <a href="https://github.com/Nivedreddy6/Flask/fork" target="_blank"><img src="https://img.shields.io/badge/Fork%20Repo-🍴%20Contribute-2ea44f?style=for-the-badge&logo=github&logoColor=white" alt="Fork on GitHub" /></a>
 </p>
 
 <div align="center">
-  <b>Job Sphere Studio</b> • Developed with ❤️ by <a href="https://github.com/Nivedreddy6"><b>Nived Reddy (@Nivedreddy6)</b></a>
+  <b>Job Sphere Studio</b> • Developed with ❤️ by <a href="https://github.com/Nivedreddy6" target="_blank"><b>Nived Reddy (@Nivedreddy6)</b></a>
 </div>
