@@ -21,15 +21,18 @@
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-overview.svg" alt="Overview Header" width="100%" />
 </p>
 
-## 💡 What is the Job Sphere Studio Frontend?
+```diff
+- ❌ TRADITIONAL UI: Sluggish server reloads, fragmented recruiter workflows, and zero real-time stage sync.
++ ✔️ MODERN SPA:    React 19 + Vite 8 — Instant HMR, reactive pipeline tracking, and cyber glassmorphic design.
+```
 
-The **Job Sphere Studio Frontend** is a high-performance Single Page Application (SPA) engineered with **React 19** and **Vite 8**. It serves as the primary modern user interface for both **Recruiters** and **Job Seekers**, communicating with the Flask backend API.
+> [!TIP]
+> ### 🎯 `CANDIDATE DISCOVERY SPA`
+> Responsive client featuring dynamic multi-facet search, instant salary filtering, and 1-click resume uploads.
 
-### 🌟 Key Responsibilities:
-1. **Interactive Recruiter ATS Dashboard**: View applicant metrics, transition candidates between review stages in real-time, and trigger interview scheduling modals.
-2. **Dynamic Candidate Discovery & Application**: Instant multi-facet job search with salary filters and 1-click resume uploads.
-3. **Automated Interview Workflow**: Modal interface for setting meeting times and video links, triggering automated SMTP invitation emails through the backend.
-4. **Tailored Cyber-Glassmorphism UI**: Custom CSS design system with luminous gradients, glowing borders, dark mode aesthetic, and fluid micro-animations.
+> [!IMPORTANT]
+> ### ⚡ `RECRUITER ATS COMMAND CENTER`
+> Real-time recruitment analytics, candidate pipeline status shifts, and modal-based interview scheduling with automated SMTP triggers.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />

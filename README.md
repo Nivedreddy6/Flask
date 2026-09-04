@@ -21,15 +21,22 @@
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-overview.svg" alt="Project Overview Header" width="100%" />
 </p>
 
-## 💡 What is Job Sphere Studio? (The Big Picture)
+```diff
+- ❌ THE CHALLENGE: Fragmented job boards, resumes lost in black holes, and manual email interview ping-pong.
++ ✔️ THE SOLUTION:  Job Sphere Studio — Automated, transparent, and unified full-stack recruitment machine.
+```
 
-Traditional hiring is fragmented. Job seekers apply into black holes with no status feedback, while tech recruiters get buried in scattered emails, spreadsheets, and manual interview scheduling.
+> [!TIP]
+> ### 🎯 `FOR JOB SEEKERS` • **Discover & Land Top Tech Roles**
+> Browse curated tech openings with transparent compensation tiers, apply in **1-click with PDF/DOCX resume validation**, and track real-time hiring progress from submission to offer.
 
-**Job Sphere Studio** is a complete, full-stack recruitment ecosystem designed to fix this. It seamlessly connects **Job Seekers** and **Recruiters** into a single, automated hiring machine:
+> [!IMPORTANT]
+> ### ⚡ `FOR RECRUITERS` • **High-Velocity Automated ATS & Mailer**
+> Post multi-tag vacancies, screen candidate pipelines in a unified Kanban board, advance applicant stages with **1 click**, and trigger **automated calendar-ready HTML interview invitations** via SMTP.
 
-1. **For Job Seekers**: A streamlined career portal where candidates search curated tech jobs with transparent salary ranges, apply with 1-click resume uploads, and track their applications live through every stage.
-2. **For Recruiters**: A high-velocity **Applicant Tracking System (ATS)** where hiring managers can post vacancies, review resumes, advance candidates across stages, and schedule interviews with automated calendar-ready email invitations.
-3. **For Engineering Teams**: A modern, decoupled hybrid architecture combining a high-performance **Flask REST Backend** (Python) with a reactive, glassmorphic **React 19 + Vite Frontend**.
+> [!NOTE]
+> ### 🏛️ `FOR ENGINEERING TEAMS` • **Decoupled Full-Stack Architecture**
+> Powered by a high-performance **Flask 3.0 REST Backend** (Python) and a reactive **React 19 + Vite 8 SPA** client styled in a bespoke **cyber glassmorphic design language**.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />
