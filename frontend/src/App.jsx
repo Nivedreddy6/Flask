@@ -42,7 +42,7 @@ export function App() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Modular Navbar Component */}
+      {/* Top Navbar */}
       <Navbar fetchData={fetchData} loading={loading} />
 
       {/* Main Content Area */}
@@ -60,20 +60,26 @@ export function App() {
           <Routes>
             <Route 
               path="/" 
-              element={<DashboardPage status={status} />} 
+              element={<DashboardPage jobs={jobs} status={status} />} 
             />
             <Route 
               path="/applications" 
-              element={<ApplicationsPage jobs={jobs} />} 
+              element={<ApplicationsPage />} 
             />
           </Routes>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <p>© 2026 HirePulse • React Pages Architecture & React Router with Flask Backend</p>
+      <footer className="footer" style={{ marginTop: 'auto', borderTop: '1px solid rgba(255, 255, 255, 0.08)', padding: '24px 0', background: '#0b0f19' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+          <p style={{ margin: 0, color: '#94a3b8', fontSize: 13 }}>
+            © 2026 <strong>Job Sphere Studio</strong> • Full-Stack Flask 3.0 + React 19 ATS Ecosystem
+          </p>
+          <div style={{ display: 'flex', gap: 16, fontSize: 13 }}>
+            <span style={{ color: '#38bdf8' }}>⚡ Real-time ATS Pipeline</span>
+            <span style={{ color: '#34d399' }}>📧 Automated Calendar Mailer</span>
+          </div>
         </div>
       </footer>
     </div>
