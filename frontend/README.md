@@ -15,35 +15,47 @@
 
 <div align="center">
 
-### 🌟 **Welcome to Job Sphere Studio Frontend**
-An ultra-modern, high-performance Applicant Tracking & Job Discovery UI engineered with **React 19**, **Vite 8**, and styled with **custom glassmorphism** aesthetic.
+# ⚛️ Job Sphere Studio — React 19 Frontend SPA
 
-[🚀 Quick Start](#-quick-start) • [✨ Key Features](#-key-features) • [🏛 Architecture](#-system-architecture) • [📜 Scripts](#-available-scripts) • [⚙️ Configuration](#%EF%B8%8F-proxy--network-configuration)
+### 🌟 *An Ultra-Modern, Glassmorphic Recruitment UI Built with React 19, Vite 8, and Real-Time Backend Proxy.*
+
+[📖 What is This Project?](#-what-is-this-project) • [✨ Core UI Capabilities](#-core-ui-capabilities) • [🏛 Architecture & Workflow](#-system-architecture--workflow) • [📂 Component Architecture](#-component-architecture) • [⚡ Quickstart](#-quick-start) • [📜 Scripts](#-available-scripts) • [⚙️ Proxy Config](#%EF%B8%8F-proxy--network-configuration)
 
 </div>
 
 ---
 
-## ✨ Key Features
+## 📖 What is This Project?
+
+The **Job Sphere Studio Frontend** is a Single Page Application (SPA) providing an interactive recruitment interface. It connects to the Flask API backend to deliver a recruitment experience with:
+
+* 📊 **Recruiter Command Center**: Instant metric tracking for active jobs, candidate submissions, shortlist rates, and interview pipelines.
+* 📋 **Interactive ATS Candidate Table**: Filterable and searchable applicant management table with instantaneous status updates and resume inspection.
+* 📅 **Smart Interview Modal**: Integrated modal for setting interview dates, times, video conferencing links, and custom candidate notes with automated email triggers.
+* 🎨 **Bespoke Glassmorphism Design**: Tailored CSS design system featuring backdrop blur filters, glowing gradient borders, responsive layouts, and fluid micro-animations.
+
+---
+
+## ✨ Core UI Capabilities
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <h3>💼 Recruiter Power Dashboard</h3>
+      <h3>💼 Recruiter Pipeline Suite</h3>
       <ul>
-        <li>📊 <b>Real-time Metrics:</b> Track active jobs, pending reviews, shortlisted, and interview candidates.</li>
-        <li>📑 <b>Applicant Tracking:</b> Fast multi-stage candidate management with one-click status transitions.</li>
+        <li>📊 <b>Real-time Metrics Dashboard:</b> Monitor active job counts, pending candidate reviews, shortlisted talent, and confirmed interviews.</li>
+        <li>📑 <b>Applicant Tracking Board:</b> Fast multi-stage candidate management with one-click status transitions.</li>
         <li>📅 <b>Interview Scheduling:</b> Automated scheduling modal with instant calendar & email alerts.</li>
         <li>📈 <b>Interactive Analytics:</b> Visual status breakdowns, conversion rates, and hiring pipeline heatmaps.</li>
       </ul>
     </td>
     <td width="50%" valign="top">
-      <h3>🚀 Candidate Job Portal</h3>
+      <h3>🚀 Candidate Experience Portal</h3>
       <ul>
-        <li>🔍 <b>Smart Discovery:</b> Search by role, salary brackets, experience level, and job category.</li>
-        <li>⚡ <b>1-Click Application:</b> Upload resumes (PDF/DOCX) with instant status sync.</li>
-        <li>📬 <b>Live Notifications:</b> Instant in-app feedback on recruiter actions and stage progressions.</li>
-        <li>🎨 <b>Glassmorphic Experience:</b> Premium dark-mode UI with vibrant glows and fluid micro-animations.</li>
+        <li>🔍 <b>Smart Discovery:</b> Search and filter opportunities by title, compensation tier, and tech stack.</li>
+        <li>⚡ <b>1-Click Application:</b> Submit resumes (PDF/DOCX) with immediate validation.</li>
+        <li>📬 <b>Live Status Tracking:</b> Visual multi-step progress bar showing real-time application updates.</li>
+        <li>🔔 <b>In-App Notifications:</b> Instant alerts when recruiters review, shortlist, or schedule interviews.</li>
       </ul>
     </td>
   </tr>
@@ -51,40 +63,66 @@ An ultra-modern, high-performance Applicant Tracking & Job Discovery UI engineer
 
 ---
 
-## 🏛 System Architecture
+## 🏛 System Architecture & Workflow
 
 <p align="center">
   <img src="./public/workflow.svg" alt="System Workflow Diagram" width="100%" />
 </p>
 
 ```mermaid
-flowchart LR
-    A[🧑‍💻 Candidate / Recruiter] -->|Interacts with SPA| B(⚛️ React 19 Frontend :5173)
-    B -->|Proxy /api Requests| C(⚡ Flask REST Backend :5000)
-    C -->|ORM Queries| D[(💾 SQLite / SQLAlchemy)]
-    C -->|SMTP Notifications| E[📧 Interview Email Service]
+sequenceDiagram
+    autonumber
+    actor Recruiter
+    participant Frontend as ⚛️ React 19 SPA (:5173)
+    participant Backend as ⚡ Flask Server (:5000)
+    participant Database as 💾 SQLite DB
+    participant Email as 📧 SMTP Service
+
+    Recruiter->>Frontend: Select candidate & Click "Schedule Interview"
+    Frontend->>Frontend: Open scheduling modal (Date, Time, Video Link)
+    Frontend->>Backend: POST /api/applications/<id>/interview
+    Backend->>Database: Update status to "Interview Scheduled"
+    Backend->>Email: Dispatch branded HTML interview invitation
+    Email-->>Recruiter: Email delivered to candidate
+    Backend-->>Frontend: HTTP 200 OK + Updated Pipeline Data
+    Frontend-->>Recruiter: UI re-renders with success notification
+```
+
+---
+
+## 📂 Component Architecture
+
+```text
+frontend/src/
+├── components/
+│   ├── AnalyticsDashboard.jsx   # Top metric summary cards & KPIs
+│   ├── ApplicationsTable.jsx    # Interactive ATS candidate management table
+│   ├── Navbar.jsx               # Responsive header navigation & user avatar
+│   └── TopBanner.jsx            # Announcement banner with quick actions
+├── pages/
+│   ├── ApplicationsPage.jsx     # Full-page applicant tracking view
+│   └── DashboardPage.jsx        # Consolidated analytics and overview
+├── App.jsx                      # Client router and layout wrapper
+├── index.css                    # Glassmorphism tokens, gradients, animations
+└── main.jsx                     # React 19 DOM mount root
 ```
 
 ---
 
 ## 🚀 Quick Start
 
-### 1️⃣ Clone & Install Dependencies
+### 1️⃣ Install Dependencies
 ```bash
-# Navigate to the frontend directory
 cd frontend
-
-# Install packages
 npm install
 ```
 
-### 2️⃣ Run Development Server
+### 2️⃣ Start Development Server
 ```bash
-# Start Vite development server with instant HMR
 npm run dev
 ```
 
-Your web client will be live at:
+Your React client will be available at:
 👉 **[http://localhost:5173](http://localhost:5173)**
 
 ---
@@ -102,7 +140,7 @@ Your web client will be live at:
 
 ## ⚙️ Proxy & Network Configuration
 
-The frontend communicates with the Flask backend running on port `5000` via Vite's automated reverse proxy defined in `vite.config.ts`:
+The frontend communicates with the Flask backend running on port `5000` via Vite's automated reverse proxy configured in `vite.config.ts`:
 
 ```typescript
 export default defineConfig({
@@ -122,33 +160,6 @@ export default defineConfig({
 
 ---
 
-## 📂 Project Directory Structure
-
-```text
-frontend/
-├── public/
-│   ├── banner.svg           # Animated SVG Hero Header
-│   └── workflow.svg         # Animated Architecture Pipeline
-├── src/
-│   ├── assets/              # Static media and brand graphics
-│   ├── components/          # Reusable UI Blocks & Modals
-│   │   ├── AnalyticsDashboard.jsx
-│   │   ├── ApplicationsTable.jsx
-│   │   ├── Navbar.jsx
-│   │   └── TopBanner.jsx
-│   ├── pages/               # Top-level view controllers
-│   │   ├── ApplicationsPage.jsx
-│   │   └── DashboardPage.jsx
-│   ├── App.jsx              # Main App wrapper & routing
-│   ├── index.css            # Design system, glassmorphism tokens & animations
-│   └── main.jsx             # React 19 DOM bootstrap root
-├── .oxlintrc.json           # Fast Oxlint configuration
-├── package.json             # Frontend dependencies & scripts
-└── vite.config.ts           # Vite server & reverse-proxy config
-```
-
----
-
 <p align="center">
-  <b>Job Sphere Studio</b> • Engineered with ❤️ for high-velocity recruitment workflows.
+  <b>Job Sphere Studio</b> • Built with modern engineering and designed to elevate careers.
 </p>
