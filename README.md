@@ -64,19 +64,18 @@ Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing can
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/ats-pipeline-board.svg?v=2" alt="Automated Recruiter ATS Kanban Pipeline" width="100%" />
 </p>
 
-### 🌟 Core ATS Capabilities:
-* **📊 6-Stage Visual Kanban Pipeline**: Move candidates seamlessly across `Applied` ➔ `Reviewing` ➔ `Shortlisted` ➔ `Interview Scheduled` ➔ `Hired` *(or `Rejected`)* with 1-click stage advancement.
-* **🎯 Automated ATS Resume Keyword Matcher**: Calculates candidate-to-job match percentages (0–100%) in real time, highlighting matched skills in emerald green and recommended/missing keywords in amber.
-* **📂 Candidate ATS Review Drawer (`createPortal`)**: Instant drawer modal with applicant profile details, resume download links, private recruiter scorecard notes, and interview scheduling.
-* **📧 Automated Calendar Invitation Emailer**: Built with Python `smtplib` + `email.mime`, dispatching branded HTML calendar invites with Google Meet/Zoom links directly upon scheduling.
-* **⚡ 1-Click Candidate Application**: Candidates browsing jobs can preview their live ATS match score before submitting.
+### 🌟 Core ATS Capabilities
+* **📊 6-Stage Kanban Pipeline**: `Applied` ➔ `Reviewing` ➔ `Shortlisted` ➔ `Interview Scheduled` ➔ `Hired` / `Rejected` with 1-click stage advancement.
+* **🎯 Real-Time ATS Matcher**: Instant candidate-to-job match scoring (0–100%) with emerald matched skills and amber missing keywords.
+* **📂 Candidate ATS Review Drawer**: Drawer modal with applicant profiles, resume preview, private recruiter scorecard notes, and meet scheduling.
+* **📧 Automated Calendar Invites**: Python `smtplib` + `email.mime` dispatching HTML calendar invites with Google Meet/Zoom links upon scheduling.
+* **⚡ 1-Click ATS Application**: Instant application flow with live keyword match preview.
 
-### 🔐 Pre-Seeded Demo Test Credentials *(Password: `password123`)*
-
-| Role | Username / Email | Password | Access & Features |
+### 🔐 Demo Test Credentials `(Password: password123)`
+| Role | Email | Password | Access & Features |
 | :--- | :--- | :--- | :--- |
-| **🏢 Recruiter** | `recruiter@techcorp.io`<br/>*(or `jobs@innovatelabs.com`)* | `password123` | **Full ATS Pipeline**, Candidate Review, Interview Scheduler & Vacancy Management |
-| **👤 Job Seeker** | `john.doe@gmail.com`<br/>*(or `nivedreddy6@gmail.com`)* | `password123` | **Job Discovery Feed**, 1-Click ATS Resume Applications & Status Tracking |
+| **🏢 Recruiter** | `recruiter@techcorp.io` | `password123` | **Full ATS Kanban Pipeline**, Review Drawer, Interview Scheduler |
+| **👤 Job Seeker** | `john.doe@gmail.com` | `password123` | **Job Discovery Feed**, 1-Click ATS Resume Apply, Status Tracking |
 
 ---
 
