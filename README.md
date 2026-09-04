@@ -3,16 +3,16 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Nivedreddy6/Flask"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&duration=3000&pause=1000&color=6366F1&center=true&vCenter=true&multiline=true&width=700&height=70&lines=⚡+Job+Sphere+Studio+Recruitment+Ecosystem;🚀+Flask+REST+API+%2B+React+19+Vite+SPA;💼+Next-Gen+Applicant+Tracking+System" alt="Typing SVG" /></a>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&duration=3000&pause=1000&color=6366F1&center=true&vCenter=true&multiline=true&width=700&height=70&lines=⚡+Job+Sphere+Studio+Recruitment+Ecosystem;🚀+Flask+REST+API+%2B+React+19+Vite+SPA;💼+Next-Gen+Applicant+Tracking+System" alt="Typing SVG" />
 </p>
 
 <p align="center">
-  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Backend-Flask%203.0-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" /></a>
-  <a href="https://react.dev/"><img src="https://img.shields.io/badge/Frontend-React%2019-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19" /></a>
-  <a href="https://vite.dev/"><img src="https://img.shields.io/badge/Bundler-Vite%208-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" /></a>
-  <a href="https://www.sqlite.org/"><img src="https://img.shields.io/badge/Database-SQLite%203-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" /></a>
-  <a href="https://oxc.rs/"><img src="https://img.shields.io/badge/Linter-Oxlint-F27244?style=for-the-badge&logo=rust&logoColor=white" alt="Oxlint" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/UI%20Theme-Cyber%20Glassmorphic-8A2BE2?style=for-the-badge" alt="Design" /></a>
+  <img src="https://img.shields.io/badge/Backend-Flask%203.0-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" />
+  <img src="https://img.shields.io/badge/Frontend-React%2019-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19" />
+  <img src="https://img.shields.io/badge/Bundler-Vite%208-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Database-SQLite%203-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/Linter-Oxlint-F27244?style=for-the-badge&logo=rust&logoColor=white" alt="Oxlint" />
+  <img src="https://img.shields.io/badge/UI%20Theme-Cyber%20Glassmorphic-8A2BE2?style=for-the-badge" alt="Design" />
 </p>
 
 ---
