@@ -76,24 +76,8 @@ Here is the exact step-by-step user journey from account creation to getting hir
   </table>
 </div>
 
-### 🎯 1. Job Seeker Experience (Candidate Side)
-* **Job Discovery Feed (`/seeker/jobs`)**: Instant multi-criteria search filtering by job title, department (Frontend, Backend, AI/ML, DevOps), employment type (Full-time, Remote, Hybrid), and salary tier.
-* **1-Click Application (`/seeker/job/<id>`)**: Candidates can upload PDF/DOCX resumes and submit applications instantly.
-* **Candidate Dashboard (`/seeker/dashboard`)**: Visual application tracker showing color-coded status badges: `Applied` ➔ `Reviewing` ➔ `Shortlisted` ➔ `Interview Scheduled` ➔ `Hired`.
-* **Notifications Center (`/notifications`)**: Real-time alerts whenever a recruiter reviews an application, updates a stage, or schedules an interview.
-* **Upskilling & Learning Hub (`/learning`)**: Integrated library of curated engineering tutorials, interview prep cheat-sheets, and system design roadmaps.
-* **Tech Community Directory (`/people`)**: Peer networking portal to connect with fellow engineers and industry professionals.
-
-### 🏢 2. Recruiter & ATS Command Suite (Employer Side)
-* **Recruiter Command Dashboard (`/recruiter/dashboard`)**: Live recruitment KPIs showing active job count, applicant volume, shortlisted talent, and upcoming interviews.
-* **Job Posting Wizard (`/recruiter/post_job`)**: Intuitive form to broadcast new job vacancies with custom salary ranges, required skill tags, and location preferences.
-* **Candidate ATS Table (`/recruiter/applications`)**: Centralized applicant management table. Recruiters can view applicant bios, download submitted resumes securely, and advance candidate stages with a single click.
-* **Automated Interview Scheduler (`/recruiter/schedule_interview`)**: Select candidate, pick date & time, add Google Meet / Zoom link, and write custom prep notes.
-* **Automated SMTP Email Dispatcher**: When an interview is scheduled, the platform renders and delivers a branded HTML interview invitation directly to the candidate's inbox.
-* **Company Profile Management (`/recruiter/company_profile`)**: Showcase company branding, logo, tech stack, culture, and active vacancies.
-
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/personas-cards.svg" alt="Recruiter & Candidate Personas" width="100%" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/features-deepdive.svg" alt="Comprehensive Feature Tour" width="100%" />
 </p>
 
 ---
