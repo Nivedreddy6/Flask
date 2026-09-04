@@ -96,8 +96,13 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
 </p>
 
 <p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/project-structure.svg" alt="Project Directory & File Architecture" width="100%" />
+</p>
+
+<p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/sequence-interview.svg" alt="Automated Interview Scheduling Sequence Flow" width="100%" />
 </p>
+
 
 ### 🛠️ Core Technologies Used:
 * **Frontend**: **React 19**, **Vite 8**, **Lucide React** icons, custom cyber-glassmorphism CSS design system, and **Oxlint** (Rust-based sub-millisecond linter).

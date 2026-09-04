@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 490" width="100%" height="490">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="treeCardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Animated Border Gradient -->
+    <linearGradient id="treeBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8">
+        <animate attributeName="stop-color" values="#38bdf8;#818cf8;#c084fc;#f472b6;#38bdf8" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#818cf8">
+        <animate attributeName="stop-color" values="#818cf8;#c084fc;#f472b6;#38bdf8;#818cf8" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#c084fc">
+        <animate attributeName="stop-color" values="#c084fc;#f472b6;#38bdf8;#818cf8;#c084fc" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Section Header Gradients -->
+    <linearGradient id="gBe" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#0d9488"/></linearGradient>
+    <linearGradient id="gFe" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0284c7"/><stop offset="100%" stop-color="#2563eb"/></linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@500;600;700&amp;display=swap');
+
+    .tree-title { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; }
+    .dir-name { font-family: 'Fira Code', monospace; font-size: 12px; font-weight: 700; fill: #f8fafc; }
+    .file-name { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 600; fill: #38bdf8; }
+    .file-desc { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500; fill: #94a3b8; }
+    .tree-line { stroke: #334155; stroke-width: 1.5; stroke-dasharray: 3,3; }
+    
+    .pulse-glow {
+      animation: pulseItem 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseItem {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+  </style>
+
+  <!-- Container -->
+  <rect width="1000" height="490" rx="18" fill="url(#treeCardBg)" stroke="url(#treeBorder)" stroke-width="2" />
+
+  <!-- Top Title Banner -->
+  <g transform="translate(30, 20)">
+    <rect width="440" height="26" rx="13" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#38bdf8" class="pulse-glow" />
+    <text x="28" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="700" fill="#7dd3fc">PROJECT REPOSITORY ARCHITECTURE &amp; DIRECTORY MAP</text>
+  </g>
+
+  <!-- ================= LEFT COLUMN: BACKEND ARCHITECTURE ================= -->
+  <g transform="translate(30, 65)">
+    <rect width="455" height="400" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.2" />
+    <rect width="455" height="34" rx="12" fill="url(#gBe)" />
+    <text x="20" y="22" class="tree-title">📁 backend/ — Python 3.12 + Flask 3.0 API</text>
+
+    <!-- Tree items -->
+    <!-- app.py -->
+    <g transform="translate(25, 52)">
+      <text x="0" y="15" class="file-name">├── app.py</text>
+      <text x="135" y="15" class="file-desc">Flask REST API, auth &amp; routing controllers</text>
+    </g>
+
+    <!-- models.py -->
+    <g transform="translate(25, 88)">
+      <text x="0" y="15" class="file-name">├── models.py</text>
+      <text x="135" y="15" class="file-desc">SQLAlchemy 6 relational database entities</text>
+    </g>
+
+    <!-- email_service.py -->
+    <g transform="translate(25, 124)">
+      <text x="0" y="15" class="file-name">├── email_service.py</text>
+      <text x="155" y="15" class="file-desc">Automated HTML calendar mailer</text>
+    </g>
+
+    <!-- database.py -->
+    <g transform="translate(25, 160)">
+      <text x="0" y="15" class="file-name">├── database.py</text>
+      <text x="135" y="15" class="file-desc">SQLite engine init &amp; test data seeder</text>
+    </g>
+
+    <!-- job_portal.db -->
+    <g transform="translate(25, 196)">
+      <text x="0" y="15" class="file-name">├── job_portal.db</text>
+      <text x="135" y="15" class="file-desc">Zero-config SQLite relational database</text>
+    </g>
+
+    <!-- requirements.txt -->
+    <g transform="translate(25, 232)">
+      <text x="0" y="15" class="file-name">├── requirements.txt</text>
+      <text x="155" y="15" class="file-desc">Python runtime package dependencies</text>
+    </g>
+
+    <!-- static/uploads/ -->
+    <g transform="translate(25, 268)">
+      <text x="0" y="15" class="file-name">├── static/uploads/</text>
+      <text x="155" y="15" class="file-desc">Secure storage for candidate resumes</text>
+    </g>
+
+    <!-- routes/ -->
+    <g transform="translate(25, 304)">
+      <text x="0" y="15" class="file-name">└── routes/</text>
+      <text x="135" y="15" class="file-desc">Modularized API endpoint Blueprints</text>
+    </g>
+
+    <!-- Bottom summary tag -->
+    <rect x="25" y="348" width="405" height="34" rx="8" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" stroke-width="0.8" />
+    <text x="38" y="369" font-family="'Fira Code', monospace" font-size="10" font-weight="600" fill="#6ee7b7">⚡ Port 5000 • Stateless REST • SQLAlchemy ORM</text>
+  </g>
+
+  <!-- ================= RIGHT COLUMN: FRONTEND ARCHITECTURE ================= -->
+  <g transform="translate(515, 65)">
+    <rect width="455" height="400" rx="12" fill="#0f172a" stroke="#2563eb" stroke-width="1.2" />
+    <rect width="455" height="34" rx="12" fill="url(#gFe)" />
+    <text x="20" y="22" class="tree-title">📁 frontend/ — React 19 + Vite 8 SPA Client</text>
+
+    <!-- Tree items -->
+    <!-- src/App.jsx -->
+    <g transform="translate(25, 52)">
+      <text x="0" y="15" class="file-name">├── src/App.jsx</text>
+      <text x="135" y="15" class="file-desc">Candidate Discovery &amp; Recruiter ATS</text>
+    </g>
+
+    <!-- src/index.css -->
+    <g transform="translate(25, 88)">
+      <text x="0" y="15" class="file-name">├── src/index.css</text>
+      <text x="135" y="15" class="file-desc">Cyber glassmorphism design tokens</text>
+    </g>
+
+    <!-- src/main.jsx -->
+    <g transform="translate(25, 124)">
+      <text x="0" y="15" class="file-name">├── src/main.jsx</text>
+      <text x="135" y="15" class="file-desc">React 19 Concurrent Root mounting</text>
+    </g>
+
+    <!-- public/cards/ -->
+    <g transform="translate(25, 160)">
+      <text x="0" y="15" class="file-name">├── public/cards/</text>
+      <text x="135" y="15" class="file-desc">Animated SVG documentation diagrams</text>
+    </g>
+
+    <!-- public/headers/ -->
+    <g transform="translate(25, 196)">
+      <text x="0" y="15" class="file-name">├── public/headers/</text>
+      <text x="145" y="15" class="file-desc">Gradient section header banners</text>
+    </g>
+
+    <!-- package.json -->
+    <g transform="translate(25, 232)">
+      <text x="0" y="15" class="file-name">├── package.json</text>
+      <text x="135" y="15" class="file-desc">React 19, Vite 8, Lucide React scripts</text>
+    </g>
+
+    <!-- vite.config.js -->
+    <g transform="translate(25, 268)">
+      <text x="0" y="15" class="file-name">├── vite.config.js</text>
+      <text x="135" y="15" class="file-desc">Vite bundler &amp; API proxy settings</text>
+    </g>
+
+    <!-- .oxlintrc.json -->
+    <g transform="translate(25, 304)">
+      <text x="0" y="15" class="file-name">└── .oxlintrc.json</text>
+      <text x="145" y="15" class="file-desc">Rust-based sub-millisecond linter</text>
+    </g>
+
+    <!-- Bottom summary tag -->
+    <rect x="25" y="348" width="405" height="34" rx="8" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8" stroke-width="0.8" />
+    <text x="38" y="369" font-family="'Fira Code', monospace" font-size="10" font-weight="600" fill="#7dd3fc">⚛️ Port 5173 • Client-Side Routing • Fast HMR</text>
+  </g>
+</svg>
