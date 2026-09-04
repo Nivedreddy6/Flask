@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&duration=3000&pause=1000&color=6366F1&center=true&vCenter=true&multiline=true&width=700&height=70&lines=⚡+Job+Sphere+Studio+Frontend+SPA;🚀+React+19+%2B+Vite+8+%2B+Glassmorphism+UI;💼+Applicant+Tracking+System+Client" alt="Typing SVG" />
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/typing-badge-frontend.svg" alt="Animated Typing Badge" width="700" />
 </p>
 
 <p align="center">

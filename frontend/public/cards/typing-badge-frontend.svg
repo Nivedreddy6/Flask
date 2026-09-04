@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 48" width="100%" height="48">
+  <defs>
+    <linearGradient id="typePillBg2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b0f19" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#022c22" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="typeBorder2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@600;700&amp;display=swap');
+
+    .prompt-sym2 {
+      font-family: 'Fira Code', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      fill: #10b981;
+    }
+
+    .type-text2 {
+      font-family: 'Fira Code', monospace;
+      font-size: 14.5px;
+      font-weight: 700;
+      dominant-baseline: middle;
+    }
+
+    .line1 {
+      fill: #34d399;
+      animation: cycle1 9s ease-in-out infinite;
+    }
+
+    .line2 {
+      fill: #38bdf8;
+      animation: cycle2 9s ease-in-out infinite;
+    }
+
+    .line3 {
+      fill: #a78bfa;
+      animation: cycle3 9s ease-in-out infinite;
+    }
+
+    .cursor2 {
+      font-family: 'Fira Code', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      fill: #34d399;
+      animation: blinkCursor2 0.8s infinite;
+    }
+
+    @keyframes cycle1 {
+      0%, 30% { opacity: 1; transform: translateY(0px); }
+      33%, 100% { opacity: 0; transform: translateY(-4px); }
+    }
+
+    @keyframes cycle2 {
+      0%, 33% { opacity: 0; transform: translateY(4px); }
+      36%, 63% { opacity: 1; transform: translateY(0px); }
+      66%, 100% { opacity: 0; transform: translateY(-4px); }
+    }
+
+    @keyframes cycle3 {
+      0%, 66% { opacity: 0; transform: translateY(4px); }
+      69%, 96% { opacity: 1; transform: translateY(0px); }
+      100% { opacity: 0; transform: translateY(-4px); }
+    }
+
+    @keyframes blinkCursor2 {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+  </style>
+
+  <!-- Background Pill -->
+  <rect x="2" y="2" width="746" height="44" rx="22" fill="url(#typePillBg2)" stroke="url(#typeBorder2)" stroke-width="1.5" />
+
+  <!-- Prompt Icon -->
+  <g transform="translate(24, 25)">
+    <text x="0" y="5" class="prompt-sym2">❯</text>
+  </g>
+
+  <!-- Animated Typing Lines (Centered) -->
+  <g transform="translate(48, 25)">
+    <!-- Line 1 -->
+    <text x="0" y="0" class="type-text2 line1">⚡ Job Sphere Studio Frontend SPA</text>
+    
+    <!-- Line 2 -->
+    <text x="0" y="0" class="type-text2 line2">🚀 React 19 + Vite 8 + Glassmorphism UI</text>
+    
+    <!-- Line 3 -->
+    <text x="0" y="0" class="type-text2 line3">💼 Applicant Tracking System Client</text>
+  </g>
+
+  <!-- Blinking Cursor -->
+  <text x="480" y="29" class="cursor2">█</text>
+</svg>
