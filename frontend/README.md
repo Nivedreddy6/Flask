@@ -21,9 +21,12 @@
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-overview.svg" alt="Overview Header" width="100%" />
 </p>
 
-<p align="center">
-  <b>High-performance Single Page Application built with React 19, Vite 8, and custom cyber-glassmorphism styling for candidate discovery and recruiter ATS workflows.</b>
-</p>
+## 💡 What is Job Sphere Studio?
+
+**Job Sphere Studio** is a full-stack recruitment platform and automated Applicant Tracking System (ATS). The frontend is a modern **React 19 + Vite SPA** designed for candidate job discovery and recruiter pipeline management:
+
+* 🎯 **For Job Seekers**: Instant job search with salary filters, 1-click resume applications, and live status progress tracking.
+* ⚡ **For Recruiters**: Applicant Tracking System (ATS) dashboard, instant candidate status transitions, and automated interview scheduling with email triggers.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />

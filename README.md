@@ -21,9 +21,12 @@
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-overview.svg" alt="Project Overview Header" width="100%" />
 </p>
 
-<p align="center">
-  <b>A unified, high-velocity recruitment platform bridging elite tech talent with visionary employers through automated screening pipelines, real-time analytics, and instant interview scheduling.</b>
-</p>
+## 💡 What is Job Sphere Studio?
+
+**Job Sphere Studio** is a full-stack recruitment platform and automated Applicant Tracking System (ATS). It connects **Job Seekers** with **Recruiters** by streamlining the entire hiring lifecycle:
+
+* 🎯 **For Job Seekers**: Search tech jobs with transparent salary ranges, apply with 1-click resume uploads, and track real-time application status.
+* ⚡ **For Recruiters**: Post vacancies, review candidate pipelines, advance hiring stages, and schedule interviews with automated calendar-ready emails.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />
