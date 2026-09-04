@@ -146,17 +146,9 @@ erDiagram
   <img src="frontend/public/headers/header-api.svg" alt="API Specification Header" width="100%" />
 </p>
 
-| HTTP Method | Route Endpoint | Purpose | Authorization |
-| :--- | :--- | :--- | :---: |
-| `POST` | `/api/auth/login` | Session login & cookie issue | Public |
-| `POST` | `/api/auth/register` | User / Recruiter registration | Public |
-| `GET` | `/api/auth/me` | Current authenticated session info | **User Session** |
-| `GET` | `/api/jobs` | Retrieve filtered job postings list | Public |
-| `POST` | `/api/jobs` | Post new vacancy | **Recruiter** |
-| `GET` | `/api/applications` | Fetch candidate applications pipeline | **Authenticated** |
-| `POST` | `/api/applications/<id>/status` | Update applicant hiring stage | **Recruiter** |
-| `POST` | `/api/applications/<id>/interview` | Dispatch interview invite email | **Recruiter** |
-| `GET` | `/uploads/resumes/<filename>` | Authenticated resume streaming | **Authenticated** |
+<p align="center">
+  <img src="frontend/public/cards/api-endpoints.svg" alt="REST API Endpoints Specification" width="100%" />
+</p>
 
 ---
 

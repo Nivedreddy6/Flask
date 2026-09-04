@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="100%" height="480">
+  <defs>
+    <linearGradient id="apiBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="apiBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .th { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 800; fill: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+    .ep-text { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 13px; font-weight: 600; fill: #38bdf8; }
+    .purpose-text { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 500; fill: #e2e8f0; }
+    .auth-text { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 700; text-anchor: middle; }
+    .method-text { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; font-weight: 800; fill: #ffffff; text-anchor: middle; }
+    .row-bg { fill: rgba(255, 255, 255, 0.02); }
+    .row-bg-alt { fill: rgba(255, 255, 255, 0.05); }
+  </style>
+
+  <!-- Container -->
+  <rect width="1000" height="480" rx="16" fill="url(#apiBg)" stroke="url(#apiBorder)" stroke-width="2" />
+
+  <!-- Table Header -->
+  <rect x="15" y="15" width="970" height="45" rx="10" fill="rgba(0,0,0,0.4)" />
+  <text x="50" y="42" class="th">METHOD</text>
+  <text x="170" y="42" class="th">ROUTE ENDPOINT</text>
+  <text x="500" y="42" class="th">DESCRIPTION &amp; FUNCTION</text>
+  <text x="880" y="42" class="th" text-anchor="middle">ACCESS LEVEL</text>
+
+  <!-- Row 1: POST /api/auth/login -->
+  <g transform="translate(15, 68)">
+    <rect width="970" height="40" rx="8" class="row-bg" />
+    <rect x="25" y="8" width="60" height="24" rx="6" fill="#2563eb" />
+    <text x="55" y="24" class="method-text">POST</text>
+    <text x="155" y="25" class="ep-text">/api/auth/login</text>
+    <text x="485" y="25" class="purpose-text">Authenticates candidate or recruiter session</text>
+    <rect x="825" y="8" width="110" height="24" rx="12" fill="rgba(148, 163, 184, 0.15)" stroke="#94a3b8" stroke-width="1" />
+    <text x="880" y="24" class="auth-text" fill="#cbd5e1">Public</text>
+  </g>
+
+  <!-- Row 2: POST /api/auth/register -->
+  <g transform="translate(15, 112)">
+    <rect width="970" height="40" rx="8" class="row-bg-alt" />
+    <rect x="25" y="8" width="60" height="24" rx="6" fill="#2563eb" />
+    <text x="55" y="24" class="method-text">POST</text>
+    <text x="155" y="25" class="ep-text">/api/auth/register</text>
+    <text x="485" y="25" class="purpose-text">Registers new account with role assignment</text>
+    <rect x="825" y="8" width="110" height="24" rx="12" fill="rgba(148, 163, 184, 0.15)" stroke="#94a3b8" stroke-width="1" />
+    <text x="880" y="24" class="auth-text" fill="#cbd5e1">Public</text>
+  </g>
+
+  <!-- Row 3: GET /api/auth/me -->
+  <g transform="translate(15, 156)">
+    <rect width="970" height="40" rx="8" class="row-bg" />
+    <rect x="25" y="8" width="60" height="24" rx="6" fill="#059669" />
+    <text x="55" y="24" class="method-text">GET</text>
+    <text x="155" y="25" class="ep-text">/api/auth/me</text>
+    <text x="485" y="25" class="purpose-text">Returns current user profile &amp; active permissions</text>
+    <rect x="825" y="8" width="110" height="24" rx="12" fill="rgba(99, 102, 241, 0.2)" stroke="#818cf8" stroke-width="1" />
+    <text x="880" y="24" class="auth-text" fill="#a5b4fc">User Session</text>
+  </g>
+
+  <!-- Row 4: GET /api/jobs -->
+  <g transform="translate(15, 200)">
+    <rect width="970" height="40" rx="8" class="row-bg-alt" />
+    <rect x="25" y="8" width="60" height="24" rx="6" fill="#059669" />
+    <text x="55" y="24" class="method-text">GET</text>
+    <text x="155" y="25" class="ep-text">/api/jobs</text>
+    <text x="485" y="25" class="purpose-text">Fetches dynamic filtered list of active vacancies</text>
+    <rect x="825" y="8" width="110" height="24" rx="12" fill="rgba(148, 163, 184, 0.15)" stroke="#94a3b8" stroke-width="1" />
+    <text x="880" y="24" class="auth-text" fill="#cbd5e1">Public</text>
+  </g>
+
+  <!-- Row 5: POST /api/jobs -->
+  <g transform="translate(15, 244)">
+    <rect width="970" height="40" rx="8" class="row-bg" />
+    <rect x="25" y="8" width="60" height="24" rx="6" fill="#2563eb" />
+    <text x="55" y="24" class="method-text">POST</text>
+    <text x="155" y="25" class="ep-text">/api/jobs</text>
+    <text x="485" y="25" class="purpose-text">Broadcasts a new vacancy with salary &amp; criteria</text>
+    <rect x="825" y="8" width="110" height="24" rx="12" fill="rgba(236, 72, 153, 0.2)" stroke="#ec4899" stroke-width="1" />
+    <text x="880" y="24" class="auth-text" fill="#f472b6">Recruiter Only</text>
+  </g>
+
+  <!-- Row 6: GET /api/applications -->
+  <g transform="translate(15, 288)">
+    <rect width="970" height="40" rx="8" class="row-bg-alt" />
+    <rect x="25" y="8" width="60" height="24" rx="6" fill="#059669" />
+    <text x="55" y="24" class="method-text">GET</text>
+    <text x="155" y="25" class="ep-text">/api/applications</text>
+    <text x="485" y="25" class="purpose-text">Retrieves candidate submissions &amp; pipeline stage data</text>
+    <rect x="825" y="8" width="110" height="24" rx="12" fill="rgba(6, 182, 212, 0.2)" stroke="#06b6d4" stroke-width="1" />
+    <text x="880" y="24" class="auth-text" fill="#67e8f9">Authenticated</text>
+  </g>
+
+  <!-- Row 7: POST /api/applications/:id/status -->
+  <g transform="translate(15, 332)">
+    <rect width="970" height="40" rx="8" class="row-bg" />
+    <rect x="25" y="8" width="60" height="24" rx="6" fill="#2563eb" />
+    <text x="55" y="24" class="method-text">POST</text>
+    <text x="155" y="25" class="ep-text">/api/applications/&lt;id&gt;/status</text>
+    <text x="485" y="25" class="purpose-text">Advances candidate (Review ➔ Shortlist ➔ Hired / Reject)</text>
+    <rect x="825" y="8" width="110" height="24" rx="12" fill="rgba(236, 72, 153, 0.2)" stroke="#ec4899" stroke-width="1" />
+    <text x="880" y="24" class="auth-text" fill="#f472b6">Recruiter Only</text>
+  </g>
+
+  <!-- Row 8: POST /api/applications/:id/interview -->
+  <g transform="translate(15, 376)">
+    <rect width="970" height="40" rx="8" class="row-bg-alt" />
+    <rect x="25" y="8" width="60" height="24" rx="6" fill="#2563eb" />
+    <text x="55" y="24" class="method-text">POST</text>
+    <text x="155" y="25" class="ep-text">/api/applications/&lt;id&gt;/interview</text>
+    <text x="485" y="25" class="purpose-text">Schedules interview &amp; dispatches automated SMTP email</text>
+    <rect x="825" y="8" width="110" height="24" rx="12" fill="rgba(236, 72, 153, 0.2)" stroke="#ec4899" stroke-width="1" />
+    <text x="880" y="24" class="auth-text" fill="#f472b6">Recruiter Only</text>
+  </g>
+
+  <!-- Row 9: GET /uploads/resumes/:filename -->
+  <g transform="translate(15, 420)">
+    <rect width="970" height="40" rx="8" class="row-bg" />
+    <rect x="25" y="8" width="60" height="24" rx="6" fill="#059669" />
+    <text x="55" y="24" class="method-text">GET</text>
+    <text x="155" y="25" class="ep-text">/uploads/resumes/&lt;filename&gt;</text>
+    <text x="485" y="25" class="purpose-text">Securely streams uploaded PDF/DOCX candidate resume</text>
+    <rect x="825" y="8" width="110" height="24" rx="12" fill="rgba(6, 182, 212, 0.2)" stroke="#06b6d4" stroke-width="1" />
+    <text x="880" y="24" class="auth-text" fill="#67e8f9">Authenticated</text>
+  </g>
+</svg>
