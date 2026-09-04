@@ -21,22 +21,9 @@
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-overview.svg" alt="Project Overview Header" width="100%" />
 </p>
 
-```diff
-- ❌ THE CHALLENGE: Fragmented job boards, resumes lost in black holes, and manual email interview ping-pong.
-+ ✔️ THE SOLUTION:  Job Sphere Studio — Automated, transparent, and unified full-stack recruitment machine.
-```
-
-> [!TIP]
-> ### 🎯 `FOR JOB SEEKERS` • **Discover & Land Top Tech Roles**
-> Browse curated tech openings with transparent compensation tiers, apply in **1-click with PDF/DOCX resume validation**, and track real-time hiring progress from submission to offer.
-
-> [!IMPORTANT]
-> ### ⚡ `FOR RECRUITERS` • **High-Velocity Automated ATS & Mailer**
-> Post multi-tag vacancies, screen candidate pipelines in a unified Kanban board, advance applicant stages with **1 click**, and trigger **automated calendar-ready HTML interview invitations** via SMTP.
-
-> [!NOTE]
-> ### 🏛️ `FOR ENGINEERING TEAMS` • **Decoupled Full-Stack Architecture**
-> Powered by a high-performance **Flask 3.0 REST Backend** (Python) and a reactive **React 19 + Vite 8 SPA** client styled in a bespoke **cyber glassmorphic design language**.
+<p align="center">
+  <b>A unified, high-velocity recruitment platform bridging elite tech talent with visionary employers through automated screening pipelines, real-time analytics, and instant interview scheduling.</b>
+</p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />

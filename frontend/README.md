@@ -21,18 +21,9 @@
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/headers/header-overview.svg" alt="Overview Header" width="100%" />
 </p>
 
-```diff
-- ❌ TRADITIONAL UI: Sluggish server reloads, fragmented recruiter workflows, and zero real-time stage sync.
-+ ✔️ MODERN SPA:    React 19 + Vite 8 — Instant HMR, reactive pipeline tracking, and cyber glassmorphic design.
-```
-
-> [!TIP]
-> ### 🎯 `CANDIDATE DISCOVERY SPA`
-> Responsive client featuring dynamic multi-facet search, instant salary filtering, and 1-click resume uploads.
-
-> [!IMPORTANT]
-> ### ⚡ `RECRUITER ATS COMMAND CENTER`
-> Real-time recruitment analytics, candidate pipeline status shifts, and modal-based interview scheduling with automated SMTP triggers.
+<p align="center">
+  <b>High-performance Single Page Application built with React 19, Vite 8, and custom cyber-glassmorphism styling for candidate discovery and recruiter ATS workflows.</b>
+</p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />
