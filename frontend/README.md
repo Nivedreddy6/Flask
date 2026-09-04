@@ -56,24 +56,10 @@
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/workflow.svg" alt="System Workflow Diagram" width="100%" />
 </p>
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Recruiter
-    participant Frontend as ⚛️ React 19 SPA (:5173)
-    participant Backend as ⚡ Flask Server (:5000)
-    participant Database as 💾 SQLite DB
-    participant Email as 📧 SMTP Service
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/sequence-interview.svg" alt="Interview Scheduling Sequence Flow" width="100%" />
+</p>
 
-    Recruiter->>Frontend: Select candidate & Click "Schedule Interview"
-    Frontend->>Frontend: Open scheduling modal (Date, Time, Video Link)
-    Frontend->>Backend: POST /api/applications/<id>/interview
-    Backend->>Database: Update status to "Interview Scheduled"
-    Backend->>Email: Dispatch branded HTML interview invitation
-    Email-->>Recruiter: Email delivered to candidate
-    Backend-->>Frontend: HTTP 200 OK + Updated Pipeline Data
-    Frontend-->>Recruiter: UI re-renders with success notification
-```
 
 ---
 

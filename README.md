@@ -111,69 +111,10 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
 
 The database model is built with SQLAlchemy with clean relational entities:
 
-```mermaid
-erDiagram
-    USER ||--o{ USER_PROFILE : "has profile"
-    USER ||--o{ COMPANY_PROFILE : "owns company"
-    USER ||--o{ JOB_POSTING : "creates jobs"
-    USER ||--o{ APPLICATION : "submits"
-    USER ||--o{ NOTIFICATION : "receives alerts"
-    JOB_POSTING ||--o{ APPLICATION : "receives"
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/database-schema.svg" alt="Relational Database Schema (SQLAlchemy ORM)" width="100%" />
+</p>
 
-    USER {
-        int id PK
-        string email UK
-        string password_hash
-        string role "seeker | recruiter"
-        datetime created_at
-    }
-
-    USER_PROFILE {
-        int id PK
-        int user_id FK
-        string full_name
-        string headline
-        string skills
-        string resume_path
-    }
-
-    COMPANY_PROFILE {
-        int id PK
-        int user_id FK
-        string company_name
-        string industry
-        string website
-        string logo_url
-    }
-
-    JOB_POSTING {
-        int id PK
-        int recruiter_id FK
-        string title
-        string department
-        string salary_range
-        string status "Active | Closed"
-        datetime created_at
-    }
-
-    APPLICATION {
-        int id PK
-        int job_id FK
-        int seeker_id FK
-        string status "Applied | Reviewing | Shortlisted | Interview Scheduled | Hired | Rejected"
-        string resume_filename
-        datetime applied_at
-    }
-
-    NOTIFICATION {
-        int id PK
-        int user_id FK
-        string title
-        string message
-        boolean is_read
-        datetime created_at
-    }
-```
 
 ---
 

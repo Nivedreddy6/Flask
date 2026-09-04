@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="520">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="schemaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Outer Animated Border -->
+    <linearGradient id="schemaBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#06b6d4;#6366f1;#ec4899;#10b981" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#6366f1;#ec4899;#10b981;#06b6d4" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#6366f1">
+        <animate attributeName="stop-color" values="#6366f1;#ec4899;#10b981;#06b6d4;#6366f1" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Table Header Gradients -->
+    <linearGradient id="hUser" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient>
+    <linearGradient id="hSeeker" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0d9488"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+    <linearGradient id="hCompany" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#9333ea"/></linearGradient>
+    <linearGradient id="hJob" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#db2777"/><stop offset="100%" stop-color="#e11d48"/></linearGradient>
+    <linearGradient id="hApp" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#ea580c"/></linearGradient>
+    <linearGradient id="hNotif" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0284c7"/><stop offset="100%" stop-color="#2563eb"/></linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@600;700&amp;display=swap');
+
+    .tbl-title { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; letter-spacing: 0.5px; }
+    .col-name { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 600; fill: #e2e8f0; }
+    .col-type { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 500; fill: #94a3b8; }
+    .key-pk { font-family: 'Fira Code', monospace; font-size: 9px; font-weight: 800; fill: #38bdf8; }
+    .key-fk { font-family: 'Fira Code', monospace; font-size: 9px; font-weight: 800; fill: #f472b6; }
+    
+    .rel-line {
+      stroke: #818cf8;
+      stroke-width: 2;
+      stroke-dasharray: 6,4;
+      animation: dashFlow 1.2s linear infinite;
+    }
+    .rel-line-pink {
+      stroke: #f43f5e;
+      stroke-width: 2;
+      stroke-dasharray: 6,4;
+      animation: dashFlow 1.2s linear infinite;
+    }
+    .rel-line-green {
+      stroke: #10b981;
+      stroke-width: 2;
+      stroke-dasharray: 6,4;
+      animation: dashFlow 1.2s linear infinite;
+    }
+
+    @keyframes dashFlow {
+      from { stroke-dashoffset: 20; }
+      to { stroke-dashoffset: 0; }
+    }
+  </style>
+
+  <!-- Main Container -->
+  <rect width="1000" height="520" rx="18" fill="url(#schemaBg)" stroke="url(#schemaBorder)" stroke-width="2" />
+
+  <!-- Top Title Header -->
+  <g transform="translate(30, 20)">
+    <rect width="370" height="26" rx="13" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#34d399">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <text x="28" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="700" fill="#6ee7b7">RELATIONAL DATABASE SCHEMA (SQLITE / ORM)</text>
+  </g>
+
+  <!-- ================= RELATIONSHIP CONNECTORS ================= -->
+  <!-- USER -> USER_PROFILE -->
+  <path d="M 400 130 C 280 130, 250 130, 180 130" class="rel-line" fill="none" />
+  <!-- USER -> COMPANY_PROFILE -->
+  <path d="M 600 130 C 720 130, 750 130, 820 130" class="rel-line" fill="none" />
+  <!-- USER -> JOB_POSTING (Down Right) -->
+  <path d="M 550 200 C 550 260, 650 300, 720 340" class="rel-line-pink" fill="none" />
+  <!-- USER -> APPLICATION (Down Center) -->
+  <path d="M 450 200 C 450 250, 450 290, 450 340" class="rel-line-green" fill="none" />
+  <!-- USER -> NOTIFICATION (Down Left) -->
+  <path d="M 420 200 C 420 260, 320 300, 250 340" class="rel-line" fill="none" />
+  <!-- JOB_POSTING -> APPLICATION -->
+  <path d="M 720 390 L 590 390" class="rel-line-pink" fill="none" />
+
+  <!-- ================= 1. CENTRAL TABLE: USER ================= -->
+  <g transform="translate(400, 60)">
+    <rect width="200" height="145" rx="10" fill="#0f172a" stroke="#6366f1" stroke-width="2" />
+    <rect width="200" height="28" rx="10" fill="url(#hUser)" />
+    <text x="100" y="19" text-anchor="middle" class="tbl-title">USER (Auth Root)</text>
+
+    <!-- Cols -->
+    <text x="12" y="48" class="col-name">id</text><text x="110" y="48" class="col-type">INT</text><text x="170" y="48" class="key-pk">PK</text>
+    <text x="12" y="68" class="col-name">email</text><text x="110" y="68" class="col-type">VARCHAR(120)</text>
+    <text x="12" y="88" class="col-name">password_hash</text><text x="110" y="88" class="col-type">VARCHAR(256)</text>
+    <text x="12" y="108" class="col-name">role</text><text x="110" y="108" class="col-type">seeker|recruiter</text>
+    <text x="12" y="128" class="col-name">created_at</text><text x="110" y="128" class="col-type">DATETIME</text>
+  </g>
+
+  <!-- ================= 2. TABLE: USER_PROFILE (LEFT) ================= -->
+  <g transform="translate(25, 60)">
+    <rect width="200" height="150" rx="10" fill="#0f172a" stroke="#0d9488" stroke-width="1.5" />
+    <rect width="200" height="28" rx="10" fill="url(#hSeeker)" />
+    <text x="100" y="19" text-anchor="middle" class="tbl-title">USER_PROFILE</text>
+
+    <!-- Cols -->
+    <text x="12" y="48" class="col-name">id</text><text x="110" y="48" class="col-type">INT</text><text x="170" y="48" class="key-pk">PK</text>
+    <text x="12" y="68" class="col-name">user_id</text><text x="110" y="68" class="col-type">INT</text><text x="170" y="68" class="key-fk">FK</text>
+    <text x="12" y="88" class="col-name">full_name</text><text x="110" y="88" class="col-type">VARCHAR(100)</text>
+    <text x="12" y="108" class="col-name">headline</text><text x="110" y="108" class="col-type">VARCHAR(200)</text>
+    <text x="12" y="128" class="col-name">skills</text><text x="110" y="128" class="col-type">TEXT</text>
+    <text x="12" y="145" class="col-name">resume_path</text><text x="110" y="145" class="col-type">VARCHAR(255)</text>
+  </g>
+
+  <!-- ================= 3. TABLE: COMPANY_PROFILE (RIGHT) ================= -->
+  <g transform="translate(775, 60)">
+    <rect width="200" height="150" rx="10" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5" />
+    <rect width="200" height="28" rx="10" fill="url(#hCompany)" />
+    <text x="100" y="19" text-anchor="middle" class="tbl-title">COMPANY_PROFILE</text>
+
+    <!-- Cols -->
+    <text x="12" y="48" class="col-name">id</text><text x="110" y="48" class="col-type">INT</text><text x="170" y="48" class="key-pk">PK</text>
+    <text x="12" y="68" class="col-name">user_id</text><text x="110" y="68" class="col-type">INT</text><text x="170" y="68" class="key-fk">FK</text>
+    <text x="12" y="88" class="col-name">company_name</text><text x="110" y="88" class="col-type">VARCHAR(120)</text>
+    <text x="12" y="108" class="col-name">industry</text><text x="110" y="108" class="col-type">VARCHAR(100)</text>
+    <text x="12" y="128" class="col-name">website</text><text x="110" y="128" class="col-type">VARCHAR(200)</text>
+    <text x="12" y="145" class="col-name">logo_url</text><text x="110" y="145" class="col-type">VARCHAR(255)</text>
+  </g>
+
+  <!-- ================= 4. TABLE: NOTIFICATION (BOTTOM LEFT) ================= -->
+  <g transform="translate(25, 335)">
+    <rect width="230" height="150" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+    <rect width="230" height="28" rx="10" fill="url(#hNotif)" />
+    <text x="115" y="19" text-anchor="middle" class="tbl-title">NOTIFICATION</text>
+
+    <!-- Cols -->
+    <text x="12" y="48" class="col-name">id</text><text x="120" y="48" class="col-type">INT</text><text x="195" y="48" class="key-pk">PK</text>
+    <text x="12" y="68" class="col-name">user_id</text><text x="120" y="68" class="col-type">INT</text><text x="195" y="68" class="key-fk">FK</text>
+    <text x="12" y="88" class="col-name">title</text><text x="120" y="88" class="col-type">VARCHAR(150)</text>
+    <text x="12" y="108" class="col-name">message</text><text x="120" y="108" class="col-type">TEXT</text>
+    <text x="12" y="128" class="col-name">is_read</text><text x="120" y="128" class="col-type">BOOLEAN</text>
+    <text x="12" y="145" class="col-name">created_at</text><text x="120" y="145" class="col-type">DATETIME</text>
+  </g>
+
+  <!-- ================= 5. TABLE: APPLICATION (BOTTOM CENTER) ================= -->
+  <g transform="translate(325, 335)">
+    <rect width="265" height="150" rx="10" fill="#0f172a" stroke="#ea580c" stroke-width="1.5" />
+    <rect width="265" height="28" rx="10" fill="url(#hApp)" />
+    <text x="132" y="19" text-anchor="middle" class="tbl-title">APPLICATION (ATS Pipeline)</text>
+
+    <!-- Cols -->
+    <text x="12" y="48" class="col-name">id</text><text x="145" y="48" class="col-type">INT</text><text x="230" y="48" class="key-pk">PK</text>
+    <text x="12" y="68" class="col-name">job_id</text><text x="145" y="68" class="col-type">INT</text><text x="230" y="68" class="key-fk">FK</text>
+    <text x="12" y="88" class="col-name">seeker_id</text><text x="145" y="88" class="col-type">INT</text><text x="230" y="88" class="key-fk">FK</text>
+    <text x="12" y="108" class="col-name">status</text><text x="145" y="108" class="col-type">Applied|Review...</text>
+    <text x="12" y="128" class="col-name">resume_filename</text><text x="145" y="128" class="col-type">VARCHAR(255)</text>
+    <text x="12" y="145" class="col-name">applied_at</text><text x="145" y="145" class="col-type">DATETIME</text>
+  </g>
+
+  <!-- ================= 6. TABLE: JOB_POSTING (BOTTOM RIGHT) ================= -->
+  <g transform="translate(680, 335)">
+    <rect width="295" height="150" rx="10" fill="#0f172a" stroke="#e11d48" stroke-width="1.5" />
+    <rect width="295" height="28" rx="10" fill="url(#hJob)" />
+    <text x="147" y="19" text-anchor="middle" class="tbl-title">JOB_POSTING (Vacancies)</text>
+
+    <!-- Cols -->
+    <text x="12" y="48" class="col-name">id</text><text x="165" y="48" class="col-type">INT</text><text x="260" y="48" class="key-pk">PK</text>
+    <text x="12" y="68" class="col-name">recruiter_id</text><text x="165" y="68" class="col-type">INT</text><text x="260" y="68" class="key-fk">FK</text>
+    <text x="12" y="88" class="col-name">title</text><text x="165" y="88" class="col-type">VARCHAR(150)</text>
+    <text x="12" y="108" class="col-name">department</text><text x="165" y="108" class="col-type">VARCHAR(100)</text>
+    <text x="12" y="128" class="col-name">salary_range</text><text x="165" y="128" class="col-type">VARCHAR(80)</text>
+    <text x="12" y="145" class="col-name">status</text><text x="165" y="145" class="col-type">Active|Closed</text>
+  </g>
+</svg>
