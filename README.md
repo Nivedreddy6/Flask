@@ -226,29 +226,6 @@ erDiagram
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/terminal-quickstart.svg" alt="Animated Terminal Quickstart" width="100%" />
 </p>
 
-### 1️⃣ Launch Backend Server (Flask)
-```powershell
-# Activate Python Virtual Environment
-.\Scripts\Activate.ps1
-
-# Start Flask Backend Server on Port 5000
-python backend/app.py
-```
-> 🌐 **Backend URL**: [http://127.0.0.1:5000](http://127.0.0.1:5000)
-
-### 2️⃣ Launch Frontend Server (React 19 + Vite)
-```powershell
-# In a new terminal window:
-cd frontend
-
-# Install dependencies (first time only)
-npm install
-
-# Start Vite Development Server on Port 5173
-npm run dev
-```
-> 🌐 **Frontend URL**: [http://localhost:5173](http://localhost:5173) *(automatically proxies `/api` calls to port 5000)*
-
 ---
 
 <div align="center">

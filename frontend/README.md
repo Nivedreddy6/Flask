@@ -90,19 +90,6 @@ sequenceDiagram
   <img src="https://raw.githubusercontent.com/Nivedreddy6/Flask/main/frontend/public/cards/terminal-quickstart.svg" alt="Animated Terminal Quickstart" width="100%" />
 </p>
 
-### 1️⃣ Install Dependencies
-```bash
-cd frontend
-npm install
-```
-
-### 2️⃣ Run Development Server
-```bash
-npm run dev
-```
-
-> 🌐 **Frontend SPA**: [http://localhost:5173](http://localhost:5173) *(Automated proxy to Flask at `http://127.0.0.1:5000`)*
-
 ---
 
 <p align="center">
