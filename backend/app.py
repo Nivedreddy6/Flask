@@ -208,6 +208,10 @@ if db_url:
     if db_url.startswith("postgres://"):
         db_url = db_url.replace("postgres://", "postgresql://", 1)
     app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+        'pool_pre_ping': True,
+        'pool_recycle': 300,
+    }
 elif os.environ.get('VERCEL'):
     tmp_db = os.path.join(tempfile.gettempdir(), 'job_portal.db')
     orig_db = os.path.join(app.root_path, 'job_portal.db')
