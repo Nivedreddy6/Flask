@@ -283,6 +283,13 @@ def process_google_user_login(email, full_name):
     return redirect(url_for('seeker_dashboard'))
 
 
+def get_google_redirect_uri():
+    redirect_uri = url_for('google_callback', _external=True)
+    if os.environ.get('VERCEL') or request.headers.get('X-Forwarded-Proto') == 'https':
+        if redirect_uri.startswith('http://'):
+            redirect_uri = 'https://' + redirect_uri[7:]
+    return redirect_uri
+
 @app.route('/login/google', methods=['GET', 'POST'])
 def google_login():
     if 'user_id' in session:
@@ -295,7 +302,7 @@ def google_login():
         return process_google_user_login(demo_email, demo_name)
 
     google_client_id = os.environ.get('GOOGLE_CLIENT_ID', '405254729686-v2j9tgfrcgkc2kv9vm9ok3femfan59p6.apps.googleusercontent.com')
-    redirect_uri = url_for('google_callback', _external=True)
+    redirect_uri = get_google_redirect_uri()
 
     # Direct redirect to Google Accounts OAuth 2.0 Authorization endpoint (Option A)
     google_oauth_url = (
@@ -321,7 +328,7 @@ def google_callback():
             import urllib.request, urllib.parse, base64, json
             google_client_id = os.environ.get('GOOGLE_CLIENT_ID', '405254729686-v2j9tgfrcgkc2kv9vm9ok3femfan59p6.apps.googleusercontent.com')
             google_client_secret = os.environ.get('GOOGLE_CLIENT_SECRET', '')
-            redirect_uri = url_for('google_callback', _external=True)
+            redirect_uri = get_google_redirect_uri()
 
             token_url = "https://oauth2.googleapis.com/token"
             data = urllib.parse.urlencode({
