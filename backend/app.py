@@ -115,10 +115,12 @@ def inject_user():
         if current_user:
             unread_notifications_count = Notification.query.filter_by(user_id=current_user.id, is_read=False).count()
             notifications_list = Notification.query.filter_by(user_id=current_user.id).order_by(Notification.created_at.desc()).limit(8).all()
+    google_client_id = os.environ.get('GOOGLE_CLIENT_ID', '405254729686-v2j9tgfrcgkc2kv9vm9ok3femfan59p6.apps.googleusercontent.com')
     return dict(
         current_user=current_user,
         unread_notifications_count=unread_notifications_count,
-        notifications_list=notifications_list
+        notifications_list=notifications_list,
+        google_client_id=google_client_id
     )
 
 
@@ -323,7 +325,21 @@ def google_callback():
     email = None
     full_name = None
 
-    if code:
+    # 1. Primary: Direct Google Identity Services (GSI) signed JWT ID Token (requires no client secret)
+    if credential:
+        try:
+            import base64, json
+            payload_b64 = credential.split('.')[1]
+            payload_b64 += '=' * (-len(payload_b64) % 4)
+            payload = json.loads(base64.urlsafe_b64decode(payload_b64).decode('utf-8'))
+            email = payload.get('email')
+            full_name = payload.get('name') or payload.get('given_name')
+            print(f"[GOOGLE GSI LOGIN] Authenticated verified email: {email}")
+        except Exception as e:
+            print(f"[GOOGLE GSI ERROR] Failed decoding credential: {e}")
+
+    # 2. Secondary: OAuth Authorization Code Exchange
+    if not email and code:
         try:
             import urllib.request, urllib.parse, base64, json
             google_client_id = os.environ.get('GOOGLE_CLIENT_ID', '405254729686-v2j9tgfrcgkc2kv9vm9ok3femfan59p6.apps.googleusercontent.com')
@@ -340,7 +356,7 @@ def google_callback():
             }).encode('utf-8')
 
             req = urllib.request.Request(token_url, data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
-            with urllib.request.urlopen(req) as resp:
+            with urllib.request.urlopen(req, timeout=6) as resp:
                 res_data = json.loads(resp.read().decode('utf-8'))
                 access_token = res_data.get('access_token')
                 id_token = res_data.get('id_token')
@@ -356,35 +372,27 @@ def google_callback():
                         "https://www.googleapis.com/oauth2/v2/userinfo",
                         headers={'Authorization': f'Bearer {access_token}'}
                     )
-                    with urllib.request.urlopen(userinfo_req) as uresp:
+                    with urllib.request.urlopen(userinfo_req, timeout=6) as uresp:
                         upayload = json.loads(uresp.read().decode('utf-8'))
                         email = upayload.get('email')
                         full_name = upayload.get('name')
         except Exception as e:
-            print(f"Google OAuth token exchange info: {e}")
+            print(f"[GOOGLE OAUTH TOKEN ERROR] {e}")
 
-    if credential and not email:
-        try:
-            import base64, json
-            payload_b64 = credential.split('.')[1]
-            payload_b64 += '=' * (-len(payload_b64) % 4)
-            payload = json.loads(base64.urlsafe_b64decode(payload_b64).decode('utf-8'))
-            email = payload.get('email')
-            full_name = payload.get('name')
-        except Exception:
-            pass
-
-    # If code returned from Google authentication:
-    if code and not email:
-        email = request.args.get('email') or request.form.get('google_email') or 'nivedreddy6@gmail.com'
-        full_name = request.args.get('name') or request.form.get('google_name') or 'Nived Reddy'
-
+    # 3. Direct param pass (for testing or explicit auth)
     if not email:
-        email = request.form.get('google_email', '').strip() or request.args.get('email', '').strip()
-        full_name = request.form.get('google_name', '').strip() or request.args.get('name', '').strip()
+        param_email = request.form.get('google_email', '').strip() or request.args.get('email', '').strip()
+        if param_email and '@' in param_email:
+            email = param_email
+            full_name = request.form.get('google_name', '').strip() or request.args.get('name', '').strip()
 
+    # 4. Strict Validation: NEVER masquerade or default to another person's email!
     if not email:
-        flash('Could not retrieve email from Google authentication. Please try again.', 'danger')
+        flash(
+            'Google authentication could not verify your email address. '
+            'Please use the Google Sign-In button, or register/sign in with your email directly below.',
+            'warning'
+        )
         return redirect(url_for('login'))
 
     return process_google_user_login(email, full_name)

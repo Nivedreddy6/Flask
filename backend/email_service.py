@@ -132,21 +132,30 @@ def send_interview_email(to_email=None, candidate_name="Candidate", job_title="O
 
     email_sent = False
     if smtp_server and smtp_user and smtp_password:
-        try:
-            msg = MIMEMultipart('alternative')
-            msg['Subject'] = subject
-            msg['From'] = smtp_user
-            msg['To'] = to_email
-            msg.attach(MIMEText(html_body, 'html'))
+        import threading
 
-            with smtplib.SMTP(smtp_server, smtp_port) as server:
-                server.starttls()
-                server.login(smtp_user, smtp_password)
-                server.sendmail(smtp_user, to_email, msg.as_string())
-            print(f"[EMAIL SERVICE] Successfully sent real email to {to_email}")
-            email_sent = True
-        except Exception as e:
-            print(f"[EMAIL SERVICE ERROR] SMTP dispatch failed: {e}")
+        def _send_mail_worker():
+            nonlocal email_sent
+            try:
+                msg = MIMEMultipart('alternative')
+                msg['Subject'] = subject
+                msg['From'] = smtp_user
+                msg['To'] = to_email
+                msg.attach(MIMEText(html_body, 'html'))
+
+                with smtplib.SMTP(smtp_server, smtp_port, timeout=4) as server:
+                    server.starttls()
+                    server.login(smtp_user, smtp_password)
+                    server.sendmail(smtp_user, to_email, msg.as_string())
+                print(f"[EMAIL SERVICE] Successfully sent real email to {to_email}")
+                email_sent = True
+            except Exception as e:
+                print(f"[EMAIL SERVICE ERROR] SMTP dispatch failed: {e}")
+
+        # Dispatch via thread with short join so HTTP response is not blocked
+        thread = threading.Thread(target=_send_mail_worker)
+        thread.start()
+        thread.join(timeout=2.0)  # Wait at most 2 seconds for instant UI response
 
     # Generate local backup copy if writable (supports Vercel read-only filesystem)
     try:

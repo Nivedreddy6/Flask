@@ -3,12 +3,12 @@ import { createPortal } from 'react-dom';
 import { X, Send, Sparkles, CheckCircle, AlertCircle, FileUp, Briefcase } from 'lucide-react';
 
 export function JobApplyModal({ job, onClose, onApplicationSuccess }) {
-  const [name, setName] = useState('Nived Reddy');
-  const [email, setEmail] = useState('nivedreddy6@gmail.com');
-  const [headline, setHeadline] = useState('Full Stack Python & React Developer');
-  const [skills, setSkills] = useState('Python, Flask, React, SQL, REST APIs, Docker');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [headline, setHeadline] = useState('');
+  const [skills, setSkills] = useState('');
   const [coverLetter, setCoverLetter] = useState(
-    `Dear Hiring Team at ${job?.company_name || 'TechCorp AI'},\n\nI am excited to apply for the ${job?.title || 'Open Position'} role. With strong full-stack engineering expertise across Flask REST APIs and React 19 web applications, I would love to contribute to your team!`
+    `Dear Hiring Team at ${job?.company_name || 'TechCorp AI'},\n\nI am excited to apply for the ${job?.title || 'Open Position'} role. With strong engineering expertise, I would love to contribute to your team!`
   );
   const [submitting, setSubmitting] = useState(false);
   const [statusMsg, setStatusMsg] = useState(null);
