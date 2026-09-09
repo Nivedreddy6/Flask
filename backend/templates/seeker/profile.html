@@ -21,54 +21,56 @@
         {% endif %}
         <p style="color: var(--text-muted); text-align: center; margin-bottom: 28px; font-size: 0.95rem;">Keep your information up to date for recruiters.</p>
 
-        <form action="{{ url_for('seeker_profile') }}" method="POST" enctype="multipart/form-data">
+        <form id="seekerProfileForm" action="{{ url_for('seeker_profile') }}" method="POST" enctype="multipart/form-data">
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="form-group">
-                    <label class="form-label" for="full_name">Full Name</label>
-                    <input type="text" id="full_name" name="full_name" value="{{ profile.full_name or '' }}" class="form-control" placeholder="John Doe" required>
+                    <label class="form-label" for="full_name">Full Name *</label>
+                    <input type="text" id="full_name" name="full_name" value="{{ profile.full_name or session.get('profile_data', {}).get('full_name', '') }}" class="form-control" placeholder="John Doe" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="email">Email Address (for Email Delivery)</label>
-                    <input type="email" id="email" name="email" value="{{ current_user.email or '' }}" class="form-control" placeholder="yourname@gmail.com" required>
+                    <label class="form-label" for="email">Email Address (for Email Delivery) *</label>
+                    <input type="email" id="email" name="email" value="{{ current_user.email or session.get('user_email', '') }}" class="form-control" placeholder="yourname@gmail.com" required>
                 </div>
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="form-group">
                     <label class="form-label" for="phone">Phone Number</label>
-                    <input type="text" id="phone" name="phone" value="{{ profile.phone or '' }}" class="form-control" placeholder="+1 (555) 123-4567">
+                    <input type="text" id="phone" name="phone" value="{{ profile.phone or session.get('profile_data', {}).get('phone', '') }}" class="form-control" placeholder="+1 (555) 123-4567">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="location">City / Location</label>
-                    <input type="text" id="location" name="location" value="{{ profile.location or '' }}" class="form-control" placeholder="San Francisco, CA">
+                    <input type="text" id="location" name="location" value="{{ profile.location or session.get('profile_data', {}).get('location', '') }}" class="form-control" placeholder="San Francisco, CA">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="headline">Professional Headline</label>
-                <input type="text" id="headline" name="headline" value="{{ profile.headline or '' }}" class="form-control" placeholder="e.g. Senior Python & Flask Backend Developer">
+                <input type="text" id="headline" name="headline" value="{{ profile.headline or session.get('profile_data', {}).get('headline', '') }}" class="form-control" placeholder="e.g. Senior Python & Flask Backend Developer">
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="skills">Skills (Comma-separated)</label>
-                <input type="text" id="skills" name="skills" value="{{ profile.skills or '' }}" class="form-control" placeholder="Python, Flask, React, SQL, Docker, REST APIs">
+                <input type="text" id="skills" name="skills" value="{{ profile.skills or session.get('profile_data', {}).get('skills', '') }}" class="form-control" placeholder="Python, Flask, React, SQL, Docker, REST APIs">
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="bio">Professional Bio / Summary</label>
-                <textarea id="bio" name="bio" class="form-control" placeholder="Write a brief overview of your technical background and achievements...">{{ profile.bio or '' }}</textarea>
+                <textarea id="bio" name="bio" class="form-control" placeholder="Write a brief overview of your technical background and achievements...">{{ profile.bio or session.get('profile_data', {}).get('bio', '') }}</textarea>
             </div>
 
             <!-- Resume Upload -->
+            {% set saved_resume = profile.resume_filename or session.get('profile_data', {}).get('resume_filename', '') %}
             <div class="form-group" style="background: rgba(15, 23, 42, 0.5); padding: 18px; border-radius: var(--radius-sm); border: 1px dashed var(--border-color);">
                 <label class="form-label">Upload Default Resume / CV</label>
-                {% if profile.resume_filename %}
-                    <div style="margin-bottom: 10px; font-size: 0.9rem; color: #34D399;">
-                        <i class="fa-solid fa-file-pdf"></i> Saved File: <code>{{ profile.resume_filename }}</code>
-                        <a href="{{ url_for('download_resume', filename=profile.resume_filename) }}" target="_blank" style="margin-left: 10px;">[Download]</a>
+                {% if saved_resume %}
+                    <div style="margin-bottom: 10px; font-size: 0.9rem; color: #34D399; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span>Saved File: <code>{{ saved_resume }}</code></span>
+                        <a href="{{ url_for('download_resume', filename=saved_resume) }}" target="_blank" style="margin-left: 6px; color: #60A5FA; text-decoration: underline;">[Download]</a>
                     </div>
                 {% endif %}
                 <input type="file" name="resume_file" class="form-control" accept=".pdf,.doc,.docx,.txt">
@@ -76,10 +78,63 @@
             </div>
 
             <div style="display: flex; gap: 12px; margin-top: 28px;">
-                <button type="submit" class="btn btn-primary" style="flex: 1;">Save Profile Details</button>
+                <button type="submit" id="saveProfileBtn" class="btn btn-primary" style="flex: 1;">Save Profile Details</button>
                 <a href="{{ url_for('seeker_dashboard') }}" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('seekerProfileForm');
+    if (!form) return;
+
+    const fields = ['full_name', 'email', 'phone', 'location', 'headline', 'skills', 'bio'];
+
+    // 1. Restore from localStorage if field is empty on page refresh
+    try {
+        const stored = JSON.parse(localStorage.getItem('seeker_profile_cache') || '{}');
+        fields.forEach(field => {
+            const el = document.getElementById(field);
+            if (el && (!el.value || el.value.trim() === '') && stored[field]) {
+                el.value = stored[field];
+            }
+        });
+    } catch (err) {
+        console.debug('LocalStorage read notice:', err);
+    }
+
+    // 2. Auto-save to localStorage on typing / change / submit
+    function persistForm() {
+        try {
+            const data = {};
+            fields.forEach(field => {
+                const el = document.getElementById(field);
+                if (el) data[field] = el.value.trim();
+            });
+            localStorage.setItem('seeker_profile_cache', JSON.stringify(data));
+        } catch (err) {
+            console.debug('LocalStorage write notice:', err);
+        }
+    }
+
+    form.addEventListener('submit', function() {
+        persistForm();
+        const btn = document.getElementById('saveProfileBtn');
+        if (btn) {
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving Details...';
+        }
+    });
+
+    fields.forEach(field => {
+        const el = document.getElementById(field);
+        if (el) {
+            el.addEventListener('input', persistForm);
+            el.addEventListener('change', persistForm);
+            el.addEventListener('blur', persistForm);
+        }
+    });
+});
+</script>
 {% endblock %}

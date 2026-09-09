@@ -10,13 +10,27 @@ def get_current_user():
     user = db.session.get(User, session['user_id'])
     if not user:
         return jsonify({'authenticated': False, 'user': None})
+    
+    prof_data = session.get('profile_data')
+    if not prof_data and user.seeker_profile:
+        prof_data = {
+            'full_name': user.seeker_profile.full_name or '',
+            'phone': user.seeker_profile.phone or '',
+            'headline': user.seeker_profile.headline or '',
+            'skills': user.seeker_profile.skills or '',
+            'location': user.seeker_profile.location or '',
+            'bio': user.seeker_profile.bio or '',
+            'resume_filename': user.seeker_profile.resume_filename or ''
+        }
+
     return jsonify({
         'authenticated': True,
         'user': {
             'id': user.id,
             'email': user.email,
             'full_name': user.full_name,
-            'role': user.role
+            'role': user.role,
+            'profile': prof_data or {}
         }
     })
 

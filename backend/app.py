@@ -104,6 +104,78 @@ def role_required(role):
         return decorated_function
     return decorator
 
+def sync_seeker_profile(seeker_id):
+    """Retrieve or create UserProfile, ensuring bi-directional sync with session cache."""
+    profile = UserProfile.query.filter_by(user_id=seeker_id).first()
+    if not profile:
+        profile = UserProfile(user_id=seeker_id)
+        db.session.add(profile)
+        db.session.commit()
+
+    s_data = session.get('profile_data')
+    if s_data and isinstance(s_data, dict):
+        updated = False
+        for field in ['full_name', 'phone', 'headline', 'skills', 'location', 'bio', 'resume_filename']:
+            val = s_data.get(field)
+            if val and not getattr(profile, field, None):
+                setattr(profile, field, val)
+                updated = True
+            elif val and getattr(profile, field, None) != val:
+                setattr(profile, field, val)
+                updated = True
+        if updated:
+            try:
+                db.session.commit()
+            except Exception:
+                db.session.rollback()
+    else:
+        # Populate session cache from database if present
+        session['profile_data'] = {
+            'full_name': profile.full_name or '',
+            'phone': profile.phone or '',
+            'headline': profile.headline or '',
+            'skills': profile.skills or '',
+            'location': profile.location or '',
+            'bio': profile.bio or '',
+            'resume_filename': profile.resume_filename or ''
+        }
+        session.modified = True
+    return profile
+
+
+def sync_company_profile(recruiter_id):
+    """Retrieve or create CompanyProfile, ensuring bi-directional sync with session cache."""
+    company = CompanyProfile.query.filter_by(user_id=recruiter_id).first()
+    if not company:
+        default_name = session.get('company_name') or f"{session.get('username', 'Recruiter').replace('_', ' ').title()} Corp"
+        company = CompanyProfile(user_id=recruiter_id, company_name=default_name)
+        db.session.add(company)
+        db.session.commit()
+
+    c_data = session.get('company_data')
+    if c_data and isinstance(c_data, dict):
+        updated = False
+        for field in ['company_name', 'website', 'location', 'description']:
+            val = c_data.get(field)
+            if val and getattr(company, field, None) != val:
+                setattr(company, field, val)
+                updated = True
+        if updated:
+            try:
+                db.session.commit()
+            except Exception:
+                db.session.rollback()
+    else:
+        session['company_data'] = {
+            'company_name': company.company_name or '',
+            'website': company.website or '',
+            'location': company.location or '',
+            'description': company.description or ''
+        }
+        session.modified = True
+    return company
+
+
 # Context Processor for template variables
 @app.context_processor
 def inject_user():
@@ -137,6 +209,14 @@ def inject_user():
                 print(f"[CONTAINER RESTORE WARNING] {e}")
 
         if current_user:
+            try:
+                if current_user.role == 'seeker':
+                    sync_seeker_profile(current_user.id)
+                elif current_user.role == 'recruiter':
+                    sync_company_profile(current_user.id)
+            except Exception as e:
+                print(f"[PROFILE SYNC ERROR] {e}")
+
             unread_notifications_count = Notification.query.filter_by(user_id=current_user.id, is_read=False).count()
             notifications_list = Notification.query.filter_by(user_id=current_user.id).order_by(Notification.created_at.desc()).limit(8).all()
 
@@ -264,6 +344,12 @@ def login():
             session['username'] = user.username
             session['user_role'] = user.role
             session['user_email'] = user.email
+
+            if user.role == 'seeker':
+                sync_seeker_profile(user.id)
+            elif user.role == 'recruiter':
+                sync_company_profile(user.id)
+            session.modified = True
             
             flash(f'Welcome back, {user.username}!', 'success')
             next_page = request.args.get('next')
@@ -308,6 +394,15 @@ def process_google_user_login(email, full_name):
     session['user_role'] = 'seeker'
     session['user_email'] = user.email
     session['is_google_user'] = True
+
+    if full_name:
+        s_prof = sync_seeker_profile(user.id)
+        if not s_prof.full_name:
+            s_prof.full_name = full_name
+            db.session.commit()
+    else:
+        sync_seeker_profile(user.id)
+    session.modified = True
 
     flash(f'Welcome, {user.username}! Signed in with Google Account ({user.email}).', 'success')
     return redirect(url_for('seeker_dashboard'))
@@ -524,7 +619,7 @@ def jobs():
     seeker_profile = None
     applied_job_ids = set()
     if 'user_id' in session and session.get('user_role') == 'seeker':
-        seeker_profile = UserProfile.query.filter_by(user_id=session['user_id']).first()
+        seeker_profile = sync_seeker_profile(session['user_id'])
         user_apps = Application.query.filter_by(seeker_id=session['user_id']).all()
         applied_job_ids = {a.job_id for a in user_apps}
 
@@ -570,7 +665,7 @@ def job_detail(job_id):
             
     seeker_profile = None
     if 'user_id' in session and session.get('user_role') == 'seeker':
-        seeker_profile = UserProfile.query.filter_by(user_id=session['user_id']).first()
+        seeker_profile = sync_seeker_profile(session['user_id'])
 
     seeker_skills = seeker_profile.skills if seeker_profile else ""
     skill_match = calculate_skill_match(seeker_skills, job.skills_required)
@@ -603,7 +698,7 @@ def apply_job(job_id):
     cover_letter = request.form.get('cover_letter', '').strip()
     resume_file = request.files.get('resume_file')
     
-    seeker_profile = UserProfile.query.filter_by(user_id=seeker_id).first()
+    seeker_profile = sync_seeker_profile(seeker_id)
     resume_filename = None
     
     if resume_file and resume_file.filename:
@@ -611,13 +706,21 @@ def apply_job(job_id):
             filename = secure_filename(resume_file.filename)
             timestamp = int(time.time())
             unique_filename = f"seeker_{seeker_id}_{timestamp}_{filename}"
+            os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
-            resume_file.save(filepath)
+            try:
+                resume_file.save(filepath)
+            except Exception as e:
+                print(f"[RESUME SAVE ERROR] {e}")
             resume_filename = unique_filename
             
             # Save as default profile resume if not set
             if seeker_profile and not seeker_profile.resume_filename:
                 seeker_profile.resume_filename = unique_filename
+                db.session.commit()
+                if 'profile_data' in session and isinstance(session['profile_data'], dict):
+                    session['profile_data']['resume_filename'] = unique_filename
+                    session.modified = True
                 db.session.commit()
         else:
             flash('Invalid file format. Allowed formats: PDF, DOC, DOCX, TXT', 'danger')
@@ -656,7 +759,7 @@ def apply_job(job_id):
 def seeker_dashboard():
     seeker_id = session['user_id']
     applications = Application.query.filter_by(seeker_id=seeker_id).order_by(Application.applied_at.desc()).all()
-    profile = UserProfile.query.filter_by(user_id=seeker_id).first()
+    profile = sync_seeker_profile(seeker_id)
     return render_template('seeker/dashboard.html', applications=applications, profile=profile)
 
 
@@ -664,11 +767,7 @@ def seeker_dashboard():
 @role_required('seeker')
 def seeker_profile():
     seeker_id = session['user_id']
-    profile = UserProfile.query.filter_by(user_id=seeker_id).first()
-    if not profile:
-        profile = UserProfile(user_id=seeker_id)
-        db.session.add(profile)
-        db.session.commit()
+    profile = sync_seeker_profile(seeker_id)
 
     if request.method == 'POST':
         new_email = request.form.get('email', '').strip()
@@ -676,12 +775,21 @@ def seeker_profile():
             user = db.session.get(User, seeker_id)
             if user:
                 user.email = new_email
-        profile.full_name = request.form.get('full_name', '').strip()
-        profile.phone = request.form.get('phone', '').strip()
-        profile.headline = request.form.get('headline', '').strip()
-        profile.skills = request.form.get('skills', '').strip()
-        profile.location = request.form.get('location', '').strip()
-        profile.bio = request.form.get('bio', '').strip()
+            session['user_email'] = new_email
+
+        full_name = request.form.get('full_name', '').strip()
+        phone = request.form.get('phone', '').strip()
+        headline = request.form.get('headline', '').strip()
+        skills = request.form.get('skills', '').strip()
+        location = request.form.get('location', '').strip()
+        bio = request.form.get('bio', '').strip()
+
+        profile.full_name = full_name
+        profile.phone = phone
+        profile.headline = headline
+        profile.skills = skills
+        profile.location = location
+        profile.bio = bio
         
         resume_file = request.files.get('resume_file')
         if resume_file and resume_file.filename:
@@ -689,16 +797,35 @@ def seeker_profile():
                 filename = secure_filename(resume_file.filename)
                 timestamp = int(time.time())
                 unique_filename = f"seeker_{seeker_id}_{timestamp}_{filename}"
+                os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
                 filepath = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
-                resume_file.save(filepath)
-                profile.resume_filename = unique_filename
+                try:
+                    resume_file.save(filepath)
+                    profile.resume_filename = unique_filename
+                except Exception as e:
+                    print(f"[RESUME UPLOAD ERROR] {e}")
+                    profile.resume_filename = unique_filename
             else:
                 flash('Invalid resume file extension.', 'danger')
                 return render_template('seeker/profile.html', profile=profile)
 
         db.session.commit()
-        flash('Profile details updated successfully.', 'success')
-        return redirect(url_for('jobs'))
+
+        # Synchronize and persist profile in encrypted session cookie across serverless restarts
+        session['profile_data'] = {
+            'full_name': profile.full_name,
+            'phone': profile.phone,
+            'headline': profile.headline,
+            'skills': profile.skills,
+            'location': profile.location,
+            'bio': profile.bio,
+            'resume_filename': profile.resume_filename or ''
+        }
+        session['full_name'] = profile.full_name
+        session.modified = True
+
+        flash('Profile details updated successfully!', 'success')
+        return redirect(url_for('seeker_profile'))
 
     return render_template('seeker/profile.html', profile=profile)
 
@@ -961,11 +1088,7 @@ def schedule_interview(app_id):
 @role_required('recruiter')
 def company_profile():
     recruiter_id = session['user_id']
-    company = CompanyProfile.query.filter_by(user_id=recruiter_id).first()
-    if not company:
-        company = CompanyProfile(user_id=recruiter_id, company_name=session['username'])
-        db.session.add(company)
-        db.session.commit()
+    company = sync_company_profile(recruiter_id)
 
     if request.method == 'POST':
         company.company_name = request.form.get('company_name', '').strip()
@@ -974,7 +1097,17 @@ def company_profile():
         company.description = request.form.get('description', '').strip()
         
         db.session.commit()
-        flash('Company profile details saved.', 'success')
+
+        session['company_data'] = {
+            'company_name': company.company_name,
+            'website': company.website,
+            'location': company.location,
+            'description': company.description
+        }
+        session['company_name'] = company.company_name
+        session.modified = True
+
+        flash('Company profile details saved successfully!', 'success')
         return redirect(url_for('company_profile'))
 
     return render_template('recruiter/company_profile.html', company=company)

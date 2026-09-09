@@ -33,6 +33,12 @@ class User(db.Model):
     def is_recruiter(self):
         return self.role == 'recruiter'
 
+    @property
+    def full_name(self):
+        if self.seeker_profile and self.seeker_profile.full_name:
+            return self.seeker_profile.full_name
+        return self.username.replace('_', ' ').title()
+
 
 class UserProfile(db.Model):
     __tablename__ = 'user_profile'
