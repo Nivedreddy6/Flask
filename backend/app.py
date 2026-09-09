@@ -112,9 +112,34 @@ def inject_user():
     notifications_list = []
     if 'user_id' in session:
         current_user = db.session.get(User, session['user_id'])
+        if not current_user and session.get('username'):
+            try:
+                role = session.get('user_role', 'seeker')
+                uname = session.get('username')
+                current_user = User.query.filter_by(username=uname).first()
+                if not current_user:
+                    email = session.get('user_email', f"{uname}@example.com")
+                    current_user = User(id=session['user_id'], username=uname, email=email, role=role)
+                    current_user.set_password(os.urandom(16).hex())
+                    db.session.add(current_user)
+                    db.session.commit()
+                    if role == 'seeker':
+                        p = UserProfile(user_id=current_user.id, full_name=uname.replace('_', ' ').title())
+                        db.session.add(p)
+                    else:
+                        cp = CompanyProfile(user_id=current_user.id, company_name=f"{uname.replace('_', ' ').title()} Corp")
+                        db.session.add(cp)
+                    db.session.commit()
+                else:
+                    session['user_id'] = current_user.id
+            except Exception as e:
+                db.session.rollback()
+                print(f"[CONTAINER RESTORE WARNING] {e}")
+
         if current_user:
             unread_notifications_count = Notification.query.filter_by(user_id=current_user.id, is_read=False).count()
             notifications_list = Notification.query.filter_by(user_id=current_user.id).order_by(Notification.created_at.desc()).limit(8).all()
+
     google_client_id = os.environ.get('GOOGLE_CLIENT_ID', '405254729686-v2j9tgfrcgkc2kv9vm9ok3femfan59p6.apps.googleusercontent.com')
     return dict(
         current_user=current_user,
@@ -213,6 +238,7 @@ def register():
         session['user_id'] = user.id
         session['username'] = user.username
         session['user_role'] = user.role
+        session['user_email'] = user.email
         
         flash(f'Welcome to Job Portal! You registered as a {role.capitalize()}.', 'success')
         if role == 'recruiter':
@@ -237,6 +263,7 @@ def login():
             session['user_id'] = user.id
             session['username'] = user.username
             session['user_role'] = user.role
+            session['user_email'] = user.email
             
             flash(f'Welcome back, {user.username}!', 'success')
             next_page = request.args.get('next')
@@ -279,6 +306,7 @@ def process_google_user_login(email, full_name):
     session['user_id'] = user.id
     session['username'] = user.username
     session['user_role'] = 'seeker'
+    session['user_email'] = user.email
     session['is_google_user'] = True
 
     flash(f'Welcome, {user.username}! Signed in with Google Account ({user.email}).', 'success')
