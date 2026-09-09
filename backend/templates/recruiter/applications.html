@@ -63,6 +63,18 @@
                         <span class="status-badge status-{{ app.status.lower().replace(' ', '-') }}">
                             {{ app.status }}
                         </span>
+                        {% if app.interview_date %}
+                            <div style="margin-top: 6px; font-size: 0.8rem; color: #34D399; font-weight: 700; display: flex; align-items: center; gap: 5px;">
+                                <i class="fa-solid fa-calendar-check" style="color: #34D399;"></i> {{ app.interview_date }}
+                            </div>
+                        {% endif %}
+                        {% if app.interview_link %}
+                            <div style="margin-top: 4px; font-size: 0.78rem;">
+                                <a href="{{ app.interview_link }}" target="_blank" style="color: #38BDF8; text-decoration: underline; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;">
+                                    <i class="fa-solid fa-video"></i> Join Link
+                                </a>
+                            </div>
+                        {% endif %}
                     </td>
                     <td>
                         {% if app.resume_filename %}
@@ -107,6 +119,7 @@
                                     <option value="Pending" {% if app.status == 'Pending' %}selected{% endif %}>Pending</option>
                                     <option value="Under Review" {% if app.status == 'Under Review' %}selected{% endif %}>Under Review</option>
                                     <option value="Accepted" {% if app.status == 'Accepted' %}selected{% endif %}>Accepted</option>
+                                    <option value="Interview Scheduled" {% if app.status == 'Interview Scheduled' %}selected{% endif %}>Interview Scheduled</option>
                                     <option value="Rejected" {% if app.status == 'Rejected' %}selected{% endif %}>Rejected</option>
                                 </select>
                             </div>

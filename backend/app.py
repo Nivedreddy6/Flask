@@ -292,6 +292,56 @@ def sync_recruiter_jobs(recruiter_id):
     return db_jobs
 
 
+def sync_recruiter_applications(job_id=None):
+    """Restore and synchronize application statuses, notes, and interview schedules
+    from the recruiter's signed session into SQLite across all serverless containers."""
+    updates = session.get('application_updates')
+    if not updates or not isinstance(updates, dict):
+        return
+
+    updated_any = False
+    for key, data in updates.items():
+        if not isinstance(data, dict):
+            continue
+
+        app_obj = None
+        # Try matching by ID first
+        if data.get('app_id'):
+            app_obj = db.session.get(Application, data['app_id'])
+        # Try matching by (job_id, seeker_id)
+        if not app_obj and data.get('job_id') and data.get('seeker_id'):
+            app_obj = Application.query.filter_by(
+                job_id=data['job_id'],
+                seeker_id=data['seeker_id']
+            ).first()
+        # Try matching by resume_filename
+        if not app_obj and data.get('resume_filename'):
+            app_obj = Application.query.filter_by(
+                resume_filename=data['resume_filename']
+            ).first()
+
+        if app_obj:
+            if data.get('status') and app_obj.status != data['status']:
+                app_obj.status = data['status']
+                updated_any = True
+            if 'interview_date' in data and app_obj.interview_date != data['interview_date']:
+                app_obj.interview_date = data['interview_date']
+                updated_any = True
+            if 'interview_link' in data and app_obj.interview_link != data['interview_link']:
+                app_obj.interview_link = data['interview_link']
+                updated_any = True
+            if 'recruiter_notes' in data and app_obj.recruiter_notes != data['recruiter_notes']:
+                app_obj.recruiter_notes = data['recruiter_notes']
+                updated_any = True
+
+    if updated_any:
+        try:
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            print(f"[RECRUITER APP SYNC NOTICE] {e}")
+
+
 # Context Processor for template variables
 @app.context_processor
 def inject_user():
@@ -1006,6 +1056,9 @@ def recruiter_dashboard():
     job_postings = sync_recruiter_jobs(recruiter_id)
     company = sync_company_profile(recruiter_id)
     
+    # Synchronize candidate application statuses across serverless instances
+    sync_recruiter_applications()
+
     total_postings = len(job_postings)
     active_postings = sum(1 for j in job_postings if j.status == 'Active')
     
@@ -1130,6 +1183,9 @@ def view_job_applications(job_id):
     recruiter_id = session['user_id']
     job = JobPosting.query.filter_by(id=job_id, recruiter_id=recruiter_id).first_or_404()
     
+    # Synchronize any status updates or interview bookings from session
+    sync_recruiter_applications(job.id)
+    
     status_filter = request.args.get('status', '').strip()
     
     apps_query = Application.query.filter_by(job_id=job.id)
@@ -1154,7 +1210,7 @@ def update_application_status(app_id):
     new_status = request.form.get('status', '').strip()
     recruiter_notes = request.form.get('recruiter_notes', '').strip()
     
-    valid_statuses = ['Pending', 'Under Review', 'Accepted', 'Rejected']
+    valid_statuses = ['Pending', 'Under Review', 'Accepted', 'Rejected', 'Interview Scheduled']
     if new_status in valid_statuses:
         application.status = new_status
         application.recruiter_notes = recruiter_notes
@@ -1167,6 +1223,25 @@ def update_application_status(app_id):
         )
         db.session.add(seeker_notif)
         db.session.commit()
+
+        # Cache in recruiter session across serverless instances
+        if 'application_updates' not in session or not isinstance(session['application_updates'], dict):
+            session['application_updates'] = {}
+        
+        update_data = {
+            'app_id': application.id,
+            'job_id': application.job_id,
+            'seeker_id': application.seeker_id,
+            'status': new_status,
+            'recruiter_notes': recruiter_notes,
+            'interview_date': application.interview_date or '',
+            'interview_link': application.interview_link or '',
+            'resume_filename': application.resume_filename or ''
+        }
+        session['application_updates'][str(application.id)] = update_data
+        session['application_updates'][f"{application.job_id}_{application.seeker_id}"] = update_data
+        session.modified = True
+
         flash(f'Candidate application status updated to "{new_status}".', 'success')
     else:
         flash('Invalid status selected.', 'danger')
@@ -1185,6 +1260,9 @@ def schedule_interview(app_id):
             flash('Unauthorized action: this job posting belongs to another recruiter.', 'danger')
             return redirect(url_for('recruiter_dashboard'))
             
+        # Ensure latest application status & schedule are synchronized
+        sync_recruiter_applications(job.id)
+        
         seeker_profile = UserProfile.query.filter_by(user_id=application.seeker_id).first()
         seeker_user = db.session.get(User, application.seeker_id)
         
@@ -1232,6 +1310,24 @@ def schedule_interview(app_id):
                 db.session.add(seeker_notif)
             db.session.commit()
             
+            # Cache in recruiter session across serverless instances
+            if 'application_updates' not in session or not isinstance(session['application_updates'], dict):
+                session['application_updates'] = {}
+            
+            update_data = {
+                'app_id': application.id,
+                'job_id': application.job_id,
+                'seeker_id': application.seeker_id,
+                'status': 'Interview Scheduled',
+                'interview_date': application.interview_date or '',
+                'interview_link': application.interview_link or '',
+                'recruiter_notes': application.recruiter_notes or '',
+                'resume_filename': application.resume_filename or ''
+            }
+            session['application_updates'][str(application.id)] = update_data
+            session['application_updates'][f"{application.job_id}_{application.seeker_id}"] = update_data
+            session.modified = True
+
             # Send Professional HTML Email Invitation safely
             candidate_name = seeker_profile.full_name if seeker_profile and seeker_profile.full_name else (seeker_user.username if seeker_user else "Candidate")
             candidate_email = seeker_user.email if seeker_user else "candidate@example.com"
