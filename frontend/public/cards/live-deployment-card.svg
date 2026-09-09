@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" width="100%" height="360">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="liveBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070b14" />
+      <stop offset="40%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#090d18" />
+    </linearGradient>
+
+    <!-- Animated Multi-Color Border -->
+    <linearGradient id="liveBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#06b6d4;#8b5cf6;#ec4899;#f59e0b;#10b981" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#8b5cf6;#ec4899;#f59e0b;#10b981;#06b6d4" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#8b5cf6">
+        <animate attributeName="stop-color" values="#8b5cf6;#ec4899;#f59e0b;#10b981;#06b6d4;#8b5cf6" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(14, 165, 233, 0.15)" />
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.6)" />
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(168, 85, 247, 0.15)" />
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.6)" />
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(16, 185, 129, 0.15)" />
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.6)" />
+    </linearGradient>
+    <linearGradient id="cardGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(244, 63, 94, 0.15)" />
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.6)" />
+    </linearGradient>
+    <linearGradient id="cardGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(245, 158, 11, 0.15)" />
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.6)" />
+    </linearGradient>
+    <linearGradient id="cardGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(99, 102, 241, 0.15)" />
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.6)" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Fira+Code:wght@600;700&amp;display=swap');
+
+    .card-title { font-family: 'Inter', sans-serif; font-size: 14.5px; font-weight: 800; fill: #ffffff; }
+    .card-desc { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; fill: #94a3b8; }
+    .card-url { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 700; }
+    .badge-text { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .pulse-dot { animation: pulseAnim 2s infinite ease-in-out; }
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+  </style>
+
+  <!-- Container -->
+  <rect width="1000" height="360" rx="20" fill="url(#liveBg)" stroke="url(#liveBorder)" stroke-width="2" />
+
+  <!-- Header Badge: Live Deployment -->
+  <g transform="translate(30, 22)">
+    <rect width="360" height="32" rx="16" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1.2" />
+    <circle cx="18" cy="16" r="5.5" fill="#34d399" class="pulse-dot" />
+    <text x="36" y="21" font-family="'Fira Code', monospace" font-size="12" font-weight="700" fill="#a7f3d0">● PRODUCTION LIVE ON VERCEL</text>
+  </g>
+
+  <!-- Header Right Pill: Primary Domain -->
+  <g transform="translate(630, 22)">
+    <rect width="340" height="32" rx="16" fill="rgba(6, 182, 212, 0.12)" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1.2" />
+    <text x="170" y="21" font-family="'Fira Code', monospace" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">flask-five-mauve.vercel.app</text>
+  </g>
+
+  <!-- GRID OF 6 DESTINATION CARDS -->
+
+  <!-- Card 1: Main Web Portal -->
+  <g transform="translate(30, 75)">
+    <rect width="300" height="125" rx="14" fill="url(#cardGrad1)" stroke="rgba(14, 165, 233, 0.45)" stroke-width="1.2" />
+    <rect x="16" y="14" width="28" height="28" rx="8" fill="#0284c7" />
+    <text x="30" y="33" font-family="'Inter', sans-serif" font-size="15" text-anchor="middle" fill="#ffffff">🏛️</text>
+    <text x="54" y="27" class="card-title">Main Web Portal</text>
+    <text x="54" y="42" class="card-desc">HirePulse Landing &amp; Job Network</text>
+    
+    <rect x="16" y="58" width="268" height="26" rx="6" fill="rgba(0,0,0,0.3)" />
+    <text x="26" y="75" class="card-url" fill="#38bdf8">https://flask-five-mauve.vercel.app/</text>
+    
+    <rect x="16" y="92" width="76" height="18" rx="9" fill="rgba(14, 165, 233, 0.2)" />
+    <text x="54" y="105" class="badge-text" fill="#38bdf8" text-anchor="middle">PORTAL</text>
+    <text x="100" y="105" font-family="'Inter', sans-serif" font-size="10.5" fill="#94a3b8">Full Flask Application</text>
+  </g>
+
+  <!-- Card 2: React ATS Suite -->
+  <g transform="translate(350, 75)">
+    <rect width="300" height="125" rx="14" fill="url(#cardGrad2)" stroke="rgba(168, 85, 247, 0.45)" stroke-width="1.2" />
+    <rect x="16" y="14" width="28" height="28" rx="8" fill="#7e22ce" />
+    <text x="30" y="33" font-family="'Inter', sans-serif" font-size="15" text-anchor="middle" fill="#ffffff">⚡</text>
+    <text x="54" y="27" class="card-title">React 19 ATS Suite</text>
+    <text x="54" y="42" class="card-desc">Real-time Candidate Kanban &amp; ATS</text>
+    
+    <rect x="16" y="58" width="268" height="26" rx="6" fill="rgba(0,0,0,0.3)" />
+    <text x="26" y="75" class="card-url" fill="#c084fc">/react  •  /applications</text>
+    
+    <rect x="16" y="92" width="86" height="18" rx="9" fill="rgba(168, 85, 247, 0.2)" />
+    <text x="59" y="105" class="badge-text" fill="#c084fc" text-anchor="middle">REACT 19</text>
+    <text x="110" y="105" font-family="'Inter', sans-serif" font-size="10.5" fill="#94a3b8">Sub-ms Interactive</text>
+  </g>
+
+  <!-- Card 3: Job Board -->
+  <g transform="translate(670, 75)">
+    <rect width="300" height="125" rx="14" fill="url(#cardGrad3)" stroke="rgba(16, 185, 129, 0.45)" stroke-width="1.2" />
+    <rect x="16" y="14" width="28" height="28" rx="8" fill="#059669" />
+    <text x="30" y="33" font-family="'Inter', sans-serif" font-size="15" text-anchor="middle" fill="#ffffff">💼</text>
+    <text x="54" y="27" class="card-title">Verified Job Board</text>
+    <text x="54" y="42" class="card-desc">Tech Openings, Salaries &amp; 1-Click</text>
+    
+    <rect x="16" y="58" width="268" height="26" rx="6" fill="rgba(0,0,0,0.3)" />
+    <text x="26" y="75" class="card-url" fill="#34d399">/jobs  •  /jobs/&lt;id&gt;</text>
+    
+    <rect x="16" y="92" width="86" height="18" rx="9" fill="rgba(16, 185, 129, 0.2)" />
+    <text x="59" y="105" class="badge-text" fill="#34d399" text-anchor="middle">JOB BOARD</text>
+    <text x="110" y="105" font-family="'Inter', sans-serif" font-size="10.5" fill="#94a3b8">Active Positions</text>
+  </g>
+
+  <!-- Card 4: Authentication Hub -->
+  <g transform="translate(30, 215)">
+    <rect width="300" height="125" rx="14" fill="url(#cardGrad4)" stroke="rgba(244, 63, 94, 0.45)" stroke-width="1.2" />
+    <rect x="16" y="14" width="28" height="28" rx="8" fill="#e11d48" />
+    <text x="30" y="33" font-family="'Inter', sans-serif" font-size="15" text-anchor="middle" fill="#ffffff">🔐</text>
+    <text x="54" y="27" class="card-title">Sign In &amp; Register</text>
+    <text x="54" y="42" class="card-desc">Seeker &amp; Recruiter Secure Auth</text>
+    
+    <rect x="16" y="58" width="268" height="26" rx="6" fill="rgba(0,0,0,0.3)" />
+    <text x="26" y="75" class="card-url" fill="#fb7185">/login  •  /register</text>
+    
+    <rect x="16" y="92" width="76" height="18" rx="9" fill="rgba(244, 63, 94, 0.2)" />
+    <text x="54" y="105" class="badge-text" fill="#fb7185" text-anchor="middle">SECURITY</text>
+    <text x="100" y="105" font-family="'Inter', sans-serif" font-size="10.5" fill="#94a3b8">Google + Email Auth</text>
+  </g>
+
+  <!-- Card 5: People & Mentors -->
+  <g transform="translate(350, 215)">
+    <rect width="300" height="125" rx="14" fill="url(#cardGrad5)" stroke="rgba(245, 158, 11, 0.45)" stroke-width="1.2" />
+    <rect x="16" y="14" width="28" height="28" rx="8" fill="#d97706" />
+    <text x="30" y="33" font-family="'Inter', sans-serif" font-size="15" text-anchor="middle" fill="#ffffff">👥</text>
+    <text x="54" y="27" class="card-title">People &amp; Mentors</text>
+    <text x="54" y="42" class="card-desc">Tech Directory &amp; Networking</text>
+    
+    <rect x="16" y="58" width="268" height="26" rx="6" fill="rgba(0,0,0,0.3)" />
+    <text x="26" y="75" class="card-url" fill="#fbbf24">/people  •  /top-content</text>
+    
+    <rect x="16" y="92" width="90" height="18" rx="9" fill="rgba(245, 158, 11, 0.2)" />
+    <text x="61" y="105" class="badge-text" fill="#fbbf24" text-anchor="middle">COMMUNITY</text>
+    <text x="115" y="105" font-family="'Inter', sans-serif" font-size="10.5" fill="#94a3b8">Engineering Network</text>
+  </g>
+
+  <!-- Card 6: REST API Engine -->
+  <g transform="translate(670, 215)">
+    <rect width="300" height="125" rx="14" fill="url(#cardGrad6)" stroke="rgba(99, 102, 241, 0.45)" stroke-width="1.2" />
+    <rect x="16" y="14" width="28" height="28" rx="8" fill="#4f46e5" />
+    <text x="30" y="33" font-family="'Inter', sans-serif" font-size="15" text-anchor="middle" fill="#ffffff">🔌</text>
+    <text x="54" y="27" class="card-title">Flask Serverless API</text>
+    <text x="54" y="42" class="card-desc">JSON API &amp; Health Microservice</text>
+    
+    <rect x="16" y="58" width="268" height="26" rx="6" fill="rgba(0,0,0,0.3)" />
+    <text x="26" y="75" class="card-url" fill="#818cf8">/api/status  •  /api/jobs</text>
+    
+    <rect x="16" y="92" width="80" height="18" rx="9" fill="rgba(99, 102, 241, 0.2)" />
+    <text x="56" y="105" class="badge-text" fill="#818cf8" text-anchor="middle">BACKEND</text>
+    <text x="105" y="105" font-family="'Inter', sans-serif" font-size="10.5" fill="#94a3b8">Serverless Python 3.12</text>
+  </g>
+</svg>
