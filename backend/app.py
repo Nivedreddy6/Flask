@@ -147,9 +147,10 @@ def serve_frontend_assets(filename):
         return send_from_directory(assets_dir, filename)
     abort(404)
 
-@app.route('/index.html')
-def serve_index_html():
-    if os.path.exists(os.path.join(FRONTEND_DIST, 'index.html')):
+@app.route('/react', defaults={'path': ''})
+@app.route('/react/<path:path>')
+def serve_react_spa(path):
+    if FRONTEND_DIST and os.path.exists(os.path.join(FRONTEND_DIST, 'index.html')):
         return send_from_directory(FRONTEND_DIST, 'index.html')
     return redirect(url_for('index'))
 
@@ -159,16 +160,8 @@ def serve_index_html():
 
 @app.route('/')
 def index():
-    if os.path.exists(os.path.join(FRONTEND_DIST, 'index.html')):
-        return send_from_directory(FRONTEND_DIST, 'index.html')
     recent_jobs = JobPosting.query.filter_by(status='Active').order_by(JobPosting.created_at.desc()).limit(6).all()
     return render_template('index.html', recent_jobs=recent_jobs)
-
-@app.route('/applications')
-def spa_applications():
-    if os.path.exists(os.path.join(FRONTEND_DIST, 'index.html')):
-        return send_from_directory(FRONTEND_DIST, 'index.html')
-    return redirect(url_for('index'))
 
 
 @app.route('/register', methods=['GET', 'POST'])

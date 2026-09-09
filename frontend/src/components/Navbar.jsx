@@ -35,6 +35,10 @@ export function Navbar({ fetchData, loading, status }) {
         </ul>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <a href="/" className="btn btn-outline btn-sm" style={{ padding: '6px 14px', fontSize: 12, textDecoration: 'none', color: '#60A5FA', borderColor: 'rgba(96, 165, 250, 0.4)' }}>
+            ← Main Portal
+          </a>
+
           <div style={{
             background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)',
             color: '#34d399', padding: '4px 10px', borderRadius: 16, fontSize: 11.5, fontWeight: 800,
