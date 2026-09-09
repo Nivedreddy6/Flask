@@ -78,7 +78,12 @@
 </div>
 
 <!-- Upcoming Scheduled Interviews Section -->
-{% set scheduled_interviews = applications | selectattr('status', 'equalto', 'Interview Scheduled') | list %}
+{% set scheduled_interviews = [] %}
+{% for a in applications %}
+    {% if a.interview_date or a.status == 'Interview Scheduled' %}
+        {% set _ = scheduled_interviews.append(a) %}
+    {% endif %}
+{% endfor %}
 {% if scheduled_interviews %}
     <div style="margin-bottom: 32px;">
         <h2 style="font-size: 1.35rem; font-weight: 800; color: #FFF; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
@@ -90,7 +95,7 @@
                 <div class="form-card" style="max-width: 100%; margin: 0; border: 2px solid #8B5CF6; background: rgba(139, 92, 246, 0.08);">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                         <div>
-                            <span class="status-badge status-interview-scheduled">Interview Scheduled</span>
+                            <span class="status-badge status-{{ app.status.lower().replace(' ', '-') }}">{{ app.status }}</span>
                             <h3 style="color: #FFF; font-size: 1.2rem; margin-top: 6px;">{{ app.job.title }}</h3>
                             <div style="color: var(--accent-primary); font-weight: 600;">{{ app.job.company_name }}</div>
                         </div>
@@ -109,7 +114,7 @@
                             <strong style="color: #C084FC;"><i class="fa-solid fa-video"></i> HOW:</strong> 
                             {% if app.interview_link %}
                                 {% if app.interview_link.startswith('http') %}
-                                    <a href="{{ app.interview_link }}" target="_blank" class="btn btn-primary btn-sm" style="margin-left: 6px; padding: 4px 14px;">
+                                    <a href="{{ app.interview_link }}" target="_blank" class="btn btn-primary btn-sm" style="margin-left: 6px; padding: 4px 14px; background: linear-gradient(135deg, #10B981, #059669); border: none; border-radius: 16px;">
                                         Join Video Call <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                     </a>
                                 {% else %}
@@ -161,22 +166,36 @@
                         </span>
                     </td>
                     <td style="max-width: 280px;">
-                        {% if app.status == 'Interview Scheduled' and app.interview_date %}
-                            <div style="font-size: 0.85rem; color: #C084FC; font-weight: 700;">🗓️ {{ app.interview_date }}</div>
-                            {% if app.interview_link and app.interview_link.startswith('http') %}
-                                <a href="{{ app.interview_link }}" target="_blank" style="font-size: 0.82rem; color: #34D399; text-decoration: underline;">🔗 Join Meeting</a>
+                        {% if app.interview_date %}
+                            <div style="font-size: 0.88rem; color: #34D399; font-weight: 700; display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                                <i class="fa-solid fa-calendar-check" style="color: #34D399;"></i> {{ app.interview_date }}
+                            </div>
+                            {% if app.interview_link %}
+                                {% if app.interview_link.startswith('http') %}
+                                    <a href="{{ app.interview_link }}" target="_blank" class="btn btn-primary btn-sm" style="font-size: 0.78rem; padding: 3px 12px; margin-bottom: 6px; display: inline-flex; align-items: center; gap: 5px; background: linear-gradient(135deg, #10B981, #059669); border: none; border-radius: 16px;">
+                                        <i class="fa-solid fa-video"></i> Join Meeting
+                                    </a>
+                                {% else %}
+                                    <div style="font-size: 0.8rem; color: #38BDF8; margin-bottom: 4px;"><i class="fa-solid fa-location-dot"></i> {{ app.interview_link }}</div>
+                                {% endif %}
                             {% endif %}
-                        {% elif app.recruiter_notes %}
-                            <span style="font-size: 0.85rem; color: var(--text-muted);">{{ app.recruiter_notes }}</span>
-                        {% else %}
+                        {% endif %}
+                        {% if app.recruiter_notes %}
+                            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">{{ app.recruiter_notes }}</div>
+                        {% elif not app.interview_date %}
                             <span style="color: var(--text-dim); font-style: italic;">No feedback yet</span>
                         {% endif %}
                     </td>
                     <td>
-                        <div style="display: flex; gap: 8px;">
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                             <a href="{{ url_for('job_detail', job_id=app.job.id) }}" class="btn btn-secondary btn-sm">View Job</a>
                             {% if app.resume_filename %}
                                 <a href="{{ url_for('download_resume', filename=app.resume_filename) }}" class="btn btn-secondary btn-sm" target="_blank">📄 Resume</a>
+                            {% endif %}
+                            {% if app.interview_link and app.interview_link.startswith('http') %}
+                                <a href="{{ app.interview_link }}" target="_blank" class="btn btn-primary btn-sm" style="background: #10B981; border: none; padding: 4px 10px; display: inline-flex; align-items: center; gap: 4px;">
+                                    <i class="fa-solid fa-video"></i> Interview
+                                </a>
                             {% endif %}
                         </div>
                     </td>

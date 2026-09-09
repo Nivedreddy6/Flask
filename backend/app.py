@@ -1,4 +1,5 @@
 import os
+import json
 import time
 import tempfile
 import shutil
@@ -15,8 +16,51 @@ from email_service import send_interview_email, generate_interview_email_html, u
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-# In-memory resume cache for serverless environments
+# In-memory resume and application cache for serverless environments
 RESUME_CACHE = {}
+SHARED_APPLICATION_UPDATES = {}
+
+def record_shared_application_update(update_data):
+    """Store recruiter status/interview update in memory and shared disk cache."""
+    try:
+        app_id = update_data.get('app_id')
+        job_id = update_data.get('job_id')
+        seeker_id = update_data.get('seeker_id')
+        if app_id:
+            SHARED_APPLICATION_UPDATES[str(app_id)] = update_data
+        if job_id and seeker_id:
+            SHARED_APPLICATION_UPDATES[f"{job_id}_{seeker_id}"] = update_data
+            
+        cache_path = os.path.join(tempfile.gettempdir(), 'shared_app_updates.json')
+        cache = {}
+        if os.path.exists(cache_path):
+            try:
+                with open(cache_path, 'r', encoding='utf-8') as f:
+                    cache = json.load(f)
+            except Exception:
+                cache = {}
+        if app_id:
+            cache[str(app_id)] = update_data
+        if job_id and seeker_id:
+            cache[f"{job_id}_{seeker_id}"] = update_data
+        with open(cache_path, 'w', encoding='utf-8') as f:
+            json.dump(cache, f)
+    except Exception as e:
+        print(f"[SHARED UPDATE WRITE NOTICE] {e}")
+
+def get_shared_application_updates():
+    """Retrieve shared application updates across containers."""
+    merged = dict(SHARED_APPLICATION_UPDATES)
+    try:
+        cache_path = os.path.join(tempfile.gettempdir(), 'shared_app_updates.json')
+        if os.path.exists(cache_path):
+            with open(cache_path, 'r', encoding='utf-8') as f:
+                disk_cache = json.load(f)
+                if isinstance(disk_cache, dict):
+                    merged.update(disk_cache)
+    except Exception as e:
+        print(f"[SHARED UPDATE READ NOTICE] {e}")
+    return merged
 
 class VercelPathMiddleware:
     """Ensure original request path is restored if Vercel serverless rewrites PATH_INFO to entrypoint script."""
@@ -186,6 +230,8 @@ def sync_user_applications(seeker_id):
     if not isinstance(cached_apps, list):
         cached_apps = []
 
+    shared_updates = get_shared_application_updates()
+
     db_job_ids = {a.job_id for a in db_apps}
     added_to_db = False
 
@@ -193,16 +239,45 @@ def sync_user_applications(seeker_id):
         if isinstance(item, dict) and item.get('job_id') and item['job_id'] not in db_job_ids:
             job = db.session.get(JobPosting, item['job_id'])
             if job:
+                key_pair = f"{job.id}_{seeker_id}"
+                up = shared_updates.get(key_pair) or shared_updates.get(str(item.get('id')))
+                
+                status_to_use = up['status'] if (up and up.get('status')) else item.get('status', 'Pending')
+                interview_date_to_use = up.get('interview_date') if (up and up.get('interview_date')) else item.get('interview_date', '')
+                interview_link_to_use = up.get('interview_link') if (up and up.get('interview_link')) else item.get('interview_link', '')
+                recruiter_notes_to_use = up.get('recruiter_notes') if (up and up.get('recruiter_notes')) else item.get('recruiter_notes', '')
+
                 new_app = Application(
                     job_id=job.id,
                     seeker_id=seeker_id,
                     resume_filename=item.get('resume_filename', ''),
                     cover_letter=item.get('cover_letter', ''),
-                    status=item.get('status', 'Pending')
+                    status=status_to_use,
+                    interview_date=interview_date_to_use,
+                    interview_link=interview_link_to_use,
+                    recruiter_notes=recruiter_notes_to_use
                 )
                 db.session.add(new_app)
                 added_to_db = True
                 db_job_ids.add(job.id)
+
+    # Apply any recruiter updates to existing db_apps
+    for a in db_apps:
+        key_pair = f"{a.job_id}_{seeker_id}"
+        up = shared_updates.get(key_pair) or shared_updates.get(str(a.id))
+        if up:
+            if up.get('status') and a.status != up['status']:
+                a.status = up['status']
+                added_to_db = True
+            if up.get('interview_date') and a.interview_date != up['interview_date']:
+                a.interview_date = up['interview_date']
+                added_to_db = True
+            if up.get('interview_link') and a.interview_link != up['interview_link']:
+                a.interview_link = up['interview_link']
+                added_to_db = True
+            if up.get('recruiter_notes') and a.recruiter_notes != up['recruiter_notes']:
+                a.recruiter_notes = up['recruiter_notes']
+                added_to_db = True
 
     if added_to_db:
         try:
@@ -960,7 +1035,7 @@ def seeker_dashboard():
 
     total_count = len(applications)
     pending_count = sum(1 for a in applications if a.status in ['Pending', 'Applied', 'Under Review'])
-    interview_count = sum(1 for a in applications if a.status == 'Interview Scheduled')
+    interview_count = sum(1 for a in applications if a.status == 'Interview Scheduled' or a.interview_date)
 
     return render_template(
         'seeker/dashboard.html',
@@ -1242,6 +1317,9 @@ def update_application_status(app_id):
         session['application_updates'][f"{application.job_id}_{application.seeker_id}"] = update_data
         session.modified = True
 
+        # Store in shared cross-user cache so seeker sees it instantly
+        record_shared_application_update(update_data)
+
         flash(f'Candidate application status updated to "{new_status}".', 'success')
     else:
         flash('Invalid status selected.', 'danger')
@@ -1327,6 +1405,9 @@ def schedule_interview(app_id):
             session['application_updates'][str(application.id)] = update_data
             session['application_updates'][f"{application.job_id}_{application.seeker_id}"] = update_data
             session.modified = True
+
+            # Store in shared cross-user cache so seeker sees it instantly
+            record_shared_application_update(update_data)
 
             # Send Professional HTML Email Invitation safely
             candidate_name = seeker_profile.full_name if seeker_profile and seeker_profile.full_name else (seeker_user.username if seeker_user else "Candidate")
