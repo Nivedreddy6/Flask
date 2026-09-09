@@ -215,19 +215,22 @@ def seed_data():
     db.session.add_all([n1, n2])
     db.session.commit()
 
-    # Create dummy sample resumes in upload directory
-    upload_dir = os.path.join(os.path.dirname(__file__), 'static', 'uploads', 'resumes')
-    os.makedirs(upload_dir, exist_ok=True)
-    
-    sample_files = [
-        ("sample_resume_john_doe.pdf", "JOHN DOE - RESUME\nSenior Backend Engineer\nSkills: Python, Flask, SQL, Docker\nExperience: 5 Years"),
-        ("sample_resume_sarah_smith.pdf", "SARAH SMITH - RESUME\nUI/UX Designer\nSkills: Figma, Design Systems, HTML/CSS\nExperience: 4 Years"),
-        ("sample_resume_alex_miller.pdf", "ALEX MILLER - RESUME\nData Analyst\nSkills: Python, SQL, Pandas, Tableau\nExperience: 3 Years")
-    ]
-    for filename, content in sample_files:
-        filepath = os.path.join(upload_dir, filename)
-        if not os.path.exists(filepath):
-            with open(filepath, "w", encoding="utf-8") as f:
-                f.write(content)
+    # Create dummy sample resumes in upload directory (safely skip if on read-only serverless filesystem)
+    try:
+        upload_dir = os.path.join(os.path.dirname(__file__), 'static', 'uploads', 'resumes')
+        os.makedirs(upload_dir, exist_ok=True)
+        
+        sample_files = [
+            ("sample_resume_john_doe.pdf", "JOHN DOE - RESUME\nSenior Backend Engineer\nSkills: Python, Flask, SQL, Docker\nExperience: 5 Years"),
+            ("sample_resume_sarah_smith.pdf", "SARAH SMITH - RESUME\nUI/UX Designer\nSkills: Figma, Design Systems, HTML/CSS\nExperience: 4 Years"),
+            ("sample_resume_alex_miller.pdf", "ALEX MILLER - RESUME\nData Analyst\nSkills: Python, SQL, Pandas, Tableau\nExperience: 3 Years")
+        ]
+        for filename, content in sample_files:
+            filepath = os.path.join(upload_dir, filename)
+            if not os.path.exists(filepath):
+                with open(filepath, "w", encoding="utf-8") as f:
+                    f.write(content)
+    except Exception as e:
+        print(f"Skipping sample resume file creation on read-only storage: {e}")
 
     print("Sample data successfully seeded!")

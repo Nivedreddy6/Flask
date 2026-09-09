@@ -1,5 +1,7 @@
 import os
 import time
+import tempfile
+import shutil
 from functools import wraps
 from flask import (
     Flask, render_template, request, redirect, url_for, flash, session, send_from_directory, abort, jsonify
@@ -12,15 +14,63 @@ from email_service import send_interview_email, generate_interview_email_html, u
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
-app.config['SECRET_KEY'] = 'super-secret-key-job-portal-2026'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.root_path, 'job_portal.db')
+
+class VercelPathMiddleware:
+    """Ensure original request path is restored if Vercel serverless rewrites PATH_INFO to entrypoint script."""
+    def __init__(self, wsgi_app):
+        self.wsgi_app = wsgi_app
+
+    def __call__(self, environ, start_response):
+        path_info = environ.get('PATH_INFO', '')
+        if path_info in ('/api/index.py', '/index.py', '/api', '/api/') or path_info.endswith('.py'):
+            orig_path = (
+                environ.get('HTTP_X_MATCHED_PATH')
+                or environ.get('REQUEST_URI')
+                or environ.get('RAW_URI')
+                or environ.get('HTTP_X_FORWARDED_URI')
+            )
+            if orig_path and not orig_path.endswith('.py'):
+                environ['PATH_INFO'] = orig_path.split('?')[0]
+        return self.wsgi_app(environ, start_response)
+
+app.wsgi_app = VercelPathMiddleware(app.wsgi_app)
+
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'super-secret-key-job-portal-2026')
+
+# Database configuration: support external PostgreSQL or fallback to SQLite
+db_url = os.environ.get('DATABASE_URL')
+if db_url:
+    if db_url.startswith("postgres://"):
+        db_url = db_url.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+elif os.environ.get('VERCEL'):
+    tmp_db = os.path.join(tempfile.gettempdir(), 'job_portal.db')
+    orig_db = os.path.join(app.root_path, 'job_portal.db')
+    if not os.path.exists(tmp_db) and os.path.exists(orig_db):
+        try:
+            shutil.copyfile(orig_db, tmp_db)
+        except Exception:
+            pass
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{tmp_db}'
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.root_path, 'job_portal.db')
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static', 'uploads', 'resumes')
+
+# Resumes upload folder: use /tmp on serverless platforms
+if os.environ.get('VERCEL'):
+    app.config['UPLOAD_FOLDER'] = os.path.join(tempfile.gettempdir(), 'resumes')
+else:
+    app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static', 'uploads', 'resumes')
+
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB max upload limit
 
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx', 'txt', 'png', 'jpg', 'jpeg'}
 
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+try:
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+except Exception:
+    pass
 
 # Initialize database and seed data
 init_db(app)
@@ -85,6 +135,23 @@ app.register_blueprint(jobs_bp)
 app.register_blueprint(applications_bp)
 app.register_blueprint(auth_bp)
 
+# ==========================================
+# FRONTEND SPA & STATIC ASSETS (REACT/VITE)
+# ==========================================
+FRONTEND_DIST = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend', 'dist'))
+
+@app.route('/assets/<path:filename>')
+def serve_frontend_assets(filename):
+    assets_dir = os.path.join(FRONTEND_DIST, 'assets')
+    if os.path.exists(assets_dir):
+        return send_from_directory(assets_dir, filename)
+    abort(404)
+
+@app.route('/index.html')
+def serve_index_html():
+    if os.path.exists(os.path.join(FRONTEND_DIST, 'index.html')):
+        return send_from_directory(FRONTEND_DIST, 'index.html')
+    return redirect(url_for('index'))
 
 # ==========================================
 # PUBLIC & AUTH ROUTES
@@ -92,8 +159,16 @@ app.register_blueprint(auth_bp)
 
 @app.route('/')
 def index():
+    if os.path.exists(os.path.join(FRONTEND_DIST, 'index.html')):
+        return send_from_directory(FRONTEND_DIST, 'index.html')
     recent_jobs = JobPosting.query.filter_by(status='Active').order_by(JobPosting.created_at.desc()).limit(6).all()
     return render_template('index.html', recent_jobs=recent_jobs)
+
+@app.route('/applications')
+def spa_applications():
+    if os.path.exists(os.path.join(FRONTEND_DIST, 'index.html')):
+        return send_from_directory(FRONTEND_DIST, 'index.html')
+    return redirect(url_for('index'))
 
 
 @app.route('/register', methods=['GET', 'POST'])

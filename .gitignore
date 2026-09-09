@@ -16,3 +16,4 @@ frontend/dist/
 # SQLite Database & Uploads
 backend/*.db
 backend/static/uploads/
+.vercel

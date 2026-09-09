@@ -1,0 +1,29 @@
+# Virtual environments & Python cache
+.venv/
+Lib/
+Scripts/
+include/
+pyvenv.cfg
+.lock
+CACHEDIR.TAG
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Git & IDE
+.git/
+.vscode/
+.idea/
+
+# Node
+frontend/node_modules/
+node_modules/
+
+# Local database & temp uploads
+backend/*.db
+backend/static/uploads/resumes/*
+
+# Presentation & media files
+presentation_images/
+*.png

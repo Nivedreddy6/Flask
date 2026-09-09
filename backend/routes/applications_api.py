@@ -240,7 +240,7 @@ def apply_to_job():
         file = request.files['resume']
         if file and file.filename:
             filename = secure_filename(f"seeker_{int(datetime.now().timestamp())}_{file.filename}")
-            upload_path = os.path.join(current_app.root_path, 'static', 'uploads', 'resumes')
+            upload_path = current_app.config.get('UPLOAD_FOLDER', os.path.join(current_app.root_path, 'static', 'uploads', 'resumes'))
             os.makedirs(upload_path, exist_ok=True)
             file.save(os.path.join(upload_path, filename))
             resume_filename = filename
