@@ -10,24 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome 6 Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Reload Detection: Navigate to Main Portal on Refresh -->
-    <script>
-        (function() {
-            try {
-                var perf = window.performance;
-                if (perf) {
-                    var entries = perf.getEntriesByType && perf.getEntriesByType('navigation');
-                    var isReload = (entries && entries.length > 0 && entries[0].type === 'reload') || 
-                                   (perf.navigation && perf.navigation.type === 1);
-                    if (isReload && window.location.pathname !== '/' && window.location.pathname !== '') {
-                        window.location.replace('/');
-                    }
-                }
-            } catch(e) {
-                console.error(e);
-            }
-        })();
-    </script>
     <!-- Custom Glassmorphism Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block extra_css %}{% endblock %}

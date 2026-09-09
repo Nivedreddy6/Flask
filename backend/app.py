@@ -4,7 +4,7 @@ import tempfile
 import shutil
 from functools import wraps
 from flask import (
-    Flask, render_template, request, redirect, url_for, flash, session, send_from_directory, abort, jsonify
+    Flask, render_template, request, redirect, url_for, flash, session, send_from_directory, abort, jsonify, Response
 )
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
@@ -14,6 +14,9 @@ from email_service import send_interview_email, generate_interview_email_html, u
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
+
+# In-memory resume cache for serverless environments
+RESUME_CACHE = {}
 
 class VercelPathMiddleware:
     """Ensure original request path is restored if Vercel serverless rewrites PATH_INFO to entrypoint script."""
@@ -823,7 +826,10 @@ def apply_job(job_id):
             os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
             try:
-                resume_file.save(filepath)
+                file_bytes = resume_file.read()
+                RESUME_CACHE[unique_filename] = file_bytes
+                with open(filepath, 'wb') as f:
+                    f.write(file_bytes)
             except Exception as e:
                 print(f"[RESUME SAVE ERROR] {e}")
             resume_filename = unique_filename
@@ -953,7 +959,10 @@ def seeker_profile():
                 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
                 filepath = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
                 try:
-                    resume_file.save(filepath)
+                    file_bytes = resume_file.read()
+                    RESUME_CACHE[unique_filename] = file_bytes
+                    with open(filepath, 'wb') as f:
+                        f.write(file_bytes)
                     profile.resume_filename = unique_filename
                 except Exception as e:
                     print(f"[RESUME UPLOAD ERROR] {e}")
@@ -1334,10 +1343,61 @@ def email_settings():
 @login_required
 def download_resume(filename):
     filename = secure_filename(filename)
-    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    if not os.path.exists(filepath):
-        abort(404)
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+    # 1. Check in-memory resume cache
+    if filename in RESUME_CACHE:
+        return Response(
+            RESUME_CACHE[filename],
+            mimetype='application/pdf' if filename.lower().endswith('.pdf') else 'application/octet-stream',
+            headers={'Content-Disposition': f'inline; filename="{filename}"'}
+        )
+
+    # 2. Check disk locations
+    search_dirs = [
+        app.config.get('UPLOAD_FOLDER'),
+        os.path.join(tempfile.gettempdir(), 'resumes'),
+        '/tmp/resumes',
+        '/tmp/uploads/resumes',
+        os.path.join(app.root_path, 'static', 'uploads', 'resumes')
+    ]
+    for folder in search_dirs:
+        if folder:
+            try:
+                candidate_path = os.path.join(folder, filename)
+                if os.path.exists(candidate_path):
+                    return send_from_directory(
+                        folder,
+                        filename,
+                        as_attachment=False,
+                        mimetype='application/pdf' if filename.lower().endswith('.pdf') else None
+                    )
+            except Exception:
+                pass
+
+    # 3. Stateless fallback across serverless Lambda instances:
+    # Locate candidate record and render executive Digital Resume Viewer
+    app_record = Application.query.filter_by(resume_filename=filename).first()
+    seeker_id = None
+    if app_record:
+        seeker_id = app_record.seeker_id
+    else:
+        parts = filename.split('_')
+        if len(parts) >= 2 and parts[0] == 'seeker' and parts[1].isdigit():
+            seeker_id = int(parts[1])
+
+    if seeker_id:
+        candidate = db.session.get(User, seeker_id)
+        profile = UserProfile.query.filter_by(user_id=seeker_id).first()
+        if candidate:
+            return render_template(
+                'recruiter/resume_viewer.html',
+                candidate=candidate,
+                profile=profile,
+                application=app_record,
+                filename=filename
+            )
+
+    return render_template('404.html'), 404
 
 
 # ==========================================
@@ -1372,14 +1432,7 @@ def company_detail(company_id):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('base.html', custom_body="""
-        <div style="max-width: 600px; margin: 60px auto; text-align: center; padding: 40px; background: #1E293B; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-            <h1 style="font-size: 3rem; color: #F59E0B; margin-bottom: 12px;">404</h1>
-            <h2 style="color: #FFF; margin-bottom: 16px;">Page or Resource Not Found</h2>
-            <p style="color: #94A3B8; margin-bottom: 24px;">The page, application, or resource you requested is unavailable or has expired.</p>
-            <a href="/" class="btn btn-primary" style="padding: 10px 24px; border-radius: 20px;">Return Home</a>
-        </div>
-    """), 404
+    return render_template('404.html'), 404
 
 
 @app.errorhandler(500)

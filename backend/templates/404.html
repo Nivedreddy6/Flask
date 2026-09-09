@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Page Not Found - HirePulse{% endblock %}
+
+{% block content %}
+<div class="form-card" style="max-width: 620px; margin: 60px auto; text-align: center; padding: 48px 32px; border: 1px solid rgba(245, 158, 11, 0.3); background: rgba(30, 41, 59, 0.85); backdrop-filter: blur(12px); border-radius: 20px;">
+    <div style="font-size: 3.5rem; color: #F59E0B; margin-bottom: 12px;">
+        <i class="fa-solid fa-triangle-exclamation"></i> 404
+    </div>
+    <h2 style="color: #FFF; font-size: 1.7rem; font-weight: 800; margin-bottom: 14px;">Resource Not Found</h2>
+    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 28px;">
+        The requested resume document, application, or page is unavailable or has expired.
+    </p>
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="/" class="btn btn-primary" style="border-radius: 24px; padding: 10px 24px; font-weight: 700;">
+            <i class="fa-solid fa-house"></i> Return Home
+        </a>
+        <a href="javascript:history.back()" class="btn btn-secondary" style="border-radius: 24px; padding: 10px 24px; font-weight: 700;">
+            <i class="fa-solid fa-arrow-left"></i> Go Back
+        </a>
+    </div>
+</div>
+{% endblock %}
