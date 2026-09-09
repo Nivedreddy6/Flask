@@ -26,19 +26,26 @@
   </a>
 </p>
 
+<!-- Direct URL Quick-Launch Directory SVG Card -->
+<p align="center">
+  <a href="https://flask-five-mauve.vercel.app/" target="_blank">
+    <img src="./frontend/public/cards/quick-launch-directory.svg?v=2" alt="Direct URL Quick-Launch Directory" width="100%" />
+  </a>
+</p>
+
 <div align="center">
 
-### ⚡ Direct URL Quick-Launch Directory
+### ⚡ Interactive Quick-Launch Directory
 
-| Portal | Live Link | Technology Stack | Status |
+| Destination Portal | Live Production Link | Technology Engine | Health Status |
 | :--- | :--- | :--- | :---: |
-| 🏛️ **Main Web Portal** | [**`flask-five-mauve.vercel.app`**](https://flask-five-mauve.vercel.app/) | ![Flask](https://img.shields.io/badge/Flask%203.0-000000?style=flat-square&logo=flask&logoColor=white) ![Jinja](https://img.shields.io/badge/Jinja2-B41717?style=flat-square&logo=jinja&logoColor=white) | `🟢 Live Online` |
-| ⚡ **React ATS Suite** | [**`flask-five-mauve.vercel.app/react`**](https://flask-five-mauve.vercel.app/react) | ![React](https://img.shields.io/badge/React%2019-61DAFB?style=flat-square&logo=react&logoColor=black) ![Vite](https://img.shields.io/badge/Vite%208-646CFF?style=flat-square&logo=vite&logoColor=white) | `⚡ Sub-ms Speed` |
-| 💼 **Verified Job Board** | [**`flask-five-mauve.vercel.app/jobs`**](https://flask-five-mauve.vercel.app/jobs) | ![Jobs](https://img.shields.io/badge/Openings-21%2B%20Active-00C853?style=flat-square) | `🎯 1-Click Apply` |
-| 🔐 **Sign In Hub** | [**`flask-five-mauve.vercel.app/login`**](https://flask-five-mauve.vercel.app/login) | ![Auth](https://img.shields.io/badge/Google%20%2B%20Email-0A66C2?style=flat-square&logo=google&logoColor=white) | `🔒 256-bit Encrypted` |
-| 📝 **Candidate Join** | [**`flask-five-mauve.vercel.app/register`**](https://flask-five-mauve.vercel.app/register) | ![Onboarding](https://img.shields.io/badge/Seeker%20%2F%20Recruiter-FF6D00?style=flat-square) | `🚀 Instant Access` |
-| 👥 **People Directory** | [**`flask-five-mauve.vercel.app/people`**](https://flask-five-mauve.vercel.app/people) | ![Network](https://img.shields.io/badge/Mentors-Tech%20Network-9C27B0?style=flat-square) | `🤝 Active Peers` |
-| 🔌 **API Status** | [**`flask-five-mauve.vercel.app/api/status`**](https://flask-five-mauve.vercel.app/api/status) | ![Serverless](https://img.shields.io/badge/Serverless-Python%203.12-3776AB?style=flat-square&logo=python&logoColor=white) | `🟢 100% Uptime` |
+| 🏛️ **Main Web Portal** | [![Launch Portal](https://img.shields.io/badge/Launch%20Portal-flask--five--mauve.vercel.app-00C853?style=for-the-badge&logo=googlechrome&logoColor=white)](https://flask-five-mauve.vercel.app/) | ![Flask](https://img.shields.io/badge/Flask-3.0.2-000000?style=flat-square&logo=flask&logoColor=white) ![Jinja](https://img.shields.io/badge/Templates-Jinja2-B41717?style=flat-square&logo=jinja&logoColor=white) | [![Online](https://img.shields.io/badge/Status-Live%20Online-00E676?style=flat-square&logo=vercel&logoColor=white)](https://flask-five-mauve.vercel.app/) |
+| ⚡ **React ATS Suite** | [![Launch ATS](https://img.shields.io/badge/Interactive%20ATS-React%2019%20Suite-00E5FF?style=for-the-badge&logo=react&logoColor=black)](https://flask-five-mauve.vercel.app/react) | ![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=black) ![Vite](https://img.shields.io/badge/Bundler-Vite%208-646CFF?style=flat-square&logo=vite&logoColor=white) | [![Fast](https://img.shields.io/badge/Latency-%3C%201ms-00B0FF?style=flat-square)](https://flask-five-mauve.vercel.app/react) |
+| 💼 **Verified Job Board** | [![Browse Jobs](https://img.shields.io/badge/Job%20Directory-21%2B%20Openings-7C4DFF?style=for-the-badge&logo=linkedin&logoColor=white)](https://flask-five-mauve.vercel.app/jobs) | ![Jobs](https://img.shields.io/badge/Openings-Verified%20Tech-7C4DFF?style=flat-square) ![Filter](https://img.shields.io/badge/Salary-Transparent-00B0FF?style=flat-square) | [![Apply](https://img.shields.io/badge/Action-1--Click%20Apply-651FFF?style=flat-square)](https://flask-five-mauve.vercel.app/jobs) |
+| 🔐 **Sign In Hub** | [![Secure Login](https://img.shields.io/badge/Authentication-Sign%20In%20Hub-FF1744?style=for-the-badge&logo=auth0&logoColor=white)](https://flask-five-mauve.vercel.app/login) | ![OAuth](https://img.shields.io/badge/OAuth-Google%20%2B%20Email-0A66C2?style=flat-square&logo=google&logoColor=white) | [![Secure](https://img.shields.io/badge/Security-256--bit%20Auth-F50057?style=flat-square)](https://flask-five-mauve.vercel.app/login) |
+| 📝 **Candidate Join** | [![Join Now](https://img.shields.io/badge/Onboarding-Join%20Now-FF9100?style=for-the-badge&logo=rocket&logoColor=white)](https://flask-five-mauve.vercel.app/register) | ![Roles](https://img.shields.io/badge/Role-Seeker%20%2F%20Recruiter-FF6D00?style=flat-square) | [![Instant](https://img.shields.io/badge/Access-Instant%20Role-FF9100?style=flat-square)](https://flask-five-mauve.vercel.app/register) |
+| 👥 **People Directory** | [![Network](https://img.shields.io/badge/Community-People%20%26%20Mentors-E040FB?style=for-the-badge&logo=slack&logoColor=white)](https://flask-five-mauve.vercel.app/people) | ![Network](https://img.shields.io/badge/Network-Engineering%20Peers-AA00FF?style=flat-square) | [![Active](https://img.shields.io/badge/Community-Active%20Peers-D500F9?style=flat-square)](https://flask-five-mauve.vercel.app/people) |
+| 🔌 **API Status** | [![API Health](https://img.shields.io/badge/Serverless%20API-Live%20JSON-FFEA00?style=for-the-badge&logo=python&logoColor=black)](https://flask-five-mauve.vercel.app/api/status) | ![Python](https://img.shields.io/badge/Python-3.12%20WSGI-3776AB?style=flat-square&logo=python&logoColor=white) | [![Uptime](https://img.shields.io/badge/Uptime-100%25%20Serverless-00E676?style=flat-square)](https://flask-five-mauve.vercel.app/api/status) |
 
 </div>
 
