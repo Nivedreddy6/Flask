@@ -7,6 +7,7 @@
 </p>
 
 <p align="center">
+  <a href="https://flask-five-mauve.vercel.app/"><img src="https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Deployed on Vercel" /></a>
   <img src="https://img.shields.io/badge/Backend-Flask%203.0-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" />
   <img src="https://img.shields.io/badge/Frontend-React%2019-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19" />
   <img src="https://img.shields.io/badge/Bundler-Vite%208-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
@@ -14,6 +15,22 @@
   <img src="https://img.shields.io/badge/Linter-Oxlint-F27244?style=for-the-badge&logo=rust&logoColor=white" alt="Oxlint" />
   <img src="https://img.shields.io/badge/UI%20Theme-Cyber%20Glassmorphic-8A2BE2?style=for-the-badge" alt="Design" />
 </p>
+
+<div align="center">
+
+### 🌐 Live Production Deployment
+**[https://flask-five-mauve.vercel.app](https://flask-five-mauve.vercel.app/)**
+
+| Destination | Live URL | Description |
+| :--- | :--- | :--- |
+| 🏛️ **Main Web Portal** | [`flask-five-mauve.vercel.app`](https://flask-five-mauve.vercel.app/) | HirePulse Landing Page, Categories & Jobs |
+| ⚡ **React ATS Suite** | [`/react`](https://flask-five-mauve.vercel.app/react) | Real-time ATS Kanban & Candidate Pipeline |
+| 💼 **Explore Jobs** | [`/jobs`](https://flask-five-mauve.vercel.app/jobs) | Verified Openings & 1-Click Apply |
+| 🔐 **Sign In** | [`/login`](https://flask-five-mauve.vercel.app/login) | Candidate & Recruiter Authentication |
+| 📝 **Join Now** | [`/register`](https://flask-five-mauve.vercel.app/register) | Account Onboarding |
+| 🔌 **API Status** | [`/api/status`](https://flask-five-mauve.vercel.app/api/status) | Flask Serverless Engine Health Check |
+
+</div>
 
 ---
 
@@ -174,6 +191,18 @@ The database model is built with SQLAlchemy with clean relational entities:
 <p align="center">
   <img src="./frontend/public/cards/api-endpoints.svg?v=2" alt="REST API Endpoints Specification" width="100%" />
 </p>
+
+---
+
+## 🚀 Production Deployment (Vercel)
+
+The full-stack application is live and hosted on **Vercel**:
+
+* **Main Portal**: [https://flask-five-mauve.vercel.app](https://flask-five-mauve.vercel.app/)
+* **React ATS Suite**: [https://flask-five-mauve.vercel.app/react](https://flask-five-mauve.vercel.app/react)
+* **Job Board**: [https://flask-five-mauve.vercel.app/jobs](https://flask-five-mauve.vercel.app/jobs)
+* **Authentication**: [https://flask-five-mauve.vercel.app/login](https://flask-five-mauve.vercel.app/login)
+* **REST API Health**: [https://flask-five-mauve.vercel.app/api/status](https://flask-five-mauve.vercel.app/api/status)
 
 ---
 
