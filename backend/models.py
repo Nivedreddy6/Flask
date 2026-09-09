@@ -111,3 +111,14 @@ class Notification(db.Model):
     link = db.Column(db.String(255))
     is_read = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
+
+
+class UploadedResume(db.Model):
+    __tablename__ = 'uploaded_resume'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    filename = db.Column(db.String(255), unique=True, nullable=False, index=True)
+    file_bytes = db.Column(db.LargeBinary, nullable=False)
+    mimetype = db.Column(db.String(100), default='application/pdf')
+    created_at = db.Column(db.DateTime, default=datetime.now)
+

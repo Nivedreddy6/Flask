@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Server Notice - HirePulse{% endblock %}
+
+{% block content %}
+<div class="form-card" style="max-width: 620px; margin: 60px auto; text-align: center; padding: 48px 32px; border: 1px solid rgba(239, 68, 68, 0.35); background: rgba(30, 41, 59, 0.9); backdrop-filter: blur(14px); border-radius: 20px; box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);">
+    <div style="font-size: 3.5rem; color: #EF4444; margin-bottom: 12px;">
+        <i class="fa-solid fa-circle-exclamation"></i>
+    </div>
+    <h2 style="color: #FFF; font-size: 1.7rem; font-weight: 800; margin-bottom: 14px;">Server Notice</h2>
+    <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; margin-bottom: 28px;">
+        We encountered a brief notice processing your request. Your account and previous data remain safe. Please try again or return to your dashboard.
+    </p>
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="/" class="btn btn-primary" style="border-radius: 24px; padding: 10px 24px; font-weight: 700;">
+            <i class="fa-solid fa-house"></i> Return Home
+        </a>
+        <a href="javascript:history.back()" class="btn btn-secondary" style="border-radius: 24px; padding: 10px 24px; font-weight: 700;">
+            <i class="fa-solid fa-arrow-left"></i> Go Back
+        </a>
+    </div>
+</div>
+{% endblock %}
