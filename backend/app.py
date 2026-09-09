@@ -187,7 +187,7 @@ def serve_react_spa(path):
 
 @app.route('/')
 def index():
-    recent_jobs = JobPosting.query.filter_by(status='Active').order_by(JobPosting.created_at.desc()).limit(6).all()
+    recent_jobs = JobPosting.query.filter_by(status='Active').order_by(JobPosting.created_at.desc()).limit(10).all()
     return render_template('index.html', recent_jobs=recent_jobs)
 
 
