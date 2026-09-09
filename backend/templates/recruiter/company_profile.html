@@ -5,8 +5,13 @@
 {% block content %}
 <div style="max-width: 680px; margin: 20px auto;">
     <div class="form-card">
-        <h2 style="margin-bottom: 6px; font-weight: 800; text-align: center;">Company Profile</h2>
-        <p style="color: var(--text-muted); text-align: center; margin-bottom: 28px; font-size: 0.95rem;">Manage how your company appears to candidates.</p>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+            <div style="flex: 1;">
+                <h2 style="margin-bottom: 4px; font-weight: 800;">Company Profile</h2>
+                <p style="color: var(--text-muted); margin: 0; font-size: 0.95rem;">Manage how your company appears to candidates.</p>
+            </div>
+            <a href="{{ url_for('recruiter_dashboard') }}" title="Close Company Profile" style="color: var(--text-muted); font-size: 2rem; line-height: 1; text-decoration: none; padding: 2px 10px; border-radius: 8px; background: rgba(255,255,255,0.05); margin-left: 12px; transition: all 0.2s;" onmouseover="this.style.color='#FFF'; this.style.background='rgba(255,255,255,0.15)';" onmouseout="this.style.color='var(--text-muted)'; this.style.background='rgba(255,255,255,0.05)';">&times;</a>
+        </div>
 
         <form id="companyProfileForm" action="{{ url_for('company_profile') }}" method="POST">
             
@@ -32,9 +37,16 @@
                 <textarea id="description" name="description" class="form-control" placeholder="Introduce your company culture, technology stack, and mission..." style="min-height: 140px;">{{ (company.description if company else '') or session.get('company_data', {}).get('description', '') }}</textarea>
             </div>
 
-            <div style="display: flex; gap: 12px; margin-top: 28px;">
-                <button type="submit" id="saveCompanyBtn" class="btn btn-primary" style="flex: 1;">Save Company Details</button>
-                <a href="{{ url_for('recruiter_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+            <div style="display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap;">
+                <button type="submit" name="action" value="save_and_close" id="saveCloseCompanyBtn" class="btn btn-primary" style="flex: 2; font-weight: 700; padding: 12px 20px;">
+                    <i class="fa-solid fa-circle-check"></i> Save & Close Profile
+                </button>
+                <button type="submit" name="action" value="save_and_stay" id="saveStayCompanyBtn" class="btn btn-secondary" style="flex: 1; padding: 12px 16px;">
+                    <i class="fa-solid fa-floppy-disk"></i> Save & Stay
+                </button>
+                <a href="{{ url_for('recruiter_dashboard') }}" class="btn btn-secondary" style="padding: 12px 20px;">
+                    <i class="fa-solid fa-xmark"></i> Close
+                </a>
             </div>
         </form>
     </div>
@@ -74,9 +86,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit', function() {
         persistForm();
-        const btn = document.getElementById('saveCompanyBtn');
-        if (btn) {
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving Details...';
+        const clickedBtn = document.activeElement;
+        if (clickedBtn && clickedBtn.id === 'saveStayCompanyBtn') {
+            clickedBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+        } else {
+            const mainBtn = document.getElementById('saveCloseCompanyBtn');
+            if (mainBtn) {
+                mainBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving & Closing...';
+            }
         }
     });
 

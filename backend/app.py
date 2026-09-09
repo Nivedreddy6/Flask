@@ -824,8 +824,11 @@ def seeker_profile():
         session['full_name'] = profile.full_name
         session.modified = True
 
-        flash('Profile details updated successfully!', 'success')
-        return redirect(url_for('seeker_profile'))
+        flash('Profile details saved successfully!', 'success')
+        action = request.form.get('action', 'save_and_close')
+        if action == 'save_and_stay':
+            return redirect(url_for('seeker_profile'))
+        return redirect(url_for('seeker_dashboard'))
 
     return render_template('seeker/profile.html', profile=profile)
 
@@ -1108,7 +1111,10 @@ def company_profile():
         session.modified = True
 
         flash('Company profile details saved successfully!', 'success')
-        return redirect(url_for('company_profile'))
+        action = request.form.get('action', 'save_and_close')
+        if action == 'save_and_stay':
+            return redirect(url_for('company_profile'))
+        return redirect(url_for('recruiter_dashboard'))
 
     return render_template('recruiter/company_profile.html', company=company)
 

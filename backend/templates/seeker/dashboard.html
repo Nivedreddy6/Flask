@@ -14,6 +14,47 @@
     </div>
 </div>
 
+<!-- Candidate Profile Summary Card -->
+{% set seeker_name = (profile.full_name if profile and profile.full_name else session.get('profile_data', {}).get('full_name', current_user.username if current_user else 'Candidate')) %}
+{% set seeker_headline = (profile.headline if profile and profile.headline else session.get('profile_data', {}).get('headline', 'Verified Job Seeker')) %}
+{% set seeker_skills = (profile.skills if profile and profile.skills else session.get('profile_data', {}).get('skills', '')) %}
+{% set seeker_location = (profile.location if profile and profile.location else session.get('profile_data', {}).get('location', '')) %}
+{% set seeker_resume = (profile.resume_filename if profile and profile.resume_filename else session.get('profile_data', {}).get('resume_filename', '')) %}
+
+<div style="background: rgba(30, 41, 59, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 18px 24px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #3B82F6, #8B5CF6); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; color: #FFF; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);">
+            {{ seeker_name[:2].upper() }}
+        </div>
+        <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 1.15rem; font-weight: 800; color: #FFF;">{{ seeker_name }}</span>
+                <span class="tag" style="background: rgba(52, 211, 153, 0.15); color: #34D399; border: 1px solid rgba(52, 211, 153, 0.3); font-size: 0.75rem; padding: 2px 8px;">
+                    <i class="fa-solid fa-circle-check"></i> Profile Saved
+                </span>
+            </div>
+            <div style="font-size: 0.9rem; color: var(--accent-primary); font-weight: 600; margin-top: 2px;">
+                {{ seeker_headline }} {% if seeker_location %}• 📍 {{ seeker_location }}{% endif %}
+            </div>
+            {% if seeker_skills %}
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">
+                    <strong>Skills:</strong> {{ seeker_skills }}
+                </div>
+            {% endif %}
+            {% if seeker_resume %}
+                <div style="font-size: 0.8rem; color: #60A5FA; margin-top: 2px;">
+                    <i class="fa-solid fa-file-pdf"></i> Resume: <code>{{ seeker_resume }}</code>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <a href="{{ url_for('seeker_profile') }}" class="btn btn-secondary btn-sm" style="font-size: 0.85rem; padding: 8px 16px;">
+            <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+        </a>
+    </div>
+</div>
+
 <!-- Upcoming Scheduled Interviews Section -->
 {% set scheduled_interviews = applications | selectattr('status', 'equalto', 'Interview Scheduled') | list %}
 {% if scheduled_interviews %}
