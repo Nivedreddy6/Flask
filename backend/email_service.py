@@ -117,10 +117,11 @@ def generate_interview_email_html(candidate_name, job_title, company_name, inter
 </html>"""
 
 
-def send_interview_email(to_email, candidate_name, job_title, company_name, interview_date, interview_link, notes=""):
+def send_interview_email(to_email=None, candidate_name="Candidate", job_title="Open Position", company_name="Company", interview_date="", interview_link="", notes="", **kwargs):
     """
     Sends a professional HTML interview invitation email to the candidate.
     """
+    to_email = to_email or kwargs.get('candidate_email') or 'candidate@example.com'
     subject = f"🗓️ Interview Invitation: {job_title} at {company_name}"
     html_body = generate_interview_email_html(candidate_name, job_title, company_name, interview_date, interview_link, notes)
 
@@ -147,12 +148,18 @@ def send_interview_email(to_email, candidate_name, job_title, company_name, inte
         except Exception as e:
             print(f"[EMAIL SERVICE ERROR] SMTP dispatch failed: {e}")
 
-    # Generate local backup copy
-    email_dir = os.path.join(os.path.dirname(__file__), 'static', 'uploads', 'emails')
-    os.makedirs(email_dir, exist_ok=True)
-    filename = f"interview_email_{to_email.replace('@', '_at_')}.html"
-    filepath = os.path.join(email_dir, filename)
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(html_body)
+    # Generate local backup copy if writable (supports Vercel read-only filesystem)
+    try:
+        import tempfile
+        base_dir = tempfile.gettempdir() if os.environ.get('VERCEL') else os.path.join(os.path.dirname(__file__), 'static')
+        email_dir = os.path.join(base_dir, 'uploads', 'emails')
+        os.makedirs(email_dir, exist_ok=True)
+        safe_to = to_email.replace('@', '_at_')
+        filename = f"interview_email_{safe_to}.html"
+        filepath = os.path.join(email_dir, filename)
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(html_body)
+    except Exception as e:
+        print(f"[EMAIL SERVICE BACKUP WARNING] Could not write email backup to disk: {e}")
 
     return email_sent

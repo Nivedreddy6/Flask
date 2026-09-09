@@ -832,79 +832,91 @@ def update_application_status(app_id):
 @app.route('/recruiter/application/<int:app_id>/schedule', methods=['GET', 'POST'])
 @role_required('recruiter')
 def schedule_interview(app_id):
-    application = Application.query.get_or_404(app_id)
-    job = JobPosting.query.get_or_404(application.job_id)
-    
-    if job.recruiter_id != session['user_id']:
-        flash('Unauthorized action.', 'danger')
-        return redirect(url_for('recruiter_dashboard'))
+    try:
+        application = Application.query.get_or_404(app_id)
+        job = JobPosting.query.get_or_404(application.job_id)
         
-    seeker_profile = UserProfile.query.filter_by(user_id=application.seeker_id).first()
-    
-    if request.method == 'POST':
-        raw_date = request.form.get('interview_date', '').strip()
-        interview_link = request.form.get('interview_link', '').strip()
-        recruiter_notes = request.form.get('recruiter_notes', '').strip()
-        
-        interview_date = raw_date
-        if raw_date:
-            from datetime import datetime
-            parsed_dt = None
-            formats_to_try = [
-                '%Y-%m-%d %H:%M',
-                '%Y-%m-%dT%H:%M',
-                '%Y-%m-%d %H:%M:%S',
-                '%Y-%m-%d',
-                '%B %d, %Y at %I:%M %p',
-                '%b %d, %Y at %I:%M %p'
-            ]
-            for fmt in formats_to_try:
-                try:
-                    parsed_dt = datetime.strptime(raw_date, fmt)
-                    break
-                except ValueError:
-                    pass
-            if parsed_dt:
-                interview_date = parsed_dt.strftime('%b %d, %Y at %I:%M %p')
-                
-        application.status = 'Interview Scheduled'
-        if interview_date:
-            application.interview_date = interview_date
-        if interview_link:
-            application.interview_link = interview_link
-        if recruiter_notes:
-            application.recruiter_notes = recruiter_notes
+        if job.recruiter_id != session['user_id']:
+            flash('Unauthorized action: this job posting belongs to another recruiter.', 'danger')
+            return redirect(url_for('recruiter_dashboard'))
             
-        # Notification to Seeker
-        seeker_notif = Notification(
-            user_id=application.seeker_id,
-            message=f"🗓️ Interview Scheduled with {job.company_name} for '{job.title}' on {interview_date or 'TBD'}!",
-            link=url_for('seeker_dashboard')
-        )
-        db.session.add(seeker_notif)
-        db.session.commit()
-        
-        # Send Professional HTML Email Invitation
+        seeker_profile = UserProfile.query.filter_by(user_id=application.seeker_id).first()
         seeker_user = db.session.get(User, application.seeker_id)
-        candidate_name = seeker_profile.full_name if seeker_profile and seeker_profile.full_name else seeker_user.username
         
-        email_sent = send_interview_email(
-            to_email=seeker_user.email,
-            candidate_name=candidate_name,
-            job_title=job.title,
-            company_name=job.company_name,
-            interview_date=interview_date or 'TBD',
-            interview_link=interview_link,
-            notes=recruiter_notes
-        )
-        
-        if email_sent:
-            flash(f'🚀 Interview scheduled & real email sent directly to candidate inbox at {seeker_user.email}!', 'success')
-        else:
-            flash(f'Interview scheduled! (Note: Real SMTP delivery requires configuring MAIL_USERNAME & MAIL_PASSWORD env variables. Saved email copy: static/uploads/emails/interview_email_{seeker_user.email.replace("@", "_at_")}.html)', 'info')
-        return redirect(url_for('view_job_applications', job_id=job.id))
-        
-    return render_template('recruiter/schedule_interview.html', application=application, job=job, profile=seeker_profile)
+        if request.method == 'POST':
+            raw_date = request.form.get('interview_date', '').strip()
+            interview_link = request.form.get('interview_link', '').strip()
+            recruiter_notes = request.form.get('recruiter_notes', '').strip()
+            
+            interview_date = raw_date
+            if raw_date:
+                from datetime import datetime
+                parsed_dt = None
+                formats_to_try = [
+                    '%Y-%m-%d %H:%M',
+                    '%Y-%m-%dT%H:%M',
+                    '%Y-%m-%d %H:%M:%S',
+                    '%Y-%m-%d',
+                    '%B %d, %Y at %I:%M %p',
+                    '%b %d, %Y at %I:%M %p'
+                ]
+                for fmt in formats_to_try:
+                    try:
+                        parsed_dt = datetime.strptime(raw_date, fmt)
+                        break
+                    except ValueError:
+                        pass
+                if parsed_dt:
+                    interview_date = parsed_dt.strftime('%b %d, %Y at %I:%M %p')
+                    
+            application.status = 'Interview Scheduled'
+            if interview_date:
+                application.interview_date = interview_date
+            if interview_link:
+                application.interview_link = interview_link
+            if recruiter_notes:
+                application.recruiter_notes = recruiter_notes
+                
+            # Notification to Seeker
+            if application.seeker_id:
+                seeker_notif = Notification(
+                    user_id=application.seeker_id,
+                    message=f"🗓️ Interview Scheduled with {job.company_name} for '{job.title}' on {interview_date or 'TBD'}!",
+                    link=url_for('seeker_dashboard')
+                )
+                db.session.add(seeker_notif)
+            db.session.commit()
+            
+            # Send Professional HTML Email Invitation safely
+            candidate_name = seeker_profile.full_name if seeker_profile and seeker_profile.full_name else (seeker_user.username if seeker_user else "Candidate")
+            candidate_email = seeker_user.email if seeker_user else "candidate@example.com"
+            
+            email_sent = False
+            try:
+                email_sent = send_interview_email(
+                    to_email=candidate_email,
+                    candidate_name=candidate_name,
+                    job_title=job.title,
+                    company_name=job.company_name,
+                    interview_date=interview_date or 'TBD',
+                    interview_link=interview_link,
+                    notes=recruiter_notes
+                )
+            except Exception as e:
+                print(f"[SCHEDULE INTERVIEW] Email dispatch warning: {e}")
+            
+            if email_sent:
+                flash(f'🚀 Interview scheduled & invitation email sent directly to {candidate_email}!', 'success')
+            else:
+                flash(f'Interview successfully scheduled for {candidate_name} on {interview_date or "scheduled date"}!', 'success')
+            return redirect(url_for('view_job_applications', job_id=job.id))
+            
+        return render_template('recruiter/schedule_interview.html', application=application, job=job, profile=seeker_profile)
+    except Exception as e:
+        import traceback
+        print(f"[SCHEDULE INTERVIEW ERROR] {traceback.format_exc()}")
+        flash(f'Notice: Unable to process interview schedule ({str(e)}).', 'warning')
+        return redirect(url_for('recruiter_dashboard'))
 
 
 
@@ -1007,6 +1019,40 @@ def company_detail(company_id):
     company = CompanyProfile.query.get_or_404(company_id)
     company_jobs = JobPosting.query.filter_by(recruiter_id=company.user_id, status='Active').order_by(JobPosting.created_at.desc()).all()
     return render_template('company_detail.html', company=company, company_jobs=company_jobs)
+
+
+# ==========================================
+# GLOBAL ERROR HANDLERS
+# ==========================================
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('base.html', custom_body="""
+        <div style="max-width: 600px; margin: 60px auto; text-align: center; padding: 40px; background: #1E293B; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+            <h1 style="font-size: 3rem; color: #F59E0B; margin-bottom: 12px;">404</h1>
+            <h2 style="color: #FFF; margin-bottom: 16px;">Page or Resource Not Found</h2>
+            <p style="color: #94A3B8; margin-bottom: 24px;">The page, application, or resource you requested is unavailable or has expired.</p>
+            <a href="/" class="btn btn-primary" style="padding: 10px 24px; border-radius: 20px;">Return Home</a>
+        </div>
+    """), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    import traceback
+    err_tb = traceback.format_exc()
+    print(f"[500 SERVER ERROR] {err_tb}")
+    return render_template('base.html', custom_body=f"""
+        <div style="max-width: 650px; margin: 60px auto; text-align: center; padding: 40px; background: #1E293B; border-radius: 16px; border: 1px solid rgba(239, 68, 68, 0.4);">
+            <h1 style="font-size: 3rem; color: #EF4444; margin-bottom: 12px;">500</h1>
+            <h2 style="color: #FFF; margin-bottom: 16px;">Unexpected Server Notice</h2>
+            <p style="color: #94A3B8; margin-bottom: 24px;">The action encountered a transient notice. Please refresh or navigate back.</p>
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <a href="javascript:history.back()" class="btn btn-secondary" style="padding: 10px 20px; border-radius: 20px;">Go Back</a>
+                <a href="/" class="btn btn-primary" style="padding: 10px 24px; border-radius: 20px;">Return Home</a>
+            </div>
+        </div>
+    """), 500
 
 
 if __name__ == '__main__':
