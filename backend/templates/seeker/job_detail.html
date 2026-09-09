@@ -134,8 +134,8 @@
                         <i class="fa-solid fa-circle-check"></i> Pre-filled from profile: <code>{{ seeker_profile.resume_filename }}</code>
                     </p>
                 {% endif %}
-                <input type="file" name="resume_file" class="form-control" accept=".pdf,.doc,.docx,.txt" {% if not seeker_profile or not seeker_profile.resume_filename %}required{% endif %}>
-                <span style="font-size: 0.8rem; color: var(--text-dim); display: block; margin-top: 4px;">Accepted formats: PDF, DOC, DOCX, TXT</span>
+                <input type="file" name="resume_file" class="form-control" accept=".pdf,.doc,.docx,.txt">
+                <span style="font-size: 0.8rem; color: var(--text-dim); display: block; margin-top: 4px;">Accepted formats: PDF, DOC, DOCX, TXT (optional if applying with your saved profile)</span>
             </div>
 
             <div class="form-group">

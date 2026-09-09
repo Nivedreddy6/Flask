@@ -55,6 +55,28 @@
     </div>
 </div>
 
+<!-- Stats Counter Grid -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 32px;">
+    <div class="form-card" style="max-width: 100%; margin: 0; padding: 20px; text-align: center; border: 1px solid rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.08);">
+        <div style="font-size: 2.2rem; font-weight: 900; color: #818CF8;">{{ total_count if total_count is defined else (applications|length) }}</div>
+        <div style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; font-weight: 700; margin-top: 4px;">
+            <i class="fa-solid fa-paper-plane" style="color: #818CF8;"></i> Total Applications
+        </div>
+    </div>
+    <div class="form-card" style="max-width: 100%; margin: 0; padding: 20px; text-align: center; border: 1px solid rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.08);">
+        <div style="font-size: 2.2rem; font-weight: 900; color: #FBBF24;">{{ pending_count if pending_count is defined else (applications | rejectattr('status', 'equalto', 'Interview Scheduled') | list | length) }}</div>
+        <div style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; font-weight: 700; margin-top: 4px;">
+            <i class="fa-solid fa-hourglass-half" style="color: #FBBF24;"></i> Under Active Review
+        </div>
+    </div>
+    <div class="form-card" style="max-width: 100%; margin: 0; padding: 20px; text-align: center; border: 1px solid rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.08);">
+        <div style="font-size: 2.2rem; font-weight: 900; color: #34D399;">{{ interview_count if interview_count is defined else (applications | selectattr('status', 'equalto', 'Interview Scheduled') | list | length) }}</div>
+        <div style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; font-weight: 700; margin-top: 4px;">
+            <i class="fa-solid fa-calendar-check" style="color: #34D399;"></i> Scheduled Interviews
+        </div>
+    </div>
+</div>
+
 <!-- Upcoming Scheduled Interviews Section -->
 {% set scheduled_interviews = applications | selectattr('status', 'equalto', 'Interview Scheduled') | list %}
 {% if scheduled_interviews %}
