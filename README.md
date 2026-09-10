@@ -363,28 +363,6 @@ In serverless environments like **Vercel**, database connections can drop betwee
   <img src="./frontend/public/cards/postgresql-config-card.svg" alt="Production Serverless PostgreSQL Engine Configuration" width="100%" />
 </p>
 
-<details open>
-<summary><b>💻 Copyable Python Configuration Code Snippet (backend/app.py)</b></summary>
-
-```python
-# backend/app.py — Resilient Dual-Engine Database Configuration
-db_url = os.environ.get('DATABASE_URL')
-if db_url:
-    # Auto-patch legacy Heroku/Vercel 'postgres://' URIs for SQLAlchemy 2.0+
-    if db_url.startswith("postgres://"):
-        db_url = db_url.replace("postgres://", "postgresql://", 1)
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_url
-    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        'pool_pre_ping': True,   # Emits 'SELECT 1' health check before using connection
-        'pool_recycle': 300,     # Recycles connection every 5 minutes to prevent dropped sockets
-    }
-else:
-    # Zero-config SQLite fallback for local development
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///job_portal.db'
-```
-
-</details>
-
 ---
 
 ### 📊 Relational Database Schema & Entity Relationships
