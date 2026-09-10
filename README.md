@@ -193,7 +193,7 @@ The repository follows a clean, modular structure separating the Python 3.12 Fla
   <img src="./frontend/public/cards/directory-breakdown.svg" alt="Repository Directory & Architecture Modules Breakdown" width="100%" />
 </p>
 
-#### 🗂️ Color-Coded Architecture & Subfolder Matrix
+#### 🗂️ Project Modules & Directory Map
 
 | Module / Path | Layer & Tech Badge | Role & Architecture Responsibility |
 | :--- | :--- | :--- |
@@ -212,7 +212,7 @@ The repository follows a clean, modular structure separating the Python 3.12 Fla
 | `api/` | ![Serverless](https://img.shields.io/badge/Serverless-Vercel%20Edge-000000?style=flat-square&logo=vercel&logoColor=white) | Edge serverless WSGI bridge (`index.py`) routing requests to Flask |
 | `vercel.json` | ![Config](https://img.shields.io/badge/Config-Vercel%20Routing-000000?style=flat-square&logo=vercel&logoColor=white) | Cloud deployment rules, header security, and `/api/*` reverse proxy rules |
 
-#### 🌳 Colorized Architecture Tree
+#### 🌳 Project Architecture Tree
 
 ```yaml
 # 🌈 HIREPULSE ARCHITECTURE REPOSITORY TREE (COLOR-CODED)
