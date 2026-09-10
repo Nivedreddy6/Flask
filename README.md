@@ -22,16 +22,18 @@
 </p>
 
 <p align="center">
-  <a href="https://flask-five-mauve.vercel.app/" target="_blank">
-    <img src="./frontend/public/cards/live-deployment-card.svg" alt="Live Cloud Deployment Card" width="100%" />
-  </a>
+  <a href="#!"><img src="./frontend/public/cards/live-deployment-card.svg" alt="Live Cloud Deployment Card" width="100%" /></a>
+</p>
+
+<p align="center">
+  <a href="https://flask-five-mauve.vercel.app/" target="_blank"><img src="https://img.shields.io/badge/🔗%20Live%20Portal-flask--five--mauve.vercel.app-00C853?style=for-the-badge&logo=vercel&logoColor=white" alt="Launch flask-five-mauve.vercel.app" /></a>
+  <a href="https://flask-five-mauve.vercel.app/react" target="_blank"><img src="https://img.shields.io/badge/⚡%20React%2019%20ATS-Launch%20Suite-00E5FF?style=for-the-badge&logo=react&logoColor=black" alt="React 19 ATS Suite" /></a>
+  <a href="https://flask-five-mauve.vercel.app/jobs" target="_blank"><img src="https://img.shields.io/badge/💼%20Job%20Board-Explore%20Openings-7C4DFF?style=for-the-badge&logo=linkedin&logoColor=white" alt="Explore Job Openings" /></a>
 </p>
 
 <!-- Direct URL Quick-Launch Directory SVG Card -->
 <p align="center">
-  <a href="https://flask-five-mauve.vercel.app/" target="_blank">
-    <img src="./frontend/public/cards/quick-launch-directory.svg" alt="Direct URL Quick-Launch Directory" width="100%" />
-  </a>
+  <a href="#!"><img src="./frontend/public/cards/quick-launch-directory.svg" alt="Direct URL Quick-Launch Directory" width="100%" /></a>
 </p>
 
 <div align="center">
