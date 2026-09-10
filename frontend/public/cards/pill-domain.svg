@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 34" width="340" height="34">
+  <defs>
+    <linearGradient id="pillBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#38bdf8;#8b5cf6;#06b6d4" dur="4s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#38bdf8">
+        <animate attributeName="stop-color" values="#38bdf8;#8b5cf6;#06b6d4;#38bdf8" dur="4s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="338" height="32" rx="16" fill="rgba(6, 182, 212, 0.15)" stroke="url(#pillBorder)" stroke-width="1.5" />
+  <text x="170" y="21" font-family="'Fira Code', monospace, Consolas" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">flask-five-mauve.vercel.app</text>
+</svg>
