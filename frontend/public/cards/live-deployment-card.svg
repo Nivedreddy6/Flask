@@ -73,10 +73,12 @@
   </g>
 
   <!-- Header Right Pill: Primary Domain -->
-  <g transform="translate(630, 22)">
-    <rect width="340" height="32" rx="16" fill="rgba(6, 182, 212, 0.12)" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1.2" />
-    <text x="170" y="21" font-family="'Fira Code', monospace" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">flask-five-mauve.vercel.app</text>
-  </g>
+  <a href="https://flask-five-mauve.vercel.app/" target="_blank" style="cursor: pointer;">
+    <g transform="translate(630, 22)">
+      <rect width="340" height="32" rx="16" fill="rgba(6, 182, 212, 0.25)" stroke="#38bdf8" stroke-width="1.5" />
+      <text x="170" y="21" font-family="'Fira Code', monospace" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">🔗 flask-five-mauve.vercel.app ↗</text>
+    </g>
+  </a>
 
   <!-- GRID OF 6 DESTINATION CARDS -->
 
