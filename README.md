@@ -318,6 +318,13 @@ Visualizing the end-to-end data lifecycle from user action in the React 19 SPA, 
 
 In serverless environments like **Vercel**, database connections can drop between invocations when cloud providers silently close idle TCP connections. We solve this using **proactive connection pooling**:
 
+<p align="center">
+  <img src="./frontend/public/cards/postgresql-config-card.svg" alt="Production Serverless PostgreSQL Engine Configuration" width="100%" />
+</p>
+
+<details open>
+<summary><b>💻 Click to copy Python configuration code snippet (backend/app.py)</b></summary>
+
 ```python
 # backend/app.py — Resilient Dual-Engine Database Configuration
 db_url = os.environ.get('DATABASE_URL')
@@ -334,6 +341,8 @@ else:
     # Zero-config SQLite fallback for local development
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///job_portal.db'
 ```
+
+</details>
 
 ---
 

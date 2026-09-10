@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="520">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="cfgBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c18" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Animated Multi-Color Neon Border -->
+    <linearGradient id="cfgBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8">
+        <animate attributeName="stop-color" values="#38bdf8;#818cf8;#ec4899;#10b981;#f59e0b;#38bdf8" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="35%" stop-color="#ec4899">
+        <animate attributeName="stop-color" values="#ec4899;#10b981;#f59e0b;#38bdf8;#818cf8;#ec4899" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="70%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#f59e0b;#38bdf8;#818cf8;#ec4899;#10b981" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#f59e0b">
+        <animate attributeName="stop-color" values="#f59e0b;#38bdf8;#818cf8;#ec4899;#10b981;#f59e0b" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- IDE Header Gradient -->
+    <linearGradient id="ideHdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Callout Header Gradients -->
+    <linearGradient id="gCallGreen" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#065f46"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+    <linearGradient id="gCallAmber" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7c2d12"/><stop offset="100%" stop-color="#ea580c"/></linearGradient>
+    <linearGradient id="gCallPurple" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#581c87"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@500;600;700&amp;display=swap');
+
+    .title-txt { font-family: 'Fira Code', monospace; font-size: 11.5px; font-weight: 700; fill: #7dd3fc; }
+    .badge-txt { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 700; }
+    
+    /* Code Syntax Colors */
+    .c-comment { font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 500; fill: #64748b; }
+    .c-kw { font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 700; fill: #f472b6; }
+    .c-var { font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 600; fill: #f8fafc; }
+    .c-fn { font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 600; fill: #38bdf8; }
+    .c-str { font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 600; fill: #34d399; }
+    .c-prop { font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 600; fill: #fbbf24; }
+    .c-bool { font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 700; fill: #c084fc; }
+    .c-num { font-family: 'Fira Code', monospace; font-size: 10.5px; font-weight: 700; fill: #fb923c; }
+
+    /* Callout Card Styles */
+    .call-hdr { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .call-sub { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 700; }
+    .call-desc { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500; fill: #cbd5e1; }
+
+    /* Cursor animation */
+    .cursor-blink { animation: cBlink 1s step-end infinite; }
+    @keyframes cBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* Pulse glows */
+    .pulse-dot-green { animation: pGreen 2s ease-in-out infinite alternate; }
+    .pulse-dot-amber { animation: pAmber 2s ease-in-out infinite alternate; }
+    .pulse-dot-purple { animation: pPurple 2s ease-in-out infinite alternate; }
+
+    @keyframes pGreen { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #10b981); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #10b981); } }
+    @keyframes pAmber { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #f59e0b); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #f59e0b); } }
+    @keyframes pPurple { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #8b5cf6); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #8b5cf6); } }
+  </style>
+
+  <!-- Container -->
+  <rect width="1000" height="520" rx="18" fill="url(#cfgBg)" stroke="url(#cfgBorder)" stroke-width="2" />
+
+  <!-- Top Title Banner -->
+  <g transform="translate(30, 20)">
+    <rect width="530" height="28" rx="14" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
+    <circle cx="16" cy="14" r="5" fill="#38bdf8" />
+    <text x="32" y="18" class="title-txt">🛡️ PRODUCTION SERVERLESS POSTGRESQL ENGINE CONFIGURATION</text>
+  </g>
+
+  <!-- Top Right Badges -->
+  <g transform="translate(685, 20)">
+    <rect width="135" height="28" rx="14" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+    <text x="67" y="18" text-anchor="middle" class="badge-txt" fill="#6ee7b7">⚡ Pre-Ping Active</text>
+    <g transform="translate(145, 0)">
+      <rect width="140" height="28" rx="14" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="1" />
+      <text x="70" y="18" text-anchor="middle" class="badge-txt" fill="#fde68a">🔄 300s Pool Recycle</text>
+    </g>
+  </g>
+
+  <!-- ================= LEFT COLUMN: SYNTAX-HIGHLIGHTED CODE WINDOW ================= -->
+  <g transform="translate(30, 65)">
+    <!-- IDE Frame -->
+    <rect width="555" height="425" rx="12" fill="#030712" stroke="#1e293b" stroke-width="1.5" />
+    
+    <!-- Window Title Bar -->
+    <rect width="555" height="34" rx="12" fill="url(#ideHdr)" />
+    <!-- Window Traffic Lights -->
+    <circle cx="20" cy="17" r="5" fill="#ef4444" />
+    <circle cx="36" cy="17" r="5" fill="#eab308" />
+    <circle cx="52" cy="17" r="5" fill="#22c55e" />
+
+    <!-- File Tab -->
+    <rect x="75" y="6" width="165" height="23" rx="6" fill="#0b1329" stroke="#0284c7" stroke-width="0.8" />
+    <circle cx="90" cy="17" r="3" fill="#38bdf8" />
+    <text x="100" y="21" font-family="'Fira Code', monospace" font-size="10.5" font-weight="600" fill="#bae6fd">backend/app.py</text>
+
+    <!-- Code Content -->
+    <g transform="translate(20, 56)">
+      <!-- Line 1 -->
+      <text x="0" y="0" class="c-comment"># Resilient Serverless PostgreSQL + SQLite Fallback</text>
+      
+      <!-- Line 2 -->
+      <text x="0" y="24" class="c-var">db_url</text><text x="48" y="24" class="c-kw"> = </text><text x="70" y="24" class="c-fn">os.environ.get</text><text x="180" y="24" class="c-var">(</text><text x="188" y="24" class="c-str">'DATABASE_URL'</text><text x="290" y="24" class="c-var">)</text>
+
+      <!-- Line 3 -->
+      <text x="0" y="48" class="c-kw">if </text><text x="22" y="48" class="c-var">db_url:</text>
+
+      <!-- Line 4 -->
+      <text x="20" y="72" class="c-comment"># Auto-patch legacy 'postgres://' for SQLAlchemy 2.0+</text>
+
+      <!-- Line 5 -->
+      <text x="20" y="94" class="c-kw">if </text><text x="42" y="94" class="c-var">db_url.</text><text x="95" y="94" class="c-fn">startswith</text><text x="175" y="94" class="c-var">(</text><text x="183" y="94" class="c-str">"postgres://"</text><text x="280" y="94" class="c-var">):</text>
+
+      <!-- Line 6 -->
+      <text x="40" y="116" class="c-var">db_url = db_url.</text><text x="165" y="116" class="c-fn">replace</text><text x="220" y="116" class="c-var">(</text><text x="228" y="116" class="c-str">"postgres://"</text><text x="325" y="116" class="c-var">, </text><text x="340" y="116" class="c-str">"postgresql://"</text><text x="450" y="116" class="c-var">, </text><text x="465" y="116" class="c-num">1</text><text x="475" y="116" class="c-var">)</text>
+
+      <!-- Line 7 -->
+      <text x="20" y="146" class="c-var">app.config[</text><text x="100" y="146" class="c-str">'SQLALCHEMY_DATABASE_URI'</text><text x="315" y="146" class="c-var">] = db_url</text>
+
+      <!-- Line 8 -->
+      <text x="20" y="174" class="c-comment"># Connection Pool Strategy: Serverless Cold-Start Resilient</text>
+
+      <!-- Line 9 -->
+      <text x="20" y="196" class="c-var">app.config[</text><text x="100" y="196" class="c-str">'SQLALCHEMY_ENGINE_OPTIONS'</text><text x="325" y="196" class="c-var">] = {</text>
+
+      <!-- Line 10 (Highlighted row) -->
+      <rect x="25" y="206" width="490" height="24" rx="4" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" stroke-width="0.8" />
+      <text x="40" y="222" class="c-prop">'pool_pre_ping'</text><text x="160" y="222" class="c-var">: </text><text x="175" y="222" class="c-bool">True</text><text x="210" y="222" class="c-var">,   </text><text x="235" y="222" class="c-comment"># Tests socket before query</text>
+
+      <!-- Line 11 (Highlighted row) -->
+      <rect x="25" y="234" width="490" height="24" rx="4" fill="rgba(245, 158, 11, 0.12)" stroke="#f59e0b" stroke-width="0.8" />
+      <text x="40" y="250" class="c-prop">'pool_recycle'</text><text x="155" y="250" class="c-var">: </text><text x="170" y="250" class="c-num">300</text><text x="195" y="250" class="c-var">,    </text><text x="235" y="250" class="c-comment"># Recycles every 5 minutes</text>
+
+      <!-- Line 12 -->
+      <text x="20" y="278" class="c-var">}</text>
+
+      <!-- Line 13 -->
+      <text x="0" y="302" class="c-kw">else</text><text x="32" y="302" class="c-var">:</text>
+
+      <!-- Line 14 -->
+      <text x="20" y="324" class="c-comment"># Zero-config SQLite fallback for local developer agility</text>
+
+      <!-- Line 15 -->
+      <text x="20" y="346" class="c-var">app.config[</text><text x="100" y="346" class="c-str">'SQLALCHEMY_DATABASE_URI'</text><text x="315" y="346" class="c-var">] = </text><text x="345" y="346" class="c-str">'sqlite:///job_portal.db'</text>
+
+      <!-- Blinking cursor -->
+      <rect x="20" y="356" width="8" height="15" fill="#38bdf8" class="cursor-blink" />
+    </g>
+  </g>
+
+  <!-- ================= RIGHT COLUMN: 3 VIBRANT EXPLANATION CARDS ================= -->
+  <g transform="translate(605, 65)">
+
+    <!-- Card 1: pool_pre_ping -->
+    <rect width="365" height="132" rx="12" fill="#061f18" stroke="#10b981" stroke-width="1.4" />
+    <rect width="365" height="28" rx="12" fill="url(#gCallGreen)" />
+    <circle cx="16" cy="14" r="4" fill="#6ee7b7" class="pulse-dot-green" />
+    <text x="28" y="19" class="call-hdr">⚡ pool_pre_ping = True</text>
+
+    <g transform="translate(14, 40)">
+      <text x="0" y="14" class="call-sub" fill="#34d399">Liveness Heartbeat Check</text>
+      <text x="0" y="32" class="call-desc">Sends a lightweight 'SELECT 1' ping before every</text>
+      <text x="0" y="48" class="call-desc">query checkout. If the cloud firewall dropped the idle</text>
+      <text x="0" y="64" class="call-desc">socket, it recreates a fresh connection seamlessly.</text>
+      <text x="0" y="82" class="call-sub" fill="#a7f3d0">🛡️ Eliminates 500 'Server Closed Socket' errors</text>
+    </g>
+
+    <!-- Card 2: pool_recycle -->
+    <g transform="translate(0, 145)">
+      <rect width="365" height="132" rx="12" fill="#1c0f08" stroke="#f59e0b" stroke-width="1.4" />
+      <rect width="365" height="28" rx="12" fill="url(#gCallAmber)" />
+      <circle cx="16" cy="14" r="4" fill="#fde68a" class="pulse-dot-amber" />
+      <text x="28" y="19" class="call-hdr">⏱️ pool_recycle = 300 (5 Min)</text>
+
+      <g transform="translate(14, 40)">
+        <text x="0" y="14" class="call-sub" fill="#fbbf24">Timed Socket Retirement</text>
+        <text x="0" y="32" class="call-desc">Cloud PostgreSQL providers (Neon, AWS RDS,</text>
+        <text x="0" y="48" class="call-desc">Supabase) terminate idle TCP sessions. Recycling</text>
+        <text x="0" y="64" class="call-desc">every 300 seconds prevents stale connection leaks.</text>
+        <text x="0" y="82" class="call-sub" fill="#fde68a">🔄 Always maintains young, responsive sockets</text>
+      </g>
+    </g>
+
+    <!-- Card 3: URI Normalizer -->
+    <g transform="translate(0, 290)">
+      <rect width="365" height="135" rx="12" fill="#160826" stroke="#8b5cf6" stroke-width="1.4" />
+      <rect width="365" height="28" rx="12" fill="url(#gCallPurple)" />
+      <circle cx="16" cy="14" r="4" fill="#c084fc" class="pulse-dot-purple" />
+      <text x="28" y="19" class="call-hdr">🔄 URI Dialect Auto-Patch</text>
+
+      <g transform="translate(14, 40)">
+        <text x="0" y="14" class="call-sub" fill="#c084fc">SQLAlchemy 2.0 Compatibility</text>
+        <text x="0" y="32" class="call-desc">Legacy cloud providers generate "postgres://" links,</text>
+        <text x="0" y="48" class="call-desc">which fail in modern SQLAlchemy. We rewrite it</text>
+        <text x="0" y="64" class="call-desc">on boot to "postgresql://" with zero manual work.</text>
+        <text x="0" y="82" class="call-sub" fill="#e9d5ff">✨ Zero config across Neon, Heroku &amp; Supabase</text>
+      </g>
+    </g>
+  </g>
+</svg>
