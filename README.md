@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="./frontend/public/banner.svg" alt="Job Sphere Studio Banner" width="100%" />
+  <a href="#!"><img src="./frontend/public/banner.svg" alt="Job Sphere Studio Banner" width="100%" /></a>
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/typing-badge-root.svg" alt="Animated Typing Badge" width="700" />
+  <a href="#!"><img src="./frontend/public/cards/typing-badge-root.svg" alt="Animated Typing Badge" width="700" /></a>
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 
 <!-- Live Cloud Deployment Header & Interactive Card -->
 <p align="center">
-  <img src="./frontend/public/headers/header-live.svg" alt="Live Cloud Deployment Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-live.svg" alt="Live Cloud Deployment Header" width="100%" /></a>
 </p>
 
 <p align="center">
@@ -54,7 +54,7 @@
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-overview.svg" alt="Project Overview Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-overview.svg" alt="Project Overview Header" width="100%" /></a>
 </p>
 
 ## 💡 What is Job Sphere Studio?
@@ -65,13 +65,13 @@
 * ⚡ **For Recruiters**: Post vacancies, review candidate pipelines, advance hiring stages, and schedule interviews with automated calendar-ready emails.
 
 <p align="center">
-  <img src="./frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" /></a>
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-features.svg" alt="Features Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-features.svg" alt="Features Header" width="100%" /></a>
 </p>
 
 ## 🔄 End-to-End Website Walkthrough (How It Works)
@@ -79,17 +79,17 @@
 Here is the exact step-by-step user journey from account creation to getting hired:
 
 <p align="center">
-  <img src="./frontend/public/cards/workflow-journey.svg" alt="End-to-End Recruitment Journey" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/workflow-journey.svg" alt="End-to-End Recruitment Journey" width="100%" /></a>
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/pipeline-stepper.svg" alt="Hiring Pipeline Stages" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/pipeline-stepper.svg" alt="Hiring Pipeline Stages" width="100%" /></a>
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-ats.svg" alt="Recruiter ATS Pipeline & Resume Matcher Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-ats.svg" alt="Recruiter ATS Pipeline & Resume Matcher Header" width="100%" /></a>
 </p>
 
 ## 📊 Recruiter Applicant Tracking System (ATS) & Automated Matcher
@@ -97,21 +97,21 @@ Here is the exact step-by-step user journey from account creation to getting hir
 Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing candidates from application to hire:
 
 <p align="center">
-  <img src="./frontend/public/cards/ats-pipeline-board.svg" alt="Automated Recruiter ATS Kanban Pipeline" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/ats-pipeline-board.svg" alt="Automated Recruiter ATS Kanban Pipeline" width="100%" /></a>
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/ats-capabilities.svg" alt="Core ATS Capabilities and Innovations" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/ats-capabilities.svg" alt="Core ATS Capabilities and Innovations" width="100%" /></a>
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/demo-credentials.svg" alt="Pre-Seeded Demo Test Credentials" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/demo-credentials.svg" alt="Pre-Seeded Demo Test Credentials" width="100%" /></a>
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-personas.svg" alt="User Personas Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-personas.svg" alt="User Personas Header" width="100%" /></a>
 </p>
 
 ## 🧭 Page-by-Page Feature Tour
@@ -121,24 +121,24 @@ Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing can
     <tr>
       <td width="50%" align="center">
         <b>🏠 Candidate Portal & Discovery Feed</b><br/><br/>
-        <img src="./home_screenshot.png" alt="Candidate Home" width="100%" />
+        <a href="#!"><img src="./home_screenshot.png" alt="Candidate Home" width="100%" /></a>
       </td>
       <td width="50%" align="center">
         <b>🔐 Dual-Role Authentication & Access Control</b><br/><br/>
-        <img src="./login_screenshot.png" alt="Login Portal" width="100%" />
+        <a href="#!"><img src="./login_screenshot.png" alt="Login Portal" width="100%" /></a>
       </td>
     </tr>
   </table>
 </div>
 
 <p align="center">
-  <img src="./frontend/public/cards/features-deepdive.svg" alt="Comprehensive Feature Tour" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/features-deepdive.svg" alt="Comprehensive Feature Tour" width="100%" /></a>
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-architecture.svg" alt="System Architecture Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-architecture.svg" alt="System Architecture Header" width="100%" /></a>
 </p>
 
 ## 🏛 Technical Architecture & Technology Stack
@@ -146,15 +146,15 @@ Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing can
 The platform is designed with a **decoupled hybrid architecture** for optimal performance, responsiveness, and developer experience:
 
 <p align="center">
-  <img src="./frontend/public/workflow.svg" alt="Workflow Pipeline Architecture" width="100%" />
+  <a href="#!"><img src="./frontend/public/workflow.svg" alt="Workflow Pipeline Architecture" width="100%" /></a>
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/system-architecture.svg" alt="System Architecture & Data Flow" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/system-architecture.svg" alt="System Architecture & Data Flow" width="100%" /></a>
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/sequence-interview.svg" alt="Automated Interview Scheduling Sequence Flow" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/sequence-interview.svg" alt="Automated Interview Scheduling Sequence Flow" width="100%" /></a>
 </p>
 
 ### 🛠️ Core Technologies Used:
@@ -171,7 +171,7 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
 The repository follows a clean, modular structure separating the Python 3.12 Flask REST engine, Jinja2 fallback views, and the modern React 19 + Vite 8 SPA client:
 
 <p align="center">
-  <img src="./frontend/public/cards/full-project-tree.svg" alt="Comprehensive Project Architecture" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/full-project-tree.svg" alt="Comprehensive Project Architecture" width="100%" /></a>
 </p>
 
 <details open>
@@ -190,7 +190,7 @@ The repository follows a clean, modular structure separating the Python 3.12 Fla
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/directory-breakdown.svg" alt="Repository Directory & Architecture Modules Breakdown" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/directory-breakdown.svg" alt="Repository Directory & Architecture Modules Breakdown" width="100%" /></a>
 </p>
 
 #### 🗂️ Project Modules & Directory Map
@@ -281,7 +281,7 @@ flask:
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-backend.svg" alt="Flask Backend Engine Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-backend.svg" alt="Flask Backend Engine Header" width="100%" /></a>
 </p>
 
 ## ⚡ Flask Backend Engine & Internal Services
@@ -289,17 +289,17 @@ flask:
 The backend is built as a modular, lightweight, high-performance Python 3.12 + Flask 3.0 REST API:
 
 <p align="center">
-  <img src="./frontend/public/cards/backend-services.svg" alt="Flask Backend Architecture & Internal Services" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/backend-services.svg" alt="Flask Backend Architecture & Internal Services" width="100%" /></a>
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/backend-table-card.svg" alt="Backend Module Breakdown Matrix" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/backend-table-card.svg" alt="Backend Module Breakdown Matrix" width="100%" /></a>
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-datamodel.svg" alt="Data Model Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-datamodel.svg" alt="Data Model Header" width="100%" /></a>
 </p>
 
 ## 🐘 Dual-Engine Database Architecture & Relational Schema
@@ -317,7 +317,7 @@ The platform implements a **resilient hybrid dual-database architecture** design
 
 <!-- Animated Dual Database Overview Card -->
 <p align="center">
-  <img src="./frontend/public/cards/database-engine-card.svg" alt="Dual-Engine Database Architecture (PostgreSQL & SQLite)" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/database-engine-card.svg" alt="Dual-Engine Database Architecture (PostgreSQL & SQLite)" width="100%" /></a>
 </p>
 
 ---
@@ -327,7 +327,7 @@ The platform implements a **resilient hybrid dual-database architecture** design
 Visualizing the end-to-end data lifecycle from user action in the React 19 SPA, through WSGI parameter sanitization, to **pre-ping heartbeats**, connection pool checkout, and cloud ACID transactions:
 
 <p align="center">
-  <img src="./frontend/public/cards/postgresql-dataflow.svg" alt="PostgreSQL Serverless Data Flow & Connection Pipeline" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/postgresql-dataflow.svg" alt="PostgreSQL Serverless Data Flow & Connection Pipeline" width="100%" /></a>
 </p>
 
 ---
@@ -335,7 +335,7 @@ Visualizing the end-to-end data lifecycle from user action in the React 19 SPA, 
 ### ⚙️ Why Dual Database Architecture? (PostgreSQL vs. SQLite 3)
 
 <p align="center">
-  <img src="./frontend/public/cards/dual-database-matrix.svg" alt="Why Dual Database Architecture? PostgreSQL vs SQLite 3 Comparison Matrix" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/dual-database-matrix.svg" alt="Why Dual Database Architecture? PostgreSQL vs SQLite 3 Comparison Matrix" width="100%" /></a>
 </p>
 
 <details>
@@ -360,7 +360,7 @@ Visualizing the end-to-end data lifecycle from user action in the React 19 SPA, 
 In serverless environments like **Vercel**, database connections can drop between invocations when cloud providers silently close idle TCP connections. We solve this using **proactive connection pooling**:
 
 <p align="center">
-  <img src="./frontend/public/cards/postgresql-config-card.svg" alt="Production Serverless PostgreSQL Engine Configuration" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/postgresql-config-card.svg" alt="Production Serverless PostgreSQL Engine Configuration" width="100%" /></a>
 </p>
 
 ---
@@ -370,19 +370,19 @@ In serverless environments like **Vercel**, database connections can drop betwee
 The relational data model is orchestrated by **Flask-SQLAlchemy** with clean relational entities, foreign key constraints, cascading relationships, and automated timestamp tracking:
 
 <p align="center">
-  <img src="./frontend/public/cards/database-schema.svg" alt="Relational Database Schema (PostgreSQL & SQLite ORM)" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/database-schema.svg" alt="Relational Database Schema (PostgreSQL & SQLite ORM)" width="100%" /></a>
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-api.svg" alt="API Specification Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-api.svg" alt="API Specification Header" width="100%" /></a>
 </p>
 
 ## 🔌 RESTful API Endpoints Specification
 
 <p align="center">
-  <img src="./frontend/public/cards/api-endpoints.svg" alt="REST API Endpoints Specification" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/api-endpoints.svg" alt="REST API Endpoints Specification" width="100%" /></a>
 </p>
 
 ---
@@ -402,13 +402,13 @@ The full-stack application is continuously built and hosted on **Vercel**:
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-quickstart.svg" alt="Quickstart Header" width="100%" />
+  <a href="#!"><img src="./frontend/public/headers/header-quickstart.svg" alt="Quickstart Header" width="100%" /></a>
 </p>
 
 ## ⚡ How to Run Locally
 
 <p align="center">
-  <img src="./frontend/public/cards/terminal-quickstart.svg" alt="Animated Terminal Quickstart" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/terminal-quickstart.svg" alt="Animated Terminal Quickstart" width="100%" /></a>
 </p>
 
 ### 🐘 Zero-Config Database Switching (SQLite vs PostgreSQL)
@@ -419,7 +419,7 @@ The full-stack application is continuously built and hosted on **Vercel**:
 <br />
 
 <p align="center">
-  <img src="./frontend/public/cards/database-switching-card.svg" alt="Zero-Config Database Switching (SQLite vs PostgreSQL) SVG Animation" width="100%" />
+  <a href="#!"><img src="./frontend/public/cards/database-switching-card.svg" alt="Zero-Config Database Switching (SQLite vs PostgreSQL) SVG Animation" width="100%" /></a>
 </p>
 
 <p align="left">
