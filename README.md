@@ -370,16 +370,11 @@ The full-stack application is continuously built and hosted on **Vercel**:
   <img src="./frontend/public/cards/terminal-quickstart.svg" alt="Animated Terminal Quickstart" width="100%" />
 </p>
 
-### 🐘 Database Switching (SQLite vs PostgreSQL)
+### 🐘 Zero-Config Database Switching (SQLite vs PostgreSQL)
 
-* **Zero-Config Default (SQLite)**: Just run the application! If `DATABASE_URL` is unset, the engine automatically initialises SQLite at `backend/job_portal.db` and auto-populates demo data.
-* **PostgreSQL (Cloud or Local)**: Set the `DATABASE_URL` environment variable:
-  ```powershell
-  # Windows PowerShell
-  $env:DATABASE_URL="postgresql://user:password@ep-cool-cloud.region.aws.neon.tech/neondb?sslmode=require"
-  python backend/app.py
-  ```
-  *(Legacy `postgres://` URLs are automatically rewritten to `postgresql://` on startup for modern SQLAlchemy compatibility)*
+<p align="center">
+  <img src="./frontend/public/cards/database-switching-card.svg" alt="Zero-Config Database Switching (SQLite vs PostgreSQL)" width="100%" />
+</p>
 
 ---
 
