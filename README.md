@@ -413,14 +413,14 @@ The full-stack application is continuously built and hosted on **Vercel**:
 
 ### 🐘 Zero-Config Database Switching (SQLite vs PostgreSQL)
 
-<p align="center">
-  <img src="./frontend/public/cards/database-switching-card.svg" alt="Zero-Config Database Switching (SQLite vs PostgreSQL)" width="100%" />
-</p>
-
 <details open>
-<summary><b>🌈 Copyable Quickstart Commands for Database Switching (SQLite 3 ⇄ PostgreSQL)</b></summary>
+<summary><b>🌈 Database Switching Architecture &amp; Copyable Commands</b></summary>
 
 <br />
+
+<p align="center">
+  <img src="./frontend/public/cards/database-switching-card.svg" alt="Zero-Config Database Switching (SQLite vs PostgreSQL) SVG Animation" width="100%" />
+</p>
 
 <p align="left">
   <img src="https://img.shields.io/badge/Local%20Engine-SQLite%203%20(Default)-00C853?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite 3 Default" />
@@ -429,47 +429,22 @@ The full-stack application is continuously built and hosted on **Vercel**:
   <img src="https://img.shields.io/badge/Auto%20Patch-postgres%3A%2F%2F%20%E2%9E%9E%20postgresql%3A%2F%2F-8B5CF6?style=for-the-badge&logo=python&logoColor=white" alt="Auto URI Patching" />
 </p>
 
-#### 🗂️ Database Engine Execution Matrix
+#### 📋 1-Click Copyable Launch Commands
 
-| Engine Mode | Environment & Target | One-Line Launch Command | Connection Pool Behavior |
-| :--- | :--- | :--- | :--- |
-| 🗄️ **SQLite 3** | [![Local](https://img.shields.io/badge/Localhost-Zero--Config-00C853?style=flat-square&logo=sqlite&logoColor=white)](http://localhost:5000) [![Offline](https://img.shields.io/badge/Offline-100%25%20Ready-00B0FF?style=flat-square)](http://localhost:5000) | `python backend/app.py` | Embedded local storage (`backend/job_portal.db`), auto-seeds 10+ jobs |
-| 🐘 **PostgreSQL** | [![Cloud](https://img.shields.io/badge/Production-Cloud%20Serverless-336791?style=flat-square&logo=postgresql&logoColor=white)](https://flask-five-mauve.vercel.app/) [![SSL](https://img.shields.io/badge/TLS%201.3-Encrypted-7C3AED?style=flat-square)](https://flask-five-mauve.vercel.app/) | `$env:DATABASE_URL="..."` | `pool_pre_ping=True`, `pool_recycle=300`, auto-reconnects cold starts |
+* **🗄️ 1. Zero-Config Local SQLite 3 (Default)**:
+  ```bash
+  python backend/app.py
+  ```
 
----
+* **🪟 2. Cloud PostgreSQL (Windows PowerShell)**:
+  ```powershell
+  $env:DATABASE_URL="postgresql://user:password@ep-cool-cloud.region.aws.neon.tech/neondb?sslmode=require"; python backend/app.py
+  ```
 
-#### 🗄️ 1. Zero-Config Local Development (SQLite 3 Default)
-
-[![SQLite Ready](https://img.shields.io/badge/SQLite%203-Zero%20Setup%20Required-00C853?style=flat-square&logo=sqlite&logoColor=white)](http://localhost:5000)
-[![Seed Data](https://img.shields.io/badge/Auto--Seed-10%2B%20Jobs%20%26%20Users-blue?style=flat-square)](http://localhost:5000)
-
-```bash
-# 🚀 Run the application directly — SQLite is initialised automatically!
-python backend/app.py
-```
-
----
-
-#### 🐘 2. Cloud Serverless PostgreSQL (Neon / Supabase / Render / AWS RDS)
-
-[![Neon](https://img.shields.io/badge/Neon-Serverless%20Postgres-00E599?style=flat-square&logo=neon&logoColor=black)](https://neon.tech)
-[![Supabase](https://img.shields.io/badge/Supabase-Managed%20Postgres-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com)
-[![AWS RDS](https://img.shields.io/badge/AWS-RDS%20Aurora-FF9900?style=flat-square&logo=amazonwebservices&logoColor=white)](https://aws.amazon.com/rds/)
-[![Render](https://img.shields.io/badge/Render-Cloud%20Postgres-46E3B7?style=flat-square&logo=render&logoColor=white)](https://render.com)
-
-**🪟 Windows PowerShell:**
-```powershell
-# Set cloud connection string & launch Flask with connection pooling
-$env:DATABASE_URL="postgresql://user:password@ep-cool-cloud.region.aws.neon.tech/neondb?sslmode=require"
-python backend/app.py
-```
-
-**🍎 / 🐧 macOS & Linux (Bash / Zsh):**
-```bash
-# Export cloud connection string & launch Flask with connection pooling
-export DATABASE_URL="postgresql://user:password@ep-cool-cloud.region.aws.neon.tech/neondb?sslmode=require"
-python backend/app.py
-```
+* **🍎 / 🐧 3. Cloud PostgreSQL (macOS & Linux — Bash / Zsh)**:
+  ```bash
+  export DATABASE_URL="postgresql://user:password@ep-cool-cloud.region.aws.neon.tech/neondb?sslmode=require" && python backend/app.py
+  ```
 
 > [!TIP]
 > 💡 **Automatic URI Patching**: Legacy `postgres://` URLs provided by Heroku, Render, or Vercel integrations are automatically rewritten to modern `postgresql://` on application boot for full SQLAlchemy 2.0+ compatibility!

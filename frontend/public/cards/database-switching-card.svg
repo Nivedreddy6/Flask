@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="100%" height="440">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="520">
   <defs>
     <!-- Background Gradient -->
     <linearGradient id="swBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#080e1a" />
+      <stop offset="0%" stop-color="#070c18" />
       <stop offset="50%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#080e1a" />
     </linearGradient>
 
-    <!-- Animated Neon Border -->
+    <!-- Animated Multi-Color Border -->
     <linearGradient id="swBorder" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#10b981">
         <animate attributeName="stop-color" values="#10b981;#06b6d4;#8b5cf6;#ec4899;#f59e0b;#10b981" dur="8s" repeatCount="indefinite" />
@@ -23,123 +23,220 @@
       </stop>
     </linearGradient>
 
-    <!-- Box Headers -->
-    <linearGradient id="hSqlite" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#065f46"/><stop offset="100%" stop-color="#059669"/></linearGradient>
-    <linearGradient id="hPg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#1e40af"/><stop offset="100%" stop-color="#2563eb"/></linearGradient>
+    <!-- Terminal Headers -->
+    <linearGradient id="hSqlite" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="hPg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
 
-    <linearGradient id="hCodeWin" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#1e293b"/><stop offset="100%" stop-color="#0f172a"/></linearGradient>
+    <!-- Central Switch Gradients -->
+    <linearGradient id="gSwitch" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="glowG" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="glowC" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
   </defs>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@500;600;700&amp;display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Fira+Code:wght@500;600;700&amp;display=swap');
 
-    .sw-title { font-family: 'Fira Code', monospace; font-size: 11.5px; font-weight: 700; fill: #6ee7b7; }
-    .col-hdr { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; }
-    .item-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; fill: #f8fafc; }
-    .item-desc { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500; fill: #cbd5e1; }
-    .code-txt { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 600; }
-    .tag-txt { font-family: 'Fira Code', monospace; font-size: 9.5px; font-weight: 700; }
+    .sw-hdr-main { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 900; fill: #ffffff; letter-spacing: 0.8px; }
+    .sw-hdr-sub { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; fill: #94a3b8; }
+    .col-title { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 800; fill: #ffffff; }
+    .cmd-tag { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 700; }
+    .cmd-text { font-family: 'Fira Code', monospace; font-size: 11.5px; font-weight: 700; }
+    .cmd-comment { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 500; fill: #64748b; }
+    .cmd-out { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 600; }
+    .feat-txt { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500; fill: #cbd5e1; }
+    .badge-label { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 800; }
 
-    /* Animated CSS Pulses */
-    .pulse-lite { animation: pLite 2s ease-in-out infinite alternate; }
-    .pulse-pg { animation: pPg 2s ease-in-out infinite alternate; }
+    /* Animated CSS Blinking Terminal Cursors */
+    .term-cursor-green {
+      animation: aBlinkG 0.9s step-end infinite;
+      fill: #34d399;
+    }
+    .term-cursor-cyan {
+      animation: aBlinkC 0.9s step-end infinite;
+      fill: #38bdf8;
+    }
+    @keyframes aBlinkG { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes aBlinkC { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-    @keyframes pLite { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #10b981); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #10b981); } }
-    @keyframes pPg { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #38bdf8); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #38bdf8); } }
+    /* Animated Pulse Dots */
+    .pulse-green { animation: aPulseG 2s ease-in-out infinite alternate; }
+    .pulse-cyan { animation: aPulseC 2s ease-in-out infinite alternate; }
+    @keyframes aPulseG { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #10b981); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #10b981); } }
+    @keyframes aPulseC { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #38bdf8); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #38bdf8); } }
+
+    /* Flowing Dash Beam Connector */
+    .flow-dash-green {
+      stroke-dasharray: 8, 8;
+      animation: aDashG 1.8s linear infinite;
+    }
+    .flow-dash-cyan {
+      stroke-dasharray: 8, 8;
+      animation: aDashC 1.8s linear infinite;
+    }
+    @keyframes aDashG { from { stroke-dashoffset: 32; } to { stroke-dashoffset: 0; } }
+    @keyframes aDashC { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 32; } }
+
+    /* Glowing Badge Pulsing */
+    .badge-glow { animation: aGlowBadge 3s ease-in-out infinite alternate; }
+    @keyframes aGlowBadge { 0% { opacity: 0.85; transform: scale(1); } 100% { opacity: 1; transform: scale(1.02); } }
   </style>
 
-  <!-- Container -->
-  <rect width="1000" height="440" rx="18" fill="url(#swBg)" stroke="url(#swBorder)" stroke-width="2" />
+  <!-- Card Body -->
+  <rect x="2" y="2" width="996" height="516" rx="20" fill="url(#swBg)" stroke="url(#swBorder)" stroke-width="2.5" />
 
-  <!-- Top Title Banner -->
-  <g transform="translate(30, 20)">
-    <rect width="520" height="28" rx="14" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
-    <circle cx="16" cy="14" r="5" fill="#10b981" class="pulse-lite" />
-    <text x="32" y="18" class="sw-title">🐘 DATABASE SWITCHING • SQLITE 3 VS. CLOUD POSTGRESQL</text>
-  </g>
+  <!-- Top Title Bar -->
+  <g transform="translate(25, 20)">
+    <circle cx="12" cy="18" r="6" fill="#ef4444" />
+    <circle cx="32" cy="18" r="6" fill="#f59e0b" />
+    <circle cx="52" cy="18" r="6" fill="#10b981" />
 
-  <!-- Top Right Auto Detection Tag -->
-  <g transform="translate(690, 20)">
-    <rect width="280" height="28" rx="14" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" />
-    <circle cx="16" cy="14" r="4" fill="#38bdf8" class="pulse-pg" />
-    <text x="32" y="18" font-family="'Fira Code', monospace" font-size="10.5" font-weight="700" fill="#7dd3fc">Dynamic Engine Auto-Detection</text>
-  </g>
+    <text x="80" y="23" class="sw-hdr-main">⚡ DUAL-DATABASE SWITCHING PIPELINE • COPYABLE COMMANDS</text>
+    <text x="80" y="43" class="sw-hdr-sub">Instant zero-config local development vs. resilient serverless cloud PostgreSQL in production</text>
 
-  <!-- ================= LEFT COLUMN: SQLITE ZERO-CONFIG ================= -->
-  <g transform="translate(30, 65)">
-    <rect width="455" height="345" rx="14" fill="#071e17" stroke="#059669" stroke-width="1.4" />
-    <rect width="455" height="34" rx="14" fill="url(#hSqlite)" />
-    <circle cx="20" cy="17" r="4" fill="#6ee7b7" class="pulse-lite" />
-    <text x="34" y="22" class="col-hdr">🗄️ Zero-Config Default: SQLite 3 Engine</text>
+    <!-- Top Status Badges -->
+    <g transform="translate(730, 8)">
+      <rect x="0" y="0" width="115" height="24" rx="12" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+      <circle cx="14" cy="12" r="4" fill="#34d399" class="pulse-green"/>
+      <text x="26" y="16" class="badge-label" fill="#a7f3d0">SQLITE (DEFAULT)</text>
 
-    <g transform="translate(20, 50)">
-      <text x="0" y="14" class="item-label">Default Execution (Zero Setup)</text>
-      <text x="0" y="32" class="item-desc">When <tspan font-family="'Fira Code', monospace" font-weight="700" fill="#6ee7b7">DATABASE_URL</tspan> is unset, Flask auto-boots SQLite:</text>
-
-      <!-- Terminal window -->
-      <g transform="translate(0, 44)">
-        <rect width="415" height="68" rx="8" fill="#02140f" stroke="#059669" stroke-width="1" />
-        <rect width="415" height="22" rx="8" fill="url(#hCodeWin)" />
-        <circle cx="14" cy="11" r="3.5" fill="#ef4444" />
-        <circle cx="26" cy="11" r="3.5" fill="#eab308" />
-        <circle cx="38" cy="11" r="3.5" fill="#22c55e" />
-        <text x="52" y="14" class="code-txt" fill="#94a3b8">Terminal (Localhost)</text>
-
-        <text x="14" y="38" class="code-txt" fill="#64748b"># Instant spin-up without external database server</text>
-        <text x="14" y="56" class="code-txt" fill="#34d399">&gt; python backend/app.py</text>
-      </g>
-
-      <!-- Feature Checklist -->
-      <g transform="translate(0, 130)">
-        <rect width="415" height="100" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.2)" stroke-width="1" />
-        <text x="14" y="24" class="item-desc"><tspan fill="#34d399" font-weight="700">✓ Auto-Storage:</tspan> Creates <tspan font-family="'Fira Code', monospace" fill="#a7f3d0">backend/job_portal.db</tspan> on disk</text>
-        <text x="14" y="44" class="item-desc"><tspan fill="#34d399" font-weight="700">✓ Auto-Seeder:</tspan> Injects 3 recruiters, 3 seekers, 10+ jobs</text>
-        <text x="14" y="64" class="item-desc"><tspan fill="#34d399" font-weight="700">✓ 100% Offline:</tspan> Zero internet connection or API keys required</text>
-        <text x="14" y="84" class="item-desc"><tspan fill="#34d399" font-weight="700">✓ Ultra-Fast:</tspan> Sub-millisecond queries with zero network latency</text>
-      </g>
-
-      <!-- Bottom Tag -->
-      <rect y="244" width="415" height="30" rx="6" fill="#044331" stroke="#10b981" stroke-width="0.8" />
-      <text x="207" y="263" text-anchor="middle" class="tag-txt" fill="#a7f3d0">⚡ Ideal for Local Development, Testing &amp; Demos</text>
+      <rect x="125" y="0" width="115" height="24" rx="12" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1"/>
+      <circle cx="139" cy="12" r="4" fill="#60a5fa" class="pulse-cyan"/>
+      <text x="151" y="16" class="badge-label" fill="#bfdbfe">POSTGRES (CLOUD)</text>
     </g>
   </g>
 
-  <!-- ================= RIGHT COLUMN: POSTGRESQL PRODUCTION ================= -->
-  <g transform="translate(515, 65)">
-    <rect width="455" height="345" rx="14" fill="#0b172a" stroke="#2563eb" stroke-width="1.4" />
-    <rect width="455" height="34" rx="14" fill="url(#hPg)" />
-    <circle cx="20" cy="17" r="4" fill="#38bdf8" class="pulse-pg" />
-    <text x="34" y="22" class="col-hdr">🐘 Cloud Production: PostgreSQL Engine</text>
+  <!-- Central Dynamic Router Node -->
+  <g transform="translate(500, 78)">
+    <rect x="-140" y="0" width="280" height="34" rx="17" fill="#0f172a" stroke="url(#gSwitch)" stroke-width="1.6" />
+    <text x="0" y="21" text-anchor="middle" font-family="'Fira Code', monospace" font-size="11" font-weight="700" fill="#f8fafc">
+      Flask Auto-Router: <tspan fill="#fbbf24">DATABASE_URL</tspan>
+    </text>
+  </g>
 
-    <g transform="translate(20, 50)">
-      <text x="0" y="14" class="item-label">Activate via Environment Variable</text>
-      <text x="0" y="32" class="item-desc">Set <tspan font-family="'Fira Code', monospace" font-weight="700" fill="#38bdf8">DATABASE_URL</tspan> to switch directly to managed PostgreSQL:</text>
+  <!-- Animated Connectors from Router to Columns -->
+  <path d="M 360 95 L 255 95 L 255 130" fill="none" stroke="#10b981" stroke-width="2.5" class="flow-dash-green" />
+  <path d="M 640 95 L 745 95 L 745 130" fill="none" stroke="#38bdf8" stroke-width="2.5" class="flow-dash-cyan" />
 
-      <!-- Terminal window -->
-      <g transform="translate(0, 44)">
-        <rect width="415" height="88" rx="8" fill="#030816" stroke="#1e40af" stroke-width="1" />
-        <rect width="415" height="22" rx="8" fill="url(#hCodeWin)" />
-        <circle cx="14" cy="11" r="3.5" fill="#ef4444" />
-        <circle cx="26" cy="11" r="3.5" fill="#eab308" />
-        <circle cx="38" cy="11" r="3.5" fill="#22c55e" />
-        <text x="52" y="14" class="code-txt" fill="#94a3b8">PowerShell / Linux / Cloud</text>
+  <!-- ==================== LEFT COLUMN: SQLITE 3 (LOCAL) ==================== -->
+  <g transform="translate(25, 130)">
+    <!-- Column Card Frame -->
+    <rect x="0" y="0" width="460" height="360" rx="14" fill="#071a14" stroke="#10b981" stroke-width="1.4" />
+    <rect x="0" y="0" width="460" height="38" rx="14" fill="url(#hSqlite)" />
+    <circle cx="20" cy="19" r="5" fill="#6ee7b7" class="pulse-green" />
+    <text x="35" y="24" class="col-title">🗄️ 1. Zero-Config Local Development: SQLite 3</text>
 
-        <text x="14" y="36" class="code-txt" fill="#64748b"># Windows PowerShell:</text>
-        <text x="14" y="50" class="code-txt" fill="#38bdf8">$env:DATABASE_URL="postgresql://user:pass@host/db?sslmode=require"</text>
-        <text x="14" y="68" class="code-txt" fill="#34d399">python backend/app.py</text>
+    <!-- Terminal Window: SQLite -->
+    <g transform="translate(18, 52)">
+      <rect x="0" y="0" width="424" height="154" rx="10" fill="#02120b" stroke="#059669" stroke-width="1" />
+      <rect x="0" y="0" width="424" height="24" rx="10" fill="#0f291e" />
+      <circle cx="14" cy="12" r="3.5" fill="#ef4444" />
+      <circle cx="26" cy="12" r="3.5" fill="#eab308" />
+      <circle cx="38" cy="12" r="3.5" fill="#22c55e" />
+      <text x="52" y="16" class="cmd-tag" fill="#6ee7b7">bash / powershell — localhost:5000</text>
+      
+      <!-- Copy Prompt Badge -->
+      <g transform="translate(340, 5)">
+        <rect x="0" y="0" width="75" height="15" rx="4" fill="#065f46" stroke="#10b981" stroke-width="0.8"/>
+        <text x="10" y="11" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#a7f3d0">COPY READY</text>
       </g>
 
-      <!-- Feature Checklist -->
-      <g transform="translate(0, 148)">
-        <rect width="415" height="82" rx="8" fill="rgba(37, 99, 235, 0.08)" stroke="rgba(59, 130, 246, 0.2)" stroke-width="1" />
-        <text x="14" y="22" class="item-desc"><tspan fill="#60a5fa" font-weight="700">✓ Auto Dialect Patch:</tspan> Converts legacy <tspan font-family="'Fira Code', monospace" fill="#93c5fd">postgres:// → postgresql://</tspan></text>
-        <text x="14" y="42" class="item-desc"><tspan fill="#60a5fa" font-weight="700">✓ Pre-Ping Protection:</tspan> Emits <tspan font-family="'Fira Code', monospace" fill="#93c5fd">SELECT 1</tspan> heartbeat before query</text>
-        <text x="14" y="62" class="item-desc"><tspan fill="#60a5fa" font-weight="700">✓ 300s Pool Recycle:</tspan> Evades cloud idle disconnects (Neon / Supabase)</text>
+      <!-- Terminal Lines -->
+      <text x="14" y="44" class="cmd-comment"># If DATABASE_URL is unset, SQLite boots automatically:</text>
+      <text x="14" y="66" class="cmd-text" fill="#f8fafc"><tspan fill="#34d399">$ </tspan>python backend/app.py<tspan class="term-cursor-green"> █</tspan></text>
+
+      <!-- Output Logs -->
+      <rect x="10" y="80" width="404" height="64" rx="6" fill="#042316" stroke="#10b981" stroke-width="0.6" stroke-dasharray="3,3"/>
+      <text x="20" y="98" class="cmd-out" fill="#a7f3d0">[INFO] DATABASE_URL unset ➔ Auto-fallback to SQLite</text>
+      <text x="20" y="116" class="cmd-out" fill="#34d399">[DB] Initialized backend/job_portal.db (Zero-Setup)</text>
+      <text x="20" y="134" class="cmd-out" fill="#6ee7b7">[SEEDER] Injected 10+ jobs, 3 recruiters, 3 candidates ✓</text>
+    </g>
+
+    <!-- Checklist & Features -->
+    <g transform="translate(18, 218)">
+      <rect x="0" y="0" width="424" height="88" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1" />
+      <text x="14" y="22" class="feat-txt"><tspan fill="#34d399" font-weight="700">✓ Instant Startup:</tspan> Zero installation, Docker, or external server needed</text>
+      <text x="14" y="42" class="feat-txt"><tspan fill="#34d399" font-weight="700">✓ 100% Offline:</tspan> All data persists locally in <tspan font-family="'Fira Code', monospace" fill="#a7f3d0">backend/job_portal.db</tspan></text>
+      <text x="14" y="62" class="feat-txt"><tspan fill="#34d399" font-weight="700">✓ Pre-Seeded:</tspan> Auto-populates rich demo candidates, jobs &amp; ATS stages</text>
+      <text x="14" y="80" class="feat-txt"><tspan fill="#34d399" font-weight="700">✓ Ultra-Fast:</tspan> In-process queries with 0ms network latency</text>
+    </g>
+
+    <!-- Bottom Action Pill -->
+    <g transform="translate(18, 316)">
+      <rect x="0" y="0" width="424" height="30" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1" />
+      <text x="212" y="19" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5" font-weight="800" fill="#a7f3d0">
+        🚀 LAUNCH LOCAL: <tspan font-family="'Fira Code', monospace" fill="#ffffff">python backend/app.py</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT COLUMN: POSTGRESQL (CLOUD) ==================== -->
+  <g transform="translate(515, 130)">
+    <!-- Column Card Frame -->
+    <rect x="0" y="0" width="460" height="360" rx="14" fill="#0a1426" stroke="#3b82f6" stroke-width="1.4" />
+    <rect x="0" y="0" width="460" height="38" rx="14" fill="url(#hPg)" />
+    <circle cx="20" cy="19" r="5" fill="#60a5fa" class="pulse-cyan" />
+    <text x="35" y="24" class="col-title">🐘 2. Cloud Serverless Production: PostgreSQL</text>
+
+    <!-- Terminal Window: PostgreSQL -->
+    <g transform="translate(18, 52)">
+      <rect x="0" y="0" width="424" height="154" rx="10" fill="#030c1a" stroke="#1d4ed8" stroke-width="1" />
+      <rect x="0" y="0" width="424" height="24" rx="10" fill="#0f1f3d" />
+      <circle cx="14" cy="12" r="3.5" fill="#ef4444" />
+      <circle cx="26" cy="12" r="3.5" fill="#eab308" />
+      <circle cx="38" cy="12" r="3.5" fill="#22c55e" />
+      <text x="52" y="16" class="cmd-tag" fill="#93c5fd">PowerShell / Linux / Vercel Cloud</text>
+
+      <!-- Copy Prompt Badge -->
+      <g transform="translate(340, 5)">
+        <rect x="0" y="0" width="75" height="15" rx="4" fill="#1e3a8a" stroke="#3b82f6" stroke-width="0.8"/>
+        <text x="10" y="11" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#bfdbfe">COPY READY</text>
       </g>
 
-      <!-- Bottom Tag -->
-      <rect y="244" width="415" height="30" rx="6" fill="#1e3a8a" stroke="#3b82f6" stroke-width="0.8" />
-      <text x="207" y="263" text-anchor="middle" class="tag-txt" fill="#bfdbfe">🚀 Production Ready for Vercel Serverless &amp; Cloud RDS</text>
+      <!-- Terminal Lines -->
+      <text x="14" y="44" class="cmd-comment"># Set DATABASE_URL to switch engine to PostgreSQL:</text>
+      <text x="14" y="64" class="cmd-text" fill="#38bdf8"><tspan fill="#f43f5e">PS> </tspan>$env:DATABASE_URL="postgresql://...neon.tech/db"</text>
+      <text x="14" y="80" class="cmd-text" fill="#f8fafc"><tspan fill="#f43f5e">PS> </tspan>python backend/app.py<tspan class="term-cursor-cyan"> █</tspan></text>
+
+      <!-- Output Logs -->
+      <rect x="10" y="92" width="404" height="52" rx="6" fill="#061b36" stroke="#2563eb" stroke-width="0.6" stroke-dasharray="3,3"/>
+      <text x="20" y="108" class="cmd-out" fill="#93c5fd">[INFO] DATABASE_URL detected ➔ Connecting Cloud PostgreSQL</text>
+      <text x="20" y="124" class="cmd-out" fill="#60a5fa">[POOLING] pool_pre_ping=True • pool_recycle=300 active ✓</text>
+      <text x="20" y="138" class="cmd-out" fill="#38bdf8">[TLS] SSL/TLS 1.3 secured • Vercel serverless ready ✓</text>
+    </g>
+
+    <!-- Checklist & Features -->
+    <g transform="translate(18, 218)">
+      <rect x="0" y="0" width="424" height="88" rx="8" fill="rgba(37, 99, 235, 0.08)" stroke="rgba(59, 130, 246, 0.25)" stroke-width="1" />
+      <text x="14" y="22" class="feat-txt"><tspan fill="#60a5fa" font-weight="700">✓ Auto Dialect Rewrite:</tspan> Converts legacy <tspan font-family="'Fira Code', monospace" fill="#93c5fd">postgres:// → postgresql://</tspan></text>
+      <text x="14" y="42" class="feat-txt"><tspan fill="#60a5fa" font-weight="700">✓ Serverless Pooling:</tspan> Pre-ping heartbeat (<tspan font-family="'Fira Code', monospace" fill="#93c5fd">SELECT 1</tspan>) eliminates cold-start drops</text>
+      <text x="14" y="62" class="feat-txt"><tspan fill="#60a5fa" font-weight="700">✓ Idle Socket Recycle:</tspan> 300s timeout prevents Neon/AWS idle disconnects</text>
+      <text x="14" y="80" class="feat-txt"><tspan fill="#60a5fa" font-weight="700">✓ Universal Hosts:</tspan> Works natively on Neon, Supabase, Render, AWS RDS</text>
+    </g>
+
+    <!-- Bottom Action Pill -->
+    <g transform="translate(18, 316)">
+      <rect x="0" y="0" width="424" height="30" rx="8" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1" />
+      <text x="212" y="19" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5" font-weight="800" fill="#bfdbfe">
+        ☁️ CLOUD CONNECT: <tspan font-family="'Fira Code', monospace" fill="#ffffff">$env:DATABASE_URL="..."</tspan>
+      </text>
     </g>
   </g>
 </svg>
