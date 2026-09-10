@@ -166,16 +166,16 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
 
 ---
 
-## 📁 Full Project Directory & Subfolder Architecture
+## 📁 Project Architecture
 
 The repository follows a clean, modular structure separating the Python 3.12 Flask REST engine, Jinja2 fallback views, and the modern React 19 + Vite 8 SPA client:
 
 <p align="center">
-  <img src="./frontend/public/cards/full-project-tree.svg" alt="Comprehensive Repository Directory & Subfolder Architecture" width="100%" />
+  <img src="./frontend/public/cards/full-project-tree.svg" alt="Comprehensive Project Architecture" width="100%" />
 </p>
 
 <details open>
-<summary><b>🌈 Repository Directory & Subfolder Breakdown (Color-Coded Architecture)</b></summary>
+<summary><b>🌈 Project Architecture</b></summary>
 
 <br />
 
