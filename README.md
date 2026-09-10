@@ -174,68 +174,7 @@ The repository follows a clean, modular structure separating the Python 3.12 Fla
   <img src="./frontend/public/cards/full-project-tree.svg" alt="Comprehensive Repository Directory & Subfolder Architecture" width="100%" />
 </p>
 
-<details open>
-<summary><b>📂 Repository Directory & Subfolder Breakdown</b></summary>
 
-```text
-flask/
-├── backend/                             # Python 3.12 Flask REST Engine
-│   ├── app.py                           # Application factory, CORS, REST routes & serverless handlers
-│   ├── models.py                        # SQLAlchemy 6 relational entities (User, Job, Application, etc.)
-│   ├── database.py                      # DB connection manager, seeders & schema initializers
-│   ├── email_service.py                 # Automated SMTP & calendar interview notifications
-│   ├── job_portal.db                    # SQLite zero-config local database
-│   ├── requirements.txt                 # Backend Python package dependencies
-│   ├── routes/                          # Modular API controllers
-│   │   ├── auth_api.py                  # User authentication & session management
-│   │   ├── jobs_api.py                  # Job search, filtering & recruiter vacancy CRUD
-│   │   ├── applications_api.py          # Candidate applications & ATS submissions
-│   │   └── status_api.py                # Status transition webhooks & stage updates
-│   ├── static/                          # Static assets & user storage
-│   │   ├── uploads/resumes/             # Uploaded candidate PDF resumes
-│   │   ├── uploads/emails/              # Sent HTML email notification logs
-│   │   ├── css/style.css                # Server-rendered fallback stylesheets
-│   │   └── js/main.js                   # Vanilla JS interactivity & form validation
-│   └── templates/                       # Jinja2 view templates & fallbacks
-│       ├── auth/                        # login.html, register.html
-│       ├── recruiter/                   # dashboard.html, applications.html, schedule.html, resume_viewer.html
-│       ├── seeker/                      # dashboard.html, jobs.html, job_detail.html
-│       ├── 404.html                     # Custom 404 error page
-│       ├── 500.html                     # Custom 500 error page
-│       └── base.html                    # Master layout with navigation & footer
-│
-├── frontend/                            # React 19 + Vite 8 SPA Client
-│   ├── package.json                     # Dependencies (React 19, Lucide, Vite)
-│   ├── vite.config.ts                   # Vite build configuration & API reverse proxy
-│   ├── index.html                       # HTML5 entry point with Inter & Google Fonts
-│   ├── .oxlintrc.json                   # Sub-millisecond Rust Oxlint configuration
-│   ├── src/                             # Core React component tree
-│   │   ├── App.jsx                      # Main ATS application & routing container
-│   │   ├── App.css                      # App layout & transitions
-│   │   ├── index.css                    # Cyber-glassmorphism design system & neon FX
-│   │   ├── main.jsx                     # ReactDOM concurrent root renderer
-│   │   ├── components/                  # Modular UI components
-│   │   │   ├── Navbar.jsx               # Dual-role navigation bar
-│   │   │   ├── ApplicationsTable.jsx    # Candidate ATS pipeline data grid
-│   │   │   ├── ATSKanbanBoard.jsx       # Interactive drag-and-drop Kanban board
-│   │   │   ├── AnalyticsDashboard.jsx   # Hiring velocity & funnel analytics
-│   │   │   ├── CandidateDrawer.jsx      # Slide-out candidate resume & profile drawer
-│   │   │   ├── JobDiscoveryFeed.jsx     # Job listing & search cards
-│   │   │   ├── JobApplyModal.jsx        # One-click application modal
-│   │   │   └── TopBanner.jsx            # Live announcement & alert ticker
-│   │   └── pages/                       # Route view components (DashboardPage, ApplicationsPage)
-│   └── public/                          # Static SVG cards, headers & visual diagrams
-│       ├── banner.svg                   # Hero banner with vibrant gradient mesh
-│       ├── workflow.svg                 # Full-stack recruitment lifecycle flowchart
-│       ├── cards/                       # 16 interactive animated SVG documentation cards
-│       └── headers/                     # 10 stylized section header SVGs
-│
-├── api/                                 # Vercel Serverless Python WSGI handler
-├── vercel.json                          # Vercel edge deployment routing rules
-└── README.md                            # Comprehensive project documentation
-```
-
-</details>
 
 ---
 
