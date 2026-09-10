@@ -89,14 +89,14 @@
       <!-- Subfolder: templates/ -->
       <text x="0" y="364" class="folder-tag">└── 📁 templates/</text><text x="145" y="364" class="anno-txt">Jinja2 Fallback View Templates</text>
       <text x="16" y="384" class="file-tag-html">    ├── auth/</text><text x="175" y="384" class="anno-txt">login.html, register.html</text>
-      <text x="16" y="404" class="file-tag-html">    ├── recruiter/</text><text x="175" y="404" class="anno-txt">dashboard, post_job, schedule</text>
+      <text x="16" y="404" class="file-tag-html">    ├── recruiter/</text><text x="175" y="404" class="anno-txt">dashboard, post_job, schedule, viewer</text>
       <text x="16" y="424" class="file-tag-html">    ├── seeker/</text><text x="175" y="424" class="anno-txt">dashboard, jobs, job_detail</text>
-      <text x="16" y="444" class="file-tag-html">    └── base.html</text><text x="175" y="444" class="anno-txt">Master layout with navbar/footer</text>
+      <text x="16" y="444" class="file-tag-html">    └── base.html</text><text x="175" y="444" class="anno-txt">base.html, 404.html, 500.html</text>
     </g>
 
     <!-- Bottom summary tag -->
     <rect x="20" y="540" width="415" height="36" rx="8" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" stroke-width="0.8" />
-    <text x="32" y="562" font-family="'Fira Code', monospace" font-size="10.5" font-weight="600" fill="#6ee7b7">⚡ REST API • Flask 3.0 • SQLite • SMTP Server</text>
+    <text x="32" y="562" font-family="'Fira Code', monospace" font-size="10.5" font-weight="600" fill="#6ee7b7">⚡ REST API • Flask 3.0 • SQLite &amp; PostgreSQL • SMTP</text>
   </g>
 
   <!-- ================= RIGHT COLUMN: FULL FRONTEND TREE ================= -->
@@ -121,8 +121,8 @@
       <text x="16" y="188" class="folder-tag">│   ├── 📁 components/</text><text x="175" y="188" class="anno-txt">Modular UI Components</text>
       <text x="32" y="208" class="file-tag-js">│   │   ├── Navbar.jsx</text><text x="205" y="208" class="anno-txt">Dual-role navigation bar</text>
       <text x="32" y="228" class="file-tag-js">│   │   ├── ApplicationsTable.jsx</text><text x="245" y="228" class="anno-txt">ATS pipeline</text>
-      <text x="32" y="248" class="file-tag-js">│   │   ├── AnalyticsDashboard.jsx</text><text x="250" y="248" class="anno-txt">Metrics</text>
-      <text x="32" y="268" class="file-tag-js">│   │   └── TopBanner.jsx</text><text x="205" y="268" class="anno-txt">Live announcement banner</text>
+      <text x="32" y="248" class="file-tag-js">│   │   ├── ATSKanbanBoard.jsx</text><text x="245" y="248" class="anno-txt">Kanban &amp; drawer</text>
+      <text x="32" y="268" class="file-tag-js">│   │   └── Analytics &amp; Banner</text><text x="240" y="268" class="anno-txt">Metrics &amp; ticker</text>
       <text x="16" y="288" class="folder-tag">│   └── 📁 pages/</text><text x="175" y="288" class="anno-txt">DashboardPage, ApplicationsPage</text>
 
       <!-- Subfolder: public/ -->

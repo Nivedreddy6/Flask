@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="100%" height="480">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="dbEngBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e1a" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Animated Multi-Color Neon Border -->
+    <linearGradient id="dbEngBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8">
+        <animate attributeName="stop-color" values="#38bdf8;#818cf8;#c084fc;#f472b6;#10b981;#38bdf8" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="35%" stop-color="#818cf8">
+        <animate attributeName="stop-color" values="#818cf8;#c084fc;#f472b6;#10b981;#38bdf8;#818cf8" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="70%" stop-color="#f472b6">
+        <animate attributeName="stop-color" values="#f472b6;#10b981;#38bdf8;#818cf8;#c084fc;#f472b6" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#38bdf8;#818cf8;#c084fc;#f472b6;#10b981" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Header Gradients -->
+    <linearGradient id="gPgHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e40af" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="gSqliteHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#0d9488" />
+    </linearGradient>
+
+    <!-- Pill Gradients -->
+    <linearGradient id="pillPg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(56, 189, 248, 0.25)" />
+      <stop offset="100%" stop-color="rgba(99, 102, 241, 0.2)" />
+    </linearGradient>
+    <linearGradient id="pillSqlite" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(16, 185, 129, 0.25)" />
+      <stop offset="100%" stop-color="rgba(20, 184, 166, 0.2)" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@500;600;700&amp;display=swap');
+
+    .card-title { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 800; fill: #ffffff; letter-spacing: 0.5px; }
+    .col-title { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; }
+    .badge-txt { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 700; }
+    .item-label { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 600; fill: #f1f5f9; }
+    .item-val { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 500; fill: #94a3b8; }
+    .code-chip { font-family: 'Fira Code', monospace; font-size: 9.5px; font-weight: 600; fill: #38bdf8; }
+    .code-chip-emerald { font-family: 'Fira Code', monospace; font-size: 9.5px; font-weight: 600; fill: #34d399; }
+    .pulse-dot-blue { animation: pulseBlue 2s ease-in-out infinite alternate; }
+    .pulse-dot-green { animation: pulseGreen 2s ease-in-out infinite alternate; }
+
+    @keyframes pulseBlue {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1.1); }
+    }
+    @keyframes pulseGreen {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1.1); }
+    }
+  </style>
+
+  <!-- Card Background & Border -->
+  <rect width="1000" height="480" rx="18" fill="url(#dbEngBg)" stroke="url(#dbEngBorder)" stroke-width="2" />
+
+  <!-- Top Title Banner -->
+  <g transform="translate(30, 20)">
+    <rect width="530" height="26" rx="13" fill="rgba(14, 165, 233, 0.15)" stroke="#0ea5e9" stroke-width="1" />
+    <circle cx="14" cy="13" r="4" fill="#38bdf8" class="pulse-dot-blue" />
+    <text x="28" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="700" fill="#7dd3fc">DUAL-ENGINE DATABASE ARCHITECTURE • POSTGRESQL &amp; SQLITE</text>
+  </g>
+
+  <!-- Top Right Badges -->
+  <g transform="translate(680, 20)">
+    <rect width="135" height="26" rx="13" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1" />
+    <text x="67" y="17" text-anchor="middle" class="badge-txt" fill="#93c5fd">🐘 PostgreSQL</text>
+    <g transform="translate(145, 0)">
+      <rect width="135" height="26" rx="13" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="1" />
+      <text x="67" y="17" text-anchor="middle" class="badge-txt" fill="#6ee7b7">🗄️ SQLite 3</text>
+    </g>
+  </g>
+
+  <!-- ================= LEFT COLUMN: PRODUCTION POSTGRESQL ENGINE ================= -->
+  <g transform="translate(30, 65)">
+    <rect width="455" height="325" rx="14" fill="#0b1329" stroke="#0284c7" stroke-width="1.2" />
+    <rect width="455" height="36" rx="14" fill="url(#gPgHeader)" />
+    <text x="20" y="23" class="col-title">🐘 Production Cloud Engine: PostgreSQL</text>
+
+    <g transform="translate(20, 50)">
+      <!-- Row 1: Target Platforms -->
+      <rect width="415" height="48" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" />
+      <text x="14" y="20" class="item-label">Target Deployments</text>
+      <text x="14" y="38" class="item-val">Vercel Serverless, Neon, Supabase, AWS RDS, Render</text>
+      <rect x="295" y="12" width="108" height="22" rx="6" fill="#0369a1" />
+      <text x="349" y="27" text-anchor="middle" class="code-chip" fill="#e0f2fe">SSL Required</text>
+
+      <!-- Row 2: Connection Pooling -->
+      <g transform="translate(0, 58)">
+        <rect width="415" height="52" rx="8" fill="rgba(59, 130, 246, 0.08)" stroke="rgba(99, 102, 241, 0.2)" stroke-width="1" />
+        <text x="14" y="20" class="item-label">Connection Pool Strategy</text>
+        <text x="14" y="38" class="code-chip">pool_pre_ping: True</text>
+        <text x="160" y="38" class="item-val">• Health checks stale connections</text>
+        <rect x="295" y="14" width="108" height="22" rx="6" fill="#1e3a8a" />
+        <text x="349" y="29" text-anchor="middle" class="code-chip" fill="#bfdbfe">Serverless Resilient</text>
+      </g>
+
+      <!-- Row 3: Session Recycling -->
+      <g transform="translate(0, 120)">
+        <rect width="415" height="52" rx="8" fill="rgba(99, 102, 241, 0.08)" stroke="rgba(139, 92, 246, 0.2)" stroke-width="1" />
+        <text x="14" y="20" class="item-label">Engine Recycling Interval</text>
+        <text x="14" y="38" class="code-chip">pool_recycle: 300s</text>
+        <text x="155" y="38" class="item-val">• Reconnects before cloud drops idle</text>
+        <rect x="295" y="14" width="108" height="22" rx="6" fill="#4338ca" />
+        <text x="349" y="29" text-anchor="middle" class="code-chip" fill="#e0e7ff">5-Min Recycle</text>
+      </g>
+
+      <!-- Row 4: URI Dialect Normalizer -->
+      <g transform="translate(0, 182)">
+        <rect width="415" height="52" rx="8" fill="rgba(168, 85, 247, 0.08)" stroke="rgba(217, 70, 239, 0.2)" stroke-width="1" />
+        <text x="14" y="20" class="item-label">URI Dialect Auto-Patching</text>
+        <text x="14" y="38" class="code-chip">postgres://  →  postgresql://</text>
+        <text x="210" y="38" class="item-val">• SQLAlchemy 2.0 compatible</text>
+        <rect x="295" y="14" width="108" height="22" rx="6" fill="#6b21a8" />
+        <text x="349" y="29" text-anchor="middle" class="code-chip" fill="#fae8ff">Auto Rewrite</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= RIGHT COLUMN: LOCAL DEV SQLITE ENGINE ================= -->
+  <g transform="translate(515, 65)">
+    <rect width="455" height="325" rx="14" fill="#061f18" stroke="#059669" stroke-width="1.2" />
+    <rect width="455" height="36" rx="14" fill="url(#gSqliteHeader)" />
+    <text x="20" y="23" class="col-title">🗄️ Local Development: SQLite 3 Engine</text>
+
+    <g transform="translate(20, 50)">
+      <!-- Row 1: Zero Config -->
+      <rect width="415" height="48" rx="8" fill="rgba(5, 150, 105, 0.08)" stroke="rgba(16, 185, 129, 0.2)" stroke-width="1" />
+      <text x="14" y="20" class="item-label">Zero-Config Local Setup</text>
+      <text x="14" y="38" class="item-val">No external DB installation required • Instant offline spin-up</text>
+      <rect x="295" y="12" width="108" height="22" rx="6" fill="#047857" />
+      <text x="349" y="27" text-anchor="middle" class="code-chip-emerald" fill="#d1fae5">Zero Setup</text>
+
+      <!-- Row 2: Database File -->
+      <g transform="translate(0, 58)">
+        <rect width="415" height="52" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(20, 184, 166, 0.2)" stroke-width="1" />
+        <text x="14" y="20" class="item-label">Local File Persistence</text>
+        <text x="14" y="38" class="code-chip-emerald">sqlite:///job_portal.db</text>
+        <text x="195" y="38" class="item-val">• Isolated local workspace</text>
+        <rect x="295" y="14" width="108" height="22" rx="6" fill="#065f46" />
+        <text x="349" y="29" text-anchor="middle" class="code-chip-emerald" fill="#a7f3d0">Disk Backed</text>
+      </g>
+
+      <!-- Row 3: Automated Seeding -->
+      <g transform="translate(0, 120)">
+        <rect width="415" height="52" rx="8" fill="rgba(20, 184, 166, 0.08)" stroke="rgba(6, 182, 212, 0.2)" stroke-width="1" />
+        <text x="14" y="20" class="item-label">Automated Mock Data Seeding</text>
+        <text x="14" y="38" class="item-val">Auto-populates 3 recruiters, 3 seekers, 10+ jobs &amp; applications</text>
+        <rect x="295" y="14" width="108" height="22" rx="6" fill="#0f766e" />
+        <text x="349" y="29" text-anchor="middle" class="code-chip-emerald" fill="#ccfbf1">Auto Seed</text>
+      </g>
+
+      <!-- Row 4: Seamless Fallback -->
+      <g transform="translate(0, 182)">
+        <rect width="415" height="52" rx="8" fill="rgba(6, 182, 212, 0.08)" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" />
+        <text x="14" y="20" class="item-label">Dynamic Environment Fallback</text>
+        <text x="14" y="38" class="item-val">Fallback triggered if DATABASE_URL environment variable is unset</text>
+        <rect x="295" y="14" width="108" height="22" rx="6" fill="#0e7490" />
+        <text x="349" y="29" text-anchor="middle" class="code-chip-emerald" fill="#cffafe">Smart Fallback</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= BOTTOM FULL-WIDTH SUMMARY BANNER ================= -->
+  <g transform="translate(30, 405)">
+    <rect width="940" height="54" rx="10" fill="rgba(15, 23, 42, 0.85)" stroke="url(#dbEngBorder)" stroke-width="1.2" />
+    <circle cx="24" cy="27" r="5" fill="#38bdf8" class="pulse-dot-blue" />
+    <text x="40" y="23" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#f8fafc">Unified SQLAlchemy ORM Layer</text>
+    <text x="40" y="41" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#94a3b8">Identical models &amp; queries execute identically across PostgreSQL &amp; SQLite with zero code rewrites.</text>
+    
+    <g transform="translate(730, 13)">
+      <rect width="190" height="28" rx="8" fill="rgba(99, 102, 241, 0.25)" stroke="#6366f1" stroke-width="1" />
+      <text x="95" y="19" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10" font-weight="700" fill="#a5b4fc">Flask-SQLAlchemy 3.1</text>
+    </g>
+  </g>
+</svg>

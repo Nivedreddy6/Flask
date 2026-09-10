@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="./frontend/public/banner.svg?v=2" alt="Job Sphere Studio Banner" width="100%" />
+  <img src="./frontend/public/banner.svg" alt="Job Sphere Studio Banner" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/typing-badge-root.svg?v=2" alt="Animated Typing Badge" width="700" />
+  <img src="./frontend/public/cards/typing-badge-root.svg" alt="Animated Typing Badge" width="700" />
 </p>
 
 <p align="center">
@@ -11,25 +11,26 @@
   <a href="https://flask-five-mauve.vercel.app/"><img src="https://img.shields.io/badge/Main%20Portal-HirePulse%20Network-10B981?style=for-the-badge&logo=googlechrome&logoColor=white" alt="HirePulse Portal" /></a>
   <a href="https://flask-five-mauve.vercel.app/react"><img src="https://img.shields.io/badge/ATS%20Suite-React%2019-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19 ATS" /></a>
   <a href="https://flask-five-mauve.vercel.app/api/status"><img src="https://img.shields.io/badge/Backend%20API-Flask%203.0-FFD600?style=for-the-badge&logo=python&logoColor=black" alt="Flask Backend" /></a>
-  <img src="https://img.shields.io/badge/Database-SQLite%203-8B5CF6?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/PostgreSQL-16%20Serverless%20Pool-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL 16" />
+  <img src="https://img.shields.io/badge/SQLite-Zero--Config%20Local-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite 3" />
   <img src="https://img.shields.io/badge/Theme-Cyber%20Glassmorphic-EC4899?style=for-the-badge" alt="Design" />
 </p>
 
 <!-- Live Cloud Deployment Header & Interactive Card -->
 <p align="center">
-  <img src="./frontend/public/headers/header-live.svg?v=2" alt="Live Cloud Deployment Header" width="100%" />
+  <img src="./frontend/public/headers/header-live.svg" alt="Live Cloud Deployment Header" width="100%" />
 </p>
 
 <p align="center">
   <a href="https://flask-five-mauve.vercel.app/" target="_blank">
-    <img src="./frontend/public/cards/live-deployment-card.svg?v=2" alt="Live Cloud Deployment Card" width="100%" />
+    <img src="./frontend/public/cards/live-deployment-card.svg" alt="Live Cloud Deployment Card" width="100%" />
   </a>
 </p>
 
 <!-- Direct URL Quick-Launch Directory SVG Card -->
 <p align="center">
   <a href="https://flask-five-mauve.vercel.app/" target="_blank">
-    <img src="./frontend/public/cards/quick-launch-directory.svg?v=2" alt="Direct URL Quick-Launch Directory" width="100%" />
+    <img src="./frontend/public/cards/quick-launch-directory.svg" alt="Direct URL Quick-Launch Directory" width="100%" />
   </a>
 </p>
 
@@ -45,6 +46,7 @@
 | 🔐 **Sign In Hub** | [![Secure Login](https://img.shields.io/badge/Authentication-Sign%20In%20Hub-FF1744?style=for-the-badge&logo=auth0&logoColor=white)](https://flask-five-mauve.vercel.app/login) | ![OAuth](https://img.shields.io/badge/OAuth-Google%20%2B%20Email-0A66C2?style=flat-square&logo=google&logoColor=white) | [![Secure](https://img.shields.io/badge/Security-256--bit%20Auth-F50057?style=flat-square)](https://flask-five-mauve.vercel.app/login) |
 | 📝 **Candidate Join** | [![Join Now](https://img.shields.io/badge/Onboarding-Join%20Now-FF9100?style=for-the-badge&logo=rocket&logoColor=white)](https://flask-five-mauve.vercel.app/register) | ![Roles](https://img.shields.io/badge/Role-Seeker%20%2F%20Recruiter-FF6D00?style=flat-square) | [![Instant](https://img.shields.io/badge/Access-Instant%20Role-FF9100?style=flat-square)](https://flask-five-mauve.vercel.app/register) |
 | 👥 **People Directory** | [![Network](https://img.shields.io/badge/Community-People%20%26%20Mentors-E040FB?style=for-the-badge&logo=slack&logoColor=white)](https://flask-five-mauve.vercel.app/people) | ![Network](https://img.shields.io/badge/Network-Engineering%20Peers-AA00FF?style=flat-square) | [![Active](https://img.shields.io/badge/Community-Active%20Peers-D500F9?style=flat-square)](https://flask-five-mauve.vercel.app/people) |
+| 🐘 **PostgreSQL Engine** | [![Database Health](https://img.shields.io/badge/PostgreSQL-Connection%20Pool-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://flask-five-mauve.vercel.app/api/status) | ![Engine](https://img.shields.io/badge/Engine-SQLAlchemy%20ORM-D71F00?style=flat-square&logo=sqlalchemy&logoColor=white) ![Pool](https://img.shields.io/badge/Pooling-Pre--Ping%20%2B%20Recycle-00E676?style=flat-square) | [![Online](https://img.shields.io/badge/Pool-Healthy%20%26%20Active-00E676?style=flat-square&logo=checkmarx&logoColor=white)](https://flask-five-mauve.vercel.app/api/status) |
 | 🔌 **API Status** | [![API Health](https://img.shields.io/badge/Serverless%20API-Live%20JSON-FFEA00?style=for-the-badge&logo=python&logoColor=black)](https://flask-five-mauve.vercel.app/api/status) | ![Python](https://img.shields.io/badge/Python-3.12%20WSGI-3776AB?style=flat-square&logo=python&logoColor=white) | [![Uptime](https://img.shields.io/badge/Uptime-100%25%20Serverless-00E676?style=flat-square)](https://flask-five-mauve.vercel.app/api/status) |
 
 </div>
@@ -52,7 +54,7 @@
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-overview.svg?v=2" alt="Project Overview Header" width="100%" />
+  <img src="./frontend/public/headers/header-overview.svg" alt="Project Overview Header" width="100%" />
 </p>
 
 ## 💡 What is Job Sphere Studio?
@@ -63,13 +65,13 @@
 * ⚡ **For Recruiters**: Post vacancies, review candidate pipelines, advance hiring stages, and schedule interviews with automated calendar-ready emails.
 
 <p align="center">
-  <img src="./frontend/public/cards/overview-cards.svg?v=2" alt="Overview Cards" width="100%" />
+  <img src="./frontend/public/cards/overview-cards.svg" alt="Overview Cards" width="100%" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-features.svg?v=2" alt="Features Header" width="100%" />
+  <img src="./frontend/public/headers/header-features.svg" alt="Features Header" width="100%" />
 </p>
 
 ## 🔄 End-to-End Website Walkthrough (How It Works)
@@ -77,17 +79,17 @@
 Here is the exact step-by-step user journey from account creation to getting hired:
 
 <p align="center">
-  <img src="./frontend/public/cards/workflow-journey.svg?v=2" alt="End-to-End Recruitment Journey" width="100%" />
+  <img src="./frontend/public/cards/workflow-journey.svg" alt="End-to-End Recruitment Journey" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/pipeline-stepper.svg?v=2" alt="Hiring Pipeline Stages" width="100%" />
+  <img src="./frontend/public/cards/pipeline-stepper.svg" alt="Hiring Pipeline Stages" width="100%" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-ats.svg?v=2" alt="Recruiter ATS Pipeline & Resume Matcher Header" width="100%" />
+  <img src="./frontend/public/headers/header-ats.svg" alt="Recruiter ATS Pipeline & Resume Matcher Header" width="100%" />
 </p>
 
 ## 📊 Recruiter Applicant Tracking System (ATS) & Automated Matcher
@@ -95,21 +97,21 @@ Here is the exact step-by-step user journey from account creation to getting hir
 Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing candidates from application to hire:
 
 <p align="center">
-  <img src="./frontend/public/cards/ats-pipeline-board.svg?v=2" alt="Automated Recruiter ATS Kanban Pipeline" width="100%" />
+  <img src="./frontend/public/cards/ats-pipeline-board.svg" alt="Automated Recruiter ATS Kanban Pipeline" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/ats-capabilities.svg?v=2" alt="Core ATS Capabilities and Innovations" width="100%" />
+  <img src="./frontend/public/cards/ats-capabilities.svg" alt="Core ATS Capabilities and Innovations" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/demo-credentials.svg?v=2" alt="Pre-Seeded Demo Test Credentials" width="100%" />
+  <img src="./frontend/public/cards/demo-credentials.svg" alt="Pre-Seeded Demo Test Credentials" width="100%" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-personas.svg?v=2" alt="User Personas Header" width="100%" />
+  <img src="./frontend/public/headers/header-personas.svg" alt="User Personas Header" width="100%" />
 </p>
 
 ## 🧭 Page-by-Page Feature Tour
@@ -130,13 +132,13 @@ Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing can
 </div>
 
 <p align="center">
-  <img src="./frontend/public/cards/features-deepdive.svg?v=2" alt="Comprehensive Feature Tour" width="100%" />
+  <img src="./frontend/public/cards/features-deepdive.svg" alt="Comprehensive Feature Tour" width="100%" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-architecture.svg?v=2" alt="System Architecture Header" width="100%" />
+  <img src="./frontend/public/headers/header-architecture.svg" alt="System Architecture Header" width="100%" />
 </p>
 
 ## 🏛 Technical Architecture & Technology Stack
@@ -144,31 +146,101 @@ Job Sphere Studio features a full **Recruiter ATS Control Hub** for managing can
 The platform is designed with a **decoupled hybrid architecture** for optimal performance, responsiveness, and developer experience:
 
 <p align="center">
-  <img src="./frontend/public/workflow.svg?v=2" alt="Workflow Pipeline Architecture" width="100%" />
+  <img src="./frontend/public/workflow.svg" alt="Workflow Pipeline Architecture" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/system-architecture.svg?v=2" alt="System Architecture & Data Flow" width="100%" />
+  <img src="./frontend/public/cards/system-architecture.svg" alt="System Architecture & Data Flow" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/full-project-tree.svg?v=2" alt="Comprehensive Repository Directory & Subfolder Architecture" width="100%" />
-</p>
-
-<p align="center">
-  <img src="./frontend/public/cards/sequence-interview.svg?v=2" alt="Automated Interview Scheduling Sequence Flow" width="100%" />
+  <img src="./frontend/public/cards/sequence-interview.svg" alt="Automated Interview Scheduling Sequence Flow" width="100%" />
 </p>
 
 ### 🛠️ Core Technologies Used:
-* **Frontend**: **React 19**, **Vite 8**, **Lucide React** icons, custom cyber-glassmorphism CSS design system, and **Oxlint** (Rust-based sub-millisecond linter).
-* **Backend**: **Python 3.12**, **Flask 3.0**, **Flask-SQLAlchemy** (ORM), **Werkzeug** (security & password hashing), and **Flask-CORS**.
-* **Database**: **SQLite 3** relational database with automated seeding and foreign-key constraints.
-* **Email Engine**: Python **`smtplib`** and **`email.mime`** for automated, responsive HTML email delivery.
+* **Frontend**: [![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/) [![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/) [![Lucide](https://img.shields.io/badge/Lucide-React%20Icons-F56565?style=flat-square)](https://lucide.dev/) custom cyber-glassmorphism CSS design system, and [![Oxlint](https://img.shields.io/badge/Oxlint-Rust%20Linter-FF6B6B?style=flat-square&logo=rust&logoColor=white)](https://oxc-project.github.io/).
+* **Backend Engine**: [![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org) [![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com/) [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM%202.0-D71F00?style=flat-square&logo=sqlalchemy&logoColor=white)](https://sqlalchemy.org) [![Werkzeug](https://img.shields.io/badge/Werkzeug-Security%20Hashing-E11D48?style=flat-square)](https://werkzeug.palletsprojects.com/) and [![CORS](https://img.shields.io/badge/CORS-Cross--Origin-4CAF50?style=flat-square)](https://flask-cors.readthedocs.io/).
+* **Dual Database Engine**: [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16%20Cloud%20Engine-336791?style=flat-square&logo=postgresql&logoColor=white)](https://postgresql.org) with resilient connection pooling (`pool_pre_ping=True`, `pool_recycle=300`) and [![SQLite](https://img.shields.io/badge/SQLite-3%20Zero--Config-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://sqlite.org) for instant offline local development.
+* **Resume & File Engine**: PDF persistence in database with high-performance inline delivery, in-memory caching, and native **Executive Resume Viewer**.
+* **Email Engine**: Python **`smtplib`** and **`email.mime`** for automated, responsive HTML calendar invites and notifications.
+
+---
+
+## 📁 Full Project Directory & Subfolder Architecture
+
+The repository follows a clean, modular structure separating the Python 3.12 Flask REST engine, Jinja2 fallback views, and the modern React 19 + Vite 8 SPA client:
+
+<p align="center">
+  <img src="./frontend/public/cards/full-project-tree.svg" alt="Comprehensive Repository Directory & Subfolder Architecture" width="100%" />
+</p>
+
+<details open>
+<summary><b>📂 Repository Directory & Subfolder Breakdown</b></summary>
+
+```text
+flask/
+├── backend/                             # Python 3.12 Flask REST Engine
+│   ├── app.py                           # Application factory, CORS, REST routes & serverless handlers
+│   ├── models.py                        # SQLAlchemy 6 relational entities (User, Job, Application, etc.)
+│   ├── database.py                      # DB connection manager, seeders & schema initializers
+│   ├── email_service.py                 # Automated SMTP & calendar interview notifications
+│   ├── job_portal.db                    # SQLite zero-config local database
+│   ├── requirements.txt                 # Backend Python package dependencies
+│   ├── routes/                          # Modular API controllers
+│   │   ├── auth_api.py                  # User authentication & session management
+│   │   ├── jobs_api.py                  # Job search, filtering & recruiter vacancy CRUD
+│   │   ├── applications_api.py          # Candidate applications & ATS submissions
+│   │   └── status_api.py                # Status transition webhooks & stage updates
+│   ├── static/                          # Static assets & user storage
+│   │   ├── uploads/resumes/             # Uploaded candidate PDF resumes
+│   │   ├── uploads/emails/              # Sent HTML email notification logs
+│   │   ├── css/style.css                # Server-rendered fallback stylesheets
+│   │   └── js/main.js                   # Vanilla JS interactivity & form validation
+│   └── templates/                       # Jinja2 view templates & fallbacks
+│       ├── auth/                        # login.html, register.html
+│       ├── recruiter/                   # dashboard.html, applications.html, schedule.html, resume_viewer.html
+│       ├── seeker/                      # dashboard.html, jobs.html, job_detail.html
+│       ├── 404.html                     # Custom 404 error page
+│       ├── 500.html                     # Custom 500 error page
+│       └── base.html                    # Master layout with navigation & footer
+│
+├── frontend/                            # React 19 + Vite 8 SPA Client
+│   ├── package.json                     # Dependencies (React 19, Lucide, Vite)
+│   ├── vite.config.ts                   # Vite build configuration & API reverse proxy
+│   ├── index.html                       # HTML5 entry point with Inter & Google Fonts
+│   ├── .oxlintrc.json                   # Sub-millisecond Rust Oxlint configuration
+│   ├── src/                             # Core React component tree
+│   │   ├── App.jsx                      # Main ATS application & routing container
+│   │   ├── App.css                      # App layout & transitions
+│   │   ├── index.css                    # Cyber-glassmorphism design system & neon FX
+│   │   ├── main.jsx                     # ReactDOM concurrent root renderer
+│   │   ├── components/                  # Modular UI components
+│   │   │   ├── Navbar.jsx               # Dual-role navigation bar
+│   │   │   ├── ApplicationsTable.jsx    # Candidate ATS pipeline data grid
+│   │   │   ├── ATSKanbanBoard.jsx       # Interactive drag-and-drop Kanban board
+│   │   │   ├── AnalyticsDashboard.jsx   # Hiring velocity & funnel analytics
+│   │   │   ├── CandidateDrawer.jsx      # Slide-out candidate resume & profile drawer
+│   │   │   ├── JobDiscoveryFeed.jsx     # Job listing & search cards
+│   │   │   ├── JobApplyModal.jsx        # One-click application modal
+│   │   │   └── TopBanner.jsx            # Live announcement & alert ticker
+│   │   └── pages/                       # Route view components (DashboardPage, ApplicationsPage)
+│   └── public/                          # Static SVG cards, headers & visual diagrams
+│       ├── banner.svg                   # Hero banner with vibrant gradient mesh
+│       ├── workflow.svg                 # Full-stack recruitment lifecycle flowchart
+│       ├── cards/                       # 16 interactive animated SVG documentation cards
+│       └── headers/                     # 10 stylized section header SVGs
+│
+├── api/                                 # Vercel Serverless Python WSGI handler
+├── vercel.json                          # Vercel edge deployment routing rules
+└── README.md                            # Comprehensive project documentation
+```
+
+</details>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-backend.svg?v=2" alt="Flask Backend Engine Header" width="100%" />
+  <img src="./frontend/public/headers/header-backend.svg" alt="Flask Backend Engine Header" width="100%" />
 </p>
 
 ## ⚡ Flask Backend Engine & Internal Services
@@ -176,37 +248,91 @@ The platform is designed with a **decoupled hybrid architecture** for optimal pe
 The backend is built as a modular, lightweight, high-performance Python 3.12 + Flask 3.0 REST API:
 
 <p align="center">
-  <img src="./frontend/public/cards/backend-services.svg?v=2" alt="Flask Backend Architecture & Internal Services" width="100%" />
+  <img src="./frontend/public/cards/backend-services.svg" alt="Flask Backend Architecture & Internal Services" width="100%" />
 </p>
 
 <p align="center">
-  <img src="./frontend/public/cards/backend-table-card.svg?v=2" alt="Backend Module Breakdown Matrix" width="100%" />
-</p>
-
----
-
-<p align="center">
-  <img src="./frontend/public/headers/header-datamodel.svg?v=2" alt="Data Model Header" width="100%" />
-</p>
-
-## 📊 Relational Database Schema
-
-The database model is built with SQLAlchemy with clean relational entities:
-
-<p align="center">
-  <img src="./frontend/public/cards/database-schema.svg?v=2" alt="Relational Database Schema (SQLAlchemy ORM)" width="100%" />
+  <img src="./frontend/public/cards/backend-table-card.svg" alt="Backend Module Breakdown Matrix" width="100%" />
 </p>
 
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-api.svg?v=2" alt="API Specification Header" width="100%" />
+  <img src="./frontend/public/headers/header-datamodel.svg" alt="Data Model Header" width="100%" />
+</p>
+
+## 🐘 Dual-Engine Database Architecture & Relational Schema
+
+The platform implements a **resilient hybrid dual-database architecture** designed for zero-config local development and rock-solid cloud scalability:
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Production%20Engine-PostgreSQL%2016-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Local%20Engine-SQLite%203-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/ORM%20Abstraction-Flask--SQLAlchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white" alt="SQLAlchemy" />
+  <img src="https://img.shields.io/badge/Pool%20Pre--Ping-Auto--Reconnect-00E676?style=for-the-badge&logo=checkmarx&logoColor=white" alt="Pool Pre-Ping" />
+  <img src="https://img.shields.io/badge/Pool%20Recycle-300s%20(5%20Min)-FF9100?style=for-the-badge&logo=timer&logoColor=white" alt="Pool Recycle" />
+  <img src="https://img.shields.io/badge/Dialect%20Fix-postgres%3A%2F%2F%20%E2%86%92%20postgresql%3A%2F%2F-E040FB?style=for-the-badge&logo=convertio&logoColor=white" alt="URI Normalizer" />
+</p>
+
+<p align="center">
+  <img src="./frontend/public/cards/database-engine-card.svg" alt="Dual-Engine Database Architecture (PostgreSQL & SQLite)" width="100%" />
+</p>
+
+### ⚙️ Why Dual Database Architecture?
+
+| Architecture Pillar | 🐘 Production Engine: PostgreSQL | 🗄️ Development Engine: SQLite 3 |
+| :--- | :--- | :--- |
+| **Primary Environment** | [![Production](https://img.shields.io/badge/Vercel-Serverless%20Edge-000000?style=flat-square&logo=vercel&logoColor=white)](https://flask-five-mauve.vercel.app/) [![Cloud](https://img.shields.io/badge/Managed-Cloud%20DB-336791?style=flat-square&logo=postgresql&logoColor=white)](https://flask-five-mauve.vercel.app/) | [![Local](https://img.shields.io/badge/Localhost-Zero--Setup-00C853?style=flat-square&logo=visualstudiocode&logoColor=white)](http://localhost:5000) [![Offline](https://img.shields.io/badge/Offline-100%25%20Available-00B0FF?style=flat-square)](http://localhost:5000) |
+| **Connection Pooling** | `pool_pre_ping=True` (Tests stale socket before query) | `NullPool` (Direct file access, zero network overhead) |
+| **Connection Lifespan** | `pool_recycle=300` (Recycles idle sockets before cloud timeout) | Persistent disk storage (`job_portal.db`) |
+| **Serverless Resiliency**| Reconnects seamlessly across cold starts & ephemeral containers | Zero network dependencies, instant startup |
+| **URI Compatibility** | Auto-rewrites legacy `postgres://` to `postgresql://` | Native `sqlite:///job_portal.db` fallback |
+| **Mock Data Seeder** | Pre-seeded with recruiters, seekers, jobs & applications | Auto-populates 10+ jobs & demo users on boot |
+| **Cloud Providers** | Neon Serverless, Supabase, Render, AWS RDS, Railway | Local file system (`backend/job_portal.db`) |
+
+---
+
+### 🛡️ Production Serverless PostgreSQL Engine Configuration
+
+In serverless environments like **Vercel**, database connections can drop between invocations when cloud providers silently close idle TCP connections. We solve this using **proactive connection pooling**:
+
+```python
+# backend/app.py — Resilient Dual-Engine Database Configuration
+db_url = os.environ.get('DATABASE_URL')
+if db_url:
+    # Auto-patch legacy Heroku/Vercel 'postgres://' URIs for SQLAlchemy 2.0+
+    if db_url.startswith("postgres://"):
+        db_url = db_url.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+        'pool_pre_ping': True,   # Emits 'SELECT 1' health check before using connection
+        'pool_recycle': 300,     # Recycles connection every 5 minutes to prevent dropped sockets
+    }
+else:
+    # Zero-config SQLite fallback for local development
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///job_portal.db'
+```
+
+---
+
+### 📊 Relational Database Schema & Entity Relationships
+
+The relational data model is orchestrated by **Flask-SQLAlchemy** with clean relational entities, foreign key constraints, cascading relationships, and automated timestamp tracking:
+
+<p align="center">
+  <img src="./frontend/public/cards/database-schema.svg" alt="Relational Database Schema (PostgreSQL & SQLite ORM)" width="100%" />
+</p>
+
+---
+
+<p align="center">
+  <img src="./frontend/public/headers/header-api.svg" alt="API Specification Header" width="100%" />
 </p>
 
 ## 🔌 RESTful API Endpoints Specification
 
 <p align="center">
-  <img src="./frontend/public/cards/api-endpoints.svg?v=2" alt="REST API Endpoints Specification" width="100%" />
+  <img src="./frontend/public/cards/api-endpoints.svg" alt="REST API Endpoints Specification" width="100%" />
 </p>
 
 ---
@@ -226,20 +352,31 @@ The full-stack application is continuously built and hosted on **Vercel**:
 ---
 
 <p align="center">
-  <img src="./frontend/public/headers/header-quickstart.svg?v=2" alt="Quickstart Header" width="100%" />
+  <img src="./frontend/public/headers/header-quickstart.svg" alt="Quickstart Header" width="100%" />
 </p>
 
 ## ⚡ How to Run Locally
 
 <p align="center">
-  <img src="./frontend/public/cards/terminal-quickstart.svg?v=2" alt="Animated Terminal Quickstart" width="100%" />
+  <img src="./frontend/public/cards/terminal-quickstart.svg" alt="Animated Terminal Quickstart" width="100%" />
 </p>
+
+### 🐘 Database Switching (SQLite vs PostgreSQL)
+
+* **Zero-Config Default (SQLite)**: Just run the application! If `DATABASE_URL` is unset, the engine automatically initialises SQLite at `backend/job_portal.db` and auto-populates demo data.
+* **PostgreSQL (Cloud or Local)**: Set the `DATABASE_URL` environment variable:
+  ```powershell
+  # Windows PowerShell
+  $env:DATABASE_URL="postgresql://user:password@ep-cool-cloud.region.aws.neon.tech/neondb?sslmode=require"
+  python backend/app.py
+  ```
+  *(Legacy `postgres://` URLs are automatically rewritten to `postgresql://` on startup for modern SQLAlchemy compatibility)*
 
 ---
 
 <p align="center">
   <a href="https://github.com/Nivedreddy6" target="_blank">
-    <img src="./frontend/public/cards/author-footer.svg?v=2" alt="Created by Nived Reddy" width="100%" />
+    <img src="./frontend/public/cards/author-footer.svg" alt="Created by Nived Reddy" width="100%" />
   </a>
 </p>
 
