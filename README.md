@@ -174,6 +174,69 @@ The repository follows a clean, modular structure separating the Python 3.12 Fla
   <img src="./frontend/public/cards/full-project-tree.svg" alt="Comprehensive Repository Directory & Subfolder Architecture" width="100%" />
 </p>
 
+<details open>
+<summary><b>📂 Repository Directory & Subfolder Breakdown</b></summary>
+
+```text
+flask/
+├── backend/                             # Python 3.12 Flask REST Engine
+│   ├── app.py                           # Application factory, CORS, REST routes & serverless handlers
+│   ├── models.py                        # SQLAlchemy 6 relational entities (User, Job, Application, etc.)
+│   ├── database.py                      # DB connection manager, seeders & schema initializers
+│   ├── email_service.py                 # Automated SMTP & calendar interview notifications
+│   ├── job_portal.db                    # SQLite zero-config local database
+│   ├── requirements.txt                 # Backend Python package dependencies
+│   ├── routes/                          # Modular API controllers
+│   │   ├── auth_api.py                  # User authentication & session management
+│   │   ├── jobs_api.py                  # Job search, filtering & recruiter vacancy CRUD
+│   │   ├── applications_api.py          # Candidate applications & ATS submissions
+│   │   └── status_api.py                # Status transition webhooks & stage updates
+│   ├── static/                          # Static assets & user storage
+│   │   ├── uploads/resumes/             # Uploaded candidate PDF resumes
+│   │   ├── uploads/emails/              # Sent HTML email notification logs
+│   │   ├── css/style.css                # Server-rendered fallback stylesheets
+│   │   └── js/main.js                   # Vanilla JS interactivity & form validation
+│   └── templates/                       # Jinja2 view templates & fallbacks
+│       ├── auth/                        # login.html, register.html
+│       ├── recruiter/                   # dashboard.html, applications.html, schedule.html, resume_viewer.html
+│       ├── seeker/                      # dashboard.html, jobs.html, job_detail.html
+│       ├── 404.html                     # Custom 404 error page
+│       ├── 500.html                     # Custom 500 error page
+│       └── base.html                    # Master layout with navigation & footer
+│
+├── frontend/                            # React 19 + Vite 8 SPA Client
+│   ├── package.json                     # Dependencies (React 19, Lucide, Vite)
+│   ├── vite.config.ts                   # Vite build configuration & API reverse proxy
+│   ├── index.html                       # HTML5 entry point with Inter & Google Fonts
+│   ├── .oxlintrc.json                   # Sub-millisecond Rust Oxlint configuration
+│   ├── src/                             # Core React component tree
+│   │   ├── App.jsx                      # Main ATS application & routing container
+│   │   ├── App.css                      # App layout & transitions
+│   │   ├── index.css                    # Cyber-glassmorphism design system & neon FX
+│   │   ├── main.jsx                     # ReactDOM concurrent root renderer
+│   │   ├── components/                  # Modular UI components
+│   │   │   ├── Navbar.jsx               # Dual-role navigation bar
+│   │   │   ├── ApplicationsTable.jsx    # Candidate ATS pipeline data grid
+│   │   │   ├── ATSKanbanBoard.jsx       # Interactive drag-and-drop Kanban board
+│   │   │   ├── AnalyticsDashboard.jsx   # Hiring velocity & funnel analytics
+│   │   │   ├── CandidateDrawer.jsx      # Slide-out candidate resume & profile drawer
+│   │   │   ├── JobDiscoveryFeed.jsx     # Job listing & search cards
+│   │   │   ├── JobApplyModal.jsx        # One-click application modal
+│   │   │   └── TopBanner.jsx            # Live announcement & alert ticker
+│   │   └── pages/                       # Route view components (DashboardPage, ApplicationsPage)
+│   └── public/                          # Static SVG cards, headers & visual diagrams
+│       ├── banner.svg                   # Hero banner with vibrant gradient mesh
+│       ├── workflow.svg                 # Full-stack recruitment lifecycle flowchart
+│       ├── cards/                       # 16 interactive animated SVG documentation cards
+│       └── headers/                     # 10 stylized section header SVGs
+│
+├── api/                                 # Vercel Serverless Python WSGI handler
+├── vercel.json                          # Vercel edge deployment routing rules
+└── README.md                            # Comprehensive project documentation
+```
+
+</details>
+
 
 
 ---
@@ -261,6 +324,28 @@ In serverless environments like **Vercel**, database connections can drop betwee
   <img src="./frontend/public/cards/postgresql-config-card.svg" alt="Production Serverless PostgreSQL Engine Configuration" width="100%" />
 </p>
 
+<details open>
+<summary><b>💻 Copyable Python Configuration Code Snippet (backend/app.py)</b></summary>
+
+```python
+# backend/app.py — Resilient Dual-Engine Database Configuration
+db_url = os.environ.get('DATABASE_URL')
+if db_url:
+    # Auto-patch legacy Heroku/Vercel 'postgres://' URIs for SQLAlchemy 2.0+
+    if db_url.startswith("postgres://"):
+        db_url = db_url.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+        'pool_pre_ping': True,   # Emits 'SELECT 1' health check before using connection
+        'pool_recycle': 300,     # Recycles connection every 5 minutes to prevent dropped sockets
+    }
+else:
+    # Zero-config SQLite fallback for local development
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///job_portal.db'
+```
+
+</details>
+
 ---
 
 ### 📊 Relational Database Schema & Entity Relationships
@@ -314,6 +399,31 @@ The full-stack application is continuously built and hosted on **Vercel**:
 <p align="center">
   <img src="./frontend/public/cards/database-switching-card.svg" alt="Zero-Config Database Switching (SQLite vs PostgreSQL)" width="100%" />
 </p>
+
+<details open>
+<summary><b>💻 Copyable Commands for Database Switching</b></summary>
+
+* **Zero-Config Default (SQLite)**:
+  ```bash
+  # Just run the app! Automatically initialises SQLite at backend/job_portal.db and seeds demo data
+  python backend/app.py
+  ```
+
+* **Cloud PostgreSQL (Neon / Supabase / Render / AWS RDS)**:
+  ```powershell
+  # Windows PowerShell
+  $env:DATABASE_URL="postgresql://user:password@ep-cool-cloud.region.aws.neon.tech/neondb?sslmode=require"
+  python backend/app.py
+  ```
+  ```bash
+  # Linux / macOS (Bash / Zsh)
+  export DATABASE_URL="postgresql://user:password@ep-cool-cloud.region.aws.neon.tech/neondb?sslmode=require"
+  python backend/app.py
+  ```
+
+> 💡 **Automatic URI Patching**: Legacy `postgres://` URLs (provided by some cloud hosts) are automatically rewritten to `postgresql://` on startup for modern SQLAlchemy 2.0+ compatibility!
+
+</details>
 
 ---
 
