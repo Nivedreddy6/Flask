@@ -1,0 +1,423 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="680">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="dbkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c18" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#080e1a" />
+    </linearGradient>
+
+    <!-- Animated Multi-Color Cyber Border -->
+    <linearGradient id="dbkBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8">
+        <animate attributeName="stop-color" values="#38bdf8;#a855f7;#ec4899;#10b981;#f59e0b;#38bdf8" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="35%" stop-color="#ec4899">
+        <animate attributeName="stop-color" values="#ec4899;#10b981;#f59e0b;#38bdf8;#a855f7;#ec4899" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="70%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#f59e0b;#38bdf8;#a855f7;#ec4899;#10b981" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#f59e0b">
+        <animate attributeName="stop-color" values="#f59e0b;#38bdf8;#a855f7;#ec4899;#10b981;#f59e0b" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Column Gradients -->
+    <linearGradient id="gColBe" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#022c22" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="gColApi" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#78350f" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#451a03" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="gColFe" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c4a6e" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#082f49" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="gColCloud" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4c1d95" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#2e1065" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="glowAmber" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="glowPurple" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Fira+Code:wght@500;600;700&amp;display=swap');
+
+    .title-main { font-family: 'Inter', sans-serif; font-size: 19px; font-weight: 900; fill: #ffffff; letter-spacing: 0.8px; }
+    .title-sub { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; fill: #94a3b8; }
+    .col-hdr { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 0.5px; }
+    .item-file { font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 700; }
+    .item-desc { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 500; fill: #94a3b8; }
+    .badge-txt { font-family: 'Inter', sans-serif; font-size: 8.5px; font-weight: 800; }
+
+    /* Animated Dot Pulsing */
+    .pulse-g { animation: aPulseG 2s ease-in-out infinite alternate; }
+    .pulse-a { animation: aPulseA 2s ease-in-out infinite alternate; }
+    .pulse-c { animation: aPulseC 2s ease-in-out infinite alternate; }
+    .pulse-p { animation: aPulseP 2s ease-in-out infinite alternate; }
+
+    @keyframes aPulseG { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #10b981); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #10b981); } }
+    @keyframes aPulseA { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #f59e0b); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #f59e0b); } }
+    @keyframes aPulseC { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #38bdf8); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #38bdf8); } }
+    @keyframes aPulseP { 0% { opacity: 0.4; filter: drop-shadow(0 0 2px #a855f7); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #a855f7); } }
+
+    /* Flowing scanline */
+    .scan-line { animation: aScan 6s linear infinite; }
+    @keyframes aScan { 0% { transform: translateY(0); opacity: 0; } 50% { opacity: 0.15; } 100% { transform: translateY(680px); opacity: 0; } }
+  </style>
+
+  <!-- Outer Card Frame -->
+  <rect x="2" y="2" width="996" height="676" rx="20" fill="url(#dbkBg)" stroke="url(#dbkBorder)" stroke-width="2.5" />
+
+  <!-- Subtle Cyber Grid -->
+  <g stroke="#334155" stroke-opacity="0.12" stroke-width="1">
+    <line x1="20" y1="90" x2="980" y2="90" />
+    <line x1="260" y1="90" x2="260" y2="650" />
+    <line x1="500" y1="90" x2="500" y2="650" />
+    <line x1="740" y1="90" x2="740" y2="650" />
+  </g>
+
+  <!-- Header Section -->
+  <g transform="translate(25, 20)">
+    <!-- Window Control Dots -->
+    <circle cx="12" cy="18" r="6" fill="#ef4444" />
+    <circle cx="32" cy="18" r="6" fill="#f59e0b" />
+    <circle cx="52" cy="18" r="6" fill="#10b981" />
+
+    <text x="80" y="23" class="title-main">🌈 REPOSITORY DIRECTORY &amp; ARCHITECTURE MODULES</text>
+    <text x="80" y="44" class="title-sub">Color-coded breakdown of Python 3.12 Flask REST Engine, React 19 ATS Suite &amp; Vercel Serverless Edge</text>
+
+    <!-- Header Badges -->
+    <g transform="translate(730, 8)">
+      <rect x="0" y="0" width="105" height="24" rx="12" fill="#065f46" stroke="#10b981" stroke-width="1"/>
+      <circle cx="12" cy="12" r="4" fill="#34d399" class="pulse-g"/>
+      <text x="24" y="16" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#a7f3d0">35+ MODULES</text>
+
+      <rect x="115" y="0" width="105" height="24" rx="12" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1"/>
+      <circle cx="127" cy="12" r="4" fill="#60a5fa" class="pulse-c"/>
+      <text x="139" y="16" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#bfdbfe">DUAL ENGINE</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 1: BACKEND CORE ==================== -->
+  <g transform="translate(20, 95)">
+    <!-- Column Card -->
+    <rect x="0" y="0" width="230" height="560" rx="14" fill="url(#gColBe)" stroke="#10b981" stroke-width="1.2" stroke-opacity="0.6"/>
+    
+    <!-- Column Header -->
+    <rect x="0" y="0" width="230" height="42" rx="14" fill="#064e3b" />
+    <circle cx="20" cy="21" r="5" fill="#10b981" class="pulse-g"/>
+    <text x="35" y="25" class="col-hdr" fill="#34d399">🐍 BACKEND CORE</text>
+    <text x="175" y="25" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#6ee7b7">backend/</text>
+
+    <!-- Item 1: app.py -->
+    <g transform="translate(14, 56)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#10b981"/>
+      <text x="22" y="19" class="item-file" fill="#34d399">app.py</text>
+      <rect x="130" y="8" width="62" height="15" rx="4" fill="#065f46"/>
+      <text x="136" y="19" class="badge-txt" fill="#6ee7b7">APP FACTORY</text>
+      <text x="10" y="38" class="item-desc">Flask 3.12 entrypoint, CORS setup,</text>
+      <text x="10" y="52" class="item-desc">REST routes &amp; serverless WSGI bridge</text>
+    </g>
+
+    <!-- Item 2: models.py -->
+    <g transform="translate(14, 130)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#10b981"/>
+      <text x="22" y="19" class="item-file" fill="#34d399">models.py</text>
+      <rect x="126" y="8" width="66" height="15" rx="4" fill="#065f46"/>
+      <text x="132" y="19" class="badge-txt" fill="#6ee7b7">SQLAlchemy</text>
+      <text x="10" y="38" class="item-desc">User, Job, Application relational</text>
+      <text x="10" y="52" class="item-desc">entities with cascading relationships</text>
+    </g>
+
+    <!-- Item 3: database.py -->
+    <g transform="translate(14, 204)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#10b981"/>
+      <text x="22" y="19" class="item-file" fill="#34d399">database.py</text>
+      <rect x="120" y="8" width="72" height="15" rx="4" fill="#065f46"/>
+      <text x="126" y="19" class="badge-txt" fill="#6ee7b7">DUAL POOLING</text>
+      <text x="10" y="38" class="item-desc">pool_pre_ping=True, pool_recycle=300</text>
+      <text x="10" y="52" class="item-desc">auto-seeds 10+ jobs &amp; demo users</text>
+    </g>
+
+    <!-- Item 4: email_service.py -->
+    <g transform="translate(14, 278)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#10b981"/>
+      <text x="22" y="19" class="item-file" fill="#34d399">email_service.py</text>
+      <rect x="136" y="8" width="56" height="15" rx="4" fill="#065f46"/>
+      <text x="142" y="19" class="badge-txt" fill="#6ee7b7">SMTP TLS</text>
+      <text x="10" y="38" class="item-desc">Automated interview invitations,</text>
+      <text x="10" y="52" class="item-desc">status notifications &amp; calendar MIME</text>
+    </g>
+
+    <!-- Item 5: requirements.txt & job_portal.db -->
+    <g transform="translate(14, 352)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#10b981"/>
+      <text x="22" y="19" class="item-file" fill="#34d399">job_portal.db</text>
+      <rect x="130" y="8" width="62" height="15" rx="4" fill="#065f46"/>
+      <text x="138" y="19" class="badge-txt" fill="#6ee7b7">SQLITE 3</text>
+      <text x="10" y="38" class="item-desc">Zero-setup embedded database for</text>
+      <text x="10" y="52" class="item-desc">local offline development &amp; tests</text>
+    </g>
+
+    <!-- Item 6: templates/ & static/ -->
+    <g transform="translate(14, 426)">
+      <rect x="0" y="0" width="202" height="118" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="10" y="19" class="item-file" fill="#6ee7b7">📁 templates/ &amp; static/</text>
+      <text x="10" y="38" class="item-desc">• templates/auth/ (login, register)</text>
+      <text x="10" y="54" class="item-desc">• templates/recruiter/ (dashboard)</text>
+      <text x="10" y="70" class="item-desc">• templates/seeker/ (jobs, tracker)</text>
+      <text x="10" y="86" class="item-desc">• static/uploads/resumes/ (PDFs)</text>
+      <text x="10" y="102" class="item-desc">• static/uploads/emails/ (Logs)</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 2: API ROUTING ==================== -->
+  <g transform="translate(260, 95)">
+    <!-- Column Card -->
+    <rect x="0" y="0" width="230" height="560" rx="14" fill="url(#gColApi)" stroke="#f59e0b" stroke-width="1.2" stroke-opacity="0.6"/>
+    
+    <!-- Column Header -->
+    <rect x="0" y="0" width="230" height="42" rx="14" fill="#78350f" />
+    <circle cx="20" cy="21" r="5" fill="#f59e0b" class="pulse-a"/>
+    <text x="35" y="25" class="col-hdr" fill="#fbbf24">🔌 API CONTROLLERS</text>
+    <text x="182" y="25" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#fcd34d">routes/</text>
+
+    <!-- Item 1: auth_api.py -->
+    <g transform="translate(14, 56)">
+      <rect x="0" y="0" width="202" height="74" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#f59e0b"/>
+      <text x="22" y="19" class="item-file" fill="#fbbf24">auth_api.py</text>
+      <rect x="132" y="8" width="60" height="15" rx="4" fill="#78350f"/>
+      <text x="138" y="19" class="badge-txt" fill="#fde68a">AUTH BLUEPRINT</text>
+      <text x="10" y="38" class="item-desc">User login, registration, role checks</text>
+      <text x="10" y="52" class="item-desc">JWT / session tokens, PBKDF2 hash,</text>
+      <text x="10" y="66" class="item-desc">recruiter vs seeker permission gating</text>
+    </g>
+
+    <!-- Item 2: jobs_api.py -->
+    <g transform="translate(14, 138)">
+      <rect x="0" y="0" width="202" height="74" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#f59e0b"/>
+      <text x="22" y="19" class="item-file" fill="#fbbf24">jobs_api.py</text>
+      <rect x="134" y="8" width="58" height="15" rx="4" fill="#78350f"/>
+      <text x="141" y="19" class="badge-txt" fill="#fde68a">JOB DISCOVERY</text>
+      <text x="10" y="38" class="item-desc">Job search, multi-tag filtering,</text>
+      <text x="10" y="52" class="item-desc">salary ranges, pagination &amp; recruiter</text>
+      <text x="10" y="66" class="item-desc">job vacancy publishing / edit CRUD</text>
+    </g>
+
+    <!-- Item 3: applications_api.py -->
+    <g transform="translate(14, 220)">
+      <rect x="0" y="0" width="202" height="74" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#f59e0b"/>
+      <text x="22" y="19" class="item-file" fill="#fbbf24">applications_api.py</text>
+      <rect x="130" y="8" width="62" height="15" rx="4" fill="#78350f"/>
+      <text x="137" y="19" class="badge-txt" fill="#fde68a">ATS SUBMIT</text>
+      <text x="10" y="38" class="item-desc">Candidate job applications with</text>
+      <text x="10" y="52" class="item-desc">multipart PDF resume upload,</text>
+      <text x="10" y="66" class="item-desc">applicant status history &amp; notes</text>
+    </g>
+
+    <!-- Item 4: status_api.py -->
+    <g transform="translate(14, 302)">
+      <rect x="0" y="0" width="202" height="74" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#f59e0b"/>
+      <text x="22" y="19" class="item-file" fill="#fbbf24">status_api.py</text>
+      <rect x="134" y="8" width="58" height="15" rx="4" fill="#78350f"/>
+      <text x="140" y="19" class="badge-txt" fill="#fde68a">STAGE HOOKS</text>
+      <text x="10" y="38" class="item-desc">Kanban stage transition webhooks:</text>
+      <text x="10" y="52" class="item-desc">Applied → Screening → Interview →</text>
+      <text x="10" y="66" class="item-desc">Offer → Rejected + health probe</text>
+    </g>
+
+    <!-- Item 5: REST Architecture Summary -->
+    <g transform="translate(14, 384)">
+      <rect x="0" y="0" width="202" height="160" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="10" y="20" class="item-file" fill="#fcd34d">🌐 REST ARCHITECTURE</text>
+      <text x="10" y="40" class="item-desc">• Standardized JSON responses</text>
+      <text x="10" y="58" class="item-desc">• Cross-Origin CORS enabled</text>
+      <text x="10" y="76" class="item-desc">• Strict HTTP error codes</text>
+      <text x="10" y="94" class="item-desc">• Pre-ping database health checks</text>
+      <text x="10" y="112" class="item-desc">• Idempotent status updates</text>
+      <text x="10" y="130" class="item-desc">• Sub-second edge execution</text>
+      <text x="10" y="148" class="item-desc">• Integrated with React SPA proxy</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 3: FRONTEND REACT SPA ==================== -->
+  <g transform="translate(500, 95)">
+    <!-- Column Card -->
+    <rect x="0" y="0" width="230" height="560" rx="14" fill="url(#gColFe)" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.6"/>
+    
+    <!-- Column Header -->
+    <rect x="0" y="0" width="230" height="42" rx="14" fill="#0369a1" />
+    <circle cx="20" cy="21" r="5" fill="#38bdf8" class="pulse-c"/>
+    <text x="35" y="25" class="col-hdr" fill="#7dd3fc">⚛️ REACT 19 SPA</text>
+    <text x="180" y="25" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#bae6fd">frontend/</text>
+
+    <!-- Item 1: ATSKanbanBoard.jsx -->
+    <g transform="translate(14, 56)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#38bdf8"/>
+      <text x="22" y="19" class="item-file" fill="#7dd3fc">ATSKanbanBoard.jsx</text>
+      <rect x="134" y="8" width="58" height="15" rx="4" fill="#075985"/>
+      <text x="142" y="19" class="badge-txt" fill="#bae6fd">DRAG &amp; DROP</text>
+      <text x="10" y="38" class="item-desc">Interactive recruitment pipeline</text>
+      <text x="10" y="52" class="item-desc">with instant status transitions</text>
+    </g>
+
+    <!-- Item 2: ApplicationsTable.jsx -->
+    <g transform="translate(14, 130)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#38bdf8"/>
+      <text x="22" y="19" class="item-file" fill="#7dd3fc">ApplicationsTable.jsx</text>
+      <rect x="134" y="8" width="58" height="15" rx="4" fill="#075985"/>
+      <text x="142" y="19" class="badge-txt" fill="#bae6fd">DATA GRID</text>
+      <text x="10" y="38" class="item-desc">Multi-column sortable table with</text>
+      <text x="10" y="52" class="item-desc">instant text filtering &amp; badges</text>
+    </g>
+
+    <!-- Item 3: AnalyticsDashboard.jsx -->
+    <g transform="translate(14, 204)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#38bdf8"/>
+      <text x="22" y="19" class="item-file" fill="#7dd3fc">AnalyticsDashboard.jsx</text>
+      <rect x="136" y="8" width="56" height="15" rx="4" fill="#075985"/>
+      <text x="144" y="19" class="badge-txt" fill="#bae6fd">METRICS</text>
+      <text x="10" y="38" class="item-desc">Recruiting conversion funnel, hire</text>
+      <text x="10" y="52" class="item-desc">velocity &amp; stage velocity KPIs</text>
+    </g>
+
+    <!-- Item 4: CandidateDrawer.jsx -->
+    <g transform="translate(14, 278)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#38bdf8"/>
+      <text x="22" y="19" class="item-file" fill="#7dd3fc">CandidateDrawer.jsx</text>
+      <rect x="134" y="8" width="58" height="15" rx="4" fill="#075985"/>
+      <text x="140" y="19" class="badge-txt" fill="#bae6fd">SLIDE DRAWER</text>
+      <text x="10" y="38" class="item-desc">Slide-out candidate profile inspector,</text>
+      <text x="10" y="52" class="item-desc">resume PDF previewer &amp; stage actions</text>
+    </g>
+
+    <!-- Item 5: JobDiscoveryFeed & ApplyModal -->
+    <g transform="translate(14, 352)">
+      <rect x="0" y="0" width="202" height="66" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#38bdf8"/>
+      <text x="22" y="19" class="item-file" fill="#7dd3fc">JobDiscoveryFeed.jsx</text>
+      <rect x="136" y="8" width="56" height="15" rx="4" fill="#075985"/>
+      <text x="144" y="19" class="badge-txt" fill="#bae6fd">FEED &amp; MODAL</text>
+      <text x="10" y="38" class="item-desc">Interactive job cards + 1-click</text>
+      <text x="10" y="52" class="item-desc">JobApplyModal with confetti</text>
+    </g>
+
+    <!-- Item 6: Styling & Bundling -->
+    <g transform="translate(14, 426)">
+      <rect x="0" y="0" width="202" height="118" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="10" y="19" class="item-file" fill="#bae6fd">🎨 STYLES &amp; BUILD</text>
+      <text x="10" y="38" class="item-desc">• index.css (Cyber-glassmorphism)</text>
+      <text x="10" y="54" class="item-desc">• vite.config.ts (Vite 8 HMR)</text>
+      <text x="10" y="70" class="item-desc">• .oxlintrc.json (Sub-ms Oxlint)</text>
+      <text x="10" y="86" class="item-desc">• Navbar.jsx &amp; TopBanner.jsx</text>
+      <text x="10" y="102" class="item-desc">• Lucide Icons + Google Inter</text>
+    </g>
+  </g>
+
+  <!-- ==================== COLUMN 4: CLOUD & EDGE ==================== -->
+  <g transform="translate(740, 95)">
+    <!-- Column Card -->
+    <rect x="0" y="0" width="240" height="560" rx="14" fill="url(#gColCloud)" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.6"/>
+    
+    <!-- Column Header -->
+    <rect x="0" y="0" width="240" height="42" rx="14" fill="#581c87" />
+    <circle cx="20" cy="21" r="5" fill="#a855f7" class="pulse-p"/>
+    <text x="35" y="25" class="col-hdr" fill="#d8b4fe">☁️ CLOUD &amp; EDGE</text>
+    <text x="180" y="25" font-family="'Fira Code', monospace" font-size="9" font-weight="700" fill="#e9d5ff">api/ &amp; vercel</text>
+
+    <!-- Item 1: api/index.py -->
+    <g transform="translate(14, 56)">
+      <rect x="0" y="0" width="212" height="74" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#a855f7"/>
+      <text x="22" y="19" class="item-file" fill="#d8b4fe">api/index.py</text>
+      <rect x="140" y="8" width="62" height="15" rx="4" fill="#581c87"/>
+      <text x="146" y="19" class="badge-txt" fill="#f3e8ff">WSGI BRIDGE</text>
+      <text x="10" y="38" class="item-desc">Vercel serverless entrypoint invoking</text>
+      <text x="10" y="52" class="item-desc">the Flask WSGI engine seamlessly</text>
+      <text x="10" y="66" class="item-desc">with sub-second cold starts</text>
+    </g>
+
+    <!-- Item 2: vercel.json -->
+    <g transform="translate(14, 138)">
+      <rect x="0" y="0" width="212" height="74" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#a855f7"/>
+      <text x="22" y="19" class="item-file" fill="#d8b4fe">vercel.json</text>
+      <rect x="140" y="8" width="62" height="15" rx="4" fill="#581c87"/>
+      <text x="146" y="19" class="badge-txt" fill="#f3e8ff">EDGE ROUTING</text>
+      <text x="10" y="38" class="item-desc">Configures URL routing, rewrites</text>
+      <text x="10" y="52" class="item-desc">/api/* to serverless function, and</text>
+      <text x="10" y="66" class="item-desc">serves Vite SPA for all client routes</text>
+    </g>
+
+    <!-- Item 3: PostgreSQL Cloud Engine -->
+    <g transform="translate(14, 220)">
+      <rect x="0" y="0" width="212" height="74" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#a855f7"/>
+      <text x="22" y="19" class="item-file" fill="#d8b4fe">Cloud PostgreSQL</text>
+      <rect x="140" y="8" width="62" height="15" rx="4" fill="#581c87"/>
+      <text x="146" y="19" class="badge-txt" fill="#f3e8ff">NEON / AWS</text>
+      <text x="10" y="38" class="item-desc">Managed serverless Postgres with</text>
+      <text x="10" y="52" class="item-desc">SSL/TLS 1.3 encryption, automatic</text>
+      <text x="10" y="66" class="item-desc">pooling &amp; connection recycling</text>
+    </g>
+
+    <!-- Item 4: public/cards/ Visual Assets -->
+    <g transform="translate(14, 302)">
+      <rect x="0" y="0" width="212" height="74" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="0.8" stroke-opacity="0.4"/>
+      <circle cx="12" cy="16" r="3" fill="#a855f7"/>
+      <text x="22" y="19" class="item-file" fill="#d8b4fe">public/cards/</text>
+      <rect x="134" y="8" width="68" height="15" rx="4" fill="#581c87"/>
+      <text x="140" y="19" class="badge-txt" fill="#f3e8ff">16+ SVG CARDS</text>
+      <text x="10" y="38" class="item-desc">Animated SVG architecture cards,</text>
+      <text x="10" y="52" class="item-desc">CSS running dash beams, glowing</text>
+      <text x="10" y="66" class="item-desc">color matrices &amp; interactive charts</text>
+    </g>
+
+    <!-- Item 5: Edge Architecture Summary -->
+    <g transform="translate(14, 384)">
+      <rect x="0" y="0" width="212" height="160" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="10" y="20" class="item-file" fill="#e9d5ff">⚡ PRODUCTION SPECS</text>
+      <text x="10" y="40" class="item-desc">• Global CDN edge network</text>
+      <text x="10" y="58" class="item-desc">• Zero-maintenance serverless</text>
+      <text x="10" y="76" class="item-desc">• 99.99% uptime guarantee</text>
+      <text x="10" y="94" class="item-desc">• Automated continuous deployment</text>
+      <text x="10" y="112" class="item-desc">• TLS 1.3 end-to-end security</text>
+      <text x="10" y="130" class="item-desc">• Dual SQLite / Postgres mode</text>
+      <text x="10" y="148" class="item-desc">• Sub-100ms global latency</text>
+    </g>
+  </g>
+</svg>

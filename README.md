@@ -175,64 +175,103 @@ The repository follows a clean, modular structure separating the Python 3.12 Fla
 </p>
 
 <details open>
-<summary><b>📂 Repository Directory & Subfolder Breakdown</b></summary>
+<summary><b>🌈 Repository Directory & Subfolder Breakdown (Color-Coded Architecture)</b></summary>
 
-```text
-flask/
-├── backend/                             # Python 3.12 Flask REST Engine
-│   ├── app.py                           # Application factory, CORS, REST routes & serverless handlers
-│   ├── models.py                        # SQLAlchemy 6 relational entities (User, Job, Application, etc.)
-│   ├── database.py                      # DB connection manager, seeders & schema initializers
-│   ├── email_service.py                 # Automated SMTP & calendar interview notifications
-│   ├── job_portal.db                    # SQLite zero-config local database
-│   ├── requirements.txt                 # Backend Python package dependencies
-│   ├── routes/                          # Modular API controllers
-│   │   ├── auth_api.py                  # User authentication & session management
-│   │   ├── jobs_api.py                  # Job search, filtering & recruiter vacancy CRUD
-│   │   ├── applications_api.py          # Candidate applications & ATS submissions
-│   │   └── status_api.py                # Status transition webhooks & stage updates
-│   ├── static/                          # Static assets & user storage
-│   │   ├── uploads/resumes/             # Uploaded candidate PDF resumes
-│   │   ├── uploads/emails/              # Sent HTML email notification logs
-│   │   ├── css/style.css                # Server-rendered fallback stylesheets
-│   │   └── js/main.js                   # Vanilla JS interactivity & form validation
-│   └── templates/                       # Jinja2 view templates & fallbacks
-│       ├── auth/                        # login.html, register.html
-│       ├── recruiter/                   # dashboard.html, applications.html, schedule.html, resume_viewer.html
-│       ├── seeker/                      # dashboard.html, jobs.html, job_detail.html
-│       ├── 404.html                     # Custom 404 error page
-│       ├── 500.html                     # Custom 500 error page
-│       └── base.html                    # Master layout with navigation & footer
-│
-├── frontend/                            # React 19 + Vite 8 SPA Client
-│   ├── package.json                     # Dependencies (React 19, Lucide, Vite)
-│   ├── vite.config.ts                   # Vite build configuration & API reverse proxy
-│   ├── index.html                       # HTML5 entry point with Inter & Google Fonts
-│   ├── .oxlintrc.json                   # Sub-millisecond Rust Oxlint configuration
-│   ├── src/                             # Core React component tree
-│   │   ├── App.jsx                      # Main ATS application & routing container
-│   │   ├── App.css                      # App layout & transitions
-│   │   ├── index.css                    # Cyber-glassmorphism design system & neon FX
-│   │   ├── main.jsx                     # ReactDOM concurrent root renderer
-│   │   ├── components/                  # Modular UI components
-│   │   │   ├── Navbar.jsx               # Dual-role navigation bar
-│   │   │   ├── ApplicationsTable.jsx    # Candidate ATS pipeline data grid
-│   │   │   ├── ATSKanbanBoard.jsx       # Interactive drag-and-drop Kanban board
-│   │   │   ├── AnalyticsDashboard.jsx   # Hiring velocity & funnel analytics
-│   │   │   ├── CandidateDrawer.jsx      # Slide-out candidate resume & profile drawer
-│   │   │   ├── JobDiscoveryFeed.jsx     # Job listing & search cards
-│   │   │   ├── JobApplyModal.jsx        # One-click application modal
-│   │   │   └── TopBanner.jsx            # Live announcement & alert ticker
-│   │   └── pages/                       # Route view components (DashboardPage, ApplicationsPage)
-│   └── public/                          # Static SVG cards, headers & visual diagrams
-│       ├── banner.svg                   # Hero banner with vibrant gradient mesh
-│       ├── workflow.svg                 # Full-stack recruitment lifecycle flowchart
-│       ├── cards/                       # 16 interactive animated SVG documentation cards
-│       └── headers/                     # 10 stylized section header SVGs
-│
-├── api/                                 # Vercel Serverless Python WSGI handler
-├── vercel.json                          # Vercel edge deployment routing rules
-└── README.md                            # Comprehensive project documentation
+<br />
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Python%20Core-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12" />
+  <img src="https://img.shields.io/badge/Flask%20Engine-RESTful-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask" />
+  <img src="https://img.shields.io/badge/SQLAlchemy-6%20Models-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white" alt="SQLAlchemy" />
+  <img src="https://img.shields.io/badge/PostgreSQL-Dual%20Engine-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/React%20SPA-19.0-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19" />
+  <img src="https://img.shields.io/badge/Vite%20Bundler-8.0-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Vercel-Serverless%20Edge-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+</p>
+
+<p align="center">
+  <img src="./frontend/public/cards/directory-breakdown.svg" alt="Repository Directory & Architecture Modules Breakdown" width="100%" />
+</p>
+
+#### 🗂️ Color-Coded Architecture & Subfolder Matrix
+
+| Module / Path | Layer & Tech Badge | Role & Architecture Responsibility |
+| :--- | :--- | :--- |
+| `backend/` | ![Backend](https://img.shields.io/badge/Engine-Python%203.12-3776AB?style=flat-square&logo=python&logoColor=white) | Core Flask RESTful microservice & application factory |
+| `backend/app.py` | ![Flask](https://img.shields.io/badge/App-Flask%20Factory-000000?style=flat-square&logo=flask&logoColor=white) | Application initialization, CORS setup, serverless WSGI bridge |
+| `backend/models.py` | ![ORM](https://img.shields.io/badge/ORM-SQLAlchemy-D71F00?style=flat-square&logo=sqlalchemy&logoColor=white) | User, Job, and Application relational entities with cascading constraints |
+| `backend/database.py` | ![DB](https://img.shields.io/badge/Pooling-Dual%20Engine-4169E1?style=flat-square&logo=postgresql&logoColor=white) | Connection pool manager (`pool_pre_ping=True`, `pool_recycle=300`) & mock seeders |
+| `backend/email_service.py` | ![SMTP](https://img.shields.io/badge/Email-SMTP%20TLS-EA4335?style=flat-square&logo=gmail&logoColor=white) | Automated candidate stage notifications & calendar invite generator |
+| `backend/routes/` | ![API](https://img.shields.io/badge/Routing-Flask%20Blueprints-009688?style=flat-square) | Modular REST controllers: `auth_api.py`, `jobs_api.py`, `applications_api.py`, `status_api.py` |
+| `backend/static/` | ![Static](https://img.shields.io/badge/Storage-Static%20Assets-FF6F00?style=flat-square) | Resumes upload storage (`uploads/resumes/`), email logs (`uploads/emails/`), stylesheets & scripts |
+| `backend/templates/` | ![Jinja2](https://img.shields.io/badge/Views-Jinja2%20SSR-B41717?style=flat-square&logo=jinja&logoColor=white) | Server-rendered views: `auth/` (login/register), `recruiter/`, `seeker/`, 404 & 500 error pages |
+| `frontend/` | ![Frontend](https://img.shields.io/badge/Client-React%2019%20SPA-61DAFB?style=flat-square&logo=react&logoColor=black) | Next-generation React 19 Single Page Application with Vite 8 HMR |
+| `frontend/src/` | ![Source](https://img.shields.io/badge/Source-ES6%2B%20JSX-F7DF1E?style=flat-square&logo=javascript&logoColor=black) | Root `App.jsx`, cyber-glassmorphism `index.css`, concurrent `main.jsx` |
+| `frontend/src/components/` | ![Components](https://img.shields.io/badge/UI-Modular%20ATS%20Suite-8B5CF6?style=flat-square&logo=react&logoColor=white) | `ATSKanbanBoard`, `ApplicationsTable`, `AnalyticsDashboard`, `CandidateDrawer`, `JobDiscoveryFeed` |
+| `frontend/public/` | ![Assets](https://img.shields.io/badge/Media-Animated%20SVGs-FF4081?style=flat-square) | 17 animated SVG cards, interactive workflow diagrams, section headers |
+| `api/` | ![Serverless](https://img.shields.io/badge/Serverless-Vercel%20Edge-000000?style=flat-square&logo=vercel&logoColor=white) | Edge serverless WSGI bridge (`index.py`) routing requests to Flask |
+| `vercel.json` | ![Config](https://img.shields.io/badge/Config-Vercel%20Routing-000000?style=flat-square&logo=vercel&logoColor=white) | Cloud deployment rules, header security, and `/api/*` reverse proxy rules |
+
+#### 🌳 Colorized Architecture Tree
+
+```yaml
+# 🌈 HIREPULSE ARCHITECTURE REPOSITORY TREE (COLOR-CODED)
+flask:
+  📁 backend/:                           # 🐍 Python 3.12 Flask REST Engine
+    ⚙️ app.py:                           "Flask factory, CORS, REST routes & serverless WSGI bridge"
+    🗄️ models.py:                        "SQLAlchemy 6 relational entities (User, Job, Application)"
+    🛡️ database.py:                      "Dual-engine connection manager, seeders & schema init"
+    ✉️ email_service.py:                 "Automated SMTP & calendar interview notifications"
+    💾 job_portal.db:                    "SQLite zero-config local development database"
+    📦 requirements.txt:                 "Backend Python package dependencies"
+    🔌 routes/:                          # Modular API Blueprint Controllers
+      🔐 auth_api.py:                    "User authentication, sessions & role permissions"
+      💼 jobs_api.py:                    "Job search, filtering & recruiter vacancy CRUD"
+      📋 applications_api.py:            "Candidate applications & ATS stage submissions"
+      📡 status_api.py:                  "Status transition webhooks & stage updates"
+    🎨 static/:                          # Static assets & user storage
+      📄 uploads/resumes/:               "Uploaded candidate PDF resumes"
+      📬 uploads/emails/:                "Sent HTML email notification logs"
+      💅 css/style.css:                  "Server-rendered fallback stylesheets"
+      ⚡ js/main.js:                     "Vanilla JS interactivity & form validation"
+    🖼️ templates/:                       # Jinja2 server-rendered views
+      🔑 auth/:                          "login.html, register.html"
+      📊 recruiter/:                     "dashboard.html, applications.html, schedule.html"
+      🎯 seeker/:                        "dashboard.html, jobs.html, job_detail.html"
+      🚫 404.html:                       "Custom 404 error page"
+      💥 500.html:                       "Custom 500 error page"
+      🌐 base.html:                      "Master layout with navigation & footer"
+
+  ⚛️ frontend/:                          # React 19 + Vite 8 SPA Client
+    📦 package.json:                     "Dependencies: React 19, Lucide React, Canvas-Confetti"
+    ⚡ vite.config.ts:                   "Vite build configuration & API reverse proxy"
+    🌐 index.html:                       "HTML5 entry point with Inter & Google Fonts"
+    🦀 .oxlintrc.json:                   "Sub-millisecond Rust Oxlint configuration"
+    💎 src/:                             # Core React component tree
+      🚀 App.jsx:                        "Main ATS application & routing container"
+      💅 App.css:                        "App layout & transitions"
+      🔮 index.css:                      "Cyber-glassmorphism design system & neon FX"
+      ⚡ main.jsx:                       "ReactDOM concurrent root renderer"
+      🧩 components/:                    # Modular UI components
+        🧭 Navbar.jsx:                   "Dual-role navigation bar"
+        📊 ApplicationsTable.jsx:        "Candidate ATS pipeline data grid"
+        📌 ATSKanbanBoard.jsx:           "Interactive drag-and-drop Kanban board"
+        📈 AnalyticsDashboard.jsx:       "Hiring velocity & funnel analytics"
+        📑 CandidateDrawer.jsx:          "Slide-out candidate resume & profile drawer"
+        💼 JobDiscoveryFeed.jsx:         "Job listing & search cards"
+        ✨ JobApplyModal.jsx:            "One-click application modal"
+        📢 TopBanner.jsx:                "Live announcement & alert ticker"
+      📑 pages/:                         # Route view components (DashboardPage, ApplicationsPage)
+    🎨 public/:                          # Static SVG cards, headers & visual diagrams
+      🌈 banner.svg:                     "Hero banner with vibrant gradient mesh"
+      🔄 workflow.svg:                   "Full-stack recruitment lifecycle flowchart"
+      🃏 cards/:                         "17 interactive animated SVG documentation cards"
+      🏷️ headers/:                       "10 stylized section header SVGs"
+
+  ☁️ api/:                               # Vercel Serverless Python WSGI handler
+    🌐 index.py:                         "Serverless entrypoint invoking backend/app.py"
+  🚦 vercel.json:                        "Vercel edge deployment routing rules"
+  📖 README.md:                          "Comprehensive project documentation"
 ```
 
 </details>
