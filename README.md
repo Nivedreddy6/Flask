@@ -274,11 +274,31 @@ The platform implements a **resilient hybrid dual-database architecture** design
   <img src="https://img.shields.io/badge/Dialect%20Fix-postgres%3A%2F%2F%20%E2%86%92%20postgresql%3A%2F%2F-E040FB?style=for-the-badge&logo=convertio&logoColor=white" alt="URI Normalizer" />
 </p>
 
+<!-- Animated Dual Database Overview Card -->
 <p align="center">
   <img src="./frontend/public/cards/database-engine-card.svg" alt="Dual-Engine Database Architecture (PostgreSQL & SQLite)" width="100%" />
 </p>
 
-### ⚙️ Why Dual Database Architecture?
+---
+
+### ⚡ PostgreSQL Serverless Data Flow & Resilient Connection Pipeline
+
+Visualizing the end-to-end data lifecycle from user action in the React 19 SPA, through WSGI parameter sanitization, to **pre-ping heartbeats**, connection pool checkout, and cloud ACID transactions:
+
+<p align="center">
+  <img src="./frontend/public/cards/postgresql-dataflow.svg" alt="PostgreSQL Serverless Data Flow & Connection Pipeline" width="100%" />
+</p>
+
+---
+
+### ⚙️ Why Dual Database Architecture? (PostgreSQL vs. SQLite 3)
+
+<p align="center">
+  <img src="./frontend/public/cards/dual-database-matrix.svg" alt="Why Dual Database Architecture? PostgreSQL vs SQLite 3 Comparison Matrix" width="100%" />
+</p>
+
+<details>
+<summary><b>📋 Click to expand accessibility Markdown table for screen readers</b></summary>
 
 | Architecture Pillar | 🐘 Production Engine: PostgreSQL | 🗄️ Development Engine: SQLite 3 |
 | :--- | :--- | :--- |
@@ -289,6 +309,8 @@ The platform implements a **resilient hybrid dual-database architecture** design
 | **URI Compatibility** | Auto-rewrites legacy `postgres://` to `postgresql://` | Native `sqlite:///job_portal.db` fallback |
 | **Mock Data Seeder** | Pre-seeded with recruiters, seekers, jobs & applications | Auto-populates 10+ jobs & demo users on boot |
 | **Cloud Providers** | Neon Serverless, Supabase, Render, AWS RDS, Railway | Local file system (`backend/job_portal.db`) |
+
+</details>
 
 ---
 

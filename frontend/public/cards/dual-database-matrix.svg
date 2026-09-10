@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="520">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="matBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e1a" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Animated Multi-Color Neon Border -->
+    <linearGradient id="matBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8">
+        <animate attributeName="stop-color" values="#38bdf8;#818cf8;#c084fc;#f472b6;#10b981;#38bdf8" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#c084fc">
+        <animate attributeName="stop-color" values="#c084fc;#f472b6;#10b981;#38bdf8;#818cf8;#c084fc" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#10b981">
+        <animate attributeName="stop-color" values="#10b981;#38bdf8;#818cf8;#c084fc;#f472b6;#10b981" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Table Header Gradients -->
+    <linearGradient id="hPillar" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#334155"/><stop offset="100%" stop-color="#475569"/></linearGradient>
+    <linearGradient id="hPgCol" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#1e40af"/><stop offset="100%" stop-color="#0284c7"/></linearGradient>
+    <linearGradient id="hSqliteCol" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#065f46"/><stop offset="100%" stop-color="#0d9488"/></linearGradient>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Fira+Code:wght@500;600;700&amp;display=swap');
+
+    .hdr-title { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800; fill: #ffffff; letter-spacing: 0.5px; }
+    .col-hdr-txt { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .row-pillar { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 700; fill: #f8fafc; }
+    .row-desc-pg { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; fill: #bae6fd; }
+    .row-desc-lite { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; fill: #a7f3d0; }
+    .code-tag-blue { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 700; fill: #38bdf8; }
+    .code-tag-green { font-family: 'Fira Code', monospace; font-size: 10px; font-weight: 700; fill: #34d399; }
+    .sub-note { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 400; fill: #94a3b8; }
+
+    /* Animated CSS Pulse Dots */
+    .pulse-blue { animation: pulseB 2s ease-in-out infinite alternate; }
+    .pulse-green { animation: pulseG 2s ease-in-out infinite alternate; }
+
+    @keyframes pulseB {
+      0% { opacity: 0.4; filter: drop-shadow(0 0 2px #38bdf8); }
+      100% { opacity: 1; filter: drop-shadow(0 0 8px #38bdf8); }
+    }
+    @keyframes pulseG {
+      0% { opacity: 0.4; filter: drop-shadow(0 0 2px #10b981); }
+      100% { opacity: 1; filter: drop-shadow(0 0 8px #10b981); }
+    }
+  </style>
+
+  <!-- Container -->
+  <rect width="1000" height="520" rx="18" fill="url(#matBg)" stroke="url(#matBorder)" stroke-width="2" />
+
+  <!-- Title Banner -->
+  <g transform="translate(30, 20)">
+    <rect width="520" height="28" rx="14" fill="rgba(192, 132, 252, 0.15)" stroke="#c084fc" stroke-width="1" />
+    <circle cx="16" cy="14" r="5" fill="#c084fc" />
+    <text x="32" y="18" font-family="'Fira Code', monospace" font-size="11.5" font-weight="700" fill="#f5d0fe">⚙️ WHY DUAL DATABASE ARCHITECTURE? • POSTGRESQL VS. SQLITE 3</text>
+  </g>
+
+  <!-- Top Right Indicator -->
+  <g transform="translate(720, 20)">
+    <rect width="250" height="28" rx="14" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" />
+    <text x="125" y="18" text-anchor="middle" font-family="'Fira Code', monospace" font-size="10.5" font-weight="700" fill="#6ee7b7">Zero-Config • Auto Switching</text>
+  </g>
+
+  <!-- ================= TABLE CONTAINER ================= -->
+  <g transform="translate(30, 65)">
+    <!-- Column 1: Pillar (Width 200) -->
+    <!-- Column 2: PostgreSQL (Width 360) -->
+    <!-- Column 3: SQLite 3 (Width 380) -->
+
+    <!-- Table Header Row -->
+    <rect x="0" y="0" width="195" height="34" rx="8" fill="url(#hPillar)" />
+    <text x="16" y="21" class="col-hdr-txt">Architecture Pillar</text>
+
+    <rect x="200" y="0" width="365" height="34" rx="8" fill="url(#hPgCol)" />
+    <circle cx="218" cy="17" r="4" fill="#38bdf8" class="pulse-blue" />
+    <text x="232" y="21" class="col-hdr-txt">🐘 Production Engine: PostgreSQL</text>
+
+    <rect x="570" y="0" width="370" height="34" rx="8" fill="url(#hSqliteCol)" />
+    <circle cx="588" cy="17" r="4" fill="#34d399" class="pulse-green" />
+    <text x="602" y="21" class="col-hdr-txt">🗄️ Development Engine: SQLite 3</text>
+
+    <!-- Row 1: Primary Environment -->
+    <g transform="translate(0, 42)">
+      <rect width="195" height="54" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="16" y="24" class="row-pillar">Primary</text>
+      <text x="16" y="40" class="row-pillar">Environment</text>
+
+      <rect x="200" width="365" height="54" rx="6" fill="#0c172a" stroke="#0284c7" stroke-width="1" />
+      <!-- Badges inside PG -->
+      <rect x="215" y="12" width="165" height="28" rx="6" fill="#000000" stroke="#333" stroke-width="1" />
+      <text x="297" y="29" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#ffffff">▲ Vercel Serverless Edge</text>
+      <rect x="388" y="12" width="162" height="28" rx="6" fill="#1e3a8a" stroke="#3b82f6" stroke-width="0.8" />
+      <text x="469" y="29" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#bfdbfe">🐘 Managed Cloud DB</text>
+
+      <rect x="570" width="370" height="54" rx="6" fill="#061f18" stroke="#059669" stroke-width="1" />
+      <rect x="585" y="12" width="165" height="28" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="0.8" />
+      <text x="667" y="29" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#a7f3d0">Localhost Zero-Setup</text>
+      <rect x="758" y="12" width="165" height="28" rx="6" fill="#075985" stroke="#0284c7" stroke-width="0.8" />
+      <text x="840" y="29" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" fill="#bae6fd">Offline 100% Available</text>
+    </g>
+
+    <!-- Row 2: Connection Pooling -->
+    <g transform="translate(0, 102)">
+      <rect width="195" height="54" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="16" y="32" class="row-pillar">Connection Pooling</text>
+
+      <rect x="200" width="365" height="54" rx="6" fill="#0c172a" stroke="#0284c7" stroke-width="1" />
+      <rect x="215" y="14" width="140" height="24" rx="5" fill="#172554" stroke="#2563eb" stroke-width="0.8" />
+      <text x="285" y="29" text-anchor="middle" class="code-tag-blue">pool_pre_ping=True</text>
+      <text x="365" y="30" class="sub-note">(Tests stale socket before query)</text>
+
+      <rect x="570" width="370" height="54" rx="6" fill="#061f18" stroke="#059669" stroke-width="1" />
+      <rect x="585" y="14" width="85" height="24" rx="5" fill="#064e3b" stroke="#059669" stroke-width="0.8" />
+      <text x="627" y="29" text-anchor="middle" class="code-tag-green">NullPool</text>
+      <text x="680" y="30" class="sub-note">(Direct file access, zero overhead)</text>
+    </g>
+
+    <!-- Row 3: Connection Lifespan -->
+    <g transform="translate(0, 162)">
+      <rect width="195" height="54" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="16" y="32" class="row-pillar">Connection Lifespan</text>
+
+      <rect x="200" width="365" height="54" rx="6" fill="#0c172a" stroke="#0284c7" stroke-width="1" />
+      <rect x="215" y="14" width="135" height="24" rx="5" fill="#172554" stroke="#2563eb" stroke-width="0.8" />
+      <text x="282" y="29" text-anchor="middle" class="code-tag-blue">pool_recycle=300</text>
+      <text x="360" y="30" class="sub-note">(Recycles idle sockets before timeout)</text>
+
+      <rect x="570" width="370" height="54" rx="6" fill="#061f18" stroke="#059669" stroke-width="1" />
+      <text x="588" y="24" class="row-desc-lite">Persistent disk storage</text>
+      <text x="588" y="42" class="code-tag-green">sqlite:///job_portal.db</text>
+    </g>
+
+    <!-- Row 4: Serverless Resiliency -->
+    <g transform="translate(0, 222)">
+      <rect width="195" height="54" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="16" y="24" class="row-pillar">Serverless</text>
+      <text x="16" y="40" class="row-pillar">Resiliency</text>
+
+      <rect x="200" width="365" height="54" rx="6" fill="#0c172a" stroke="#0284c7" stroke-width="1" />
+      <text x="215" y="24" class="row-desc-pg">⚡ Reconnects seamlessly across</text>
+      <text x="215" y="42" class="row-desc-pg">   cold starts &amp; ephemeral containers</text>
+
+      <rect x="570" width="370" height="54" rx="6" fill="#061f18" stroke="#059669" stroke-width="1" />
+      <text x="588" y="24" class="row-desc-lite">🚀 Zero network dependencies,</text>
+      <text x="588" y="42" class="row-desc-lite">   instant local boot (&lt; 5ms)</text>
+    </g>
+
+    <!-- Row 5: URI Compatibility -->
+    <g transform="translate(0, 282)">
+      <rect width="195" height="54" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="16" y="32" class="row-pillar">URI Normalization</text>
+
+      <rect x="200" width="365" height="54" rx="6" fill="#0c172a" stroke="#0284c7" stroke-width="1" />
+      <text x="215" y="22" class="sub-note">Auto-rewrites legacy URI dialect:</text>
+      <rect x="215" y="28" width="180" height="20" rx="4" fill="#1e1b4b" />
+      <text x="225" y="42" class="code-tag-blue">postgres:// → postgresql://</text>
+
+      <rect x="570" width="370" height="54" rx="6" fill="#061f18" stroke="#059669" stroke-width="1" />
+      <text x="588" y="22" class="sub-note">Native fallback path:</text>
+      <rect x="588" y="28" width="190" height="20" rx="4" fill="#062e24" />
+      <text x="598" y="42" class="code-tag-green">sqlite:///job_portal.db</text>
+    </g>
+
+    <!-- Row 6: Mock Data Seeder -->
+    <g transform="translate(0, 342)">
+      <rect width="195" height="54" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="16" y="32" class="row-pillar">Mock Data Seeder</text>
+
+      <rect x="200" width="365" height="54" rx="6" fill="#0c172a" stroke="#0284c7" stroke-width="1" />
+      <text x="215" y="24" class="row-desc-pg">Pre-seeded with recruiters, seekers,</text>
+      <text x="215" y="42" class="row-desc-pg">jobs &amp; active candidate applications</text>
+
+      <rect x="570" width="370" height="54" rx="6" fill="#061f18" stroke="#059669" stroke-width="1" />
+      <text x="588" y="24" class="row-desc-lite">Auto-populates 10+ jobs &amp; demo</text>
+      <text x="588" y="42" class="row-desc-lite">users automatically on first boot</text>
+    </g>
+
+    <!-- Row 7: Cloud Providers -->
+    <g transform="translate(0, 402)">
+      <rect width="195" height="42" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="16" y="26" class="row-pillar">Target Platforms</text>
+
+      <rect x="200" width="365" height="42" rx="6" fill="#0c172a" stroke="#0284c7" stroke-width="1" />
+      <text x="215" y="26" class="code-tag-blue">Neon, Supabase, Render, AWS RDS, Railway</text>
+
+      <rect x="570" width="370" height="42" rx="6" fill="#061f18" stroke="#059669" stroke-width="1" />
+      <text x="588" y="26" class="code-tag-green">Local Disk (backend/job_portal.db)</text>
+    </g>
+  </g>
+</svg>
